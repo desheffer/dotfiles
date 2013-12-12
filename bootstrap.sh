@@ -4,7 +4,7 @@ cd $(dirname $0)
 for FILE in *; do
 
     if [ $FILE == $(basename $0) ]; then
-        continue;
+        continue
     fi
 
     SRC=$(pwd)/$FILE
