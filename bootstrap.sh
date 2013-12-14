@@ -10,7 +10,7 @@ for FILE in *; do
     SRC=$(pwd)/$FILE
     DEST=~/.$FILE
 
-    echo "Linking $DEST..."
+    echo "Replacing $DEST..."
     rm -f $DEST && ln -s $SRC $DEST
 
 done
