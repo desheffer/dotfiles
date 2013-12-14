@@ -39,7 +39,7 @@ function g() {
 
 # Linux specific setup.
 if [ $(uname) == "Linux" ]; then
-    eval "`dircolors -b`"
+    eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
 
