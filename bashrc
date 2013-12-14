@@ -13,7 +13,7 @@ function parse_git_branch {
 WINDOW_TITLE='\[\e]0;\u@\h: \w\a\]'
 PROMPT_BASIC='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'
 PROMPT_GIT=' \[\033[00;33m\]$(parse_git_branch)\[\033[00m\]'
-export PS1="${WINDOW_TITLE}${PROMPT_BASIC}${PROMPT_GIT}\n\$ "
+export PS1="${WINDOW_TITLE}\n${PROMPT_BASIC}${PROMPT_GIT}\n\$ "
 
 # Git auto completion.
 if [ -n "$BASH_VERSION" ]; then
