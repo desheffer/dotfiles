@@ -1,16 +1,17 @@
 #!/bin/bash
 
-cd $(dirname $0)
+cd "$(dirname $0)"
+HERE="$(pwd)"
+
 for FILE in *; do
 
-    if [ $FILE == $(basename $0) ]; then
-        continue
-    fi
+    [ "$FILE" == "$(basename $0)" ] && continue
+    [[ "$FILE" == README* ]] && continue
 
-    SRC=$(pwd)/$FILE
-    DEST=~/.$FILE
+    SRC="$HERE/$FILE"
+    DEST="$HOME/.$FILE"
 
-    echo "Replacing $DEST..."
-    rm -f $DEST && ln -s $SRC $DEST
+    echo "Installing $DEST..."
+    rm -f "$DEST" && ln -s "$SRC" "$DEST"
 
 done
