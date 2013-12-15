@@ -16,4 +16,6 @@ You are free to use or adapt these files as you see fit.
 
 ### Installation
 
-Run <code>bootstrap.sh</code>
+1. Run <code>bootstrap.sh</code> to link files into your home directory.
+
+2. Et voilà!
