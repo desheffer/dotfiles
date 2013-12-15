@@ -18,4 +18,8 @@ adapt them however you see fit. Honey badger don't care.
 
 1. Run <code>bootstrap.sh</code> to link the files into your home directory.
 
-2. Et voilà!
+2. http://www.youtube.com/watch?v=Xqw4wo8vdY8
+
+3. ???
+
+4. Et voilà!
