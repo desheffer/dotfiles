@@ -8,6 +8,7 @@ REVERT="$STASH/revert"
 
 for FILE in *; do
 
+    # Excluded files, continue.
     [ "$FILE" == "$(basename $0)" ] && continue
     [[ "$FILE" == README* ]] && continue
 
@@ -29,6 +30,7 @@ for FILE in *; do
         mv "$DEST" "$STASHFILE"
         echo "Stashed existing file as $STASHFILE"
 
+        # Log the steps necessary to revert changes.
         echo "# Revert .$FILE" >> "$REVERT"
         echo "rm -f '$DEST'" >> "$REVERT"
         echo "cp '$STASHFILE' '$DEST'" >> "$REVERT"
@@ -40,6 +42,7 @@ for FILE in *; do
 
 done
 
+# Notify the user about the revert script.
 if [ -e "$REVERT" ]; then
     echo "Revert log stored as $REVERT"
 fi
