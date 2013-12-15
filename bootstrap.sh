@@ -23,7 +23,7 @@ for FILE in *; do
     echo "Installing $DEST..."
 
     # Move any existing files into the stash.
-    if [ -e "$DEST" ] && [ ! -L "$DEST" ]; then
+    if [ -e "$DEST" ]; then
         mkdir -p "$STASH"
 
         STASHFILE="$STASH/.$FILE"
