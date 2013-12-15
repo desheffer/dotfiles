@@ -13,15 +13,21 @@ for FILE in *; do
 
     SRC="$HERE/$FILE"
     DEST="$HOME/.$FILE"
+
+    # No change, continue.
+    if [ "$(readlink $DEST)" == "$SRC" ]; then
+        continue
+    fi
+
     echo "Installing $DEST..."
 
     # Move any existing files into the stash.
-    if [ ! -L "$DEST" ]; then
+    if [ -e "$DEST" ] && [ ! -L "$DEST" ]; then
         mkdir -p "$STASH"
 
         STASHFILE="$STASH/.$FILE"
         mv "$DEST" "$STASHFILE"
-        echo "Stashed existing file to $STASHFILE"
+        echo "Stashed existing file as $STASHFILE"
 
         echo "# Revert .$FILE" >> "$REVERT"
         echo "rm -f '$DEST'" >> "$REVERT"
@@ -35,5 +41,5 @@ for FILE in *; do
 done
 
 if [ -e "$REVERT" ]; then
-    echo "Revert log stored to $REVERT"
+    echo "Revert log stored as $REVERT"
 fi
