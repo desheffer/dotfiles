@@ -69,3 +69,6 @@ if [ -f "${SSH_ENV}" ]; then
 else
     start_agent
 fi
+
+# Add RVM to path.
+[ -f "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
