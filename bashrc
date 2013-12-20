@@ -29,12 +29,18 @@ alias tmux='tmux -2'
 
 # Quick file grep command.
 function g() {
-    opts="-nrs"
-    search="$@"
-    if [[ $search =~ ^[^A-Z]*$ ]]; then
-        opts=${opts}i
+    OPTS="-nrs"
+    SEARCH="$@"
+    if [[ $SEARCH =~ ^[^A-Z]*$ ]]; then
+        OPTS="${OPTS}i"
     fi
-    grep $opts --exclude-dir=.git "$search" .;
+    grep "$OPTS" --exclude-dir=.git "$SEARCH" .
+}
+
+# Quick find command.
+function f() {
+    SEARCH="$@"
+    find -iname "*$SEARCH*"
 }
 
 # Linux specific setup.
