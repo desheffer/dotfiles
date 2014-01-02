@@ -43,6 +43,15 @@ function f() {
     find -iname "*$SEARCH*"
 }
 
+# Quick development directory change command.
+function d() {
+    if [ -n "$1" ]; then
+        cd "$HOME/$(whoami).$1"
+    else
+        (cd && ls -d "$(whoami)."*) | sed "s/$(whoami)\.//"
+    fi
+}
+
 # Linux specific setup.
 if [ $(uname) == "Linux" ]; then
     eval "$(dircolors -b)"
