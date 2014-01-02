@@ -10,10 +10,15 @@ function parse_git_branch {
 }
 
 # Build shell prompt.
+RED='\[\033[1;31m\]'
+YELLOW='\[\033[1;33m\]'
+BLUE='\[\033[1;34m\]'
+GREEN='\[\033[1;32m\]'
+WHITE='\[\033[1;37m\]'
+NO_COLOR='\[\033[0m\]'
 WINDOW_TITLE='\[\e]0;\u@\h: \w\a\]'
-PROMPT_BASIC='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]'
-PROMPT_GIT=' \[\033[00;33m\]$(parse_git_branch)\[\033[00m\]'
-export PS1="${WINDOW_TITLE}\n${PROMPT_BASIC}${PROMPT_GIT}\n\$ "
+PROMPT="$GREEN\u@\h$NO_COLOR:$BLUE\w$NO_COLOR $YELLOW\$(parse_git_branch)$NO_COLOR"
+export PS1="${WINDOW_TITLE}\n${PROMPT}\n\$ "
 
 # Git auto completion.
 if [ -n "$BASH_VERSION" ]; then
