@@ -20,17 +20,20 @@ WINDOW_TITLE='\[\e]0;\u@\h: \w\a\]'
 PROMPT="$GREEN\u@\h$NO_COLOR:$BLUE\w$NO_COLOR $YELLOW\$(parse_git_branch)$NO_COLOR"
 export PS1="${WINDOW_TITLE}\n${PROMPT}\n\$ "
 
+# Custom aliases.
+alias less='less -FX'
+alias la='ls -A'
+alias ll='ls -Al'
+alias tmux='tmux -2'
+alias vi='vim -p'
+
 # Git auto completion.
 if [ -n "$BASH_VERSION" ]; then
     . ~/.git-completion.bash
 fi
 
 # Git paging.
-export GIT_PAGER='less -+$LESS -FRX'
-
-# Custom aliases.
-alias vi='vim -p'
-alias tmux='tmux -2'
+export GIT_PAGER='less -+$LESS -R'
 
 # Quick file grep command.
 function g() {
@@ -39,13 +42,13 @@ function g() {
     if [[ $SEARCH =~ ^[^A-Z]*$ ]]; then
         OPTS="${OPTS}i"
     fi
-    grep "$OPTS" --exclude-dir=.git "$SEARCH" .
+    grep "$OPTS" --exclude-dir=.git "$SEARCH" . | less
 }
 
 # Quick find command.
 function f() {
     SEARCH="$@"
-    find -iname "*$SEARCH*"
+    find -iname "*$SEARCH*" | less
 }
 
 # Quick development directory change command.
