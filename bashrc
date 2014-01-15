@@ -97,3 +97,6 @@ fi
 
 # Add RVM to path.
 [ -f "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+
+# Add custom paths.
+[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
