@@ -96,4 +96,4 @@ if [ -n "$SSH_TTY" ]; then
 fi
 
 # Add RVM to path.
-[ -f "$HOME/.rvm/scripts/rvm" ] && source "$HOME/.rvm/scripts/rvm"
+[ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
