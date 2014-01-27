@@ -4,43 +4,62 @@
 # Update window size.
 shopt -s checkwinsize
 
-# Git paging.
-export GIT_PAGER='less -+$LESS -FXR'
-
-# Git auto completion.
-if [ -n "$BASH_VERSION" ]; then
-    . ~/.git-completion.bash
-fi
-
-# Grab the current Git branch.
-function git_branch {
-    git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
+#
+# PROMPT
+#
 
 # Terminal colors.
-RESET='\033[0m'
-BOLD='\033[1m'
-BLACK='\033[30m'
-RED='\033[91m'
-GREEN='\033[92m'
-YELLOW='\033[93m'
-BLUE='\033[94m'
-MAGENTA='\033[95m'
-CYAN='\033[96m'
-WHITE='\033[37m'
-BLACK_BG='\033[40m'
-RED_BG='\033[41m'
-GREEN_BG='\033[42m'
-YELLOW_BG='\033[43m'
-BLUE_BG='\033[44m'
-MAGENTA_BG='\033[45m'
-CYAN_BG='\033[46m'
-WHITE_BG='\033[47m'
+function color {
+    # Attributes r, g, b, in range [0, 5]
+    if [ $# -ge 4 ]; then
+        # Set foreground.
+        code=$((16 + $2 * 6 * 6 + $3 * 6 + $4))
+        echo -en "\033[1;38;5;${code}m"
 
-# Build shell prompt.
-WINDOW_TITLE='\[\e]0;\u@\h: \w\a\]'
-PROMPT="$BOLD$GREEN\u@\h$RESET:$BOLD$BLUE\w$RESET $BOLD$YELLOW\$(git_branch)$RESET"
-export PS1="${WINDOW_TITLE}\n${PROMPT}\n\$ "
+        if [ $# -ge 7 ]; then
+            # Set background.
+            code=$((16 + $5 * 6 * 6 + $6 * 6 + $7))
+            echo -en "\033[48;5;${code}m"
+        fi
+    fi
+
+    # Output.
+    echo -en "$1"
+
+    # Reset.
+    echo -en "\033[0m"
+}
+
+# Display prompt.
+function display_prompt {
+    sep='⮀'
+    u="$USER"
+    h="$HOSTNAME"
+    w="${PWD/$HOME/~}"
+
+    # Window title.
+    echo -e "\033]0;$u@$h:$w\a"
+
+    # Basic prompt.
+    color "  $u@$h  " 0 0 0 5 4 0
+    color "$sep" 5 4 0 1 1 1
+    color "  $w  " 5 5 5 1 1 1
+    color "$sep" 1 1 1
+
+    # Git info.
+    if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+        ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev | head -n1 2> /dev/null)"
+        color "  ${ref/refs\/heads\//⭠ }  " 1 4 5
+    fi
+}
+
+# Setup shell prompt.
+export PROMPT_COMMAND='display_prompt'
+export PS1="\n$ "
+
+#
+# ALIASES
+#
 
 # Custom aliases.
 alias less='less -FXR'
@@ -75,16 +94,20 @@ function d() {
 }
 
 # Linux specific setup.
-if [ $(uname) == "Linux" ]; then
+if [ $(uname) == 'Linux' ]; then
     eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
 
 # Mac OS X specific setup.
-if [ $(uname) == "Darwin" ]; then
+if [ $(uname) == 'Darwin' ]; then
     alias ls='ls -G'
     alias vim='mvim -v'
 fi
+
+#
+# SSH
+#
 
 # Setup SSH agent.
 if [ -n "$SSH_TTY" ]; then
@@ -108,6 +131,22 @@ if [ -n "$SSH_TTY" ]; then
         start_agent
     fi
 fi
+
+#
+# GIT
+#
+
+# Git paging.
+export GIT_PAGER='less -+$LESS -FXR'
+
+# Git auto completion.
+if [ -n "$BASH_VERSION" ]; then
+    . ~/.git-completion.bash
+fi
+
+#
+# PATHS
+#
 
 # Add RVM to path.
 [ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
