@@ -34,7 +34,7 @@ function color {
 function display_prompt {
     sep='⮀'
     u="$USER"
-    h="$HOSTNAME"
+    h="${HOSTNAME/.*/}"
     w="${PWD/$HOME/~}"
 
     # Window title.
