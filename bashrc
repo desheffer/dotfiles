@@ -45,38 +45,33 @@ function color_end {
     color_reset
 }
 
-function color_echo {
+function color_block {
     echo -en "  $@  "
 }
 
-# Display prompt.
-function display_prompt {
-    u="$USER"
-    h="${HOSTNAME/.*/}"
-    w="${PWD/$HOME/~}"
-
+function generate_prompt {
     # Window title.
-    echo -en "\033]0;$u@$h:$w\a"
+    echo -en "\033]0;\u@\h:\w\a"
 
     # Basic prompt.
     color_start 0 0 0 5 4 0
-    color_echo $u@$h
+    color_block "\u@\h"
     color_change 5 5 5 1 1 1
-    color_echo $w
+    color_block "\w"
 
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="➦ $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
         color_change 1 4 5
-        color_echo ${ref/refs\/heads\//⭠ }
+        color_block ${ref/refs\/heads\//⭠ }
     fi
 
     color_end
+
+    echo -en "\n\$ "
 }
 
-# Setup shell prompt.
-export PROMPT_COMMAND='display_prompt'
-export PS1="\n\$ "
+PROMPT_COMMAND='PS1="$(generate_prompt)"'
 
 #
 # ALIASES
