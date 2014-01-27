@@ -8,54 +8,75 @@ shopt -s checkwinsize
 # PROMPT
 #
 
-# Terminal colors.
-function color {
-    # Attributes r, g, b, in range [0, 5]
-    if [ $# -ge 4 ]; then
-        # Set foreground.
-        code=$((16 + $2 * 6 * 6 + $3 * 6 + $4))
-        echo -en "\033[1;38;5;${code}m"
+function color_set_fg {
+    code=16
+    [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))
+    echo -en "\033[1;38;5;${code}m"
+}
 
-        if [ $# -ge 7 ]; then
-            # Set background.
-            code=$((16 + $5 * 6 * 6 + $6 * 6 + $7))
-            echo -en "\033[48;5;${code}m"
-        fi
-    fi
+function color_set_bg {
+    code=16
+    [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))
+    echo -en "\033[48;5;${code}m"
+    color_current_bg="$1 $2 $3"
+}
 
-    # Output.
-    echo -en "$1"
-
-    # Reset.
+function color_reset {
     echo -en "\033[0m"
+}
+
+function color_start {
+    color_reset
+    echo
+    color_set_fg $1 $2 $3
+    color_set_bg $4 $5 $6
+}
+
+function color_change {
+    color_reset
+    color_set_fg $color_current_bg
+    [ $# -ge 3 ] && color_set_bg $4 $5 $6
+    echo -en '⮀'
+    [ $# -ge 3 ] && color_set_fg $1 $2 $3
+}
+
+function color_end {
+    color_change
+    color_reset
+}
+
+function color_echo {
+    echo -en "  $@  "
 }
 
 # Display prompt.
 function display_prompt {
-    sep='⮀'
     u="$USER"
     h="${HOSTNAME/.*/}"
     w="${PWD/$HOME/~}"
 
     # Window title.
-    echo -e "\033]0;$u@$h:$w\a"
+    echo -en "\033]0;$u@$h:$w\a"
 
     # Basic prompt.
-    color "  $u@$h  " 0 0 0 5 4 0
-    color "$sep" 5 4 0 1 1 1
-    color "  $w  " 5 5 5 1 1 1
-    color "$sep" 1 1 1
+    color_start 0 0 0 5 4 0
+    color_echo $u@$h
+    color_change 5 5 5 1 1 1
+    color_echo $w
 
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git show-ref --head -s --abbrev | head -n1 2> /dev/null)"
-        color "  ${ref/refs\/heads\//⭠ }  " 1 4 5
+        ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="➦ $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
+        color_change 1 4 5
+        color_echo ${ref/refs\/heads\//⭠ }
     fi
+
+    color_end
 }
 
 # Setup shell prompt.
 export PROMPT_COMMAND='display_prompt'
-export PS1="\n$ "
+export PS1="\n\$ "
 
 #
 # ALIASES
