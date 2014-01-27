@@ -8,6 +8,16 @@ shopt -s checkwinsize
 # PROMPT
 #
 
+if [ "$TERM" == 'xterm-256color' ]; then
+    icon_commit='➦'
+    icon_branch='⭠'
+    icon_separator='⮀'
+else
+    icon_commit='c:'
+    icon_branch='b:'
+    icon_separator=''
+fi
+
 function color_set_fg {
     code=16
     [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))
@@ -36,7 +46,7 @@ function color_change {
     color_reset
     color_set_fg $color_current_bg
     [ $# -ge 3 ] && color_set_bg $4 $5 $6
-    echo -en '⮀'
+    echo -en "$icon_separator"
     [ $# -ge 3 ] && color_set_fg $1 $2 $3
 }
 
@@ -61,13 +71,12 @@ function generate_prompt {
 
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="➦ $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
+        ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
         color_change 1 4 5
-        color_block ${ref/refs\/heads\//⭠ }
+        color_block ${ref/refs\/heads\//$icon_branch }
     fi
 
     color_end
-
     echo -en "\n\$ "
 }
 
