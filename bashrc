@@ -80,7 +80,11 @@ function generate_prompt {
     echo -en "\n\$ "
 }
 
-PROMPT_COMMAND='PS1="$(generate_prompt)"'
+function set_prompt {
+    PS1="$(generate_prompt)"
+}
+
+PROMPT_COMMAND='set_prompt'
 
 #
 # ALIASES
@@ -173,8 +177,8 @@ fi
 # PATHS
 #
 
+# Add user binary path.
+[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
+
 # Add RVM to path.
 [ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
-
-# Add custom paths.
-[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
