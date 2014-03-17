@@ -8,7 +8,7 @@ shopt -s checkwinsize
 # PROMPT
 #
 
-if [ "$TERM" == 'xterm-256color' ]; then
+if [[ "$TERM" =~ .*-256color ]]; then
     icon_commit='➦'
     icon_branch='⭠'
     icon_separator='⮀'
