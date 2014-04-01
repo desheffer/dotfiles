@@ -37,8 +37,8 @@ set smartcase
 
 "Formatting
 set list
-silent set listchars=tab:>>
-silent set listchars+=trail:·
+set listchars=tab:>>
+set listchars+=trail:·
 
 "Miscellaneous
 set autoread
