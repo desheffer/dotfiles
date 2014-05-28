@@ -182,3 +182,10 @@ fi
 
 # Add RVM to path.
 [ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
+
+#
+# OTHER
+#
+
+# Allow server-specific scripting.
+[ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
