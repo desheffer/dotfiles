@@ -97,14 +97,14 @@ alias ll='ls -Al'
 alias tmux='tmux -2'
 alias vi='vim -p'
 
-# Quick file grep command.
+# Quick grep command.
 function g() {
-    OPTS="-nrs"
+    OPTS="-n"
     SEARCH="$@"
     if [[ $SEARCH =~ ^[^A-Z]*$ ]]; then
         OPTS="${OPTS}i"
     fi
-    grep "$OPTS" --exclude-dir=.git "$SEARCH" . | less
+    git grep "$OPTS" "$SEARCH"
 }
 
 # Quick find command.
@@ -116,9 +116,14 @@ function f() {
 # Quick development directory change command.
 function d() {
     if [ -n "$1" ]; then
-        cd "$HOME/$(whoami).$1"
+        cd "$HOME/$1"
     else
-        (cd && ls -d "$(whoami)."*) | sed "s/$(whoami)\.//"
+        git rev-parse 2>/dev/null
+        if [ $? == 0 ]; then
+            cd "$(git rev-parse --show-cdup)"
+        else
+            cd
+        fi
     fi
 }
 
