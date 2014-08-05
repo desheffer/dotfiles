@@ -127,6 +127,19 @@ function d() {
     fi
 }
 
+# Remote copy and paste.
+function remote-copy() {
+    cat | nc localhost 48823
+}
+function remote-copy-server() {
+    while (true); do
+        echo "Waiting..."
+        nc -l 48823 | pbcopy
+        echo "Copied: "
+        pbpaste | sed 's/^/  /'
+    done
+}
+
 # Linux specific setup.
 if [ $(uname) == 'Linux' ]; then
     eval "$(dircolors -b)"
