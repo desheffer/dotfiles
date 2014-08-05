@@ -16,7 +16,7 @@ for FILE in *; do
     DEST="$HOME/.$FILE"
 
     # No change, continue.
-    if [ "$(readlink $DEST)" == "$SRC" ]; then
+    if [ "$(readlink "$DEST")" == "$SRC" ]; then
         continue
     fi
 
