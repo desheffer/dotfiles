@@ -129,15 +129,10 @@ function d() {
 
 # Remote copy and paste.
 function remote-copy() {
-    cat | nc localhost 48823
+    cat | nc localhost 48824
 }
 function remote-copy-server() {
-    while (true); do
-        echo "Waiting..."
-        nc -l 48823 | pbcopy
-        echo "Copied: "
-        pbpaste | sed 's/^/  /'
-    done
+    while (true); do nc -l 48824 | pbcopy; done
 }
 
 # Linux specific setup.
