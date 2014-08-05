@@ -54,7 +54,7 @@ set wildmode=longest,list
 let mapleader=","
 
 "Tab usage
-nnoremap <silent> ,t :tabnew<CR>
+nnoremap <silent> <Leader>t :tabnew<CR>
 nnoremap <silent> g{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 
@@ -78,29 +78,26 @@ endfunction
 map <silent> <Home> :call HomeKey()<CR>
 
 "Open blank line beneath
-nnoremap ,o o<Esc>S
+nnoremap <Leader>o o<Esc>S
 
 "Enable spell check
-nnoremap ,s :setlocal spell spelllang=en_us<CR>
+nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
 
 "Set paste mode (no reformatting)
-nnoremap ,v :set paste!<CR>
+nnoremap <Leader>v :set paste!<CR>
 
 "Clear current search highlighting
-nnoremap <silent> ,/ :let @/=""<CR>
-
-"Build script
-map ,, :w<CR>:!date<CR>:!./build<CR>:!./build/buildapp<CR><CR>
+nnoremap <silent> <Leader>/ :let @/=""<CR>
 
 "Remove trailing spaces
-nnoremap ,<Space> :%s/[ \t]+$//g<CR>
+nnoremap <Leader><Space> :%s/[ \t]+$//g<CR>
 
 "Open file under cursor in new tab
 nnoremap gf <c-w>gf
 
 "Folding and unfolding
-map ,f :set foldmethod=indent<CR>zM
-map ,F :set foldmethod=manual<CR>zR
+map <Leader>f :set foldmethod=indent<CR>zM
+map <Leader>F :set foldmethod=manual<CR>zR
 
 "Tabularize
 nmap <Leader>a& :Tabularize /&<CR>
