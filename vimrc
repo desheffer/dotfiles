@@ -51,6 +51,8 @@ set wildmode=longest,list
 "Custom key mappings
 "
 
+let mapleader=","
+
 "Tab usage
 nnoremap <silent> ,t :tabnew<CR>
 nnoremap <silent> g{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
@@ -96,6 +98,24 @@ nnoremap ,<Space> :%s/[ \t]+$//g<CR>
 "Open file under cursor in new tab
 nnoremap gf <c-w>gf
 
-" Folding and unfolding
-map ,f :set foldmethod=indent<cr>zM
-map ,F :set foldmethod=manual<cr>zR
+"Folding and unfolding
+map ,f :set foldmethod=indent<CR>zM
+map ,F :set foldmethod=manual<CR>zR
+
+"Tabularize
+nmap <Leader>a& :Tabularize /&<CR>
+vmap <Leader>a& :Tabularize /&<CR>
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a> :Tabularize /=><CR>
+vmap <Leader>a> :Tabularize /=><CR>
+nmap <Leader>a: :Tabularize /:<CR>
+vmap <Leader>a: :Tabularize /:<CR>
+nmap <Leader>a:: :Tabularize /:\zs<CR>
+vmap <Leader>a:: :Tabularize /:\zs<CR>
+nmap <Leader>a, :Tabularize /,<CR>
+vmap <Leader>a, :Tabularize /,<CR>
+nmap <Leader>a,, :Tabularize /,\zs<CR>
+vmap <Leader>a,, :Tabularize /,\zs<CR>
+nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
