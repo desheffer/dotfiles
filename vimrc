@@ -80,7 +80,7 @@ map <silent> <Home> :call HomeKey()<CR>
 
 "Remote copy
 function RemoteCopy() range
-    echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).' | remote-copy')
+    echo system('echo -e '.shellescape(join(getline(a:firstline, a:lastline), "\\n")).' | remote-copy')
 endfunction
 
 nnoremap <Leader>y :call RemoteCopy()<CR>
