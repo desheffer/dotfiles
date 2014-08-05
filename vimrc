@@ -4,6 +4,7 @@ filetype plugin indent on
 set modelines=10
 set backspace=2
 set tabpagemax=100
+set shellcmdflag=-ic
 
 "Whitespace
 set wrap
@@ -76,6 +77,14 @@ function! HomeKey()
     endif
 endfunction
 map <silent> <Home> :call HomeKey()<CR>
+
+"Remote copy
+function RemoteCopy() range
+    echo system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).' | remote-copy')
+endfunction
+
+nnoremap <Leader>y :call RemoteCopy()<CR>
+vnoremap <Leader>y :call RemoteCopy()<CR>
 
 "Open blank line beneath
 nnoremap <Leader>o o<Esc>S
