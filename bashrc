@@ -127,12 +127,21 @@ function d() {
     fi
 }
 
-# Remote copy and paste.
+# Listen for remote copy notifications.
+function remote-copy-server() {
+    while (true); do nc -l 48824 | pbcopy; done
+}
+
+# Send a remote copy notification.
 function remote-copy() {
     cat | nc localhost 48824
 }
-function remote-copy-server() {
-    while (true); do nc -l 48824 | pbcopy; done
+
+# Set up Ansible.
+function deploy() {
+    eval `ssh-agent` && ssh-add -K && ssh-add ~/.ssh/*.pem
+    source /usr/share/ansible/hacking/env-setup
+    cd /etc/ansible
 }
 
 # Linux specific setup.
@@ -193,12 +202,8 @@ fi
 # Add user binary path.
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 
-# Add RVM to path.
+# Add RVM path.
 [ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
-
-#
-# OTHER
-#
 
 # Allow server-specific scripting.
 [ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
