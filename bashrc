@@ -4,6 +4,12 @@
 # Update window size.
 shopt -s checkwinsize
 
+# Avoid duplicates.
+export HISTCONTROL=ignoredups:erasedups
+
+# Append history entries.
+shopt -s histappend
+
 #
 # PROMPT
 #
@@ -84,7 +90,7 @@ function set_prompt {
     PS1="$(generate_prompt)"
 }
 
-PROMPT_COMMAND='set_prompt'
+PROMPT_COMMAND='set_prompt; history -a; history -c; history -r'
 
 #
 # ALIASES
