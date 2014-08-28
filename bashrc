@@ -10,6 +10,9 @@ export HISTCONTROL=ignoredups:erasedups
 # Append history entries.
 shopt -s histappend
 
+# Fix copy and paste on OS X.
+type reattach-to-user-namespace > /dev/null 2>&1 && reattach-to-user-namespace -l bash
+
 #
 # PROMPT
 #
