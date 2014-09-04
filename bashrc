@@ -146,7 +146,7 @@ function remote-copy() {
 # Set up Ansible.
 function deploy() {
     eval `ssh-agent` && ssh-add -K && ssh-add ~/.ssh/*.pem
-    source /usr/share/ansible/hacking/env-setup
+    . /usr/share/ansible/hacking/env-setup
     cd /etc/ansible
 }
 
