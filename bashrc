@@ -4,12 +4,6 @@
 # Update window size.
 shopt -s checkwinsize
 
-# Avoid duplicates.
-export HISTCONTROL=ignoredups:erasedups
-
-# Append history entries.
-shopt -s histappend
-
 #
 # PROMPT
 #
