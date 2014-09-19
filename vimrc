@@ -78,13 +78,9 @@ function! HomeKey()
 endfunction
 map <silent> <Home> :call HomeKey()<CR>
 
-"Remote copy
-function RemoteCopy() range
-    echo system('echo -e '.shellescape(join(getline(a:firstline, a:lastline), "\\n")).' | remote-copy')
-endfunction
-
-nnoremap <Leader>y :call RemoteCopy()<CR>
-vnoremap <Leader>y :call RemoteCopy()<CR>
+"Clipboard
+nnoremap <Leader>y :w! ~/.clipboard<CR>
+vnoremap <Leader>y :w! ~/.clipboard<CR>
 
 "Open blank line beneath
 nnoremap <Leader>o o<Esc>S
@@ -96,7 +92,7 @@ nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
 nnoremap <Leader>v :set paste!<CR>
 
 "Clear current search highlighting
-nnoremap <silent> <Leader>/ :let @/=""<CR>
+nnoremap <silent> <Leader>/ :noh<CR>
 
 "Remove trailing spaces
 nnoremap <Leader><Space> :%s/[ \t]+$//g<CR>
