@@ -129,7 +129,7 @@ function d() {
 
 # Remote copy.
 function copyfrom() {
-    ssh $1 "cat ~/.clipboard" | pbcopy
+    ssh $1 "cat ~/.clipboard" | tee /dev/stderr | pbcopy
 }
 
 # Set up Ansible.
