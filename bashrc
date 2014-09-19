@@ -127,14 +127,9 @@ function d() {
     fi
 }
 
-# Listen for remote copy notifications.
-function remote-copy-server() {
-    while (true); do nc -l 48824 | pbcopy; done
-}
-
-# Send a remote copy notification.
-function remote-copy() {
-    cat | nc localhost 48824
+# Remote copy.
+function copyfrom() {
+    ssh $1 "cat ~/.clipboard" | pbcopy
 }
 
 # Set up Ansible.
