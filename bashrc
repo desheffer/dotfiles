@@ -4,14 +4,18 @@
 # Update window size.
 shopt -s checkwinsize
 
+function parse_git_branch() {
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
 #
 # PROMPT
 #
 
 if [[ "$TERM" =~ .*-256color ]]; then
     icon_commit='➦'
-    icon_branch='⭠'
-    icon_separator='⮀'
+    icon_branch=''
+    icon_separator=''
 else
     icon_commit='c:'
     icon_branch='b:'
@@ -59,36 +63,38 @@ function color_block {
     echo -en "  $@  "
 }
 
-function generate_prompt {
-    # Window title.
-    echo -en "\033]0;\u@\h:\w\a"
+#function generate_prompt {
+#    # Window title.
+#    echo -en "\033]0;\u@\h:\w\a"
+#
+#    # Basic prompt.
+#    color_start 0 0 0 5 4 0
+#    color_block "\u@\h"
+#    color_change 5 5 5 1 1 1
+#    color_block "\w"
+#
+#    # Git info.
+#    if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+#        ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
+#        color_change 0 3 5
+#        color_block ${ref/refs\/heads\//$icon_branch }
+#    fi
+#
+#    color_end
+#    echo -en "\n\$ "
+#}
 
-    # Basic prompt.
-    color_start 0 0 0 5 4 0
-    color_block "\u@\h"
-    color_change 5 5 5 1 1 1
-    color_block "\w"
+#function set_prompt {
+#    PS1="$(generate_prompt)"
+#}
 
-    # Git info.
-    if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
-        color_change 0 3 5
-        color_block ${ref/refs\/heads\//$icon_branch }
-    fi
-
-    color_end
-    echo -en "\n\$ "
-}
-
-function set_prompt {
-    PS1="$(generate_prompt)"
-}
-
-PROMPT_COMMAND='set_prompt'
+#PROMPT_COMMAND='set_prompt'
 
 #
 # ALIASES
 #
+
+PS1=""
 
 # Custom aliases.
 alias less='less -FXR'
@@ -189,3 +195,5 @@ fi
 
 # Allow server-specific scripting.
 [ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
+
+source ~/liquidprompt/liquidprompt
