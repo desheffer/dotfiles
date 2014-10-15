@@ -184,7 +184,7 @@ call vundle#rc()
 
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'csapprox'
+" Bundle 'csapprox' -- already handled by submodule
 Bundle 'tpope/vim-fugitive'
 Bundle 'majutsushi/tagbar'
 Bundle 'tpope/gem-ctags'
