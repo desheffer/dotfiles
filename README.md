@@ -23,3 +23,16 @@ adapt them however you see fit. Honey badger don't care.
 3. ???
 
 4. Et voilà!
+
+### Additional Notes
+
+1) run vim
+
+2) :BundleInstall (hopefully this works, running into difficulty when I try on
+my other machine)
+
+### TODO
+
+1) Move Emacs to this dotfiles installation
+
+2) Add it so it automaically initiallizes the submodules for everything
