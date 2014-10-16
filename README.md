@@ -1,3 +1,5 @@
+I got these from my friend Doug ... Thanks Doug! :D
+
 dotfiles
 ========
 
@@ -26,9 +28,13 @@ adapt them however you see fit. Honey badger don't care.
 
 ### Additional Notes
 
-1) run vim
+1) git submodule init
 
-2) :BundleInstall (hopefully this works, running into difficulty when I try on
+2) git submodule update
+
+3) run vim
+
+4) :BundleInstall (hopefully this works, running into difficulty when I try on
 my other machine)
 
 ### TODO
@@ -36,3 +42,5 @@ my other machine)
 1) Move Emacs to this dotfiles installation
 
 2) Add it so it automaically initiallizes the submodules for everything
+
+(that would probably go into bootstrap.sh or something ...)
