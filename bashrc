@@ -196,4 +196,4 @@ fi
 # Allow server-specific scripting.
 [ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
 
-source ~/dotfiles/liquidprompt/liquidprompt
+source ~/liquidprompt/liquidprompt
