@@ -84,7 +84,7 @@ function set_prompt {
     PS1="$(generate_prompt)"
 }
 
-PROMPT_COMMAND='set_prompt; history -a; history -c; history -r'
+PROMPT_COMMAND='set_prompt'
 
 #
 # ALIASES
