@@ -132,13 +132,6 @@ function copyfrom() {
     ssh $1 "cat ~/.clipboard" | tee /dev/stderr | pbcopy
 }
 
-# Set up Ansible.
-function deploy() {
-    eval `ssh-agent` && ssh-add -K && ssh-add ~/.ssh/*.pem
-    . /usr/share/ansible/hacking/env-setup
-    cd /etc/ansible
-}
-
 # Linux specific setup.
 if [ $(uname) == 'Linux' ]; then
     eval "$(dircolors -b)"
