@@ -54,8 +54,13 @@ set wildmode=longest,list
 
 let mapleader=","
 
-"Tab usage
+"Prevent p from replacing the buffer (copy what was selected)
+vnoremap p pgvy
+
+"Create a new tab
 nnoremap <silent> <Leader>t :tabnew<CR>
+
+"Move tabs left or right
 nnoremap <silent> g{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 
