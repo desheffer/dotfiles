@@ -54,8 +54,11 @@ set wildmode=longest,list
 
 let mapleader=","
 
-"Prevent p from replacing the buffer (copy what was selected)
+"Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
+
+"Clear current search highlighting
+nnoremap <silent> <Leader>/ :noh<CR>
 
 "Create a new tab
 nnoremap <silent> <Leader>t :tabnew<CR>
@@ -66,9 +69,6 @@ nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 "Easier shortcut for previous tab
 nnoremap gr gT
-
-"Make Y yank act like D
-nnoremap Y y$
 
 "Make Home toggle between soft BOL and hard BOL
 function! HomeKey()
@@ -87,23 +87,14 @@ map <silent> <Home> :call HomeKey()<CR>
 nnoremap <Leader>y :w! ~/.clipboard<CR>
 vnoremap <Leader>y :w! ~/.clipboard<CR>
 
-"Open blank line beneath
-nnoremap <Leader>o o<Esc>S
-
 "Enable spell check
 nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
 
 "Set paste mode (no reformatting)
 nnoremap <Leader>v :set paste!<CR>
 
-"Clear current search highlighting
-nnoremap <silent> <Leader>/ :noh<CR>
-
 "Remove trailing spaces
 nnoremap <Leader><Space> :%s/[ \t]+$//g<CR>
-
-"Open file under cursor in new tab
-nnoremap gf <c-w>gf
 
 "Folding and unfolding
 map <Leader>f :set foldmethod=indent<CR>zM
@@ -126,3 +117,13 @@ nmap <Leader>a,, :Tabularize /,\zs<CR>
 vmap <Leader>a,, :Tabularize /,\zs<CR>
 nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+
+"CtrlP
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<c-t>'],
+    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ }
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\.git$|vendor$|tmp$',
+    \ 'file': ''
+    \ }
