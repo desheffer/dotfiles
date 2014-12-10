@@ -44,7 +44,7 @@ set listchars+=trail:·
 "Miscellaneous
 set autoread
 set clipboard=unnamed
-set mouse=a
+"Bad habits: set mouse=a
 set wildmenu
 set wildmode=longest,list
 
@@ -69,6 +69,11 @@ nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 "Easier shortcut for previous tab
 nnoremap gr gT
+
+"Relative line numbers in normal mode
+set relativenumber
+autocmd InsertEnter * :set number
+autocmd InsertLeave * :set relativenumber
 
 "Make Home toggle between soft BOL and hard BOL
 function! HomeKey()
@@ -101,22 +106,14 @@ map <Leader>f :set foldmethod=indent<CR>zM
 map <Leader>F :set foldmethod=manual<CR>zR
 
 "Tabularize
-nmap <Leader>a& :Tabularize /&<CR>
-vmap <Leader>a& :Tabularize /&<CR>
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
 nmap <Leader>a> :Tabularize /=><CR>
 vmap <Leader>a> :Tabularize /=><CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
-nmap <Leader>a:: :Tabularize /:\zs<CR>
-vmap <Leader>a:: :Tabularize /:\zs<CR>
 nmap <Leader>a, :Tabularize /,<CR>
 vmap <Leader>a, :Tabularize /,<CR>
-nmap <Leader>a,, :Tabularize /,\zs<CR>
-vmap <Leader>a,, :Tabularize /,\zs<CR>
-nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
 
 "CtrlP
 let g:ctrlp_prompt_mappings = {
