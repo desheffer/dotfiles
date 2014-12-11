@@ -27,6 +27,8 @@ set smarttab
 set autoindent
 set smartindent
 set nojoinspaces
+set list
+set listchars=tab:›\ ,trail:·,extends:#,nbsp:.
 
 "Colors
 syntax on
@@ -45,14 +47,10 @@ else
 endif
 
 "Searching
+set incsearch
 set hlsearch
 set ignorecase
 set smartcase
-
-"Formatting
-set list
-set listchars=tab:>>
-set listchars+=trail:·
 
 "Miscellaneous
 set autoread
@@ -75,6 +73,10 @@ let mapleader=","
 
 "Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
+
+"Preserve selection on indent
+vnoremap < <gv
+vnoremap > >gv
 
 "Clear current search highlighting
 nnoremap <silent> <Leader>/ :noh<CR>
