@@ -1,5 +1,17 @@
-"General
+"Load plugins
 set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
+Plugin 'CSApprox'
+Plugin 'ctrlp.vim'
+Plugin 'darkspectrum'
+Plugin 'hybrid.vim'
+Plugin 'jellybeans.vim'
+call vundle#end()
+
+"General
 filetype plugin indent on
 set modelines=10
 set backspace=2
@@ -18,7 +30,7 @@ set nojoinspaces
 "Colors
 syntax on
 set t_Co=256
-color darkspectrum
+silent! colorscheme darkspectrum
 
 "Lines
 set number
@@ -44,9 +56,15 @@ set listchars+=trail:·
 "Miscellaneous
 set autoread
 set clipboard=unnamed
-"Bad habits: set mouse=a
 set wildmenu
 set wildmode=longest,list
+
+"Disable bad habits:
+"Removed: set mouse=a
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
 
 "
 "Custom key mappings
