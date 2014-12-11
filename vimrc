@@ -9,6 +9,7 @@ Plugin 'ctrlp.vim'
 Plugin 'darkspectrum'
 Plugin 'hybrid.vim'
 Plugin 'jellybeans.vim'
+Plugin 'EasyMotion'
 call vundle#end()
 
 "General
