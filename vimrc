@@ -142,6 +142,6 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
     \ }
 let g:ctrlp_custom_ignore = {
-    \ 'dir': '\.git$|vendor$|tmp$',
-    \ 'file': ''
+    \ 'dir': '\.git$\|vendor\|tmp\|Proxy\|Proxies',
+    \ 'file': '',
     \ }
