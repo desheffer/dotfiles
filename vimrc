@@ -48,6 +48,8 @@ set ignorecase
 set smartcase
 set list
 set listchars=tab:›\ ,trail:·,extends:#,nbsp:.
+set foldmethod=indent
+set foldenable!
 
 set shellcmdflag=-ic
 set wildmenu
@@ -133,11 +135,7 @@ vnoremap <Leader>y :w! ~/.clipboard<CR>
 nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
 
 " Remove trailing spaces
-nnoremap <Leader><Space> :%s/[ \t]+$//g<CR>
-
-" Folding and unfolding
-map <Leader>f :set foldmethod=indent<CR>zM
-map <Leader>F :set foldmethod=manual<CR>zR
+nnoremap <Leader><Space> :%s/[ \t]*$//g<CR>:noh<CR>
 
 " Tabularize
 nmap <Leader>a= :Tabularize /=<CR>
