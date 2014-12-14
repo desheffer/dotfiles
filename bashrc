@@ -1,4 +1,10 @@
-# If not running interactively, don't do anything.
+# Add user binary path.
+[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
+
+# Allow server-specific scripting.
+[ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
+
+# If not running interactively, don't do anything else.
 [ -z "$PS1" ] && return
 
 # Update window size.
@@ -129,7 +135,7 @@ function d() {
 
 # Remote copy.
 function copyfrom() {
-    ssh $1 "cat ~/.clipboard" | tee /dev/stderr | pbcopy
+    ssh $1 "bash -c netpaste" | tee /dev/stderr | pbcopy
 }
 
 # Linux specific setup.
@@ -184,14 +190,8 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 #
-# PATHS
+# CUSTOM PATHS
 #
-
-# Add user binary path.
-[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 
 # Add RVM path.
 [ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
-
-# Allow server-specific scripting.
-[ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
