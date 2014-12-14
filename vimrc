@@ -8,13 +8,18 @@ filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 
 call vundle#begin()
+
 Plugin 'gmarik/Vundle.vim'
+
 Plugin 'CSApprox'
-Plugin 'ctrlp.vim'
 Plugin 'darkspectrum'
 Plugin 'hybrid.vim'
-Plugin 'jellybeans.vim'
+Plugin 'gruvbox'
+
+Plugin 'ctrlp.vim'
 Plugin 'EasyMotion'
+Plugin 'commentary.vim'
+
 call vundle#end()
 
 "
@@ -25,7 +30,7 @@ filetype plugin indent on
 
 syntax on
 set t_Co=256
-silent! colorscheme darkspectrum
+silent! colorscheme hybrid
 
 set clipboard=unnamed
 
@@ -73,21 +78,6 @@ noremap <Left> <NOP>
 noremap <Right> <NOP>
 
 "
-" FUNCTIONS
-"
-
-function! HomeKey()
-    let pos = getpos('.')
-    call search('^', 'bc')
-    let bol = searchpos('\s*\S', 'cne')
-
-    if pos[1] == bol[0] && pos[2] != bol[1]
-        let pos[2] = bol[1]
-        call setpos('.', pos)
-    endif
-endfunction
-
-"
 " MAPPINGS
 "
 
@@ -108,7 +98,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Clear current search highlighting
-nnoremap <silent> <Leader>/ :noh<CR>
+nnoremap <silent> <Leader>/ :noh<CR> " Old
+nnoremap <silent> da/ :noh<CR>
 
 " Create a new tab
 nnoremap <silent> <Leader>t :tabnew<CR>
@@ -123,9 +114,6 @@ nnoremap gr gT
 " Relative line numbers in normal mode
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
-
-" Make Home toggle between soft BOL and hard BOL
-map <silent> <Home> :call HomeKey()<CR>
 
 " Clipboard
 nnoremap <Leader>y :w! ~/.clipboard<CR>
@@ -149,8 +137,8 @@ vmap <Leader>a, :Tabularize /,<CR>
 
 " CtrlP
 let g:ctrlp_prompt_mappings = {
-    \ 'AcceptSelection("e")': ['<c-t>'],
-    \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
+    \ 'AcceptSelection("e")': ['<C-t>'],
+    \ 'AcceptSelection("t")': ['<CR>', '<2-LeftMouse>'],
     \ }
 let g:ctrlp_custom_ignore = {
     \ 'dir': '\.git$\|vendor\|tmp\|Proxy\|Proxies',
