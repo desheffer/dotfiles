@@ -2,7 +2,7 @@
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 
 # Allow server-specific scripting.
-[ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
+[ -f "$HOME/.bash_local" ] && . "$HOME/.bash_local"
 
 # If not running interactively, don't do anything else.
 [ -z "$PS1" ] && return
