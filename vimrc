@@ -46,7 +46,6 @@ set pastetoggle=<F12>
 
 set number
 set relativenumber
-set showmatch
 set incsearch
 set hlsearch
 set ignorecase
