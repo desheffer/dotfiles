@@ -61,14 +61,8 @@ set wildmode=longest,list
 set autoread
 set tabpagemax=100
 
-if exists('+colorcolumn')
-    set colorcolumn=81
-    au BufWinEnter * let w:m1=matchadd('ColorColumn', '\%<91v.\%>81v', -1)
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>90v.\+', -1)
-else
-    au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%<82v.\%>81v', -1)
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>90v.\+', -1)
-endif
+silent! set colorcolumn=81
+au BufWinEnter * let w:m3=matchadd('ErrorMsg', '\%>120v.\+', -1)
 
 " Disable bad habits
 noremap <Up> <NOP>
