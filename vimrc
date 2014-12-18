@@ -50,6 +50,8 @@ set incsearch
 set hlsearch
 set ignorecase
 set smartcase
+set scrolloff=3
+set scrolljump=5
 set list
 set listchars=tab:›\ ,trail:·,extends:#,nbsp:.
 set foldmethod=indent
@@ -69,6 +71,9 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+
+" Disable whitespace at the end of comments
+autocmd FileType * setlocal formatoptions-=w
 
 "
 " MAPPINGS
