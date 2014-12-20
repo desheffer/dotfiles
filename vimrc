@@ -11,12 +11,14 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'tpope/vim-sensible'
-
 Plugin 'godlygeek/csapprox'
 Plugin 'vim-scripts/darkspectrum'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'morhetz/gruvbox'
+
+Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-sleuth'
+Plugin 'scrooloose/nerdtree'
 
 Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
@@ -25,6 +27,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
+
+Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
 Plugin 'tpope/vim-eunuch'
@@ -39,11 +43,6 @@ set t_Co=256
 silent! colorscheme hybrid
 
 set clipboard=unnamed           " Use the system clipboard
-
-set expandtab                   " Tab key inserts spaces
-set shiftwidth=4                " Indentations levels are 4 spaces
-set softtabstop=4               " Backspace deletes 4 spaces
-set tabstop=4                   " Display tab characters as 4 spaces
 
 set ignorecase                  " Default to case insensitive searches
 set smartcase                   " Unless uppercase letters are present
@@ -118,6 +117,9 @@ vmap <Leader>a> :Tabularize /=><CR>
 nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
+" Toggle NERD Tree
+nnoremap <Leader>n :NERDTreeFocus<CR>
+
 " Disable bad habits
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -154,6 +156,10 @@ autocmd FileType * setlocal formatoptions-=w
 
 " Always start at the top of a commit message
 autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" Make the line number margin slightly darker
+" autocmd VimEnter * highlight LineNr ctermbg=233 guibg=#121212
+" autocmd VimEnter * highlight CursorLineNr ctermbg=233 guibg=#121212
 
 "==============================================================================
 " Local Configurations
