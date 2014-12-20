@@ -10,9 +10,13 @@
 # Update window size.
 shopt -s checkwinsize
 
-#
-# PROMPT
-#
+#==============================================================================
+# Prompt
+#==============================================================================
+
+# Note: Colors can be approximated with the following equation:
+#       6^2 * $R + 6 * $G + $B + 16
+#       Where $R, $G, and $B are in the range (0, 5).
 
 if [[ "$TERM" =~ .*-256color ]]; then
     icon_commit='➦'
@@ -26,15 +30,15 @@ fi
 
 function color_set_fg {
     code=16
-    [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))
+    [ $# -ge 1 ] && code=$1
     echo -en "\033[1;38;5;${code}m"
 }
 
 function color_set_bg {
     code=16
-    [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))
+    [ $# -ge 1 ] && code=$1
     echo -en "\033[48;5;${code}m"
-    color_current_bg="$1 $2 $3"
+    color_current_bg=$code
 }
 
 function color_reset {
@@ -44,16 +48,16 @@ function color_reset {
 function color_start {
     color_reset
     echo
-    color_set_fg $1 $2 $3
-    color_set_bg $4 $5 $6
+    color_set_fg $1
+    color_set_bg $2
 }
 
 function color_change {
     color_reset
     color_set_fg $color_current_bg
-    [ $# -ge 3 ] && color_set_bg $4 $5 $6
+    color_set_bg $2
     echo -en "$icon_separator"
-    [ $# -ge 3 ] && color_set_fg $1 $2 $3
+    color_set_fg $1
 }
 
 function color_end {
@@ -70,15 +74,15 @@ function generate_prompt {
     echo -en "\033]0;\u@\h:\w\a"
 
     # Basic prompt.
-    color_start 0 0 0 5 4 0
+    color_start 16 220
     color_block "\u@\h"
-    color_change 5 5 5 1 1 1
+    color_change 231 59
     color_block "\w"
 
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
-        color_change 0 3 5
+        color_change 39
         color_block ${ref/refs\/heads\//$icon_branch }
     fi
 
@@ -92,9 +96,9 @@ function set_prompt {
 
 PROMPT_COMMAND='set_prompt'
 
-#
-# ALIASES
-#
+#==============================================================================
+# Aliases
+#==============================================================================
 
 # Custom aliases.
 alias less='less -FXR'
@@ -150,9 +154,9 @@ if [ $(uname) == 'Darwin' ]; then
     alias vim='mvim -v'
 fi
 
-#
+#==============================================================================
 # SSH
-#
+#==============================================================================
 
 # Setup SSH agent.
 if [ -n "$SSH_TTY" ]; then
@@ -177,9 +181,9 @@ if [ -n "$SSH_TTY" ]; then
     fi
 fi
 
-#
-# GIT
-#
+#==============================================================================
+# Git
+#==============================================================================
 
 # Git paging.
 export GIT_PAGER='less -+$LESS -FXR'
@@ -189,9 +193,9 @@ if [ -n "$BASH_VERSION" ]; then
     . ~/.git-completion.bash
 fi
 
-#
-# CUSTOM PATHS
-#
+#==============================================================================
+# Custom Paths
+#==============================================================================
 
 # Add RVM path.
 [ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
