@@ -20,52 +20,75 @@ shopt -s checkwinsize
 
 if [[ "$TERM" =~ .*-256color ]]; then
     icon_commit='➦'
-    icon_branch='⭠'
-    icon_separator='⮀'
+    icon_branch=''
+    icon_left_sep=''
+    icon_left_alt_sep=''
+    icon_right_sep=''
+    icon_right_alt_sep=''
 else
     icon_commit='c:'
     icon_branch='b:'
-    icon_separator=''
+    icon_left_sep=''
+    icon_left_alt_sep=''
+    icon_right_sep=''
+    icon_right_alt_sep=''
 fi
 
 function color_set_fg {
-    code=16
-    [ $# -ge 1 ] && code=$1
-    echo -en "\033[1;38;5;${code}m"
+    echo -en "\033[1;38;5;${1}m"
 }
 
 function color_set_bg {
-    code=16
-    [ $# -ge 1 ] && code=$1
-    echo -en "\033[48;5;${code}m"
-    color_current_bg=$code
+    echo -en "\033[48;5;${1}m"
 }
 
 function color_reset {
     echo -en "\033[0m"
 }
 
-function color_start {
+function block_start {
     color_reset
-    echo
-    color_set_fg $1
-    color_set_bg $2
+    color_set_fg "$1"
+    color_set_bg "$2"
+
+    block_current_fg="$1"
+    block_current_bg="$2"
 }
 
-function color_change {
+function block_change {
     color_reset
-    color_set_fg $color_current_bg
-    color_set_bg $2
-    echo -en "$icon_separator"
-    color_set_fg $1
+    color_set_fg "$block_current_bg"
+    color_set_bg "$2"
+    echo -en "$icon_left_sep"
+    color_reset
+    color_set_fg "$1"
+    color_set_bg "$2"
+
+    block_current_fg="$1"
+    block_current_bg="$2"
 }
 
-function color_end {
-    color_change
+function block_sep {
     color_reset
+    color_set_fg "$1"
+    color_set_bg "$block_current_bg"
+    echo -en "$icon_left_alt_sep"
+    color_reset
+    color_set_fg "$block_current_fg"
+    color_set_bg "$block_current_bg"
 }
 
-function color_block {
+function block_end {
+    color_reset
+    color_set_fg "$block_current_bg"
+    echo -en "$icon_left_sep"
+    color_reset
+
+    block_current_fg=
+    block_current_bg=
+}
+
+function block_text {
     echo -en "  $@  "
 }
 
@@ -74,19 +97,20 @@ function generate_prompt {
     echo -en "\033]0;\u@\h:\w\a"
 
     # Basic prompt.
-    color_start 16 220
-    color_block "\u@\h"
-    color_change 231 59
-    color_block "\w"
+    echo
+    block_start 16 220
+    block_text "\u@\h"
+    block_change 231 59
+    block_text "\w"
 
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
-        color_change 39
-        color_block ${ref/refs\/heads\//$icon_branch }
+        block_change 39 16
+        block_text ${ref/refs\/heads\//$icon_branch }
     fi
 
-    color_end
+    block_end
     echo -en "\n\$ "
 }
 
