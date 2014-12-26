@@ -14,7 +14,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'vim-scripts/darkspectrum'
 Plugin 'w0ng/vim-hybrid'
-Plugin 'morhetz/gruvbox'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
@@ -27,6 +26,8 @@ Plugin 'tpope/vim-surround'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'kien/ctrlp.vim'
+
+Plugin 'bling/vim-airline'
 
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -41,6 +42,7 @@ call vundle#end()
 
 set t_Co=256
 silent! colorscheme hybrid
+set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
 set clipboard=unnamed           " Use the system clipboard
 
@@ -60,12 +62,13 @@ set list                        " Enable hidden characters
 set listchars=tab:▷·            " Show tab characters
 set listchars+=trail:·          " Show trailing spaces
 
-set foldenable!                 " Disable folding by default
+set nofoldenable                " Disable folding by default
 set foldmethod=syntax           " But allow it to be enabled easily
 
 set wildmode=longest,list       " Make completion mode acts like Bash
 
 set showcmd                     " Show incomplete normal mode commands
+set noshowmode                  " Hide current mode
 set pastetoggle=<F12>           " Toggle paste mode
 
 set directory^=~/.backup//      " Write swap files to ~/.backup
@@ -120,6 +123,9 @@ vmap <Leader>a: :Tabularize /:<CR>
 " Toggle NERD Tree
 nnoremap <Leader>n :NERDTreeFocus<CR>
 
+" Easily open files from the same directory
+cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+
 " Disable bad habits
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -140,19 +146,25 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<CR>', '<2-LeftMouse>'],
     \ }
 
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'tomorrow'
+
 "==============================================================================
 " Auto Commands
 "==============================================================================
 
 " Show absolute line numbers in insert mode
-autocmd InsertEnter * :set relativenumber!
-autocmd InsertLeave * :set relativenumber
+autocmd InsertEnter * set relativenumber!
+autocmd InsertLeave * set relativenumber
 
 " Highlight lines with more than 120 characters
 autocmd BufWinEnter * let w:m3=matchadd('ErrorMsg', '\%>120v.\+', -1)
 
 " Disable whitespace at the end of comments
 autocmd FileType * setlocal formatoptions-=w
+
+" Jump to the last cursor position
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Always start at the top of a commit message
 autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
