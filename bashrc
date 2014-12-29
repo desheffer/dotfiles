@@ -10,6 +10,9 @@
 # Update window size.
 shopt -s checkwinsize
 
+# Support for Base16 color schemes.
+[ -f "$HOME/.base16-tomorrow.dark.sh" ] && . "$HOME/.base16-tomorrow.dark.sh"
+
 #==============================================================================
 # Prompt
 #==============================================================================

@@ -16,11 +16,11 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 
 " Colors
-Plugin 'godlygeek/csapprox'
-Plugin 'vim-scripts/darkspectrum'
+" Plugin 'godlygeek/csapprox'
 Plugin 'chriskempson/base16-vim'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'vim-scripts/darkspectrum'
 Plugin 'dsolstad/vim-wombat256i'
 
 " Status
@@ -52,8 +52,9 @@ call vundle#end()
 " Environment Settings
 "==============================================================================
 
-set t_Co=256
+" set t_Co=256
 set background=dark
+let base16colorspace=256
 silent! colorscheme base16-tomorrow
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
@@ -149,28 +150,27 @@ noremap <Right> <NOP>
 " Plugin Settings
 "==============================================================================
 
-let g:ctrlp_custom_ignore = {
+let g:ctrlp_custom_ignore={
     \ 'dir': '\.git$\|vendor\|tmp\|Proxy\|Proxies',
     \ 'file': '',
     \ }
 
-let g:ctrlp_prompt_mappings = {
+let g:ctrlp_prompt_mappings={
     \ 'AcceptSelection("e")': ['<C-t>'],
     \ 'AcceptSelection("t")': ['<CR>', '<2-LeftMouse>'],
     \ }
 
-let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'tomorrow'
+let g:airline_powerline_fonts=1
 
-let g:syntastic_mode_map = {
+let g:syntastic_mode_map={
     \ 'mode': 'active',
     \ 'active_filetypes': [],
     \ 'passive_filetypes': [],
     \ }
-let g:syntastic_quiet_messages = { 'type': 'style' }
-let g:syntastic_enable_signs = 1
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '!'
+let g:syntastic_quiet_messages={ 'type': 'style' }
+let g:syntastic_enable_signs=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='!'
 
 "==============================================================================
 " Auto Commands
