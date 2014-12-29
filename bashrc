@@ -101,15 +101,15 @@ function generate_prompt {
 
     # Basic prompt.
     echo
-    block_start 16 220
+    block_start 0 3
     block_text "\u@\h"
-    block_change 231 59
+    block_change 7 19
     block_text "\w"
 
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
-        block_change 39 16
+        block_change 4 0
         block_text ${ref/refs\/heads\//$icon_branch }
     fi
 
