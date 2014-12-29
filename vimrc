@@ -16,12 +16,12 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
 
 " Colors
-" Plugin 'godlygeek/csapprox'
-Plugin 'chriskempson/base16-vim'
-Plugin 'nanotech/jellybeans.vim'
+Plugin 'godlygeek/csapprox'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'vim-scripts/darkspectrum'
 Plugin 'dsolstad/vim-wombat256i'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'chriskempson/base16-vim'
 
 " Status
 Plugin 'bling/vim-airline'
@@ -52,10 +52,8 @@ call vundle#end()
 " Environment Settings
 "==============================================================================
 
-" set t_Co=256
-set background=dark
-let base16colorspace=256
-silent! colorscheme base16-tomorrow
+set t_Co=256
+silent! colorscheme hybrid
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
 set clipboard=unnamed           " Use the system clipboard
@@ -161,6 +159,7 @@ let g:ctrlp_prompt_mappings={
     \ }
 
 let g:airline_powerline_fonts=1
+let g:airline_theme='tomorrow'
 
 let g:syntastic_mode_map={
     \ 'mode': 'active',

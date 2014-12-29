@@ -10,9 +10,6 @@
 # Update window size.
 shopt -s checkwinsize
 
-# Support for Base16 color schemes.
-[ -f "$HOME/.base16-tomorrow.dark.sh" ] && . "$HOME/.base16-tomorrow.dark.sh"
-
 #==============================================================================
 # Prompt
 #==============================================================================
@@ -103,7 +100,7 @@ function generate_prompt {
     echo
     block_start 0 3
     block_text "\u@\h"
-    block_change 7 19
+    block_change 7 8
     block_text "\w"
 
     # Git info.
