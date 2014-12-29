@@ -11,30 +11,40 @@ call vundle#begin()
 
 Plugin 'gmarik/Vundle.vim'
 
-Plugin 'godlygeek/csapprox'
-Plugin 'vim-scripts/darkspectrum'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'chriskempson/vim-tomorrow-theme'
-
+" General
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
-Plugin 'scrooloose/nerdtree'
 
+" Colors
+Plugin 'godlygeek/csapprox'
+Plugin 'vim-scripts/darkspectrum'
+Plugin 'chriskempson/base16-vim'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'w0ng/vim-hybrid'
+Plugin 'dsolstad/vim-wombat256i'
+
+" Status
+Plugin 'bling/vim-airline'
+
+" Files and directories
+Plugin 'scrooloose/nerdtree'
+Plugin 'kien/ctrlp.vim'
+
+" Error checking
+Plugin 'scrooloose/syntastic'
+
+" Git
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
+
+" Formatting
 Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
 
+" Movement
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
-Plugin 'kien/ctrlp.vim'
-
-Plugin 'bling/vim-airline'
-
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-eunuch'
 
 call vundle#end()
 
@@ -43,7 +53,8 @@ call vundle#end()
 "==============================================================================
 
 set t_Co=256
-silent! colorscheme hybrid
+set background=dark
+silent! colorscheme base16-tomorrow
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
 set clipboard=unnamed           " Use the system clipboard
@@ -79,7 +90,7 @@ set directory^=~/.backup//      " Write swap files to ~/.backup
 " Mappings
 "==============================================================================
 
-let mapleader=","
+let mapleader=','
 
 " Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
@@ -149,8 +160,17 @@ let g:ctrlp_prompt_mappings = {
     \ }
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'tomorrow'
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline_theme = 'tomorrow'
+
+let g:syntastic_mode_map = {
+    \ 'mode': 'active',
+    \ 'active_filetypes': [],
+    \ 'passive_filetypes': [],
+    \ }
+let g:syntastic_quiet_messages = { 'type': 'style' }
+let g:syntastic_enable_signs = 1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '!'
 
 "==============================================================================
 " Auto Commands
@@ -171,10 +191,6 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 
 " Always start at the top of a commit message
 autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
-" Make the line number margin slightly darker
-" autocmd VimEnter * highlight LineNr ctermbg=233 guibg=#121212
-" autocmd VimEnter * highlight CursorLineNr ctermbg=233 guibg=#121212
 
 "==============================================================================
 " Local Configurations
