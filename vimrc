@@ -14,6 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'godlygeek/csapprox'
 Plugin 'vim-scripts/darkspectrum'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'chriskempson/vim-tomorrow-theme'
 
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-sleuth'
@@ -32,6 +33,7 @@ Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
 
+Plugin 'scrooloose/syntastic'
 Plugin 'tpope/vim-eunuch'
 
 call vundle#end()
@@ -148,6 +150,7 @@ let g:ctrlp_prompt_mappings = {
 
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'tomorrow'
+let g:airline#extensions#tabline#enabled = 1
 
 "==============================================================================
 " Auto Commands
