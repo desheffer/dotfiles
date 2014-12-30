@@ -93,12 +93,16 @@ function block_text {
 }
 
 function generate_prompt {
+    if [ -z "$PROMPT_COLOR" ]; then
+        PROMPT_COLOR=6
+    fi
+
     # Window title.
     echo -en "\033]0;\u@\h:\w\a"
 
     # Basic prompt.
     echo
-    block_start 0 2
+    block_start 0 $PROMPT_COLOR
     block_text "\u@\h"
     block_change 7 237
     block_text "\w"
@@ -106,7 +110,7 @@ function generate_prompt {
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
-        block_change 2 0
+        block_change $PROMPT_COLOR 0
         block_text ${ref/refs\/heads\//$icon_branch }
     fi
 
