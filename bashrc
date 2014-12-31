@@ -130,7 +130,7 @@ alias less='less -FXR'
 alias la='ls -A'
 alias ll='ls -Al'
 alias tmux='tmux -2'
-alias vi='vim'
+alias vi='vim -p'
 alias vim='vim -p'
 
 # Quick grep command.
