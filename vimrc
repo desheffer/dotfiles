@@ -27,6 +27,7 @@ Plugin 'bling/vim-airline'
 
 " Files and directories
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 
 " Error checking
@@ -149,7 +150,8 @@ nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
 " Toggle NERD Tree
-nnoremap <Leader>n :NERDTreeFocus<CR>
+nnoremap <Leader>nt :NERDTreeTabsOpen<CR>
+nnoremap <Leader>nf :NERDTreeFind<CR>
 
 " Easily open files from the same directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
