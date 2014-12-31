@@ -62,7 +62,7 @@ endif
 
 set background=dark
 colorscheme gruvbox
-autocmd BufReadPost * highlight Comment cterm=bold
+autocmd BufReadPost * highlight Comment cterm=none
 
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
@@ -149,6 +149,9 @@ nnoremap <Leader>nf :NERDTreeFind<CR>
 " Easily open files from the same directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
+" Git grep
+nnoremap <Leader>g :Ggrep 
+
 " Disable bad habits
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -203,7 +206,10 @@ autocmd FileType * setlocal formatoptions-=w
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Always start at the top of a commit message
-autocmd FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" Open quick fix window after grep
+autocmd QuickFixCmdPost *grep* cwindow
 
 "==============================================================================
 " Local Configurations
