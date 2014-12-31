@@ -20,7 +20,7 @@ Plugin 'godlygeek/csapprox'
 Plugin 'chriskempson/base16-vim'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'vim-scripts/darkspectrum'
-Plugin 'dsolstad/vim-wombat256i'
+Plugin 'morhetz/gruvbox'
 
 " Status
 Plugin 'bling/vim-airline'
