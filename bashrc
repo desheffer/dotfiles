@@ -101,7 +101,7 @@ function generate_prompt {
     echo
     block_start 0 $PROMPT_COLOR
     block_text "\u@\h"
-    block_change 7 237
+    block_change 15 237
     block_text "\w"
 
     # Git info.
