@@ -17,11 +17,10 @@ Plugin 'tpope/vim-sleuth'
 
 " Colors
 Plugin 'godlygeek/csapprox'
+Plugin 'chriskempson/base16-vim'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'vim-scripts/darkspectrum'
 Plugin 'dsolstad/vim-wombat256i'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'chriskempson/base16-vim'
 
 " Status
 Plugin 'bling/vim-airline'
@@ -52,8 +51,25 @@ call vundle#end()
 " Environment Settings
 "==============================================================================
 
+" Set up colors for the current environment
 set t_Co=256
-silent! colorscheme hybrid
+if has('termtruecolor')
+    let &t_8f="\033[38;2;%ld;%ld;%ldm"
+    let &t_8b="\033[48;2;%ld;%ld;%ldm"
+endif
+
+" Set color scheme for the current environment
+if has('gui_running')
+    set background=dark
+    colorscheme base16-monokai
+elseif has('termtruecolor')
+    set guicolors
+    set background=dark
+    colorscheme base16-monokai
+else
+    colorscheme hybrid
+endif
+
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
 set clipboard=unnamed           " Use the system clipboard
@@ -158,8 +174,10 @@ let g:ctrlp_prompt_mappings={
     \ 'AcceptSelection("t")': ['<CR>', '<2-LeftMouse>'],
     \ }
 
-let g:airline_powerline_fonts=1
-let g:airline_theme='tomorrow'
+if !has('termtruecolor')
+    let g:airline_powerline_fonts=1
+    let g:airline_theme='tomorrow'
+endif
 
 let g:syntastic_mode_map={
     \ 'mode': 'active',
@@ -176,7 +194,7 @@ let g:syntastic_warning_symbol='!'
 "==============================================================================
 
 " Show absolute line numbers in insert mode
-autocmd InsertEnter * set relativenumber!
+autocmd InsertEnter * set norelativenumber
 autocmd InsertLeave * set relativenumber
 
 " Highlight lines with more than 120 characters
