@@ -166,6 +166,8 @@ noremap <Right> <NOP>
 " Plugin Settings
 "==============================================================================
 
+let g:nerdtree_tabs_open_on_gui_startup=0
+
 let g:ctrlp_custom_ignore={
     \ 'dir': '\.git$\|vendor\|tmp\|Proxy\|Proxies',
     \ 'file': '',
