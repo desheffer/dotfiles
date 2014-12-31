@@ -150,7 +150,7 @@ nmap <Leader>a: :Tabularize /:<CR>
 vmap <Leader>a: :Tabularize /:<CR>
 
 " Toggle NERD Tree
-nnoremap <Leader>nt :NERDTreeTabsOpen<CR>
+nnoremap <Leader>nt :NERDTreeTabsToggle<CR>
 nnoremap <Leader>nf :NERDTreeFind<CR>
 
 " Easily open files from the same directory
