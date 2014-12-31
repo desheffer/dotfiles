@@ -91,7 +91,7 @@ function block_text {
 
 function generate_prompt {
     if [ -z "$PROMPT_COLOR" ]; then
-        PROMPT_COLOR=6
+        PROMPT_COLOR=7
     fi
 
     # Window title.
