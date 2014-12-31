@@ -17,10 +17,10 @@ Plugin 'tpope/vim-sleuth'
 
 " Colors
 Plugin 'godlygeek/csapprox'
+Plugin 'morhetz/gruvbox'
 Plugin 'chriskempson/base16-vim'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'vim-scripts/darkspectrum'
-Plugin 'morhetz/gruvbox'
 
 " Status
 Plugin 'bling/vim-airline'
@@ -57,20 +57,12 @@ set t_Co=256
 if has('termtruecolor')
     let &t_8f="\033[38;2;%ld;%ld;%ldm"
     let &t_8b="\033[48;2;%ld;%ld;%ldm"
+    set guicolors
 endif
 
-" Set color scheme for the current environment
-if has('gui_running')
-    set background=dark
-    colorscheme gruvbox
-elseif has('termtruecolor')
-    set guicolors
-    set background=dark
-    colorscheme gruvbox
-    autocmd BufReadPost * highlight Comment cterm=none
-else
-    colorscheme hybrid
-endif
+set background=dark
+colorscheme gruvbox
+autocmd BufReadPost * highlight Comment cterm=bold
 
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
