@@ -62,11 +62,12 @@ endif
 " Set color scheme for the current environment
 if has('gui_running')
     set background=dark
-    colorscheme base16-monokai
+    colorscheme gruvbox
 elseif has('termtruecolor')
     set guicolors
     set background=dark
-    colorscheme base16-monokai
+    colorscheme gruvbox
+    autocmd BufReadPost * highlight Comment cterm=none
 else
     colorscheme hybrid
 endif
