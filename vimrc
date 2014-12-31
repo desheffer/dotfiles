@@ -173,7 +173,6 @@ let g:ctrlp_prompt_mappings={
 
 if !has('termtruecolor')
     let g:airline_powerline_fonts=1
-    let g:airline_theme='tomorrow'
 endif
 
 let g:syntastic_mode_map={
