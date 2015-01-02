@@ -13,6 +13,7 @@ Plugin 'gmarik/Vundle.vim'
 
 " General
 Plugin 'tpope/vim-sensible'
+Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-sleuth'
 
 " Colors
