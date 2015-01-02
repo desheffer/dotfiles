@@ -92,7 +92,7 @@ set wildmode=longest,list       " Make completion mode acts like Bash
 
 set showcmd                     " Show incomplete normal mode commands
 set noshowmode                  " Hide current mode
-set pastetoggle=<F12>           " Toggle paste mode
+" set pastetoggle=<F12>           " Toggle paste mode
 
 set directory^=~/.backup//      " Write swap files to ~/.backup
 
@@ -100,7 +100,7 @@ set directory^=~/.backup//      " Write swap files to ~/.backup
 " Mappings
 "==============================================================================
 
-let mapleader=','
+let mapleader="\<Space>"
 
 " Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
@@ -112,52 +112,60 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
-" Clear current search highlighting
-nnoremap <silent> <Leader>/ :nohlsearch<CR>
-
 " Create a new tab
-nnoremap <silent> <Leader>t :tabnew<CR>
+nnoremap <Tab><Enter> :tabedit<Space>
+
+" Move to previous and next tabs
+nnoremap <silent> [<Tab> :tabprev<CR>
+nnoremap <silent> ]<Tab> :tabnext<CR>
 
 " Move tabs left or right
 nnoremap <silent> g{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 
-" Easier shortcut for previous tab
-nnoremap gr gT
-
-" Yank to cross-server clipboard
-nnoremap <Leader>y :w! ~/.clipboard<CR>
-vnoremap <Leader>y :w! ~/.clipboard<CR>
-
-" Enable spell check
-nnoremap <Leader>s :setlocal spell spelllang=en_us<CR>
-
-" Remove trailing spaces
-nnoremap <Leader><Space> :%s/[ \t]*$//g<CR>:nohlsearch<CR>
+" Yank to shared clipboard
+noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
 
 " Align certain characters
-nmap <Leader>a= :Tabularize /=<CR>
-vmap <Leader>a= :Tabularize /=<CR>
-nmap <Leader>a> :Tabularize /=><CR>
-vmap <Leader>a> :Tabularize /=><CR>
-nmap <Leader>a: :Tabularize /:<CR>
-vmap <Leader>a: :Tabularize /:<CR>
+noremap <silent> g<Space>= :Tabularize /=<CR>
+noremap <silent> g<Space>> :Tabularize /=><CR>
+noremap <silent> g<Space>: :Tabularize /:<CR>
 
 " Toggle NERD Tree
-nnoremap <Leader>nt :NERDTreeTabsToggle<CR>
-nnoremap <Leader>nf :NERDTreeFind<CR>
+nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
+nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 
 " Easily open files from the same directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " Git grep
-nnoremap <Leader>g :Ggrep 
+function! GgrepPrompt()
+    let q = input('Ggrep: ')
+    if q == ""
+        return
+    endif
+    execute 'silent Ggrep' q | cwindow
+endfunction
+map cog :call GgrepPrompt()<CR>
+
+" Remove trailing spaces
+nnoremap <silent> <Leader><Space> :%s/[ \t]*$//g<CR>:nohlsearch<CR>
+
+" Show helpful messages for keys that have been remapped
+map ,t :echo ',t was remapped to TabEnter'<CR>
+map gr :echo 'gr and gt were remapped to [Tab and ]Tab'<CR>
+map ,/ :echo ',/ was remapped to C-L'<CR>
+map ,y :echo ',y was remapped to gy'<CR>
+map ,s :echo ',s was remapped to cos'<CR>
+map ,a= :echo ',a= was remapped to gSpace='<CR>
+map ,a> :echo ',a> was remapped to gSpace>'<CR>
+map ,a: :echo ',a: was remapped to gSpace:'<CR>
 
 " Disable bad habits
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
+noremap <silent> <Up> :echo 'Disabled!'<CR>
+noremap <silent> <Down> :echo 'Disabled!'<CR>
+noremap <silent> <Left> :echo 'Disabled!'<CR>
+noremap <silent> <Right> :echo 'Disabled!'<CR>
 
 "==============================================================================
 " Plugin Settings
@@ -184,6 +192,7 @@ let g:syntastic_mode_map={
     \ 'active_filetypes': [],
     \ 'passive_filetypes': [],
     \ }
+let g:syntastic_always_populate_loc_list=1
 let g:syntastic_quiet_messages={ 'type': 'style' }
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='✗'
@@ -194,8 +203,8 @@ let g:syntastic_warning_symbol='!'
 "==============================================================================
 
 " Show absolute line numbers in insert mode
-autocmd InsertEnter * set norelativenumber
-autocmd InsertLeave * set relativenumber
+autocmd InsertEnter * set number norelativenumber
+autocmd InsertLeave * set number relativenumber
 
 " Highlight lines with more than 120 characters
 autocmd BufWinEnter * let w:m3=matchadd('ErrorMsg', '\%>120v.\+', -1)
@@ -208,9 +217,6 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 
 " Always start at the top of a commit message
 autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
-" Open quick fix window after grep
-autocmd QuickFixCmdPost *grep* cwindow
 
 "==============================================================================
 " Local Configurations
