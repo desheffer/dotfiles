@@ -90,6 +90,8 @@ function block_text {
 }
 
 function generate_prompt {
+    EXIT_CODE=$?
+
     if [ -z "$PROMPT_COLOR" ]; then
         PROMPT_COLOR=7
     fi
@@ -103,15 +105,22 @@ function generate_prompt {
     block_text "\u@\h"
     block_change 15 237
     block_text "\w"
+    block_end
 
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
-        block_change $PROMPT_COLOR 0
-        block_text ${ref/refs\/heads\//$icon_branch }
+        color_set_fg $PROMPT_COLOR
+        echo -en "  ${ref/refs\/heads\//$icon_branch }"
+        color_reset
     fi
 
-    block_end
+    if [ $EXIT_CODE != 0 ]; then
+        color_set_fg 1
+        block_text "${EXIT_CODE##0}"
+        color_reset
+    fi
+
     echo -en "\n\$ "
 }
 
