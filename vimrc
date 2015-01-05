@@ -31,13 +31,6 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
 
-" Error checking
-Plugin 'scrooloose/syntastic'
-
-" Git
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-
 " Formatting
 Plugin 'tpope/vim-commentary'
 Plugin 'godlygeek/tabular'
@@ -46,6 +39,14 @@ Plugin 'tpope/vim-surround'
 " Movement
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
+
+" Programming
+Plugin 'scrooloose/syntastic'
+Plugin 'rayburgemeestre/phpfolding.vim'
+
+" Git
+Plugin 'tpope/vim-fugitive'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 
@@ -85,14 +86,10 @@ set list                        " Enable hidden characters
 set listchars=tab:▷·            " Show tab characters
 set listchars+=trail:·          " Show trailing spaces
 
-set nofoldenable                " Disable folding by default
-set foldmethod=syntax           " But allow it to be enabled easily
-
 set wildmode=longest,list       " Make completion mode acts like Bash
 
 set showcmd                     " Show incomplete normal mode commands
 set noshowmode                  " Hide current mode
-" set pastetoggle=<F12>           " Toggle paste mode
 
 set directory^=~/.backup//      " Write swap files to ~/.backup
 
@@ -100,7 +97,7 @@ set directory^=~/.backup//      " Write swap files to ~/.backup
 " Mappings
 "==============================================================================
 
-let mapleader="\<Space>"
+let mapleader="\\"
 
 " Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
@@ -126,40 +123,31 @@ nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 " Yank to shared clipboard
 noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
 
-" Align certain characters
-noremap <silent> g<Space>= :Tabularize /=<CR>
-noremap <silent> g<Space>> :Tabularize /=><CR>
-noremap <silent> g<Space>: :Tabularize /:<CR>
+" Align delimiting characters
+noremap <silent> <Leader>a= :Tabularize /=<CR>
+noremap <silent> <Leader>a> :Tabularize /=><CR>
+noremap <silent> <Leader>a: :Tabularize /:<CR>
 
 " Toggle NERD Tree
 nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 
+" File system helpers
+command Mkdir !mkdir -p %:h > /dev/null
+command SudoWrite write !sudo tee % > /dev/null
+
 " Easily open files from the same directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" Git grep
-function! GgrepPrompt()
-    let q = input('Ggrep: ')
-    if q == ""
-        return
-    endif
-    execute 'silent Ggrep' q | cwindow
-endfunction
-map cog :call GgrepPrompt()<CR>
-
-" Remove trailing spaces
-nnoremap <silent> <Leader><Space> :%s/[ \t]*$//g<CR>:nohlsearch<CR>
-
 " Show helpful messages for keys that have been remapped
-map ,t :echo ',t was remapped to TabEnter'<CR>
-map gr :echo 'gr and gt were remapped to [Tab and ]Tab'<CR>
-map ,/ :echo ',/ was remapped to C-L'<CR>
-map ,y :echo ',y was remapped to gy'<CR>
-map ,s :echo ',s was remapped to cos'<CR>
-map ,a= :echo ',a= was remapped to gSpace='<CR>
-map ,a> :echo ',a> was remapped to gSpace>'<CR>
-map ,a: :echo ',a: was remapped to gSpace:'<CR>
+noremap ,t :echo ',t was remapped to TabEnter'<CR>
+noremap gr :echo 'gr and gt were remapped to [Tab and ]Tab'<CR>
+noremap ,/ :echo ',/ was remapped to C-L'<CR>
+noremap ,y :echo ',y was remapped to gy'<CR>
+noremap ,s :echo ',s was remapped to cos'<CR>
+noremap ,a= :echo ',a= was remapped to \a='<CR>
+noremap ,a> :echo ',a> was remapped to \a>'<CR>
+noremap ,a: :echo ',a: was remapped to \a:'<CR>
 
 " Disable bad habits
 noremap <silent> <Up> :echo 'Disabled!'<CR>
@@ -173,15 +161,17 @@ noremap <silent> <Right> :echo 'Disabled!'<CR>
 
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-let g:ctrlp_custom_ignore={
-    \ 'dir': '\.git$\|vendor\|tmp\|Proxy\|Proxies',
-    \ 'file': '',
+let g:ctrlp_cmd = 'CtrlPMixed'
+let g:ctrlp_user_command = {
+    \ 'types': {
+        \ 1: ['.git', 'cd %s && git ls-files'],
+        \ },
+    \ 'fallback': 'find %s -type f',
     \ }
-
-let g:ctrlp_prompt_mappings={
-    \ 'AcceptSelection("e")': ['<C-t>'],
-    \ 'AcceptSelection("t")': ['<CR>', '<2-LeftMouse>'],
-    \ }
+" let g:ctrlp_prompt_mappings={
+"     \ 'AcceptSelection("e")': ['<C-t>'],
+"     \ 'AcceptSelection("t")': ['<CR>', '<2-LeftMouse>'],
+"     \ }
 
 if !has('termtruecolor')
     let g:airline_powerline_fonts=1
@@ -193,6 +183,7 @@ let g:syntastic_mode_map={
     \ 'passive_filetypes': [],
     \ }
 let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_messages={ 'type': 'style' }
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='✗'
@@ -212,11 +203,17 @@ autocmd BufWinEnter * let w:m3=matchadd('ErrorMsg', '\%>120v.\+', -1)
 " Disable whitespace at the end of comments
 autocmd FileType * setlocal formatoptions-=w
 
-" Jump to the last cursor position
+" Strip whitespace when saving certain types of files
+autocmd FileType php autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Jump to the last cursor position when opening a file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 " Always start at the top of a commit message
 autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" Open the quickfix window with grep results
+autocmd QuickFixCmdPost *grep* cwindow
 
 "==============================================================================
 " Local Configurations
