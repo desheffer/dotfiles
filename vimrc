@@ -47,6 +47,8 @@ Plugin 'rayburgemeestre/phpfolding.vim'
 " Git
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'mattn/webapi-vim'
+Plugin 'mattn/gist-vim'
 
 call vundle#end()
 
@@ -188,6 +190,8 @@ let g:syntastic_quiet_messages={ 'type': 'style' }
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='!'
+
+let g:gist_post_private=1
 
 "==============================================================================
 " Auto Commands
