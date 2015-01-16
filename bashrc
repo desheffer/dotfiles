@@ -19,6 +19,7 @@ set -o vi
 #       Where $R, $G, and $B are in the range (0, 5).
 
 if [[ "$TERM" =~ .*-256color ]]; then
+    prompt_colors=1
     icon_commit='➦'
     icon_branch=''
     icon_left_sep=''
@@ -26,12 +27,9 @@ if [[ "$TERM" =~ .*-256color ]]; then
     icon_right_sep=''
     icon_right_alt_sep=''
 else
+    prompt_colors=
     icon_commit='c:'
     icon_branch='b:'
-    icon_left_sep=''
-    icon_left_alt_sep=''
-    icon_right_sep=''
-    icon_right_alt_sep=''
 fi
 
 function color_set_fg {
@@ -47,6 +45,10 @@ function color_reset {
 }
 
 function block_start {
+    if [ -z "$prompt_colors" ]; then
+        return
+    fi
+
     color_reset
     color_set_fg "$1"
     color_set_bg "$2"
@@ -56,6 +58,10 @@ function block_start {
 }
 
 function block_change {
+    if [ -z "$prompt_colors" ]; then
+        return
+    fi
+
     color_reset
     color_set_fg "$block_current_bg"
     color_set_bg "$2"
@@ -69,6 +75,11 @@ function block_change {
 }
 
 function block_sep {
+    if [ -z "$prompt_colors" ]; then
+        echo -en " > "
+        return
+    fi
+
     color_reset
     color_set_fg "$1"
     color_set_bg "$block_current_bg"
@@ -79,6 +90,10 @@ function block_sep {
 }
 
 function block_end {
+    if [ -z "$prompt_colors" ]; then
+        return
+    fi
+
     color_reset
     color_set_fg "$block_current_bg"
     echo -en "$icon_left_sep"
@@ -100,7 +115,7 @@ function generate_prompt {
     fi
 
     # Window title.
-    echo -en "\033]0;\u@\h:\w\a"
+    [ $prompt_color ] && echo -en "\033]0;\u@\h:\w\a"
 
     # Basic prompt.
     echo
@@ -113,15 +128,15 @@ function generate_prompt {
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
         ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
-        color_set_fg $PROMPT_COLOR
+        [ $prompt_colors ] && color_set_fg $PROMPT_COLOR
         echo -en "  ${ref/refs\/heads\//$icon_branch }"
-        color_reset
+        [ $prompt_colors ] && color_reset
     fi
 
     if [ $EXIT_CODE != 0 ]; then
-        color_set_fg 1
+        [ $prompt_colors ] && color_set_fg 1
         block_text "${EXIT_CODE##0}"
-        color_reset
+        [ $prompt_colors ] && color_reset
     fi
 
     echo -en "\n\$ "
