@@ -14,7 +14,6 @@ Plugin 'gmarik/Vundle.vim'
 " General
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-sleuth'
 
 " Colors
 Plugin 'godlygeek/csapprox'
@@ -71,6 +70,10 @@ autocmd BufReadPost * highlight Comment cterm=none
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
 set clipboard=unnamed           " Use the system clipboard
+
+set expandtab                   " Tab key inserts spaces
+set softtabstop=4               " Use 4 spaces for indentation
+set shiftwidth=4                " Use 4 spaces for indentation
 
 set ignorecase                  " Default to case insensitive searches
 set smartcase                   " Unless uppercase letters are present
