@@ -161,7 +161,7 @@ alias vi='vim -p'
 alias vim='vim -p'
 
 # Quick grep command.
-function g() {
+function g {
     OPTS="-n"
     SEARCH="$@"
     if [[ $SEARCH =~ ^[^A-Z]*$ ]]; then
@@ -171,28 +171,25 @@ function g() {
 }
 
 # Quick find command.
-function f() {
+function f {
     SEARCH="$@"
     find -iname "*$SEARCH*" | less
 }
 
 # Quick development directory change command.
-function d() {
-    if [ -n "$1" ]; then
-        cd "$HOME/$1"
-    else
-        git rev-parse 2>/dev/null
-        if [ $? == 0 ]; then
-            cd "$(git rev-parse --show-cdup)"
-        else
-            cd
-        fi
-    fi
+function d {
+    git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"
 }
 
 # Remote copy.
-function copyfrom() {
+function copyfrom {
     ssh $1 "bash -c netpaste" | tee /dev/stderr | pbcopy
+}
+
+# Generate ctags for a PHP project.
+function phptags {
+    rm -f tags
+    find . -type f -iname "*.php" -not -path "/vendor" | xargs ctags -a
 }
 
 # Linux specific setup.
