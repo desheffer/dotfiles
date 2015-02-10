@@ -144,16 +144,6 @@ command SudoWrite write !sudo tee % > /dev/null
 " Easily open files from the same directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" Show helpful messages for keys that have been remapped
-noremap ,t :echo ',t was remapped to TabEnter'<CR>
-noremap gr :echo 'gr and gt were remapped to [Tab and ]Tab'<CR>
-noremap ,/ :echo ',/ was remapped to C-L'<CR>
-noremap ,y :echo ',y was remapped to gy'<CR>
-noremap ,s :echo ',s was remapped to cos'<CR>
-noremap ,a= :echo ',a= was remapped to \a='<CR>
-noremap ,a> :echo ',a> was remapped to \a>'<CR>
-noremap ,a: :echo ',a: was remapped to \a:'<CR>
-
 " Disable bad habits
 noremap <silent> <Up> :echo 'Disabled!'<CR>
 noremap <silent> <Down> :echo 'Disabled!'<CR>
