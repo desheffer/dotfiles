@@ -144,12 +144,6 @@ command SudoWrite write !sudo tee % > /dev/null
 " Easily open files from the same directory
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
-" Disable bad habits
-noremap <silent> <Up> :echo 'Disabled!'<CR>
-noremap <silent> <Down> :echo 'Disabled!'<CR>
-noremap <silent> <Left> :echo 'Disabled!'<CR>
-noremap <silent> <Right> :echo 'Disabled!'<CR>
-
 "==============================================================================
 " Plugin Settings
 "==============================================================================
