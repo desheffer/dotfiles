@@ -55,19 +55,13 @@ call vundle#end()
 " Environment Settings
 "==============================================================================
 
-" Set up colors for the current environment
 set t_Co=256
-if has('termtruecolor')
-    let &t_8f="\033[38;2;%ld;%ld;%ldm"
-    let &t_8b="\033[48;2;%ld;%ld;%ldm"
-    set guicolors
-endif
-
 set background=dark
+set guifont=Meslo_LG_S_Regular_for_Powerline:h12
+
+" Set up theme
 colorscheme gruvbox
 autocmd BufReadPost * highlight Comment cterm=none
-
-set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
 set clipboard=unnamed           " Use the system clipboard
 
@@ -141,26 +135,19 @@ nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 command Mkdir !mkdir -p %:h > /dev/null
 command SudoWrite write !sudo tee % > /dev/null
 
-" Easily open files from the same directory
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-
 "==============================================================================
 " Plugin Settings
 "==============================================================================
 
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_user_command = {
+let g:ctrlp_cmd='CtrlPMixed'
+let g:ctrlp_user_command={
     \ 'types': {
         \ 1: ['.git', 'cd %s && git ls-files'],
         \ },
     \ 'fallback': 'find %s -type f',
     \ }
-" let g:ctrlp_prompt_mappings={
-"     \ 'AcceptSelection("e")': ['<C-t>'],
-"     \ 'AcceptSelection("t")': ['<CR>', '<2-LeftMouse>'],
-"     \ }
 
 if !has('termtruecolor')
     let g:airline_powerline_fonts=1
@@ -184,6 +171,11 @@ let g:gist_post_private=1
 " Auto Commands
 "==============================================================================
 
+augroup vimrc
+
+" Clear existing commands in this group
+autocmd!
+
 " Show absolute line numbers in insert mode
 autocmd InsertEnter * set number norelativenumber
 autocmd InsertLeave * set number relativenumber
@@ -205,6 +197,8 @@ autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG call setpos('.', [0,
 
 " Open the quickfix window with grep results
 autocmd QuickFixCmdPost *grep* cwindow
+
+augroup END
 
 "==============================================================================
 " Local Configurations
