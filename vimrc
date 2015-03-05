@@ -92,6 +92,8 @@ set noshowmode                  " Hide current mode
 
 set directory^=~/.backup//      " Write swap files to ~/.backup
 
+set visualbell t_vb=            " Be quiet
+
 "==============================================================================
 " Mappings
 "==============================================================================
@@ -118,6 +120,10 @@ nnoremap <silent> ]<Tab> :tabnext<CR>
 " Move tabs left or right
 nnoremap <silent> g{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
+
+" Jump back and forth between Git hunks
+nnoremap ]h :GitGutterNextHunk<CR>
+nnoremap [h :GitGutterPrevHunk<CR>
 
 " Yank to shared clipboard
 noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
@@ -148,6 +154,7 @@ let g:ctrlp_user_command={
         \ },
     \ 'fallback': 'find %s -type f',
     \ }
+let g:ctrlp_custom_ignore = 'Proxy\|vendor\|cache'
 
 if !has('termtruecolor')
     let g:airline_powerline_fonts=1
