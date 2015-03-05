@@ -137,6 +137,13 @@ noremap <silent> <Leader>a: :Tabularize /:<CR>
 nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 
+" Kill all line numbers to enable copy over SSH
+nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
+
+"==============================================================================
+" Commands
+"==============================================================================
+
 " File system helpers
 command Mkdir !mkdir -p %:h > /dev/null
 command SudoWrite write !sudo tee % > /dev/null
