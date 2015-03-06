@@ -163,9 +163,7 @@ let g:ctrlp_user_command={
     \ }
 let g:ctrlp_custom_ignore = 'Proxy\|vendor\|cache'
 
-if !has('termtruecolor')
-    let g:airline_powerline_fonts=1
-endif
+let g:airline_powerline_fonts=1
 
 let g:syntastic_mode_map={
     \ 'mode': 'active',
