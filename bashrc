@@ -249,6 +249,3 @@ fi
 
 # Allow server-specific scripting.
 [ -f "$HOME/.bash_local" ] && . "$HOME/.bash_local"
-
-# Add RVM path.
-[ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
