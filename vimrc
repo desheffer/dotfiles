@@ -106,6 +106,9 @@ vnoremap p pgvy
 " Make Y yank to end of line
 nnoremap Y y$
 
+" Fast saving
+nnoremap <Leader>w :w!<CR>
+
 " Preserve selection on indent
 vnoremap < <gv
 vnoremap > >gv
