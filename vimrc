@@ -42,6 +42,7 @@ Plugin 'Lokaltog/vim-easymotion'
 " Programming
 Plugin 'scrooloose/syntastic'
 Plugin 'rayburgemeestre/phpfolding.vim'
+Plugin 'joonty/vdebug'
 
 " Git
 Plugin 'tpope/vim-fugitive'
