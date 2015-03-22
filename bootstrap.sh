@@ -47,7 +47,7 @@ if [ -e "$REVERT" ]; then
     echo "Revert log stored as $REVERT"
 fi
 
-# Install Vim plugins
+# Install Vim plugins.
 mkdir -p ~/.backup
 [ ! -d ~/.vim/bundle/Vundle.vim ] && git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall
