@@ -104,15 +104,28 @@ let mapleader="\\"
 " Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
 
-" Make Y yank to end of line
-nnoremap Y y$
-
-" Fast saving
-nnoremap <Leader>w :w!<CR>
-
 " Preserve selection on indent
 vnoremap < <gv
 vnoremap > >gv
+
+" Make Y yank to end of line
+nnoremap Y y$
+
+" Align delimiting characters
+noremap <silent> <Leader>a= :Tabularize /=<CR>
+noremap <silent> <Leader>a> :Tabularize /=><CR>
+noremap <silent> <Leader>a: :Tabularize /:<CR>
+
+" Jump back and forth between Git hunks
+nnoremap ]h :GitGutterNextHunk<CR>
+nnoremap [h :GitGutterPrevHunk<CR>
+
+" Toggle NERD Tree
+nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
+nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
+
+" Fast saving
+nnoremap <Leader>w :w!<CR>
 
 " Create a new tab
 nnoremap <Tab><Enter> :tabedit<Space>
@@ -125,24 +138,11 @@ nnoremap <silent> ]<Tab> :tabnext<CR>
 nnoremap <silent> g{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 
-" Jump back and forth between Git hunks
-nnoremap ]h :GitGutterNextHunk<CR>
-nnoremap [h :GitGutterPrevHunk<CR>
+" Kill all line numbers to enable copy over SSH
+nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
 
 " Yank to shared clipboard
 noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
-
-" Align delimiting characters
-noremap <silent> <Leader>a= :Tabularize /=<CR>
-noremap <silent> <Leader>a> :Tabularize /=><CR>
-noremap <silent> <Leader>a: :Tabularize /:<CR>
-
-" Toggle NERD Tree
-nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
-nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
-
-" Kill all line numbers to enable copy over SSH
-nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
 
 "==============================================================================
 " Commands
