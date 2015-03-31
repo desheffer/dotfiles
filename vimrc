@@ -159,12 +159,7 @@ command SudoWrite write !sudo tee % > /dev/null
 let g:nerdtree_tabs_open_on_gui_startup=0
 
 let g:ctrlp_cmd='CtrlPMixed'
-let g:ctrlp_user_command={
-    \ 'types': {
-        \ 1: ['.git', 'cd %s && git ls-files'],
-        \ },
-    \ 'fallback': 'find %s -type f',
-    \ }
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = 'Proxy\|vendor\|cache'
 
 let g:airline_powerline_fonts=1
