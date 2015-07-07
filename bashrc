@@ -159,6 +159,7 @@ alias ll='ls -Al'
 alias tmux='tmux -2'
 alias vi='vim -p'
 alias vim='vim -p'
+alias serve='python -m SimpleHTTPServer 8000'
 
 # Quick grep command.
 function g {
