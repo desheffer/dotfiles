@@ -34,6 +34,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
+Plugin 'jceb/vim-orgmode'
+Plugin 'tpope/vim-speeddating'
 
 " Movement
 Plugin 'terryma/vim-multiple-cursors'
@@ -167,7 +169,7 @@ let g:syntastic_mode_map={
     \ 'mode': 'active',
     \ 'active_filetypes': [],
     \ 'passive_filetypes': [],
-    \ }
+\ }
 let g:syntastic_always_populate_loc_list=1
 let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_messages={ 'type': 'style' }
@@ -176,6 +178,9 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='!'
 
 let g:gist_post_private=1
+
+let g:multi_cursor_exit_from_visual_mode=0
+let g:multi_cursor_exit_from_insert_mode=0
 
 "==============================================================================
 " Auto Commands
