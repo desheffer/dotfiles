@@ -143,6 +143,9 @@ nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 " Kill all line numbers to enable copy over SSH
 nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
 
+" Git grep
+nnoremap <silent> <Leader>g :tab split<CR>:Ggrep<Space>
+
 " Yank to shared clipboard
 noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
 
