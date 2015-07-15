@@ -163,13 +163,17 @@ alias serve='python -m SimpleHTTPServer 8000'
 
 # Quick grep command.
 function g {
-    OPTS="-n"
     SEARCH="$@"
+
+    OPTS="-n"
     if [[ $SEARCH =~ ^[^A-Z]*$ ]]; then
-        OPTS="${OPTS}i"
+        OPTS="${OPTS} -i"
     fi
 
-    git grep "$OPTS" "$SEARCH" | sed -nr 's/^([^:]*):([0-9]*):/\1 : \2 ::\t/p'
+    git grep $OPTS "$SEARCH" \
+        -- './*' ':!*.min.css' ':!*.min.js' ':!/public/static/generated/' \
+        | sed -nr 's/^([^:]*):([0-9]*):/\1 : \2 ::\t/p' \
+        | less
 }
 
 # Quick find command.
