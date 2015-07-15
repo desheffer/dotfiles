@@ -149,6 +149,9 @@ nnoremap <silent> <Leader>g :tab split<CR>:Ggrep<Space>
 " Yank to shared clipboard
 noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
 
+" Navigate merge conflicts
+nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
+
 "==============================================================================
 " Commands
 "==============================================================================
