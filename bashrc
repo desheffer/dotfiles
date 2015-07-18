@@ -153,6 +153,7 @@ PROMPT_COMMAND='set_prompt'
 #==============================================================================
 
 # Custom aliases.
+alias ..='cd ..'
 alias less='less -FXR'
 alias la='ls -A'
 alias ll='ls -Al'
