@@ -188,6 +188,17 @@ function d {
     git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"
 }
 
+function passwordgen {
+    if [ $# -lt 1 ]; then
+        length=16
+    else
+        length=$1
+    fi
+
+    cat /dev/urandom | LC_CTYPE=C tr -dc 'a-zA-Z0-9' | head -c $length
+    echo
+}
+
 # Remote copy.
 function copyfrom {
     ssh $1 "bash -c netpaste" | tee /dev/stderr | pbcopy
