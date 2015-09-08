@@ -172,7 +172,7 @@ function g {
     fi
 
     git grep $OPTS "$SEARCH" \
-        -- './*' ':!*.min.css' ':!*.min.js' ':!/public/static/generated/' \
+        -- './*' ':!*.min.css' ':!*.min.js' ':!/public/static/generated/' ':!/public/dist/' \
         | sed -nr 's/^([^:]*):([0-9]*):/\1 : \2 ::\t/p' \
         | less
 }
