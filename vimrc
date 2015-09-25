@@ -42,7 +42,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
 
 " Programming
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 Plugin 'rayburgemeestre/phpfolding.vim'
 Plugin 'joonty/vdebug'
 
@@ -162,9 +162,13 @@ nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
 function Dgrep()
     if exists(':Glgrep')
         let pat = input('Pattern: ')
-        execute 'silent Glgrep! "'.pat.'"'
-        execute 'lwindow'
-        execute 'redraw!'
+        if !empty(pat)
+            execute 'tab split'
+            execute 'silent Glgrep! "'.escape(pat, '"').'"'
+            execute 'lwindow'
+            execute 'redraw!'
+            execute 'lfirst'
+        endif
     else
         echo "Not a git repository"
     endif
@@ -195,7 +199,7 @@ let g:syntastic_mode_map={
     \ 'passive_filetypes': [],
 \ }
 let g:syntastic_always_populate_loc_list=1
-" let g:syntastic_auto_loc_list=1
+let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_messages={ 'type': 'style' }
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='✗'
