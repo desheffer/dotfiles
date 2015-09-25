@@ -103,6 +103,9 @@ set visualbell t_vb=            " Be quiet
 
 let mapleader="\\"
 
+" Disable ex mode
+nnoremap Q <Nop>
+
 " Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
 
@@ -144,13 +147,28 @@ nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
 
 " Git grep
-nnoremap <silent> <Leader>g :tab split<CR>:Ggrep<Space>
+nnoremap <silent> <Leader>g :call Dgrep()<CR>
 
 " Yank to shared clipboard
 noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
 
 " Navigate merge conflicts
 nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
+
+"==============================================================================
+" Functions
+"==============================================================================
+
+function Dgrep()
+    if exists(':Glgrep')
+        let pat = input('Pattern: ')
+        execute 'silent Glgrep! "'.pat.'"'
+        execute 'lwindow'
+        execute 'redraw!'
+    else
+        echo "Not a git repository"
+    endif
+endfunction
 
 "==============================================================================
 " Commands
@@ -177,7 +195,7 @@ let g:syntastic_mode_map={
     \ 'passive_filetypes': [],
 \ }
 let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
+" let g:syntastic_auto_loc_list=1
 let g:syntastic_quiet_messages={ 'type': 'style' }
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='✗'
@@ -215,9 +233,6 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 
 " Always start at the top of a commit message
 autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
-" Open the quickfix window with grep results
-autocmd QuickFixCmdPost *grep* cwindow
 
 augroup END
 
