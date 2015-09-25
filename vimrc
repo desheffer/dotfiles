@@ -132,8 +132,9 @@ nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 " Fast saving
 nnoremap <Leader>w :w!<CR>
 
-" Create a new tab
+" Working with tabs
 nnoremap <Tab><Enter> :tabedit<Space>
+nnoremap <Tab>q :tabclose<CR>
 
 " Move to previous and next tabs
 nnoremap <silent> [<Tab> :tabprev<CR>
