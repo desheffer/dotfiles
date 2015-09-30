@@ -101,7 +101,7 @@ set visualbell t_vb=            " Be quiet
 " Mappings
 "==============================================================================
 
-let mapleader="\\"
+let mapleader='\'
 
 " Disable ex mode
 nnoremap Q <Nop>
@@ -147,8 +147,8 @@ nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 " Kill all line numbers to enable copy over SSH
 nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
 
-" Git grep
-nnoremap <silent> <Leader>g :call Dgrep()<CR>
+" Grep
+nnoremap <silent> <Leader>g :call GrepPrompt()<CR>
 
 " Yank to shared clipboard
 noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
@@ -160,19 +160,30 @@ nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
 " Functions
 "==============================================================================
 
-function Dgrep()
-    if exists(':Glgrep')
-        let pat = input('Pattern: ')
-        if !empty(pat)
-            execute 'tab split'
-            execute 'silent Glgrep! "'.escape(pat, '"').'"'
-            execute 'lwindow'
-            execute 'redraw!'
-            execute 'lfirst'
-        endif
-    else
-        echo "Not a git repository"
+function GrepPrompt()
+    if !exists(':Glgrep')
+        echo 'Not a git repository'
+        return
     endif
+
+    let pat = input('Pattern: ')
+    if empty(pat)
+        return
+    endif
+
+    let args = ''
+
+    if pat !~# '[A-Z]'
+        let args .= ' -i'
+    endif
+
+    let pat = escape(pat, '"')
+
+    execute 'tab split'
+    execute 'silent Glgrep!'.args.' "'.pat.'"'
+    execute 'lwindow'
+    execute 'redraw!'
+    execute 'lfirst'
 endfunction
 
 "==============================================================================
@@ -234,7 +245,7 @@ autocmd FileType * setlocal formatoptions-=w
 autocmd FileType php autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Jump to the last cursor position when opening a file
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g'\"" | endif
 
 " Always start at the top of a commit message
 autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
