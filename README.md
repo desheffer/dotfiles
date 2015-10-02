@@ -16,4 +16,10 @@ adapt them however you see fit.
 
 ### Installation
 
-Run <code>bootstrap.sh</code> to link the files into your home directory.
+1. Run <code>bootstrap.sh</code> to link the files into your home directory.
+
+2. https://www.youtube.com/watch?v=QX5XKFn7Ngo
+
+3. ???
+
+4. Et voilà!
