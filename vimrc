@@ -1,6 +1,5 @@
 "General
 set nocompatible
-filetype plugin indent on
 set modelines=10
 set backspace=2
 set tabpagemax=100
@@ -15,8 +14,8 @@ set smartindent
 set nojoinspaces
 
 
-set cursorline
-set cursorcolumn
+"set cursorline
+"set cursorcolumn
 
 " change the mapleader from | to ,
 let mapleader=","
@@ -35,12 +34,12 @@ set t_Co=256
 "Lines
 set number
 if exists('+colorcolumn')
-    set colorcolumn=81
-    au BufWinEnter * let w:m1=matchadd('ColorColumn', '\%<91v.\%>81v', -1)
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>90v.\+', -1)
+    "set colorcolumn=101
+    "au BufWinEnter * let w:m1=matchadd('ColorColumn', '\%<91v.\%>81v', -1)
+    "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>90v.\+', -1)
 else
-    au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%<82v.\%>81v', -1)
-    au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>90v.\+', -1)
+    "au BufWinEnter * let w:m1=matchadd('ErrorMsg', '\%<82v.\%>81v', -1)
+    "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>90v.\+', -1)
 endif
 
 "Searching
@@ -51,7 +50,7 @@ set smartcase
 "Formatting
 set list
 set listchars=tab:>>
-set listchars+=trail:·
+" set listchars+=trail:·
 
 "Miscellaneous
 set autoread
@@ -170,21 +169,29 @@ set statusline+=%8*%-14.(%l,%c%V%)\ %<%P%* " offset
 
 " Directory Specific tab size
 " set tabstop=2
-autocmd BufNewFile,BufRead ~/code/jg*.{css,js,html} set expandtab tabstop=2 shiftwidth=2
-autocmd BufNewFile,BufRead ~/code/ossus*.{php} set expandtab tabstop=4 shiftwidth=4
-autocmd BufNewFile,BufRead ~/code/falcon*.{php} set tabstop=4 shiftwidth=4
+"autocmd BufNewFile,BufRead ~/code/jg*.{css,js,html} set expandtab tabstop=2 shiftwidth=2
+"autocmd BufNewFile,BufRead ~/code/ossus*.{php} set expandtab tabstop=4 shiftwidth=4
+"autocmd BufNewFile,BufRead ~/code/falcon*.{php} set tabstop=4 shiftwidth=4
 
 " Highlight current line
 hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" Let Vundle Manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
-" Bundle 'csapprox' -- already handled by submodule
-Bundle 'tpope/vim-fugitive'
-Bundle 'majutsushi/tagbar'
-Bundle 'tpope/gem-ctags'
+Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
+" Plugin 'csapprox' " -- already handled by submodule
+Plugin 'tpope/vim-fugitive'
+Plugin 'majutsushi/tagbar'
+Plugin 'tpope/gem-ctags'
+Plugin 'kien/ctrlp.vim'
+Plugin 'fatih/vim-go'
+
+call vundle#end() " required
+
+filetype plugin indent on
