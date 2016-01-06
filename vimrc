@@ -113,6 +113,9 @@ vnoremap p pgvy
 vnoremap < <gv
 vnoremap > >gv
 
+" Search for visually selected text
+vnoremap // y/<C-R>"<CR>
+
 " Make Y yank to end of line
 nnoremap Y y$
 
@@ -122,8 +125,8 @@ noremap <silent> <Leader>a> :Tabularize /=><CR>
 noremap <silent> <Leader>a: :Tabularize /:<CR>
 
 " Jump back and forth between Git hunks
-nnoremap ]h :GitGutterNextHunk<CR>
-nnoremap [h :GitGutterPrevHunk<CR>
+nnoremap ]g :GitGutterNextHunk<CR>
+nnoremap [g :GitGutterPrevHunk<CR>
 
 " Toggle NERD Tree
 nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
@@ -149,6 +152,7 @@ nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign un
 
 " Grep
 nnoremap <silent> <Leader>g :call GrepPrompt()<CR>
+nnoremap <silent> <Leader>l :lwindow<CR>
 
 " Yank to shared clipboard
 noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
