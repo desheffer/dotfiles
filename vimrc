@@ -66,8 +66,6 @@ set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 colorscheme gruvbox
 autocmd BufReadPost * highlight Comment cterm=none
 
-set clipboard=unnamed           " Use the system clipboard
-
 set expandtab                   " Tab key inserts spaces
 set softtabstop=4               " Use 4 spaces for indentation
 set shiftwidth=4                " Use 4 spaces for indentation
