@@ -142,8 +142,8 @@ nnoremap <silent> [<Tab> :tabprev<CR>
 nnoremap <silent> ]<Tab> :tabnext<CR>
 
 " Move tabs left or right
-nnoremap <silent> g{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
+nnoremap <silent> <Tab>{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
+nnoremap <silent> <Tab>} :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " Kill all line numbers to enable copy over SSH
 " nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
