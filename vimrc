@@ -146,14 +146,14 @@ nnoremap <silent> g{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
 
 " Kill all line numbers to enable copy over SSH
-nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
+" nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
 
 " Grep
 nnoremap <silent> <Leader>g :call GrepPrompt()<CR>
 nnoremap <silent> <Leader>l :lwindow<CR>
 
-" Yank to shared clipboard
-noremap <silent> gy :w! ~/.clipboard<CR>:echo 'Selection written to ~/.clipboard'<CR>
+" Yank to the clipboard
+vnoremap <silent> gy :w !pbcopy<CR><CR>
 
 " Navigate merge conflicts
 nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
