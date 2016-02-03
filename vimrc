@@ -16,11 +16,7 @@ Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-unimpaired'
 
 " Colors
-Plugin 'godlygeek/csapprox'
 Plugin 'morhetz/gruvbox'
-Plugin 'chriskempson/base16-vim'
-Plugin 'w0ng/vim-hybrid'
-Plugin 'vim-scripts/darkspectrum'
 
 " Status
 Plugin 'bling/vim-airline'
