@@ -12,14 +12,10 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 
 " General
+Plugin 'morhetz/gruvbox'
+Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-sensible'
 Plugin 'tpope/vim-unimpaired'
-
-" Colors
-Plugin 'morhetz/gruvbox'
-
-" Status
-Plugin 'bling/vim-airline'
 
 " Files and directories
 Plugin 'scrooloose/nerdtree'
@@ -30,8 +26,6 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'godlygeek/tabular'
 Plugin 'tpope/vim-surround'
-Plugin 'jceb/vim-orgmode'
-Plugin 'tpope/vim-speeddating'
 
 " Movement
 Plugin 'terryma/vim-multiple-cursors'
