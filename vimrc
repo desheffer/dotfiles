@@ -111,8 +111,8 @@ noremap <silent> <Leader>a> :Tabularize /=><CR>
 noremap <silent> <Leader>a: :Tabularize /:<CR>
 
 " Jump back and forth between Git hunks
-nnoremap ]g :GitGutterNextHunk<CR>
 nnoremap [g :GitGutterPrevHunk<CR>
+nnoremap ]g :GitGutterNextHunk<CR>
 
 " Toggle NERD Tree
 nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
@@ -132,9 +132,6 @@ nnoremap <silent> ]<Tab> :tabnext<CR>
 " Move tabs left or right
 nnoremap <silent> <Tab>{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <Tab>} :execute 'silent! tabmove ' . tabpagenr()<CR>
-
-" Kill all line numbers to enable copy over SSH
-" nnoremap <silent> <Leader>con :set nonumber<CR>:set norelativenumber<CR>:sign unplace *<CR>
 
 " Grep
 nnoremap <silent> <Leader>g :call GrepPrompt()<CR>
@@ -195,17 +192,17 @@ let g:ctrlp_custom_ignore = 'Proxy\|vendor\|cache'
 
 let g:airline_powerline_fonts=1
 
-let g:syntastic_mode_map={
-    \ 'mode': 'active',
-    \ 'active_filetypes': [],
-    \ 'passive_filetypes': [],
-\ }
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_messages={ 'type': 'style' }
-let g:syntastic_enable_signs=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='!'
+" let g:syntastic_mode_map={
+"     \ 'mode': 'active',
+"     \ 'active_filetypes': [],
+"     \ 'passive_filetypes': [],
+" \ }
+" let g:syntastic_always_populate_loc_list=1
+" let g:syntastic_auto_loc_list=1
+" let g:syntastic_quiet_messages={ 'type': 'style' }
+" let g:syntastic_enable_signs=1
+" let g:syntastic_error_symbol='✗'
+" let g:syntastic_warning_symbol='!'
 
 let g:gist_post_private=1
 
