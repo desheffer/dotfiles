@@ -62,9 +62,7 @@ set t_Co=256
 set background=dark
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
-" Set up theme
 colorscheme gruvbox
-autocmd BufReadPost * highlight Comment cterm=none
 
 set expandtab                   " Tab key inserts spaces
 set softtabstop=4               " Use 4 spaces for indentation
