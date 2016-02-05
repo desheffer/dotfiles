@@ -259,8 +259,11 @@ if [ -n "$BASH_VERSION" ]; then
 fi
 
 #==============================================================================
-# Custom Paths
+# Miscellaneous
 #==============================================================================
+
+# Add RVM paths.
+[ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
 
 # Allow server-specific scripting.
 [ -f "$HOME/.bash_local" ] && . "$HOME/.bash_local"
