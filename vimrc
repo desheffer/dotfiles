@@ -52,7 +52,7 @@ set t_Co=256
 set background=dark
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
-colorscheme gruvbox
+silent! colorscheme gruvbox
 
 set expandtab                   " Tab key inserts spaces
 set softtabstop=4               " Use 4 spaces for indentation
