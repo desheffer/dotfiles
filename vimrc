@@ -187,9 +187,15 @@ command SudoWrite write !sudo tee % > /dev/null
 "==============================================================================
 
 let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#fnamemod = ':t'
 
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_custom_ignore = 'Proxy\|vendor\|cache'
+" let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+" let g:ctrlp_custom_ignore = 'Proxy\|vendor\|cache'
+let g:ctrlp_working_path_mode = 'r'
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/](\.(git|hg|svn)|\_site|vendor|cache|Proxy)$',
+\ }
 
 let g:nerdtree_tabs_open_on_gui_startup=0
 
