@@ -186,12 +186,12 @@ command SudoWrite write !sudo tee % > /dev/null
 " Plugin Settings
 "==============================================================================
 
-let g:nerdtree_tabs_open_on_gui_startup=0
+let g:airline_powerline_fonts=1
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_custom_ignore = 'Proxy\|vendor\|cache'
 
-let g:airline_powerline_fonts=1
+let g:nerdtree_tabs_open_on_gui_startup=0
 
 " let g:syntastic_mode_map={
 "     \ 'mode': 'active',
@@ -205,10 +205,10 @@ let g:airline_powerline_fonts=1
 " let g:syntastic_error_symbol='✗'
 " let g:syntastic_warning_symbol='!'
 
-let g:gist_post_private=1
-
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
+
+let g:gist_post_private=1
 
 "==============================================================================
 " Auto Commands
