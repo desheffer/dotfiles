@@ -89,39 +89,7 @@ set visualbell t_vb=            " Be quiet
 
 let mapleader='\'
 
-" Disable ex mode
-nnoremap Q <Nop>
-
-" Prevent p from replacing the buffer (copy what was originally selected)
-vnoremap p pgvy
-
-" Preserve selection on indent
-vnoremap < <gv
-vnoremap > >gv
-
-" Search for visually selected text
-vnoremap // y/<C-R>"<CR>
-
-" Make Y yank to end of line
-nnoremap Y y$
-
-" Align delimiting characters
-noremap <silent> <Leader>a= :Tabularize /=<CR>
-noremap <silent> <Leader>a> :Tabularize /=><CR>
-noremap <silent> <Leader>a: :Tabularize /:<CR>
-
-" Jump back and forth between Git hunks
-nnoremap [g :GitGutterPrevHunk<CR>
-nnoremap ]g :GitGutterNextHunk<CR>
-
-" Toggle NERD Tree
-nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
-nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
-
-" Fast saving
-nnoremap <Leader>w :w!<CR>
-
-" Working with tabs
+" Open and close tabs
 nnoremap <Tab><Enter> :tabedit<Space>
 nnoremap <Tab>q :tabclose<CR>
 
@@ -133,15 +101,47 @@ nnoremap <silent> ]<Tab> :tabnext<CR>
 nnoremap <silent> <Tab>{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> <Tab>} :execute 'silent! tabmove ' . tabpagenr()<CR>
 
-" Grep
-nnoremap <silent> <Leader>g :call GrepPrompt()<CR>
-nnoremap <silent> <Leader>l :lwindow<CR>
+" Prevent p from replacing the buffer (copy what was originally selected)
+vnoremap p pgvy
+
+" Preserve selection on indent
+vnoremap < <gv
+vnoremap > >gv
+
+" Make Y yank to end of line
+nnoremap Y y$
 
 " Yank to the clipboard
 vnoremap <silent> gy :w !pbcopy<CR><CR>
 
+" Fast saving
+nnoremap <Leader>w :w!<CR>
+
+" Toggle NERD Tree
+nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
+nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
+
+" Grep
+nnoremap <silent> <Leader>g :call GrepPrompt()<CR>
+nnoremap <silent> <Leader>l :lwindow<CR>
+
+" Search for visually selected text
+vnoremap // y/<C-R>"<CR>
+
+" Jump back and forth between Git hunks
+nnoremap [g :GitGutterPrevHunk<CR>
+nnoremap ]g :GitGutterNextHunk<CR>
+
 " Navigate merge conflicts
 nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
+
+" Align delimiting characters
+noremap <silent> <Leader>a= :Tabularize /=<CR>
+noremap <silent> <Leader>a> :Tabularize /=><CR>
+noremap <silent> <Leader>a: :Tabularize /:<CR>
+
+" Disable ex mode
+nnoremap Q <Nop>
 
 "==============================================================================
 " Functions
