@@ -32,7 +32,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Lokaltog/vim-easymotion'
 
 " Programming
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'rayburgemeestre/phpfolding.vim'
 Plugin 'joonty/vdebug'
 
@@ -198,17 +198,17 @@ let g:ctrlp_user_command={
 
 let g:nerdtree_tabs_open_on_gui_startup=0
 
-" let g:syntastic_mode_map={
-"     \ 'mode': 'active',
-"     \ 'active_filetypes': [],
-"     \ 'passive_filetypes': [],
-" \ }
-" let g:syntastic_always_populate_loc_list=1
-" let g:syntastic_auto_loc_list=1
-" let g:syntastic_quiet_messages={ 'type': 'style' }
-" let g:syntastic_enable_signs=1
-" let g:syntastic_error_symbol='✗'
-" let g:syntastic_warning_symbol='!'
+let g:syntastic_mode_map={
+    \ 'mode': 'active',
+    \ 'active_filetypes': [],
+    \ 'passive_filetypes': [],
+\ }
+let g:syntastic_always_populate_loc_list=1
+let g:syntastic_auto_loc_list=1
+let g:syntastic_quiet_messages={ 'type': 'style' }
+let g:syntastic_enable_signs=1
+let g:syntastic_error_symbol='✗'
+let g:syntastic_warning_symbol='!'
 
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
