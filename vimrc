@@ -35,6 +35,7 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'scrooloose/syntastic'
 Plugin 'rayburgemeestre/phpfolding.vim'
 Plugin 'joonty/vdebug'
+Plugin 'tpope/vim-dispatch'
 
 " Git
 Plugin 'tpope/vim-fugitive'
