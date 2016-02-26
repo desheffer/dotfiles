@@ -139,9 +139,6 @@ let Tlist_Use_Right_Window = 1
 nmap <Leader>nt :NERDTreeTabsToggle<CR>
 nmap <Leader>tt :TbarToggle<CR>
 
-if &t_Co >= 256
-	colorscheme vividchalk
-endif
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -185,13 +182,18 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-" Plugin 'csapprox' " -- already handled by submodule
+Plugin 'csapprox' " -- already handled by submodule
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
+Plugin 'desert-warm-256'
 
 call vundle#end() " required
 
 filetype plugin indent on
+if &t_Co >= 256
+    "colorscheme vividchalk
+    colorscheme 'desert-warm-256'
+endif
