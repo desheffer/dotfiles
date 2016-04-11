@@ -91,8 +91,7 @@ set visualbell t_vb=            " Be quiet
 let mapleader='\'
 
 " Open and close tabs
-" nnoremap <Tab><Enter> :tabedit<Space>
-nnoremap <Tab><Enter> :echo "You should use Ctrl-P instead!"<CR>
+nnoremap <Tab><Enter> :tabedit<Space>
 nnoremap <Tab>q :tabclose<CR>
 
 " Move to previous and next tabs
