@@ -179,7 +179,7 @@ endfunction
 "==============================================================================
 
 " File system helpers
-command Mkdir !mkdir -p %:h > /dev/null
+command Mkdir !mkdir -p '%:h' > /dev/null
 command SudoWrite write !sudo tee % > /dev/null
 
 "==============================================================================
