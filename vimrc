@@ -90,6 +90,9 @@ set visualbell t_vb=            " Be quiet
 
 let mapleader='\'
 
+" Disable ex mode
+nnoremap Q <Nop>
+
 " Open and close tabs
 nnoremap <Tab><Enter> :tabedit<Space>
 nnoremap <Tab>q :tabclose<CR>
@@ -133,16 +136,16 @@ vnoremap // y/<C-R>"<CR>
 nnoremap [g :GitGutterPrevHunk<CR>
 nnoremap ]g :GitGutterNextHunk<CR>
 
+" Align delimiting characters
+nnoremap <silent> <Leader>a= :Tabularize /=<CR>
+nnoremap <silent> <Leader>a> :Tabularize /=><CR>
+nnoremap <silent> <Leader>a: :Tabularize /:<CR>
+
 " Navigate merge conflicts
 nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
 
-" Align delimiting characters
-noremap <silent> <Leader>a= :Tabularize /=<CR>
-noremap <silent> <Leader>a> :Tabularize /=><CR>
-noremap <silent> <Leader>a: :Tabularize /:<CR>
-
-" Disable ex mode
-nnoremap Q <Nop>
+" Format JSON
+nnoremap <silent> <Leader>js :%!python -m json.tool<CR>
 
 "==============================================================================
 " Functions
