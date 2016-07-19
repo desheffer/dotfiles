@@ -182,7 +182,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'csapprox' " -- already handled by submodule
+"Plugin 'csapprox' " -- already handled by submodule
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/gem-ctags'
@@ -194,6 +194,6 @@ call vundle#end() " required
 
 filetype plugin indent on
 if &t_Co >= 256
-    "colorscheme vividchalk
-    colorscheme 'desert-warm-256'
+    colorscheme vividchalk
+    "colorscheme 'desert-warm-256'
 endif
