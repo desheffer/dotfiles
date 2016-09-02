@@ -143,7 +143,7 @@ export GIT_PAGER='less -+$LESS -FXR'
 #==============================================================================
 
 # Add RVM paths.
-[ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
+[ -f "$HOME/.rvm/scripts/rvm" ] && [ -n "$GEM_HOME" ] && . "$HOME/.rvm/scripts/rvm"
 
 # Allow server-specific scripting.
 [ -f "$HOME/.bash_local" ] && . "$HOME/.bash_local"
