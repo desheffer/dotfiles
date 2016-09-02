@@ -5,7 +5,13 @@
 [ -z "$PS1" ] && return
 
 # Update window size.
-shopt -s checkwinsize
+shopt -s checkwinsize 2>/dev/null
+
+# Enable glob star.
+shopt -s globstar 2>/dev/null
+
+# Enable auto cd.
+shopt -s autocd 2>/dev/null
 
 #==============================================================================
 # Prompt
@@ -18,7 +24,6 @@ shopt -s checkwinsize
 #==============================================================================
 
 # Custom aliases.
-alias ..='cd ..'
 alias less='less -FXR'
 alias la='ls -A'
 alias ll='ls -Al'
@@ -26,6 +31,15 @@ alias tmux='tmux -2'
 alias vi='vim -p'
 alias vim='vim -p'
 alias serve='python -m SimpleHTTPServer 8000'
+
+# Path replacement.
+function cd {
+    if [ $# -eq 2 ]; then
+        builtin cd ${PWD/$1/$2}
+    else
+        builtin cd $1
+    fi
+}
 
 # Quick grep command.
 function g {
