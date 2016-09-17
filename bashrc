@@ -35,9 +35,9 @@ alias serve='python -m SimpleHTTPServer 8000'
 # Path replacement.
 function cd {
     if [ $# -eq 2 ]; then
-        builtin cd ${PWD/$1/$2}
+        builtin cd "${PWD/$1/$2}"
     else
-        builtin cd $1
+        builtin cd "$1"
     fi
 }
 
