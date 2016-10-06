@@ -102,6 +102,7 @@ alias la='ls -A'
 alias ll='ls -Al'
 alias tmux='tmux -2'
 alias vi='vim -p'
+alias ultragrep='grep -rnH --color=always '
 
 # Quick file grep command.
 function g() {
