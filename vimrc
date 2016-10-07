@@ -21,6 +21,7 @@ Plugin 'tpope/vim-unimpaired'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'kien/ctrlp.vim'
+Plugin 'mhinz/vim-grepper'
 
 " Formatting
 Plugin 'tomtom/tcomment_vim'
@@ -34,7 +35,7 @@ Plugin 'Lokaltog/vim-easymotion'
 " Programming
 Plugin 'scrooloose/syntastic'
 Plugin 'rayburgemeestre/phpfolding.vim'
-Plugin 'joonty/vdebug'
+" Plugin 'joonty/vdebug'
 Plugin 'tpope/vim-dispatch'
 
 " Git
@@ -126,8 +127,7 @@ nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 
 " Grep
-nnoremap <silent> <Leader>g :call GrepPrompt()<CR>
-nnoremap <silent> <Leader>l :lwindow<CR>
+nnoremap <silent> <Leader>g :Grepper -tool git<CR>
 
 " Search for visually selected text
 vnoremap // y/<C-R>"<CR>
@@ -151,31 +151,6 @@ nnoremap <silent> <Leader>js :%!python -m json.tool<CR>
 " Functions
 "==============================================================================
 
-function GrepPrompt()
-    if !exists(':Glgrep')
-        echo 'Not a git repository'
-        return
-    endif
-
-    let pat = input('Pattern: ')
-    if empty(pat)
-        return
-    endif
-
-    let args = ''
-
-    if pat !~# '[A-Z]'
-        let args .= ' -i'
-    endif
-
-    let pat = escape(pat, '"')
-
-    execute 'tab split'
-    execute 'silent Glgrep!'.args.' "'.pat.'"'
-    execute 'lwindow'
-    execute 'redraw!'
-    execute 'lfirst'
-endfunction
 
 "==============================================================================
 " Commands
