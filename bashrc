@@ -104,6 +104,12 @@ alias tmux='tmux -2'
 alias vi='vim -p'
 alias ultragrep='grep -rnH --color=always '
 
+
+# colorized apache error log tail command
+function tailColorCatalinaOut() {
+    tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.catalina.out.log
+}
+
 # colorized apache error log tail command
 function tailColorApacheErrorLog() {
     tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
