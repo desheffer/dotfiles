@@ -96,14 +96,9 @@ PROMPT_COMMAND='set_prompt'
 
 PS1=""
 
-# Custom aliases.
-alias less='less -FXR'
-alias la='ls -A'
-alias ll='ls -Al'
-alias tmux='tmux -2'
-alias vi='vim -p'
-alias ultragrep='grep -rnH --color=always '
-
+# I don't like one letter functions that I should be using ...
+# That's why there are aliases for everything!!!
+#function 
 # colorized apache error log tail command
 function tailColorApacheErrorLog() {
     tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
@@ -202,4 +197,8 @@ fi
 # Allow server-specific scripting.
 [ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
 
+# Bash specific aliases
+[ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
+
 #source ~/liquidprompt/liquidprompt
+# vim:: set ft=sh
