@@ -1,0 +1,15 @@
+# ---- Personal ----
+Host augustmalson.com
+    Hostname augustmalson.com
+    Compression yes
+    IdentityFile ~/.ssh/nodebox_id_rsa
+    User caesarabby
+Host augustmalson.com-artisian
+    Hostname augustmalson.com
+    Compression yes
+    LocalForward 9333 127.0.0.1:8000
+    IdentityFile ~/.ssh/nodebox_id_rsa
+    User caesarabby
+Host github.com
+    IdentityFile ~/.ssh/github_id_rsa
+
