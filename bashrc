@@ -96,14 +96,9 @@ PROMPT_COMMAND='set_prompt'
 
 PS1=""
 
-# Custom aliases.
-alias less='less -FXR'
-alias la='ls -A'
-alias ll='ls -Al'
-alias tmux='tmux -2'
-alias vi='vim -p'
-alias ultragrep='grep -rnH --color=always '
-
+# I don't like one letter functions that I should be using ...
+# That's why there are aliases for everything!!!
+#function 
 
 # colorized mysql error log tail command
 function tailColorMysqlLogOut() {
@@ -112,12 +107,29 @@ function tailColorMysqlLogOut() {
 
 # colorized apache error log tail command
 function tailColorCatalinaOut() {
-    tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.catalina.out.log
+    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.catalina.out.log
 }
 
 # colorized apache error log tail command
 function tailColorApacheErrorLog() {
-    tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
+    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
+}
+
+# smart hd tool scan
+function smartHdToolScanStatus() {
+    sudo smartctl -c $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl
+
+}
+
+# smart hd tool capability
+function smartHdToolCapability() {
+    sudo smartctl -i $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl.capability
+
+}
+
+# smart hd tool capability
+function tailColorizedSyslog() {
+    sudo tail -f /var/log/syslog | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/bin/grc/conf.log
 }
 
 # Quick file grep command.
@@ -214,4 +226,8 @@ fi
 [ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
 [ -f "$HOME/.bash_alias" ] && . "$HOME/.bash_alias"
 
+# Bash specific aliases
+[ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
+
 #source ~/liquidprompt/liquidprompt
+# vim:: set ft=sh

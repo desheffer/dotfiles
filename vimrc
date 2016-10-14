@@ -3,6 +3,7 @@ set nocompatible
 set modelines=10
 set backspace=2
 set tabpagemax=100
+set encoding=utf-8
 
 "Whitespace
 set wrap
@@ -97,7 +98,7 @@ nnoremap ,s :setlocal spell spelllang=en_us<CR>
 nnoremap ,v :set paste!<CR>
 
 "Clear current search highlighting
-nnoremap <silent> ,/ :let @/=""<CR>
+"nnoremap <silent> ,/ :let @/=""<CR>
 
 "Build script
 map ,, :w<CR>:!date<CR>:!./build<CR>:!./build/buildapp<CR><CR>
@@ -179,7 +180,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Let Vundle Manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'powerline/powerline'
+"Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 "Plugin 'csapprox' " -- already handled by submodule
@@ -197,3 +199,5 @@ if &t_Co >= 256
     colorscheme vividchalk
     "colorscheme 'desert-warm-256'
 endif
+
+let g:Powerline_symbols = 'fancy'
