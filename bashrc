@@ -105,6 +105,11 @@ alias vi='vim -p'
 alias ultragrep='grep -rnH --color=always '
 
 
+# colorized mysql error log tail command
+function tailColorMysqlLogOut() {
+    tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.log
+}
+
 # colorized apache error log tail command
 function tailColorCatalinaOut() {
     tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.catalina.out.log
@@ -207,5 +212,6 @@ fi
 
 # Allow server-specific scripting.
 [ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
+[ -f "$HOME/.bash_alias" ] && . "$HOME/.bash_alias"
 
 #source ~/liquidprompt/liquidprompt
