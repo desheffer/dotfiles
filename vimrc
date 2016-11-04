@@ -137,9 +137,9 @@ nnoremap [g :GitGutterPrevHunk<CR>
 nnoremap ]g :GitGutterNextHunk<CR>
 
 " Align delimiting characters
-nnoremap <silent> <Leader>a= :Tabularize /=<CR>
-nnoremap <silent> <Leader>a> :Tabularize /=><CR>
-nnoremap <silent> <Leader>a: :Tabularize /:<CR>
+vnoremap <silent> <Leader>a= :Tabularize /=<CR>
+vnoremap <silent> <Leader>a> :Tabularize /=><CR>
+vnoremap <silent> <Leader>a: :Tabularize /:<CR>
 
 " Navigate merge conflicts
 nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
