@@ -69,12 +69,12 @@ function d {
 
 function passwordgen {
     if [ $# -lt 1 ]; then
-        length=16
+        length=32
     else
         length=$1
     fi
 
-    cat /dev/urandom | LC_CTYPE=C tr -dc 'a-zA-Z0-9' | head -c $length
+    LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c $length
     echo
 }
 
