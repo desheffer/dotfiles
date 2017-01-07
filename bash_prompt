@@ -9,22 +9,14 @@ icon_left_sep_alt=''
 icon_right_sep=''
 icon_right_sep_alt=''
 
-function color_set_fg {
-    echo -en "\033[1;38;5;${1}m"
-}
-
-function color_set_bg {
-    echo -en "\033[48;5;${1}m"
-}
-
 function color_reset {
     echo -en "\033[0m"
 }
 
 function block_start {
     color_reset
-    color_set_fg "$1"
-    color_set_bg "$2"
+    tput setaf "$1"
+    tput setab "$2"
 
     block_current_fg="$1"
     block_current_bg="$2"
@@ -32,12 +24,12 @@ function block_start {
 
 function block_change {
     color_reset
-    color_set_fg "$block_current_bg"
-    color_set_bg "$2"
+    tput setaf "$block_current_bg"
+    tput setab "$2"
     echo -en "$icon_left_sep"
     color_reset
-    color_set_fg "$1"
-    color_set_bg "$2"
+    tput setaf "$1"
+    tput setab "$2"
 
     block_current_fg="$1"
     block_current_bg="$2"
@@ -45,17 +37,17 @@ function block_change {
 
 function block_sep {
     color_reset
-    color_set_fg "$1"
-    color_set_bg "$block_current_bg"
+    tput setaf "$1"
+    tput setab "$block_current_bg"
     echo -en "$icon_left_sep_alt"
     color_reset
-    color_set_fg "$block_current_fg"
-    color_set_bg "$block_current_bg"
+    tput setaf "$block_current_fg"
+    tput setab "$block_current_bg"
 }
 
 function block_end {
     color_reset
-    color_set_fg "$block_current_bg"
+    tput setaf "$block_current_bg"
     echo -en "$icon_left_sep"
     color_reset
 
@@ -85,7 +77,7 @@ function generate_prompt {
 
     # Git info.
     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        color_set_fg $PROMPT_COLOR
+        tput setaf $PROMPT_COLOR
         ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
         block_text "${ref/refs\/heads\//$icon_branch }"
         color_reset
