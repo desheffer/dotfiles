@@ -21,6 +21,9 @@ shopt -s autocd 2>/dev/null
 # Aliases and functions
 #==============================================================================
 
+# Set text editor.
+export EDITOR='vim'
+
 # Custom aliases.
 alias less='less -FXR'
 alias la='ls -A'
