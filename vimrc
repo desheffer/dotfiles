@@ -7,12 +7,21 @@ set encoding=utf-8
 
 "Whitespace
 set wrap
-set tabstop=4 shiftwidth=4 softtabstop=4
+"set tabstop=2 shiftwidth=2 softtabstop=2
+set cursorline
+set expandtab
+set modeline
 set expandtab
 set smarttab
 set autoindent
 set smartindent
 set nojoinspaces
+set tabstop=2
+set shiftwidth=2
+set laststatus=2
+set number
+set ruler
+
 
 
 "set cursorline
@@ -192,10 +201,10 @@ Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 "Plugin 'desert-warm-256'
+Plugin 'saltstack/salt-vim'
 
 call vundle#end() " required
 
-filetype plugin indent on
 if &t_Co >= 256
     " colorscheme vividchalk
     colorscheme ChocolateLiquor
@@ -203,3 +212,4 @@ if &t_Co >= 256
 endif
 
 let g:Powerline_symbols = 'fancy'
+filetype plugin indent on

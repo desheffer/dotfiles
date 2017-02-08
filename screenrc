@@ -1,0 +1,59 @@
+# Send extra data to console so that you can use local console's
+# scroll-back features
+termcapinfo xterm ti@:te@
+term xterm
+
+#to allow us to send C-a C-a to the terminal
+escape ^A^A
+bind o other
+ 
+hardstatus on
+altscreen on
+# fancy buttom line tells information
+#hardstatus alwayslastline "%l | %D %M %d %c | %-w %{+r} %n %t %{-} %+w"
+hardstatus alwayslastline
+# Make sure programs are still running if we leave
+autodetach on
+ 
+# Colored status line on the bottom of the screen
+sorendition 04 43
+#hardstatus alwayslastline "%h | %-w %{+r} %n %t %{-} %+w"
+
+# Remove startup message and make status messages shorter timeout
+startup_message off
+msgwait 1
+
+# Increase scrollback buffer from 100 lines
+defscrollback 1024
+
+# Remove real bell sound and replace with virtual bell instead
+vbell on
+
+# F5/F6 to scroll through windows, F7 to rename, F8 to create new
+#bindkey -k k5 windowlist
+#bindkey -k k6 next
+#bindkey -k k6 title
+#bindkey -k k7 screen
+#bindkey -k k7 title
+#bindkey -k k8 screen
+#bindkey -k k3 remove
+#bindkey -k k4 split
+#bindkey -k k9 focus up
+#bindkey -k F2 focus down
+#bindkey -k j resize -5
+#bindkey -k J resize +5
+
+# If a window goes unresponsive, don't block the whole session waiting for it.
+nonblock on
+multiuser on 
+#
+#hardstatus alwayslastline
+#hardstatus string "%= %3n %t%? [%h]%? %="
+caption always
+caption string "%= %-w%L>%{= BW} %n*%t%{-}%52<%+w %L="
+shelltitle "$ |bash"
+#hardstatus string '%{W}%{= kg}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}][%{Y}%l%{g}]%{=b C}[ %d %M %c]'
+#hardstatus string '%d %M %c | %l |%{W}%{= kg}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}]'
+
+hardstatus string '%{=b C}[%m/%d %c] [ %{G}%H %{g}] %{= kg} [%{Y}%l%{G}]'
+#hardstatus string '%{= kg}[%{Y}%l%{g}][ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{=b kR}(%{W}%n*%f %t%?(%u)%?%{=b kR})%{= kw}%?%+Lw%?%?%= %{g}]'
