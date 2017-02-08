@@ -185,18 +185,20 @@ Plugin 'powerline/powerline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
 "Plugin 'csapprox' " -- already handled by submodule
+Plugin 'vim-scripts/ChocolateLiquor'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
-Plugin 'desert-warm-256'
+"Plugin 'desert-warm-256'
 
 call vundle#end() " required
 
 filetype plugin indent on
 if &t_Co >= 256
-    colorscheme vividchalk
+    " colorscheme vividchalk
+    colorscheme ChocolateLiquor
     "colorscheme 'desert-warm-256'
 endif
 
