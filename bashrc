@@ -142,6 +142,23 @@ function g() {
     grep "$OPTS" --exclude-dir=.git "$SEARCH" . | less
 }
 
+# Random one-off
+# WIth comments, because I suck at reading code - Sorry, I don't have cool bash scripting skills ... yet
+# function getSls { [[ -d dir ]] || mkdir $1; cd $1; wget https://raw.githubusercontent.com/roblayton/master-minion-salt-vagrant/master/salt/roots/$1/$2; cd ..; }
+function getSls {
+  # if directory not there, create it
+  [[ -d dir ]] || mkdir $1;
+
+  # Change into $1 (first parameter passed in)
+  cd $1;
+
+  # copy the code down to my directory
+  # - Well why not copy it down with git? because I can copy it down, but apparently this is what my brain thought was easier at the time ...
+  wget https://raw.githubusercontent.com/roblayton/master-minion-salt-vagrant/master/salt/roots/$1/$2;
+  # Change back into previous directory, so continue on with the next command
+  cd ..;
+}
+
 # Quick find command.
 function f() {
     SEARCH="$@"

@@ -7,7 +7,7 @@ set encoding=utf-8
 
 "Whitespace
 set wrap
-set tabstop=4 shiftwidth=4 softtabstop=4
+set tabstop=2 shiftwidth=2 softtabstop=2
 set expandtab
 set smarttab
 set autoindent
