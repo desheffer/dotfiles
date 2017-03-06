@@ -199,13 +199,10 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
-Plugin 'vim-scripts/ChocolateLiquor'
 Plugin 'saltstack/salt-vim'
 "Plugin 'chase/vim-ansible-yaml'
 "Plugin 'avakhov/vim-yaml'
-"Plugin 'chase/vim-ansible-yaml'
 "Plugin 'desert-warm-256'
-Plugin 'saltstack/salt-vim'
 
 call vundle#end() " required
 
