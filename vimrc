@@ -6,12 +6,20 @@ set tabpagemax=100
 
 "Whitespace
 set wrap
-set tabstop=4 shiftwidth=4 softtabstop=4
+"set tabstop=2 shiftwidth=2 softtabstop=2
+set cursorline
+set modeline
 set expandtab
 set smarttab
 set autoindent
 set smartindent
 set nojoinspaces
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set laststatus=2
+set number
+set ruler
 
 
 "set cursorline
@@ -184,6 +192,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 " Plugin 'csapprox' " -- already handled by submodule
 Plugin 'tpope/vim-fugitive'
@@ -191,7 +200,18 @@ Plugin 'majutsushi/tagbar'
 Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
+Plugin 'vim-scripts/ChocolateLiquor'
+Plugin 'saltstack/salt-vim'
+"Plugin 'chase/vim-ansible-yaml'
+"Plugin 'avakhov/vim-yaml'
+"Plugin 'chase/vim-ansible-yaml'
 
 call vundle#end() " required
+
+if &t_Co >= 256
+    " colorscheme vividchalk
+    colorscheme ChocolateLiquor
+    "colorscheme 'desert-warm-256'
+endif
 
 filetype plugin indent on
