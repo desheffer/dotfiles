@@ -11,6 +11,7 @@ for FILE in *; do
     # Excluded files, continue.
     [ "$FILE" == "$(basename $0)" ] && continue
     [[ "$FILE" == README* ]] && continue
+    [[ "$FILE" == bin ]] && continue
 
     SRC="$HERE/$FILE"
     DEST="$HOME/.$FILE"

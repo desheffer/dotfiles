@@ -3,14 +3,14 @@ set nocompatible
 set modelines=10
 set backspace=2
 set tabpagemax=100
+set encoding=utf-8
 
 "Whitespace
 set wrap
 "set tabstop=2 shiftwidth=2 softtabstop=2
 set cursorline
-set modeline
 set expandtab
-set smarttab
+set modeline
 set autoindent
 set smartindent
 set nojoinspaces
@@ -105,7 +105,7 @@ nnoremap ,s :setlocal spell spelllang=en_us<CR>
 nnoremap ,v :set paste!<CR>
 
 "Clear current search highlighting
-nnoremap <silent> ,/ :let @/=""<CR>
+"nnoremap <silent> ,/ :let @/=""<CR>
 
 "Build script
 map ,, :w<CR>:!date<CR>:!./build<CR>:!./build/buildapp<CR><CR>
@@ -147,9 +147,6 @@ let Tlist_Use_Right_Window = 1
 nmap <Leader>nt :NERDTreeTabsToggle<CR>
 nmap <Leader>tt :TbarToggle<CR>
 
-if &t_Co >= 256
-	colorscheme vividchalk
-endif
 
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
@@ -190,11 +187,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Let Vundle Manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
+Plugin 'powerline/powerline'
+"Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
-" Plugin 'csapprox' " -- already handled by submodule
+"Plugin 'csapprox' " -- already handled by submodule
+Plugin 'vim-scripts/ChocolateLiquor'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/gem-ctags'
@@ -205,6 +204,8 @@ Plugin 'saltstack/salt-vim'
 "Plugin 'chase/vim-ansible-yaml'
 "Plugin 'avakhov/vim-yaml'
 "Plugin 'chase/vim-ansible-yaml'
+"Plugin 'desert-warm-256'
+Plugin 'saltstack/salt-vim'
 
 call vundle#end() " required
 
@@ -214,4 +215,5 @@ if &t_Co >= 256
     "colorscheme 'desert-warm-256'
 endif
 
+let g:Powerline_symbols = 'fancy'
 filetype plugin indent on

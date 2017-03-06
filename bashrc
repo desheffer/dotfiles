@@ -96,12 +96,46 @@ PROMPT_COMMAND='set_prompt'
 
 PS1=""
 
-# Custom aliases.
-alias less='less -FXR'
-alias la='ls -A'
-alias ll='ls -Al'
-alias tmux='tmux -2'
-alias vi='vim -p'
+# I don't like one letter functions that I should be using ...
+# That's why there are aliases for everything!!!
+#function 
+
+# colorized mysql error log tail command
+function tailColorMysqlLogOut() {
+    tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.log
+}
+
+# colorized apache error log tail command
+function tailColorCatalinaOut() {
+    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.catalina.out.log
+}
+
+# colorized apache error log tail command
+function tailColorApacheErrorLog() {
+    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
+}
+
+# smart hd tool scan
+function smartHdToolScanStatus() {
+    sudo smartctl -c $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl
+
+}
+
+# smart hd tool capability
+function smartHdToolCapability() {
+    sudo smartctl -i $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl.capability
+
+}
+
+# smart hd tool capability
+function tailColorizedSyslog() {
+    sudo tail -f /var/log/syslog | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/bin/grc/conf.log
+}
+
+# smart hd tool scan
+function tailColorSaltRun() {
+    tail -f $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.salt-run
+}
 
 # Quick file grep command.
 function g() {
@@ -111,6 +145,23 @@ function g() {
         OPTS="${OPTS}i"
     fi
     grep "$OPTS" --exclude-dir=.git "$SEARCH" . | less
+}
+
+# Random one-off
+# WIth comments, because I suck at reading code - Sorry, I don't have cool bash scripting skills ... yet
+# function getSls { [[ -d dir ]] || mkdir $1; cd $1; wget https://raw.githubusercontent.com/roblayton/master-minion-salt-vagrant/master/salt/roots/$1/$2; cd ..; }
+function getSls {
+  # if directory not there, create it
+  [[ -d dir ]] || mkdir $1;
+
+  # Change into $1 (first parameter passed in)
+  cd $1;
+
+  # copy the code down to my directory
+  # - Well why not copy it down with git? because I can copy it down, but apparently this is what my brain thought was easier at the time ...
+  wget https://raw.githubusercontent.com/roblayton/master-minion-salt-vagrant/master/salt/roots/$1/$2;
+  # Change back into previous directory, so continue on with the next command
+  cd ..;
 }
 
 # Quick find command.
@@ -195,5 +246,10 @@ fi
 
 # Allow server-specific scripting.
 [ -f "$HOME/.bash_custom" ] && . "$HOME/.bash_custom"
+[ -f "$HOME/.bash_alias" ] && . "$HOME/.bash_alias"
+
+# Bash specific aliases
+[ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
 #source ~/liquidprompt/liquidprompt
+# vim:: set ft=sh
