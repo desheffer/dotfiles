@@ -1,0 +1,29 @@
+# display this line in yellow and stop further processing
+regexp=.*last message repeated \d+ times$
+colours=yellow
+count=stop
+======
+regexp="success": true
+colours=green
+count=stop
+======
+regexp="result": true
+colours=green
+count=stop
+======
+regexp="comment": 
+colours=yellow
+count=stop
+======
+
+
+
+# example of text substitution
+#regexp=\bda?emon
+#replace=angel
+#colours=red
+#======
+# example of text substitution
+#regexp=(\d\d):(\d\d):(\d\d)
+#replace=\1h\2m\3s
+#======

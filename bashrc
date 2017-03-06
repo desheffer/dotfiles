@@ -132,6 +132,11 @@ function tailColorizedSyslog() {
     sudo tail -f /var/log/syslog | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/bin/grc/conf.log
 }
 
+# smart hd tool scan
+function tailColorSaltRun() {
+    tail -f $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.salt-run
+}
+
 # Quick file grep command.
 function g() {
     OPTS="-nrs"
