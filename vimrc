@@ -7,7 +7,7 @@ set encoding=utf-8
 
 "Whitespace
 set wrap
-"set tabstop=2 shiftwidth=2 softtabstop=2
+set tabstop=2 shiftwidth=2 softtabstop=2
 set cursorline
 set expandtab
 set modeline
