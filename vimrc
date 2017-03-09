@@ -8,10 +8,13 @@ filetype off
 call plug#begin()
 
 " General
-Plug 'morhetz/gruvbox'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
+
+" Themes
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline-themes'
 
 " Files and directories
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc' }
@@ -48,10 +51,10 @@ call plug#end()
 "==============================================================================
 
 set t_Co=256
-set background=dark
 set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
-silent! colorscheme gruvbox
+silent! set termguicolors
+silent! colorscheme base16-gruvbox-dark-pale
 
 set expandtab                   " Tab key inserts spaces
 set softtabstop=4               " Use 4 spaces for indentation
