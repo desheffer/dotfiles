@@ -5,46 +5,42 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-
-call vundle#begin()
-
-Plugin 'gmarik/Vundle.vim'
+call plug#begin()
 
 " General
-Plugin 'morhetz/gruvbox'
-Plugin 'bling/vim-airline'
-Plugin 'tpope/vim-sensible'
-Plugin 'tpope/vim-unimpaired'
+Plug 'morhetz/gruvbox'
+Plug 'bling/vim-airline'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
 
 " Files and directories
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'kien/ctrlp.vim'
-Plugin 'mhinz/vim-grepper'
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'kien/ctrlp.vim'
+Plug 'mhinz/vim-grepper'
 
 " Formatting
-Plugin 'tomtom/tcomment_vim'
-Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-surround'
+Plug 'tomtom/tcomment_vim'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-surround'
 
 " Movement
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Lokaltog/vim-easymotion'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Lokaltog/vim-easymotion'
 
 " Programming
-Plugin 'scrooloose/syntastic'
-Plugin 'rayburgemeestre/phpfolding.vim'
-" Plugin 'joonty/vdebug'
-Plugin 'tpope/vim-dispatch'
+Plug 'scrooloose/syntastic'
+Plug 'rayburgemeestre/phpfolding.vim'
+" Plug 'joonty/vdebug'
+Plug 'tpope/vim-dispatch'
 
 " Git
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
 
-call vundle#end()
+call plug#end()
 
 "==============================================================================
 " Environment Settings
