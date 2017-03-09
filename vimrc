@@ -126,7 +126,7 @@ vnoremap <silent> gy :w !pbcopy<CR><CR>
 nnoremap <Leader>w :w!<CR>
 
 " Toggle fzf
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p> :GFiles<CR>
 
 " Toggle NERD Tree
 nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
@@ -206,14 +206,14 @@ autocmd!
 autocmd InsertEnter * set number norelativenumber
 autocmd InsertLeave * set number relativenumber
 
-" Highlight lines with more than 120 characters
-autocmd BufWinEnter * let w:m3=matchadd('ErrorMsg', '\%>120v.\+', -1)
-
 " Disable whitespace at the end of comments
 autocmd FileType * setlocal formatoptions-=w
 
 " Strip whitespace when saving certain types of files
 autocmd FileType php autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Maximize Grepper results
+autocmd User Grepper only
 
 " Jump to the last cursor position when opening a file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g'\"" | endif
