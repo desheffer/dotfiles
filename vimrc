@@ -14,9 +14,10 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
 
 " Files and directories
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc' }
+Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'kien/ctrlp.vim'
 Plug 'mhinz/vim-grepper'
 
 " Formatting
@@ -118,6 +119,9 @@ vnoremap <silent> gy :w !pbcopy<CR><CR>
 " Fast saving
 nnoremap <Leader>w :w!<CR>
 
+" Toggle fzf
+nnoremap <C-p> :Files<CR>
+
 " Toggle NERD Tree
 nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
@@ -163,12 +167,6 @@ command SudoWrite write !sudo tee % > /dev/null
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
-
-let g:ctrlp_user_command={
-    \ 'types': {
-        \ 'git': ['.git', 'git --git-dir=%s/.git ls-files -co --exclude-standard'],
-    \ },
-\ }
 
 let g:nerdtree_tabs_open_on_gui_startup=0
 
