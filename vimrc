@@ -13,7 +13,7 @@ Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
 
 " Themes
-Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline-themes'
 
 " Files and directories
@@ -55,7 +55,8 @@ silent! set termguicolors
 silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
-silent! colorscheme base16-gruvbox-dark-pale
+set background=dark
+colorscheme gruvbox
 
 set expandtab                   " Tab key inserts spaces
 set softtabstop=4               " Use 4 spaces for indentation
