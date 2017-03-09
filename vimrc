@@ -51,8 +51,6 @@ call plug#end()
 "==============================================================================
 
 set t_Co=256
-set guifont=Meslo_LG_S_Regular_for_Powerline:h12
-
 silent! set termguicolors
 silent! let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
 silent! let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
@@ -87,6 +85,8 @@ set noshowmode                  " Hide current mode
 set directory^=~/.backup//      " Write swap files to ~/.backup
 
 set visualbell t_vb=            " Be quiet
+
+set guifont=Meslo_LG_S_Regular_for_Powerline:h12
 
 "==============================================================================
 " Mappings
