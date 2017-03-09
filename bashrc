@@ -3,7 +3,7 @@
 #==============================================================================
 
 # Add user binary path.
-[ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 
 # If not running interactively, don't do anything else.
 [ -z "$PS1" ] && return
