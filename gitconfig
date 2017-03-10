@@ -1,0 +1,39 @@
+[core]
+    editor = vim
+    pager = less -FXRS -x4
+    eol = lf
+    whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+    autocrlf = input
+[merge]
+    tool = vimdiff
+    summary = true
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[color "diff"]
+    whitespace = red reverse
+[alias]
+    graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    changes = log --name-status
+    listlog = log --no-merges --pretty=format:%s
+[diff]
+    renamelimit = 4000
+    compactionHeuristic = 1
+[push]
+    default = simple
+[github]
+    user = desheffer
+[include]
+    path = ~/.gitconfig.local
