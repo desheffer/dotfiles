@@ -45,18 +45,20 @@ function cd {
 # Quick grep command.
 function g {
     vi "+Grepper -query '$@'"
+}
 
-    # SEARCH="$@"
-    #
-    # OPTS="-n"
-    # if [[ $SEARCH =~ ^[^A-Z]*$ ]]; then
-    #     OPTS="${OPTS} -i"
-    # fi
-    #
-    # git grep $OPTS "$SEARCH" \
-    #     -- './*' ':!*.min.css' ':!*.min.js' ':!/public/static/generated/' ':!/public/dist/' \
-    #     | sed -nr 's/^([^:]*):([0-9]*):/\1 : \2 ::\t/p' \
-    #     | less
+function gg {
+    SEARCH="$@"
+
+    OPTS="-n"
+    if [[ $SEARCH =~ ^[^A-Z]*$ ]]; then
+        OPTS="${OPTS} -i"
+    fi
+
+    git grep $OPTS "$SEARCH" \
+        -- './*' ':!*.min.css' ':!*.min.js' ':!/public/static/generated/' ':!/public/dist/' \
+        | sed -nr 's/^([^:]*):([0-9]*):/\1 : \2 ::\t/p' \
+        | less
 }
 
 # Quick find command.
