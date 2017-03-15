@@ -102,6 +102,10 @@ nnoremap Q <Nop>
 nnoremap <Tab><Enter> :tabedit<Space>
 nnoremap <Tab>q :tabclose<CR>
 
+" Fast saving and quiting
+nnoremap <Leader>w :w!<CR>
+nnoremap <Leader>q :q<CR>
+
 " Move to previous and next tabs
 nnoremap <silent> [<Tab> :tabprev<CR>
 nnoremap <silent> ]<Tab> :tabnext<CR>
@@ -123,9 +127,6 @@ nnoremap Y y$
 " Yank to the clipboard
 vnoremap <silent> gy :w !pbcopy<CR><CR>
 
-" Fast saving
-nnoremap <Leader>w :w!<CR>
-
 " Toggle fzf
 nnoremap <C-p> :GFiles<CR>
 
@@ -134,7 +135,8 @@ nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 
 " Grep
-nnoremap <silent> <Leader>g :Grepper -tool git<CR>
+nnoremap <silent> <Leader>g :Grepper<CR>
+nnoremap <silent> <Tab>g :tabnew<CR>:Grepper<CR>
 
 " Search for visually selected text
 vnoremap // y/<C-R>"<CR>
@@ -213,14 +215,14 @@ autocmd FileType * setlocal formatoptions-=w
 " Strip whitespace when saving certain types of files
 autocmd FileType php autocmd BufWritePre <buffer> :%s/\s\+$//e
 
-" Maximize Grepper results
-autocmd User Grepper only
-
 " Jump to the last cursor position when opening a file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g'\"" | endif
 
 " Always start at the top of a commit message
 autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+
+" Automatically close quickfix window
+autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix" | q | endif
 
 augroup END
 
