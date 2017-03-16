@@ -103,11 +103,11 @@ nnoremap Q <Nop>
 
 " Open and close tabs
 nnoremap <Tab><Enter> :tabedit<Space>
-nnoremap <Tab>q :tabclose<CR>
+nnoremap <silent> <Tab>q :call TabClose()<CR>
 
 " Fast saving and quiting
-nnoremap <Leader>w :w!<CR>
-nnoremap <Leader>q :q<CR>
+nnoremap <silent> <Leader>w :w!<CR>
+nnoremap <silent> <Leader>q :q<CR>
 
 " Move to previous and next tabs
 nnoremap <silent> [<Tab> :tabprev<CR>
@@ -170,6 +170,13 @@ nnoremap <silent> <Leader>js :%!python -m json.tool<CR>
 " Functions
 "==============================================================================
 
+function! TabClose()
+    if tabpagenr('$') == 1
+        qall
+    else
+        tabclose
+    endif
+endfunction
 
 "==============================================================================
 " Commands
