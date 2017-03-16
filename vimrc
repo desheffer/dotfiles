@@ -114,8 +114,8 @@ nnoremap <silent> [<Tab> :tabprev<CR>
 nnoremap <silent> ]<Tab> :tabnext<CR>
 
 " Create a window split
-nnoremap <C-w>- :split<CR>
-nnoremap <C-w>\| :vsplit<CR>
+nnoremap <C-a>- :split<CR>
+nnoremap <C-a>\| :vsplit<CR>
 
 " Navigate window splits
 nnoremap <silent> <C-a><Left>  :TmuxNavigateLeft<cr>
