@@ -16,6 +16,9 @@ Plug 'tpope/vim-unimpaired'
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline-themes'
 
+" Tmux
+Plug 'christoomey/vim-tmux-navigator'
+
 " Files and directories
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc' }
 Plug 'junegunn/fzf.vim'
@@ -110,9 +113,16 @@ nnoremap <Leader>q :q<CR>
 nnoremap <silent> [<Tab> :tabprev<CR>
 nnoremap <silent> ]<Tab> :tabnext<CR>
 
-" Move tabs left or right
-nnoremap <silent> <Tab>{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
-nnoremap <silent> <Tab>} :execute 'silent! tabmove ' . tabpagenr()<CR>
+" Create a window split
+nnoremap <C-w>- :split<CR>
+nnoremap <C-w>\| :vsplit<CR>
+
+" Navigate window splits
+nnoremap <silent> <C-a><Left>  :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-a><Down>  :TmuxNavigateDown<cr>
+nnoremap <silent> <C-a><Up>    :TmuxNavigateUp<cr>
+nnoremap <silent> <C-a><Right> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-a>\\      :TmuxNavigatePrevious<cr>
 
 " Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
@@ -176,6 +186,8 @@ command SudoWrite write !sudo tee % > /dev/null
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#fnamemod=':t'
+
+let g:tmux_navigator_no_mappings = 1
 
 let g:nerdtree_tabs_open_on_gui_startup=0
 
