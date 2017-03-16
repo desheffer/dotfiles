@@ -145,8 +145,8 @@ nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 
 " Grep
-nnoremap <silent> <Leader>g :Grepper<CR>
-nnoremap <silent> <Tab>g :tabnew<CR>:Grepper<CR>
+nnoremap <silent> <Leader>g :Ag <C-r><C-w><CR>
+xnoremap <silent> <Leader>g y:Ag <C-R>"<CR>
 
 " Search for visually selected text
 vnoremap // y/<C-R>"<CR>
