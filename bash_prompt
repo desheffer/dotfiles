@@ -2,8 +2,6 @@
 #       6^2 * $R + 6 * $G + $B + 16
 #       Where $R, $G, and $B are in the range (0, 5).
 
-icon_branch=''
-icon_commit='➦'
 icon_left_sep=''
 icon_left_sep_alt=''
 icon_right_sep=''
@@ -76,12 +74,9 @@ function generate_prompt {
     block_end
 
     # Git info.
-    if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        tput setaf $PROMPT_COLOR
-        ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
-        block_text "${ref/refs\/heads\//$icon_branch }"
-        color_reset
-    fi
+    tput setaf $PROMPT_COLOR
+    block_text "$(__git_ps1 %s)"
+    color_reset
 
     echo -en "\n\$ "
 }

@@ -47,9 +47,18 @@ if [ -e "$REVERT" ]; then
     echo "Revert log stored as $REVERT"
 fi
 
+if [ ! -e ~/.git-completion.bash ]; then
+    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+fi
+
+if [ ! -e ~/.git-prompt.sh ]; then
+    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
+fi
+
 # Install Vim plugins.
 mkdir -p ~/.backup
-[ ! -f ~/.vim/autoload/plug.vim ] && \
+if [ ! -f ~/.vim/autoload/plug.vim ]; then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 vim +PlugUpdate +qall

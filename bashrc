@@ -146,8 +146,9 @@ fi
 # Git paging.
 export GIT_PAGER='less -+$LESS -FXR'
 
-# Git auto completion.
-[ -n "$BASH_VERSION" ] && . "$HOME/.git-completion.bash"
+# Git scripts.
+[ -f "$HOME/.git-completion.bash" ] && . "$HOME/.git-completion.bash"
+[ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
 
 #==============================================================================
 # Miscellaneous
