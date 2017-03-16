@@ -83,6 +83,9 @@ set listchars+=trail:·          " Show trailing spaces
 
 set wildmode=longest,list       " Make completion mode acts like Bash
 
+set splitbelow                  " New windows open below
+set splitright                  " New windows open right
+
 set showcmd                     " Show incomplete normal mode commands
 set noshowmode                  " Hide current mode
 
@@ -118,11 +121,11 @@ nnoremap <C-a>- :split<CR>
 nnoremap <C-a>\| :vsplit<CR>
 
 " Navigate window splits
-nnoremap <silent> <C-a><Left>  :TmuxNavigateLeft<cr>
-nnoremap <silent> <C-a><Down>  :TmuxNavigateDown<cr>
-nnoremap <silent> <C-a><Up>    :TmuxNavigateUp<cr>
-nnoremap <silent> <C-a><Right> :TmuxNavigateRight<cr>
-nnoremap <silent> <C-a>\\      :TmuxNavigatePrevious<cr>
+nnoremap <silent> <C-a><Left>  :TmuxNavigateLeft<CR>
+nnoremap <silent> <C-a><Down>  :TmuxNavigateDown<CR>
+nnoremap <silent> <C-a><Up>    :TmuxNavigateUp<CR>
+nnoremap <silent> <C-a><Right> :TmuxNavigateRight<CR>
+nnoremap <silent> <C-a>\\      :TmuxNavigatePrevious<CR>
 
 " Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
