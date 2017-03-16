@@ -145,8 +145,9 @@ nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 
 " Grep
-nnoremap <silent> <Leader>g :Ag <C-r><C-w><CR>
-xnoremap <silent> <Leader>g y:Ag <C-R>"<CR>
+nnoremap <silent> <Leader>g :Grepper<CR>
+nnoremap <silent> <Leader>a :Ag <C-r><C-w><CR>
+xnoremap <silent> <Leader>a y:Ag <C-R>"<CR>
 
 " Search for visually selected text
 vnoremap // y/<C-R>"<CR>
@@ -191,8 +192,6 @@ command SudoWrite write !sudo tee % > /dev/null
 "==============================================================================
 
 let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#fnamemod=':t'
 
 let g:tmux_navigator_no_mappings = 1
 
