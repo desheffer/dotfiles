@@ -149,8 +149,8 @@ nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 
 " Grep
 nnoremap <silent> <Leader>g :Grepper<CR>
-nnoremap <silent> <Leader>a :Ag <C-r><C-w><CR>
-xnoremap <silent> <Leader>a y:Ag <C-R>"<CR>
+nnoremap <silent> <Leader>a :Ag! <C-r><C-w><CR>
+xnoremap <silent> <Leader>a y:Ag! <C-R>"<CR>
 
 " Search for visually selected text
 vnoremap // y/<C-R>"<CR>
@@ -189,6 +189,9 @@ endfunction
 " File system helpers
 command Mkdir !mkdir -p '%:h' > /dev/null
 command SudoWrite write !sudo tee % > /dev/null
+
+" Show preview for Ag command
+command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('up:60%'), <bang>0)
 
 "==============================================================================
 " Plugin Settings
