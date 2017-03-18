@@ -161,4 +161,4 @@ export GIT_PAGER='less -+$LESS -FXR'
 [ -f "$HOME/.fzf.bash" ] && . "$HOME/.fzf.bash"
 
 # Allow server-specific scripting.
-[ -f "$HOME/.bash_local" ] && . "$HOME/.bash_local"
+[ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
