@@ -70,9 +70,7 @@ function gg {
 
 # Quick find command.
 function f {
-    FILE="$(fzf --query="$@")"
-    echo "$FILE"
-    vi "$FILE"
+    echo 'Use `vi` with <C-t> instead!'
 }
 
 # Quick development directory change command.
