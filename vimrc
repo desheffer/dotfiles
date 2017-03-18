@@ -89,7 +89,11 @@ set splitright                  " New windows open right
 set showcmd                     " Show incomplete normal mode commands
 set noshowmode                  " Hide current mode
 
-set directory^=~/.backup//      " Write swap files to ~/.backup
+set directory=~/.vim/swap//     " Where to write swap files
+set backupdir=~/.vim/backup     " Where to write backup files
+
+set undofile                    " Save undo history
+set undodir=~/.vim/undo         " Where to write undo history
 
 set visualbell t_vb=            " Be quiet
 

@@ -55,8 +55,11 @@ if [ ! -e ~/.git-prompt.sh ]; then
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 fi
 
+mkdir -p ~/.vim/swap
+mkdir -p ~/.vim/backup
+mkdir -p ~/.vim/undo
+
 # Install Vim plugins.
-mkdir -p ~/.backup
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
