@@ -3,9 +3,6 @@
 cd "$(dirname $0)"
 HERE="$(pwd)"
 
-STASH="$HERE/.stash/$(date +%s)"
-REVERT="$STASH/revert"
-
 for FILE in *; do
 
     # Excluded files, continue.
@@ -20,32 +17,17 @@ for FILE in *; do
         continue
     fi
 
-    echo "Installing $DEST..."
-
-    # Move any existing files into the stash.
+    # Abort if the file already exists.
     if [ -e "$DEST" ]; then
-        mkdir -p "$STASH"
-
-        STASHFILE="$STASH/.$FILE"
-        mv "$DEST" "$STASHFILE"
-        echo "Stashed existing file as $STASHFILE"
-
-        # Log the steps necessary to revert changes.
-        echo "# Revert .$FILE" >> "$REVERT"
-        echo "rm -f '$DEST'" >> "$REVERT"
-        echo "cp '$STASHFILE' '$DEST'" >> "$REVERT"
-        echo >> "$REVERT"
+        echo "Error: $DEST already exists!"
+        exit 0
     fi
 
     # Link the new file into place.
+    echo "Installing $DEST..."
     rm -f "$DEST" && ln -s "$SRC" "$DEST"
 
 done
-
-# Notify the user about the revert script.
-if [ -e "$REVERT" ]; then
-    echo "Revert log stored as $REVERT"
-fi
 
 if [ ! -e ~/.git-completion.bash ]; then
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
