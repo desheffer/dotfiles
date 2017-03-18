@@ -18,7 +18,7 @@ shopt -s globstar 2>/dev/null
 shopt -s autocd 2>/dev/null
 
 #==============================================================================
-# Aliases and functions
+# Aliases
 #==============================================================================
 
 # Set text editor.
@@ -29,18 +29,25 @@ alias less='less -FXR'
 alias la='ls -A'
 alias ll='ls -Al'
 alias tmux='tmux -2'
-alias vi='vim -p'
+alias vi='vim'
 alias vim='vim -p'
 alias serve='python -m SimpleHTTPServer 8000'
 
-# Path replacement.
-function cd {
-    if [ $# -eq 2 ]; then
-        builtin cd "${PWD/$1/$2}"
-    else
-        builtin cd "$1"
-    fi
-}
+# Linux specific setup.
+if [ "$(uname -s)" == 'Linux' ]; then
+    eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+fi
+
+# Mac OS X specific setup.
+if [ "$(uname -s)" == 'Darwin' ]; then
+    alias ls='ls -G'
+    alias vim='mvim -v -p'
+fi
+
+#==============================================================================
+# Functions
+#==============================================================================
 
 # Quick grep command.
 function g {
@@ -63,8 +70,9 @@ function gg {
 
 # Quick find command.
 function f {
-    SEARCH="$@"
-    find -iname "*$SEARCH*" | less
+    FILE="$(fzf --query="$@")"
+    echo "$FILE"
+    vi "$FILE"
 }
 
 # Quick development directory change command.
@@ -74,12 +82,12 @@ function d {
 
 function passwordgen {
     if [ $# -lt 1 ]; then
-        length=32
+        LENGTH=32
     else
-        length=$1
+        LENGTH=$1
     fi
 
-    LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c $length
+    LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c $LENGTH
     echo
 }
 
@@ -93,18 +101,6 @@ function phptags {
     rm -f tags
     find . -type f -iname "*.php" -not -path "/vendor" | xargs ctags -a
 }
-
-# Linux specific setup.
-if [ $(uname) == 'Linux' ]; then
-    eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-fi
-
-# Mac OS X specific setup.
-if [ $(uname) == 'Darwin' ]; then
-    alias ls='ls -G'
-    alias vim='mvim -v'
-fi
 
 #==============================================================================
 # Prompt
