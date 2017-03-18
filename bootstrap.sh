@@ -3,19 +3,27 @@
 cd "$(dirname $0)"
 HERE="$(pwd)"
 
-for FILE in *; do
+# Remove old files.
+for FILE in $(file ~/* | grep broken | cut -d : -f 1); do
+    echo "Cleaning up $FILE..."
+    rm "$FILE"
+done
 
-    # Excluded files, continue.
+# Install new files.
+for FILE in *; do
+    # Skip excluded files.
     [ "$FILE" == "$(basename $0)" ] && continue
     [[ "$FILE" == README* ]] && continue
 
     SRC="$HERE/$FILE"
     DEST="$HOME/.$FILE"
 
-    # No change, continue.
+    # Skip if no change is needed.
     if [ "$(readlink "$DEST")" == "$SRC" ]; then
         continue
     fi
+
+    echo "Installing $DEST..."
 
     # Abort if the file already exists.
     if [ -e "$DEST" ]; then
@@ -24,9 +32,7 @@ for FILE in *; do
     fi
 
     # Link the new file into place.
-    echo "Installing $DEST..."
-    rm -f "$DEST" && ln -s "$SRC" "$DEST"
-
+    ln -s "$SRC" "$DEST"
 done
 
 if [ ! -e ~/.git-completion.bash ]; then
