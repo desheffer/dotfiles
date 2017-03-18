@@ -3,7 +3,7 @@
 #==============================================================================
 
 # Add user binary path.
-[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[ -d ~/bin ] && export PATH="$HOME/bin:$PATH"
 
 # If not running interactively, don't do anything else.
 [ -z "$PS1" ] && return
@@ -110,7 +110,7 @@ fi
 # Prompt
 #==============================================================================
 
-[[ "$TERM" =~ .*-256color ]] && . "$HOME/.bashrc.prompt"
+[[ "$TERM" =~ .*-256color ]] && . ~/.bashrc.prompt
 
 #==============================================================================
 # SSH
@@ -147,18 +147,18 @@ fi
 export GIT_PAGER='less -+$LESS -FXR'
 
 # Git scripts.
-[ -f "$HOME/.git-completion.bash" ] && . "$HOME/.git-completion.bash"
-[ -f "$HOME/.git-prompt.sh" ] && . "$HOME/.git-prompt.sh"
+[ -f ~/.git-completion.bash ] && . ~/.git-completion.bash
+[ -f ~/.git-prompt.sh ] && . ~/.git-prompt.sh
 
 #==============================================================================
 # Miscellaneous
 #==============================================================================
 
 # Add RVM paths.
-[ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
+[ -f ~/.rvm/scripts/rvm ] && . ~/.rvm/scripts/rvm
 
 # Add fzf paths.
-[ -f "$HOME/.fzf.bash" ] && . "$HOME/.fzf.bash"
+[ -f ~/.fzf.bash ] && . ~/.fzf.bash
 
 # Allow server-specific scripting.
-[ -f "$HOME/.bashrc.local" ] && . "$HOME/.bashrc.local"
+[ -f ~/.bashrc.local ] && . ~/.bashrc.local
