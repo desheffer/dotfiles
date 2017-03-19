@@ -104,7 +104,50 @@ function phptags {
 # Prompt
 #==============================================================================
 
-[[ "$TERM" =~ .*-256color ]] && . ~/.bashrc.prompt
+function generate_prompt {
+    if [ -z "$PROMPT_COLOR" ]; then
+        PROMPT_COLOR=10
+    fi
+
+    local SEP=''
+    local ALT_SEP=''
+    local RSEP=''
+    local ALT_RSEP=''
+
+    local RESET=$(tput sgr0)
+
+    local A_FG=$(tput setaf 0)
+    local A_BG=$(tput setab $PROMPT_COLOR)
+    local A_SEP_FG=$(tput setaf $PROMPT_COLOR)
+    local B_FG=$(tput setaf 15)
+    local B_BG=$(tput setab 237)
+    local B_SEP_FG=$(tput setaf 237)
+    local C_FG=$(tput setaf $PROMPT_COLOR)
+
+    # Set window title.
+    echo -en "\033]0;\u@\h:\w\a"
+
+    # Generate powerline prompt.
+    echo -en "\n"
+    echo -en "${RESET}${A_BG}${A_FG}"
+    echo -en "  \u@\h  "
+    echo -en "${RESET}${B_BG}${A_SEP_FG}${SEP}${B_FG}"
+    echo -en "  \w  "
+    echo -en "${RESET}${B_SEP_FG}${SEP}${C_FG}"
+    echo -en "  $(__git_ps1 %s)  "
+    echo -en "${RESET}"
+    echo -en "\n\$ "
+}
+
+function set_prompt {
+    PS1="$(generate_prompt)"
+}
+
+# Provide fallback prompt.
+PS1="\n\u@\h:\w\n\$ "
+
+# Upgrade to a color prompt.
+[[ "$TERM" =~ .*-256color ]] && PROMPT_COMMAND='set_prompt'
 
 #==============================================================================
 # SSH
