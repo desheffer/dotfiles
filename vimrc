@@ -15,6 +15,7 @@ Plug 'tpope/vim-unimpaired'
 " Themes
 Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'ryanoasis/vim-devicons'
 
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
@@ -97,7 +98,7 @@ set undodir=~/.vim/undo         " Where to write undo history
 
 set visualbell t_vb=            " Be quiet
 
-set guifont=Meslo_LG_S_Regular_for_Powerline:h12
+set guifont=MesloLGS_Nerd_Font:h12
 
 "==============================================================================
 " Mappings

@@ -15,13 +15,18 @@ however you see fit.
 
 ## Installation
 
-1. Run <code>bootstrap.sh</code> to link the files into your home directory.
+1. Run `bootstrap.sh` to link the files into your home directory.
 
 2. https://www.youtube.com/watch?v=QX5XKFn7Ngo
 
 3. ???
 
 4. Et voilà!
+
+## Fonts
+
+Download and install one of the patched [Nerd
+Fonts](https://github.com/ryanoasis/nerd-fonts).
 
 ## Sharing a clipboard over SSH
 
