@@ -4,7 +4,7 @@ cd "$(dirname $0)"
 HERE="$(pwd)"
 
 # Remove old files.
-for FILE in $(file ~/* | grep broken | cut -d : -f 1); do
+for FILE in $(file ~/.* | grep broken | cut -d : -f 1); do
     echo "Cleaning up $FILE..."
     rm "$FILE"
 done
