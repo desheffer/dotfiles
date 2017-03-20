@@ -105,55 +105,27 @@ function phptags {
 #==============================================================================
 
 function git_status {
-    STATUS=$(GIT_PS1_SHOWDIRTYSTATE=1 GIT_PS1_SHOWSTASHSTATE=1 GIT_PS1_SHOWUNTRACKEDFILES=1 __git_ps1 '%s')
+    STATUS=$(__git_ps1 '%s')
 
-    if [ -z "$STATUS" ]; then
-        exit
-    fi
+    [ -z "$STATUS" ] && exit
 
     HEAD=$(echo "$STATUS" | cut -d '|' -f 1 | cut -d ' ' -f 1)
     STATE=$(echo "$STATUS" | cut -d '|' -f 1 | cut -d ' ' -s -f 2)
     REBASE=$(echo "$STATUS" | cut -d '|' -s -f 2)
 
-    local SEP=''
-    local RSEP=''
     local BRANCH=''
     local COMMIT=''
     local TAG=''
-    local UNSTAGED='●'
-    local STAGED='●'
-    local UNTRACKED='●'
-    local STASHED='⚑'
-    local CLEAN='✔'
-
-    local RESET=$(tput sgr0)
-
-    local R_FG=$(tput setaf 1)
-    local G_FG=$(tput setaf 2)
-    local Y_FG=$(tput setaf 3)
-    local B_FG=$(tput setaf 4)
-    local W_FG=$(tput setaf 15)
-    local R_BG=$(tput setab 1)
 
     if [[ "$HEAD" =~ ^\(.*\.\.\.\)$ ]]; then
-        echo -en "${W_FG}${COMMIT} ${HEAD} "
+        echo -en "${COMMIT} ${HEAD}"
     elif [[ "$HEAD" =~ ^\(.*\)$ ]]; then
-        echo -en "${W_FG}${TAG} $(echo "${HEAD}" | sed -n 's/(\(.*\))/\1/p') "
+        echo -en "${TAG} $(echo "${HEAD}" | sed -n 's/(\(.*\))/\1/p')"
     else
-        echo -en "${W_FG}${BRANCH} ${HEAD} "
+        echo -en "${BRANCH} ${HEAD}"
     fi
 
-    if [ ! -z "$REBASE" ]; then
-        echo -en " ${R_FG}${RSEP}${RESET}${R_BG}"
-        echo -en "${W_FG} ${REBASE} "
-        echo -en "${RESET}${R_FG}${SEP}${RESET} "
-    fi
-
-    [[ "$STATE" =~ [%] ]] && echo -en " ${R_FG}${UNTRACKED}"
-    [[ "$STATE" =~ [*] ]] && echo -en " ${Y_FG}${UNSTAGED}"
-    [[ "$STATE" =~ [+] ]] && echo -en " ${G_FG}${STAGED}"
-    [[ "$STATE" =~ [$] ]] && echo -en " ${B_FG}${STASHED}"
-    [[ ! "$STATE" =~ [%*+] ]] && echo -en " ${G_FG}${CLEAN} "
+    [ ! -z "$REBASE" ] && echo -en "  (${REBASE})"
 }
 
 function generate_prompt {
@@ -162,9 +134,7 @@ function generate_prompt {
     fi
 
     local SEP=''
-    local ALT_SEP=''
     local RSEP=''
-    local ALT_RSEP=''
 
     local RESET=$(tput sgr0)
 
@@ -174,7 +144,7 @@ function generate_prompt {
     local B_FG=$(tput setaf 15)
     local B_BG=$(tput setab 237)
     local B_SEP_FG=$(tput setaf 237)
-    local C_FG=$(tput setaf 15)
+    local C_FG=$(tput setaf $PROMPT_COLOR)
 
     # Set window title.
     echo -en "\033]0;\u@\h:\w\a"
