@@ -139,6 +139,9 @@ vnoremap p pgvy
 vnoremap < <gv
 vnoremap > >gv
 
+" Highlight last inserted text
+nnoremap gV `[v`]
+
 " Make Y yank to end of line
 nnoremap Y y$
 
@@ -146,7 +149,7 @@ nnoremap Y y$
 vnoremap <silent> gy :w !pbcopy<CR><CR>
 
 " Toggle fzf
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-p> :Files<CR>
 
 " Toggle NERD Tree
 nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
