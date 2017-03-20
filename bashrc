@@ -104,13 +104,12 @@ function phptags {
 # Prompt
 #==============================================================================
 
-function git_status {
+function __git_status {
     STATUS=$(__git_ps1 '%s')
 
-    [ -z "$STATUS" ] && exit
+    [ -z "$STATUS" ] && return
 
-    HEAD=$(echo "$STATUS" | cut -d '|' -f 1 | cut -d ' ' -f 1)
-    STATE=$(echo "$STATUS" | cut -d '|' -f 1 | cut -d ' ' -s -f 2)
+    HEAD=$(echo "$STATUS" | cut -d'|' -f1 | cut -d' ' -f1)
     REBASE=$(echo "$STATUS" | cut -d '|' -s -f 2)
 
     local BRANCH=''
@@ -120,7 +119,7 @@ function git_status {
     if [[ "$HEAD" =~ ^\(.*\.\.\.\)$ ]]; then
         echo -en "${COMMIT} ${HEAD}"
     elif [[ "$HEAD" =~ ^\(.*\)$ ]]; then
-        echo -en "${TAG} $(echo "${HEAD}" | sed -n 's/(\(.*\))/\1/p')"
+        echo -en "${TAG} ${HEAD:1:-1}"
     else
         echo -en "${BRANCH} ${HEAD}"
     fi
@@ -128,7 +127,7 @@ function git_status {
     [ ! -z "$REBASE" ] && echo -en "  (${REBASE})"
 }
 
-function generate_prompt {
+function __generate_prompt {
     if [ -z "$PROMPT_COLOR" ]; then
         PROMPT_COLOR=10
     fi
@@ -156,20 +155,21 @@ function generate_prompt {
     echo -en "${RESET}${B_BG}${A_SEP_FG}${SEP}${B_FG}"
     echo -en "  \w  "
     echo -en "${RESET}${B_SEP_FG}${SEP}${C_FG}"
-    echo -en "  $(git_status)  "
+    echo -en "  \$(__git_status)  "
     echo -en "${RESET}"
     echo -en "\n\$ "
 }
 
-function set_prompt {
-    PS1="$(generate_prompt)"
+function __set_prompt {
+    PS1="$(__generate_prompt)"
+    PROMPT_COMMAND=
 }
 
 # Provide fallback prompt.
 PS1="\n\u@\h:\w\n\$ "
 
 # Upgrade to a color prompt.
-[[ "$TERM" =~ .*-256color ]] && PROMPT_COMMAND='set_prompt'
+[[ "$TERM" =~ .*-256color ]] && PROMPT_COMMAND='__set_prompt'
 
 #==============================================================================
 # SSH
