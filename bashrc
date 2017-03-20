@@ -132,6 +132,10 @@ function __generate_prompt {
         PROMPT_COLOR=10
     fi
 
+    if [ -z "$PROMPT_USER" ]; then
+        PROMPT_USER='\u@\h'
+    fi
+
     local SEP=''
     local RSEP=''
 
@@ -151,7 +155,7 @@ function __generate_prompt {
     # Generate powerline prompt.
     echo -en "\n"
     echo -en "${RESET}${A_BG}${A_FG}"
-    echo -en "  \u@\h  "
+    echo -en "  ${PROMPT_USER}  "
     echo -en "${RESET}${B_BG}${A_SEP_FG}${SEP}${B_FG}"
     echo -en "  \w  "
     echo -en "${RESET}${B_SEP_FG}${SEP}${C_FG}"
