@@ -51,10 +51,6 @@ fi
 
 # Quick grep command.
 function g {
-    vi "+Grepper -query '$@'"
-}
-
-function gg {
     SEARCH="$@"
 
     OPTS="-n"
