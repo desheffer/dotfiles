@@ -256,6 +256,10 @@ autocmd FileType gitcommit autocmd! BufEnter COMMIT_EDITMSG call setpos('.', [0,
 " Automatically close quickfix window
 autocmd WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix" | q | endif
 
+autocmd BufRead * if &key!= ""
+    \ | setlocal history=0 nobackup noshelltemp noswapfile noundofile nowritebackup secure viminfo=""
+    \ | endif
+
 augroup END
 
 "==============================================================================
