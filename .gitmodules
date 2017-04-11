@@ -7,3 +7,9 @@
 [submodule "extras/code-maat"]
 	path = extras/code-maat
 	url = git@github.com:adamtornhill/code-maat.git
+[submodule "extras/oh-my-zsh"]
+	path = extras/oh-my-zsh
+	url = git@github.com:robbyrussell/oh-my-zsh.git
+[submodule "extras/vagrant_dev"]
+	path = extras/vagrant_dev
+	url = git@github.com:caesargus/vagrant_dev.git
