@@ -2,5 +2,8 @@
 	path = vim/bundle/Vundle.vim
 	url = git@github.com:VundleVim/Vundle.vim.git
 [submodule "grc"]
-	path = bin/grc
+	path = extras/grc
 	url = git@github.com:garabik/grc.git
+[submodule "extras/code-maat"]
+	path = extras/code-maat
+	url = git@github.com:adamtornhill/code-maat.git
