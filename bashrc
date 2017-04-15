@@ -53,15 +53,17 @@ fi
 function g {
     SEARCH="$@"
 
-    OPTS="-n"
-    if [[ $SEARCH =~ ^[^A-Z]*$ ]]; then
-        OPTS="${OPTS} -i"
-    fi
+    [ -z "$SEARCH" ] && return
 
-    git grep $OPTS "$SEARCH" \
-        -- './*' ':!*.min.css' ':!*.min.js' ':!/public/static/generated/' ':!/public/dist/' \
-        | sed -nr 's/^([^:]*):([0-9]*):/\1 : \2 ::\t/p' \
-        | less
+    TARGET=$(ag "$SEARCH" | fzf)
+
+    if [ ! -z "$TARGET" ]; then
+        FILE=$(echo "$TARGET" | cut -d ':' -f 1)
+        LINE=$(echo "$TARGET" | cut -d ':' -f 2)
+
+        echo "$FILE:$LINE"
+        vi "+$LINE" "$FILE"
+    fi
 }
 
 # Quick find command.

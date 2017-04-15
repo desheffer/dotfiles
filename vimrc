@@ -199,7 +199,11 @@ command Mkdir !mkdir -p '%:h' > /dev/null
 command SudoWrite write !sudo tee % > /dev/null
 
 " Show preview for Ag command
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('up:60%'), <bang>0)
+command! -bang -nargs=* Ag
+\ call fzf#vim#ag(<q-args>,
+\                 <bang>0 ? fzf#vim#with_preview('up:60%')
+\                         : fzf#vim#with_preview('right:50%:hidden', '?'),
+\                 <bang>0)
 
 "==============================================================================
 " Plugin Settings
