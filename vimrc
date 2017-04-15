@@ -42,6 +42,9 @@ Plug 'rayburgemeestre/phpfolding.vim'
 " Plug 'joonty/vdebug'
 Plug 'tpope/vim-dispatch'
 
+" Syntax
+Plug 'mxw/vim-jsx'
+
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -231,6 +234,8 @@ let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
 
 let g:gist_post_private=1
+
+let g:jsx_ext_required=0
 
 "==============================================================================
 " Auto Commands
