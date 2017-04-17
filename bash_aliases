@@ -13,7 +13,7 @@ alias la='ls -A'
 alias ll='ls -Al'
 alias tmux='tmux -2'
 alias vi='vim -p'
-alias ultragrep='grep -rnH --color=always '
+alias ultragrep='grep -rnHi --color=always --exclude="*.swp" --exclude="*.orig" --exclude="*.svn*" --exclude="*.diff"'
 alias quickFileGrep='g'
 
 
