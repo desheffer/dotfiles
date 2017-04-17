@@ -102,39 +102,49 @@ PS1=""
 
 # colorized mysql error log tail command
 function tailColorMysqlLogOut() {
-    tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.log
+    tail -fn 100 $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.log
 }
 
 # colorized apache error log tail command
 function tailColorCatalinaOut() {
-    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.catalina.out.log
+    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.catalina.out.log
 }
 
 # colorized apache error log tail command
 function tailColorApacheErrorLog() {
-    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
+    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
 }
 
 # smart hd tool scan
 function smartHdToolScanStatus() {
-    sudo smartctl -c $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl
+    sudo smartctl -c $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl
 
 }
 
 # smart hd tool capability
 function smartHdToolCapability() {
-    sudo smartctl -i $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl.capability
+    sudo smartctl -i $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl.capability
 
 }
 
 # smart hd tool capability
 function tailColorizedSyslog() {
-    sudo tail -f /var/log/syslog | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/bin/grc/conf.log
+    sudo tail -f /var/log/syslog | ~/code/dotfiles/bin/grcat ~/code/dotfiles/bin/grc/conf.log
 }
 
 # smart hd tool scan
 function tailColorSaltRun() {
-    tail -f $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.salt-run
+    tail -f $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.salt-run
+}
+
+# php debug tool scan
+function tailColorPHPDebugLogFile() {
+    tail -f $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.debug-php
+}
+
+# apache error tool scan
+function tailColorPHPApacheErrorFile() {
+    tail -f $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
 }
 
 # Quick file grep command.
