@@ -47,7 +47,7 @@ colours=bold magenta
 count=more
 ======
 # connect requires special attention
-regexp=connect
+regexp= connect
 colours=on_red
 count=more
 ======
