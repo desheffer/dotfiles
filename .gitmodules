@@ -13,3 +13,6 @@
 [submodule "extras/vagrant_dev"]
 	path = extras/vagrant_dev
 	url = git@github.com:caesargus/vagrant_dev.git
+[submodule "extras/php_am_debug"]
+	path = extras/php_am_debug
+	url = git@github.com:caesargus/php_am_debug.git
