@@ -202,14 +202,14 @@ Plugin 'fatih/vim-go'
 Plugin 'saltstack/salt-vim'
 "Plugin 'chase/vim-ansible-yaml'
 "Plugin 'avakhov/vim-yaml'
-"Plugin 'desert-warm-256'
+Plugin 'desert-warm-256'
 
 call vundle#end() " required
 
 if &t_Co >= 256
     " colorscheme vividchalk
-    colorscheme ChocolateLiquor
-    "colorscheme 'desert-warm-256'
+    "colorscheme ChocolateLiquor
+    colorscheme desert-warm-256
 endif
 
 let g:Powerline_symbols = 'fancy'
