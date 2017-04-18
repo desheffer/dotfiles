@@ -25,7 +25,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc' }
 Plug 'junegunn/fzf.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
-Plug 'mhinz/vim-grepper'
 
 " Formatting
 Plug 'tomtom/tcomment_vim'
@@ -159,7 +158,7 @@ nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 
 " Grep
-nnoremap <silent> <Leader>g :Grepper<CR>
+nnoremap <Leader>g :Ag!<Space>
 nnoremap <silent> <Leader>a :Ag! <C-r><C-w><CR>
 xnoremap <silent> <Leader>a y:Ag! <C-R>"<CR>
 
