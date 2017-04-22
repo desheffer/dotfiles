@@ -152,6 +152,7 @@ vnoremap <silent> gy :w !pbcopy<CR><CR>
 
 " Toggle fzf
 nnoremap <C-p> :Files<CR>
+nnoremap <Leader>b :Buffers<CR>
 
 " Toggle NERD Tree
 nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
