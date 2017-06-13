@@ -188,7 +188,7 @@ fi
 # Mac OS X specific setup.
 if [ $(uname) == 'Darwin' ]; then
     alias ls='ls -G'
-    alias vim='mvim -v'
+    #alias vim='mvim -v'
 fi
 
 #
@@ -234,9 +234,9 @@ fi
 # PATHS
 #
 
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # Add user binary path.
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
-
 # Add RVM to path.
 [ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
 
@@ -251,5 +251,13 @@ fi
 # Bash specific aliases
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
+# Node Virtual Machine
+export NVM_DIR="$HOME/.nvm"
+source $(brew --prefix nvm)/nvm.sh
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
 #source ~/liquidprompt/liquidprompt
 # vim:: set ft=sh
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

@@ -13,3 +13,6 @@
 [submodule "extras/vagrant_dev"]
 	path = extras/vagrant_dev
 	url = git@github.com:caesargus/vagrant_dev.git
+[submodule "awslogs"]
+	path = extras/awslogs
+	url = git@github.com:jorgebastida/awslogs.git
