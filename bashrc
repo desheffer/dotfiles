@@ -4,9 +4,8 @@
 # Update window size.
 shopt -s checkwinsize
 
-function parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
+# Bash specific functions 
+[ -f "$HOME/.bash_functions" ] && . "$HOME/.bash_functions"
 
 #
 # PROMPT
@@ -14,79 +13,13 @@ function parse_git_branch() {
 
 if [[ "$TERM" =~ .*-256color ]]; then
     icon_commit='➦'
-    icon_branch=''
-    icon_separator=''
+    icon_branch='|>'
+    icon_separator='>>'
 else
     icon_commit='c:'
     icon_branch='b:'
     icon_separator=''
 fi
-
-function color_set_fg {
-    code=16
-    [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))
-    echo -en "\033[1;38;5;${code}m"
-}
-
-function color_set_bg {
-    code=16
-    [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))
-    echo -en "\033[48;5;${code}m"
-    color_current_bg="$1 $2 $3"
-}
-
-function color_reset {
-    echo -en "\033[0m"
-}
-
-function color_start {
-    color_reset
-    echo
-    color_set_fg $1 $2 $3
-    color_set_bg $4 $5 $6
-}
-
-function color_change {
-    color_reset
-    color_set_fg $color_current_bg
-    [ $# -ge 3 ] && color_set_bg $4 $5 $6
-    echo -en "$icon_separator"
-    [ $# -ge 3 ] && color_set_fg $1 $2 $3
-}
-
-function color_end {
-    color_change
-    color_reset
-}
-
-function color_block {
-    echo -en "  $@  "
-}
-
-function generate_prompt {
-    # Window title.
-    echo -en "\033]0;\u@\h:\w\a"
-
-    # Basic prompt.
-    color_start 0 0 0 5 4 0
-    color_block "\u@\h"
-    color_change 5 5 5 1 1 1
-    color_block "\w"
-
-    # Git info.
-    if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-        ref=$(git symbolic-ref HEAD 2>/dev/null) || ref="$icon_commit $(git show-ref --head -s --abbrev | head -n1 2>/dev/null)"
-        color_change 0 3 5
-        color_block ${ref/refs\/heads\//$icon_branch }
-    fi
-
-    color_end
-    echo -en "\n\$ "
-}
-
-function set_prompt {
-    PS1="$(generate_prompt)"
-}
 
 PROMPT_COMMAND='set_prompt'
 
@@ -94,90 +27,7 @@ PROMPT_COMMAND='set_prompt'
 # ALIASES
 #
 
-PS1=""
-
-# I don't like one letter functions that I should be using ...
-# That's why there are aliases for everything!!!
-#function 
-
-# colorized mysql error log tail command
-function tailColorMysqlLogOut() {
-    tail -fn 100 $1 | ~/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.log
-}
-
-# colorized apache error log tail command
-function tailColorCatalinaOut() {
-    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.catalina.out.log
-}
-
-# colorized apache error log tail command
-function tailColorApacheErrorLog() {
-    sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
-}
-
-# smart hd tool scan
-function smartHdToolScanStatus() {
-    sudo smartctl -c $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl
-
-}
-
-# smart hd tool capability
-function smartHdToolCapability() {
-    sudo smartctl -i $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl.capability
-
-}
-
-# smart hd tool capability
-function tailColorizedSyslog() {
-    sudo tail -f /var/log/syslog | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/bin/grc/conf.log
-}
-
-# smart hd tool scan
-function tailColorSaltRun() {
-    tail -f $1 | ~/code/dotfiles/bin/grc/grcat ~/code/dotfiles/grc_conf_files/conf.salt-run
-}
-
-# Quick file grep command.
-function g() {
-    OPTS="-nrs"
-    SEARCH="$@"
-    if [[ $SEARCH =~ ^[^A-Z]*$ ]]; then
-        OPTS="${OPTS}i"
-    fi
-    grep "$OPTS" --exclude-dir=.git "$SEARCH" . | less
-}
-
-# Random one-off
-# WIth comments, because I suck at reading code - Sorry, I don't have cool bash scripting skills ... yet
-# function getSls { [[ -d dir ]] || mkdir $1; cd $1; wget https://raw.githubusercontent.com/roblayton/master-minion-salt-vagrant/master/salt/roots/$1/$2; cd ..; }
-function getSls {
-  # if directory not there, create it
-  [[ -d dir ]] || mkdir $1;
-
-  # Change into $1 (first parameter passed in)
-  cd $1;
-
-  # copy the code down to my directory
-  # - Well why not copy it down with git? because I can copy it down, but apparently this is what my brain thought was easier at the time ...
-  wget https://raw.githubusercontent.com/roblayton/master-minion-salt-vagrant/master/salt/roots/$1/$2;
-  # Change back into previous directory, so continue on with the next command
-  cd ..;
-}
-
-# Quick find command.
-function f() {
-    SEARCH="$@"
-    find -iname "*$SEARCH*" | less
-}
-
-# Quick development directory change command.
-function d() {
-    if [ -n "$1" ]; then
-        cd "$HOME/$(whoami).$1"
-    else
-        (cd && ls -d "$(whoami)."*) | sed "s/$(whoami)\.//"
-    fi
-}
+PS1=">"
 
 # Linux specific setup.
 if [ $(uname) == 'Linux' ]; then
@@ -234,7 +84,8 @@ fi
 # PATHS
 #
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="~/code/weedmaps_code/weedmaps-tools/git:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export GIT_EXEC_PATH="~/code/weedmaps_code/weedmaps-tools/git"
 # Add user binary path.
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 # Add RVM to path.

@@ -1,0 +1,37 @@
+
+# this is date
+regexp=\[\d{4}-\d{2}-\d{2}\]
+colours=cyan
+count=once
+======
+# this is a done state
+regexp=Finished|Done|Ready For Release
+colours=green
+count=once
+======
+# this is a Out of Dev Queue state
+regexp=Ready For Acceptance|Ready For QA|QA
+colours=yellow
+count=once
+======
+# this is a In the Dev Queue state
+regexp=In Dev|Peer Review|In Progress
+colours=red
+count=once
+======
+# this is a Jira Project Number
+regexp=\[w+-w+\]
+colours=blue
+count=once
+======
+# this is a commit SHA
+regexp=\[w+\]
+colours=red
+count=once
+======
+# this is the cut line
+regexp=^-->
+colours=bold green
+count=once
+
+
