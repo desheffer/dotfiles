@@ -229,6 +229,7 @@ let g:syntastic_quiet_messages={ 'type': 'style' }
 let g:syntastic_enable_signs=1
 let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='!'
+let g:syntastic_html_tidy_exec = 'tidy5'
 
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
