@@ -15,7 +15,7 @@ colours=yellow
 count=once
 ======
 # this is a In the Dev Queue state
-regexp=In Dev|Peer Review|In Progress
+regexp=In Dev|Peer Review|In Progress|Failed
 colours=red
 count=once
 ======

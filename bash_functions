@@ -1,5 +1,20 @@
 # vim: ft=sh
 
+function helpWeedmaps() {
+  echo "Release Notes File # RNF"
+  echo "Color Release Notes # CRN"
+  echo "-- Ionic --"
+  echo "# gitReleaseNotesStatus PreviousProductionReleaseNumber # CRN"
+  echo "-- Core --"
+  echo "# Core - gitReleaseNotesStatus origin/release/PreviousProductionReleaseNumber GhostGroup/weedmaps"
+  echo "\n"
+  echo "Generate Release Notes File"
+  echo "Ionic:"
+  echo "releasenotes origin/release/4.1.0.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-4.2.0.txt"
+  echo "Core:"
+  echo "releasenotes origin/release/4.1.0.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-4.2.0.txt"
+}
+
 function parse_git_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
