@@ -1,18 +1,41 @@
 # vim: ft=sh
 
 function helpWeedmaps() {
+  Ionic_PreviousProductionReleaseNumber=2.13.2
+}
+
+function helpWeedmapsReleaseNotesGenProcess() {
+  
+  Ionic_PreviousProductionReleaseNumber=2.13.2
+  Ionic_CurrentProductionReleaseNumber=3.0.0
+  Core_PreviousProductionReleaseNumber=4.1.0
+  Core_CurrentProductionReleaseNumber=4.2.0
+  MmjMenu_PreviousProductionReleaseNumber=4.2.0
+  MmjMenu_CurrentProductionReleaseNumber=4.2.0
   echo "Release Notes File # RNF"
   echo "Color Release Notes # CRN"
-  echo "-- Ionic --"
-  echo "# gitReleaseNotesStatus PreviousProductionReleaseNumber # CRN"
-  echo "-- Core --"
-  echo "# Core - gitReleaseNotesStatus origin/release/PreviousProductionReleaseNumber GhostGroup/weedmaps"
-  echo "\n"
-  echo "Generate Release Notes File"
-  echo "Ionic:"
-  echo "releasenotes origin/release/4.1.0.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-4.2.0.txt"
-  echo "Core:"
-  echo "releasenotes origin/release/4.1.0.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-4.2.0.txt"
+  if [ "ionic" = "$1" ]; then 
+    echo "gitReleaseNotesStatus ${Ionic_PreviousProductionReleaseNumber} }# CRN"
+    echo "-----"
+    echo "Generate Release Notes File"
+    echo "releasenotes 2.13.2.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-4.2.0.txt"
+    echo "-----"
+    echo "Type output"
+    echo "Release notes should be generated "
+  elif [ "core" = "$1" ]; then
+    echo "gitReleaseNotesStatus origin/release/${Core_PreviousProductionReleaseNumber} GhostGroup/weedmaps"
+    echo "-----"
+    echo "Generate Release Notes File"
+    echo "releasenotes origin/release/4.1.0.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-4.2.0.txt"
+    echo "-----"
+    echo "Type output"
+    echo "Release notes should be generated "
+  else
+    echo "You were supposed to do something"
+  fi
+}
+function helpWeedmapsCoreReleaseProcess() {
+  echo "git cherry-pick -m 1 -e [SHA-to-merge-in]"
 }
 
 function parse_git_branch() {
