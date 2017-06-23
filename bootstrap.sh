@@ -12,6 +12,11 @@ for FILE in *; do
     [ "$FILE" == "$(basename $0)" ] && continue
     [[ "$FILE" == README* ]] && continue
     [[ "$FILE" == bin ]] && continue
+    [[ "$FILE" == ssh_config ]] && continue
+    [[ "$FILE" == misc ]] && continue
+    [[ "$FILE" == extras ]] && continue
+    [[ "$FILE" == fonts ]] && continue
+    [[ "$FILE" == grc_conf_files ]] && continue
 
     SRC="$HERE/$FILE"
     DEST="$HOME/.$FILE"

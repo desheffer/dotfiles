@@ -103,9 +103,11 @@ export GIT_EXEC_PATH="~/code/weedmaps_code/weedmaps-tools/git"
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
 # Node Virtual Machine
-export NVM_DIR="$HOME/.nvm"
-source $(brew --prefix nvm)/nvm.sh
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+if hash brew 2>/dev/null; then
+  export NVM_DIR="$HOME/.nvm"
+  source $(brew --prefix nvm)/nvm.sh
+  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+fi
 
 #source ~/liquidprompt/liquidprompt
 # vim:: set ft=sh
