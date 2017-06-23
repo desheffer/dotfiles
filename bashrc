@@ -14,7 +14,7 @@ shopt -s checkwinsize
 if [[ "$TERM" =~ .*-256color ]]; then
     icon_commit='➦'
     icon_branch='|>'
-    icon_separator='>>'
+    icon_separator=''
 else
     icon_commit='c:'
     icon_branch='b:'
@@ -27,7 +27,7 @@ PROMPT_COMMAND='set_prompt'
 # ALIASES
 #
 
-PS1=">"
+PS1=""
 
 # Linux specific setup.
 if [ $(uname) == 'Linux' ]; then

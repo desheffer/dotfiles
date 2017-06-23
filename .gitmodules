@@ -16,3 +16,9 @@
 [submodule "awslogs"]
 	path = extras/awslogs
 	url = git@github.com:jorgebastida/awslogs.git
+[submodule "extras/php_am_debug"]
+	path = extras/php_am_debug
+	url = git@github.com:caesargus/php_am_debug.git
+[submodule "extras/coreos-vagrant"]
+	path = extras/coreos-vagrant
+	url = git@github.com:coreos/coreos-vagrant.git

@@ -1,5 +1,8 @@
 I got these from my friend Doug ... Thanks Doug! :D
 
+Using Powerline fonts in cygwin:
+DejaVu Sans Mono for Powerline
+
 dotfiles
 ========
 

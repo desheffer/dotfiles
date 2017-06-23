@@ -12,10 +12,23 @@
 #======
 
 # display this line in yellow and stop further processing
-regexp=.*last message repeated \d+ times$
+regexp=^FUNCTION:
 colours=yellow
 count=stop
 ======
+# display this line in yellow and stop further processing
+regexp=^FILE:
+colours=yellow
+count=stop
+======
+# display this line in yellow and stop further processing
+regexp=^Date/Time:
+colours=yellow
+count=stop
+======
+#===================================
+# DONE/WORKING
+#====================================
 # this is date
 regexp=^... (\d| )\d \d\d:\d\d:\d\d(\s[\w\d]+?\s)
 colours=green, green, red
@@ -47,7 +60,7 @@ colours=bold magenta
 count=more
 ======
 # connect requires special attention
-regexp= connect
+regexp=connect
 colours=on_red
 count=more
 ======
@@ -75,3 +88,4 @@ count=more
 regexp=PHP Parse error:
 colours=red
 count=more
+
