@@ -20,18 +20,28 @@ colours=red
 count=once
 ======
 # this is a Jira Project Number
-regexp=\[w+-w+\]
-colours=blue
+regexp=\[.{3}-.{3}\]
+colours=cyan
 count=once
 ======
 # this is a commit SHA
-regexp=\[w+\]
+regexp=\[.{9}\]
 colours=red
 count=once
 ======
 # this is the cut line
 regexp=^-->
 colours=bold green
+count=once
+======
+# this is a website of commit
+regexp=https://github.com/.*/.{9}
+colours=green
+count=once
+======
+# this is a website of project
+regexp=https://projects.weedmaps.com/.*/.{3}-.{3}
+colours=magenta
 count=once
 
 
