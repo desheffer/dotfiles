@@ -8,6 +8,23 @@ function helpGeneralInfo() {
   echo "helpWeedmaps"
 }
 
+function helpPowerline() {
+  echo "iTerm2 for Mac"
+  echo "pip install --user git+git://github.com/Lokaltog/powerline --verbose"
+  echo "git clone git@github.com:powerline/fonts.git"
+  echo "brew install python"
+  echo "edit .vimrc"
+  echo "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}"
+  echo "set guifont=Inconsolata\ for\ Powerline:h15"
+  echo "let g:Powerline_symbols = 'fancy'"
+  echo "set encoding=utf-8"
+  echo "set t_Co=256"
+  echo "set fillchars+=stl:\ ,stlnc:\  "
+  echo "  set term=xterm-256color"
+  echo "set termencoding=utf-8"
+
+}
+
 function helpTailCommands() {
   echo "tailColorSaltRun \$1"
   echo "tailColorMysqlLogOut \$1"
