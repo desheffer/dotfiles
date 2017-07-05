@@ -5,6 +5,9 @@
 shopt -s checkwinsize
 
 # Bash specific functions 
+[ -f "$HOME/.bash_functions_calendar" ] && . "$HOME/.bash_functions_calendar"
+[ -f "$HOME/.bash_functions_weedmaps" ] && . "$HOME/.bash_functions_weedmaps"
+[ -f "$HOME/.bash_functions_tail" ] && . "$HOME/.bash_functions_tail"
 [ -f "$HOME/.bash_functions" ] && . "$HOME/.bash_functions"
 
 #

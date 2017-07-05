@@ -1,0 +1,49 @@
+# vim: ft=sh
+
+function helpTailCommands() {
+  echo "tailColorSaltRun \$1"
+  echo "tailColorMysqlLogOut \$1"
+  echo "tailColorCatalinaOut \$1"
+  echo "tailColorApacheErrorLog \$1"
+  echo "smartHdToolScanStatus \$1"
+  echo "tailColorizedSyslog "
+  echo "tailColorSaltRun \$1"
+
+}
+
+
+# colorized mysql error log tail command
+function tailColorMysqlLogOut() {
+  tail -fn 100 $1 | ~/bin/grcat ~/code/dotfiles/grc_conf_files/conf.log
+}
+
+# colorized apache error log tail command
+function tailColorCatalinaOut() {
+  sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.catalina.out.log
+}
+
+# colorized apache error log tail command
+function tailColorApacheErrorLog() {
+  sudo tail -fn 100 $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.php.error.log
+}
+
+# smart hd tool scan
+function smartHdToolScanStatus() {
+  sudo smartctl -c $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl
+}
+
+# smart hd tool capability
+function smartHdToolCapability() {
+  sudo smartctl -i $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.smartctl.capability
+}
+
+# smart hd tool capability
+function tailColorizedSyslog() {
+  sudo tail -f /var/log/syslog | ~/code/dotfiles/bin/grcat ~/code/dotfiles/bin/grc/conf.log
+}
+
+# smart hd tool scan
+function tailColorSaltRun() {
+  tail -f $1 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.salt-run
+}
+

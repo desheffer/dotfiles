@@ -1,0 +1,88 @@
+# vim: ft=sh
+
+function calendarHelp() {
+  echo "calendarWeedmapsQuickAddReminder MIN TITLE_TEXT"
+  echo "calendarGtdQuickAddReminder MIN TITLE_TEXT"
+  echo "calendarPersonalQuickAddReminder MIN TITLE_TEXT"
+  echo "calendarAgendaForToday"
+  echo "calendarWeedmapsQuickAddReminder"
+  echo "To see the week planner view:" 
+  echo "gcalcli calw 1"
+}
+
+function calendarWeedmapsQuickAddReminder() {
+  echo "Not quick way ..."
+  echo " gcalcli \\ " 
+  echo " --title '$2' \\ " 
+  echo" --where 'laptop' \\ " 
+  echo " --when '$(date --date "now +$1 minutes" +"%m/%d/%y %H:%M")' \\ " 
+  echo " --duration 60 \\ " 
+  echo " --description '$2' \\ " 
+  echo " --reminder 10 \\ " 
+  echo " --calendar 'Work Related Tasks' \\ " 
+  echo " add "
+  echo "calendarWeedmapsQuickAddReminder MIN TITLE_TEXT"
+  gcalcli \
+    --calendar 'Work Related Tasks' \
+    --when="$(date --date "now +$1 minutes" +"%m/%d/%y %H:%M")" \
+    --duration 1 \
+    --reminder 1 \
+    --description "$2" \
+    --title "$2" \
+    --where 'your laptop' \
+    add 
+  calendarAgendaForToday
+}
+
+function calendarGtdQuickAddReminder() {
+  echo "Not quick way ..."
+  echo " gcalcli \\ " 
+  echo " --title '$2' \\ " 
+  echo" --where 'laptop' \\ " 
+  echo " --when '$(date --date "now +$1 minutes" +"%m/%d/%y %H:%M")' \\ " 
+  echo " --duration 1 # 1 minute \\ " 
+  echo " --description '$2' \\ " 
+  echo " --reminder 1 # 1 minute \\ " 
+  echo " --calendar 'GTD' \\ " 
+  echo " add "
+  echo "calendarGtdQuickAddReminder MIN TITLE_TEXT"
+  gcalcli \
+    --calendar 'GTD' \
+    --when="$(date --date "now +$1 minutes" +"%m/%d/%y %H:%M")" \
+    --duration 1 \
+    --reminder 1 \
+    --description "$2" \
+    --title "$2" \
+    --where 'your laptop' \
+    add 
+  calendarAgendaForToday
+}
+
+function calendarPersonalQuickAddReminder() {
+  echo "Not quick way ..."
+  echo " gcalcli \\ " 
+  echo " --title '$2' \\ " 
+  echo" --where 'laptop' \\ " 
+  echo " --when '$(date --date "now +$1 minutes" +"%m/%d/%y %H:%M")' \\ " 
+  echo " --duration 1 # 1 minute \\ " 
+  echo " --description '$2' \\ " 
+  echo " --reminder 1 # 1 minute \\ " 
+  echo " --calendar 'August Malson' \\ " 
+  echo " add "
+  echo "calendarPersonalQuickAddReminder MIN TITLE_TEXT"
+  gcalcli \
+    --calendar 'August Malson' \
+    --when="$(date --date "now +$1 minutes" +"%m/%d/%y %H:%M")" \
+    --duration 1 \
+    --reminder 1 \
+    --description "$2" \
+    --title "$2" \
+    --where 'your laptop' \
+    add 
+  calendarAgendaForToday
+}
+
+function calendarAgendaForToday() {
+  printf "gcalcli agenda 12am %s" $(date --date="tomorrow" +"%m/%d/%y")
+  gcalcli agenda 12am $(date --date="tomorrow" +"%m/%d/%y")
+}
