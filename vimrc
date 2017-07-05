@@ -231,18 +231,26 @@ Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'saltstack/salt-vim'
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Plugin 'chase/vim-ansible-yaml'
 "Plugin 'avakhov/vim-yaml'
-Plugin 'desert-warm-256'
+"Plugin 'desert-warm-256'
 Plugin 'stephpy/vim-php-cs-fixer'
 
 call vundle#end() " required
 
 if &t_Co >= 256
-    " colorscheme vividchalk
+    colorscheme vividchalk
     "colorscheme ChocolateLiquor
-    colorscheme desert-warm-256
+    "colorscheme desert-warm-256
 endif
 
 let g:Powerline_symbols = 'fancy'
 filetype plugin indent on
+set guifont=Inconsolata\ for\ Powerline:h15
+"let g:Powerline_symbols = 'fancy'
+set encoding=utf-8
+set t_Co=256
+set fillchars+=stl:\ ,stlnc:\
+set term=xterm-256color
+set termencoding=utf-8

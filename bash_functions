@@ -9,10 +9,6 @@ function helpGeneralInfo() {
   echo "helpGitCommands"
 }
 
-function helpGitCommands() {
-  echo "git command line tree" 
-  echo "git log --graph --all --decorate --oneline "
-}
 
 function parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
