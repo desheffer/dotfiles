@@ -47,7 +47,7 @@ function color_command_section {
 }
 
 function color_heading_section {
-  # notes should appear as bold
+  # notes should appear as red
   echo -en "\e[31m $1 \e[0m"
 }
 
