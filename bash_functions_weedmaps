@@ -3,24 +3,24 @@
 
 function helpWeedmaps() {
   color_command_section "Weedmaps Help"
-  color_note_section "-------------------------------------------"
+  color_dividing_section 
   color_command_section "helpWeedmapsReleaseNotesGenProcess ionic|core"
   color_command_section "helpWeedmapsCoreReleaseProcess"
   color_command_section "helpWeedmapsIonicRelease"
   color_command_section "helpWeedmapsRinseAndRepeat"
   color_command_section "helpUpdateWeedmapsVersions"
-  color_note_section "====="
+  color_dividing_section 
   color_note_section "Daily things to do"
-  color_note_section "-----"
+  color_diving_section 
   color_note_section "8AM"
   color_command_section "helpWeedmapsRinseAndRepeat"
-  color_note_section "-----"
+  color_dividing_section 
   color_note_section "12PM"
   color_command_section "helpWeedmapsRinseAndRepeat"
-  color_note_section "-----"
+  color_dividing_section 
   color_note_section "4PM"
   color_command_section "helpWeedmapsRinseAndRepeat"
-  color_note_section "====="
+  color_dividng_section 
   color_note_section "If shit blows up ... Call/Text Jared - 7207256801"
 }
 
@@ -41,7 +41,7 @@ function helpWeedmapsDatabaseRestore() {
   color_heading_section "-- then rebuild core weedmaps --"
   color_command_section "git checkout acceptance; git fetch; git pull; git push origin acceptance:acceptance;"
   color_heading_section "-- Go to CircleCI and Bot Flow to watch the process to make sure the environment is up --"
-  color_heading_section "--------"
+  color_divding_section 
   color_heading_section "== Data base refreshing =="
   color_note_section "these can be run at same time"
   echo ""
@@ -118,12 +118,12 @@ function helpWeedmapsUpdateVersions() {
 function helpWeedmapsReleaseNotifications() {
   [ -f "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh" ] && . "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh"
   color_heading_section "In ops flow:"
-    color_heading_section "===="
+    color_dividing_section 
     if [ "ionic" = "$1" ]; then 
     color_note_section "@team Ionic ${Ionic_CurrentProductionReleaseNumber} is going to production shortly."
-      color_heading_section "-----"
+      color_dividing_section
       color_note_section "in Release Chat Room Flow:"
-      color_heading_section "===="
+      color_dividing_section 
       color_note_section "@Team for Ionic ${Ionic_CurrentProductionReleaseNumber} release to Prod."
       color_note_section "We have:"
       color_note_section "OPS Notified"
@@ -133,9 +133,9 @@ function helpWeedmapsReleaseNotifications() {
       color_note_section "Product sign off @Thomas, @CharlieK"
     elif [ "core" = "$1" ]; then
     color_note_section "@Team Core ${Core_CurrentProductionReleaseNumber} going to Production soon"
-      color_heading_section "-----"
+      color_dividing_section 
       color_note_section "in Release Chat Room Flow:"
-      color_heading_section "===="
+      color_dividing_section 
       color_note_section "@Team for Core ${Core_CurrentProductionReleaseNumber} to production."
       color_note_section "We have:"
       color_note_section "OPS notified"
@@ -177,17 +177,17 @@ function helpWeedmapsRinseAndRepeat() {
 
 function helpCircleCliHelp() {
   color_note_section "https://github.com/circle-cli/circle-cli"
-    color_heading_section "===="
+        color_dividing_section 
     color_note_section "circle ci token"
-    color_heading_section "----"
+        color_dividing_section 
     color_note_section "circle token 2afc0f73c64d2b6a57d5436bbecbff8e74d88f15"
-    color_heading_section "===="
+        color_dividing_section 
     color_note_section "watch current branch"
-    color_heading_section "----"
+        color_dividing_section 
     color_note_section "circle --watch "
-    color_heading_section "===="
+        color_dividing_section 
     color_note_section "open current branch - current circle ci build"
-    color_heading_section "----"
+        color_dividing_section 
     color_note_section "circle open"
   }
 
@@ -195,33 +195,33 @@ function helpWeedmapsReleaseNotesGenProcess() {
 
   [ -f "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh" ] && . "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh"
     color_heading_section "Lengend"
-      color_heading_section "-----"
+        color_dividing_section 
       color_heading_section "Release Notes File # RNF"
       color_heading_section "Color Release Notes # CRN"
-      color_heading_section "-----"
+        color_dividing_section 
       if [ "ionic" = "$1" ]; then 
       color_command_section "gitReleaseNotesStatus ${Ionic_PreviousProductionReleaseNumber} # CRN"
-        color_heading_section "-----"
+        color_dividing_section 
         color_heading_section "Generate Release Notes File"
-        color_heading_section "-----"
+        color_dividing_section 
         color_command_section "releasenotes ${Ionic_PreviousProductionReleaseNumber}.. -a  > ~/Documents/releases/ionic/ionic-${Ionic_CurrentProductionReleaseNumber}.txt"
-        color_heading_section "-----"
+        color_dividing_section 
         color_heading_section "Type output"
-        color_heading_section "-----"
+        color_dividing_section 
         color_command_section "releasenotes ${Ionic_PreviousProductionReleaseNumber}..  "
-        color_heading_section "-----"
+        color_dividing_section 
         color_note_section "Release notes should be generated "
       elif [ "core" = "$1" ]; then
       color_command_section "gitReleaseNotesStatus origin/release/${Core_PreviousProductionReleaseNumber} GhostGroup/weedmaps"
-        color_heading_section "-----"
+        color_dividing_section 
         color_heading_section "Generate Release Notes File"
-        color_heading_section "-----"
+        color_dividing_section 
         color_command_section "releasenotes origin/release/${Core_PreviousProductionReleaseNumber}.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-${Core_CurrentProductionReleaseNumber}.txt"
-        color_heading_section "-----"
+        color_dividing_section 
         color_heading_section "Type output"
-        color_heading_section "-----"
+        color_dividing_section 
         color_command_section "releasenotes origin/release/${Core_PreviousProductionReleaseNumber}.. -p GhostGroup/weedmaps "
-        color_heading_section "-----"
+        color_dividing_section 
         color_note_section "Release notes should be generated "
       else
       color_heading_section "You were supposed to do something"

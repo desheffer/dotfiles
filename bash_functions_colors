@@ -47,27 +47,27 @@ function color_note_section {
   ## notes should be made with white
   # echo -en "\033[97m $1 \e[0m"
   # notes should be made with normal
-  printf "${COLOR_NC}%s${COLOR_NC}\n" $1
+  printf "${COLOR_NC}$1 ${COLOR_NC}\n"
 }
 
 function color_command_section {
   # notes should be made with yellow bold 
-  printf "${COLOR_YELLOW}${FORMATTING_BOLD}%s${COLOR_NC}\n" $1
+  printf "${COLOR_YELLOW}${FORMATTING_BOLD}$1${COLOR_NC}\n"
 }
 
 function color_heading_section {
   # notes should appear as red
-  printf "${COLOR_LIGHT_RED}%s${COLOR_NC}\n" $1
+  printf "${COLOR_LIGHT_RED}$1${COLOR_NC}\n" 
 }
 
 function color_dividing_section {
   # notes should appear as red
-  printf "${COLOR_WHITE}%s${COLOR_NC}\n" $1
+  printf "${COLOR_WHITE}-----------------------------------------${COLOR_NC}\n" 
 }
 
 function color_hyperlink_section {
   # notes should appear as blue underline
-  printf "${COLOR_LIGHT_BLUE}${FORMATTING_UNDERLINE}%s${COLOR_NC}\n" $1
+  printf "${COLOR_LIGHT_BLUE}${FORMATTING_UNDERLINE}$1${COLOR_NC}\n" 
 }
 
 function color_start {
