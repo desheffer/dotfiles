@@ -11,7 +11,7 @@ function helpWeedmaps() {
   color_command_section "helpUpdateWeedmapsVersions"
   color_dividing_section 
   color_note_section "Daily things to do"
-  color_diving_section 
+  color_dividing_section 
   color_note_section "8AM"
   color_command_section "helpWeedmapsRinseAndRepeat"
   color_dividing_section 
@@ -20,7 +20,7 @@ function helpWeedmaps() {
   color_dividing_section 
   color_note_section "4PM"
   color_command_section "helpWeedmapsRinseAndRepeat"
-  color_dividng_section 
+  color_dividing_section 
   color_note_section "If shit blows up ... Call/Text Jared - 7207256801"
 }
 
