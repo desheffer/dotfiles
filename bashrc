@@ -39,7 +39,7 @@ if [ $(uname) == 'Linux' ]; then
     eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
-if [ $(uname) == 'Cygwin' ]; then
+if [ $(uname) == 'CYGWIN_NT-10.0' ]; then
     eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
