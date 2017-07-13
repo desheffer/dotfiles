@@ -39,6 +39,10 @@ if [ $(uname) == 'Linux' ]; then
     eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
+if [ $(uname) == 'Cygwin' ]; then
+    eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+fi
 
 # Mac OS X specific setup.
 if [ $(uname) == 'Darwin' ]; then
