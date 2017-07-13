@@ -22,3 +22,6 @@
 [submodule "extras/coreos-vagrant"]
 	path = extras/coreos-vagrant
 	url = git@github.com:coreos/coreos-vagrant.git
+[submodule "extras/gcalcli"]
+	path = extras/gcalcli
+	url = git@github.com:insanum/gcalcli.git
