@@ -32,47 +32,6 @@ function parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 
-function color_set_fg {
-  code=16
-  [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))
-  echo -en "\033[1;38;5;${code}m"
-}
-
-function color_set_bg {
-  code=16
-  [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))
-  echo -en "\033[48;5;${code}m"
-  color_current_bg="$1 $2 $3"
-}
-
-function color_reset {
-  echo -en "\033[0m"
-}
-
-function color_start {
-  color_reset
-  echo
-  color_set_fg $1 $2 $3
-  color_set_bg $4 $5 $6
-}
-
-function color_change {
-  color_reset
-  color_set_fg $color_current_bg
-  [ $# -ge 3 ] && color_set_bg $4 $5 $6
-  echo -en "$icon_separator"
-  [ $# -ge 3 ] && color_set_fg $1 $2 $3
-}
-
-function color_end {
-  color_change
-  color_reset
-}
-
-function color_block {
-  echo -en "  $@  "
-}
-
 function generate_prompt {
   # Window title.
   echo -en "\033]0;\u@\h:\w\a"
