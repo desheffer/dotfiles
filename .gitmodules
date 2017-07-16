@@ -25,3 +25,9 @@
 [submodule "extras/gcalcli"]
 	path = extras/gcalcli
 	url = git@github.com:insanum/gcalcli.git
+[submodule "extras/tmux/plugins/tpm"]
+	path = extras/tmux/plugins/tpm
+	url = git@github.com:tmux-plugins/tpm.git
+[submodule "extras/tmux/tmuxinator"]
+  path = extras/tmux/tmuxinator
+  url = git@github.com:tmuxinator/tmuxinator.git

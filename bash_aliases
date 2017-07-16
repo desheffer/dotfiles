@@ -15,6 +15,7 @@ alias tmux='tmux -2'
 alias vi='vim -p'
 alias ultragrep='grep -rnHi --color=always --exclude="*.swp" --exclude="*.orig" --exclude="*.svn*" --exclude="*.diff"'
 alias quickFileGrep='g'
+alias getlast='fc -nl $((HISTCMD - 1))'
 
 
 # vim: ft=sh
