@@ -26,6 +26,10 @@ export COLOR_YELLOW='\e[1;33m'
 export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 
+export FORMATTING_SMALL_DIVIDER='------------------------------------------------------------------------'
+#export FORMATTING_BIG_DIVIDER  ='========================================================================'
+#export FORMATTING_HEADER_1     ="${FORMATTING_BOLD}${COLOR_PURPLE}"
+
 function color_set_fg {
   code=16
   [ $# -ge 3 ] && code=$((16 + $1 * 6 * 6 + $2 * 6 + $3))

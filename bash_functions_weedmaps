@@ -2,6 +2,10 @@
 
 
 function helpWeedmaps() {
+  tee <<EOF
+boop $(printf "${COLOR_RED}boop${COLOR_NC}")
+$(printf "%s" ${FORMATTING_SMALL_DIVIDER})
+EOF
   color_command_section "Weedmaps Help"
   color_dividing_section 
   color_command_section "helpWeedmapsReleaseNotesGenProcess ionic|core"
@@ -67,14 +71,12 @@ function helpWeedmapsDatabaseRestore() {
   color_divding_section 
   color_heading_section "== Data base refreshing =="
   color_note_section "these can be run at same time"
-  echo ""
   color_heading_section "for Core:"
-  echo ""
   color_command_section "@towelie database restore env=staging"
-  echo ""
   color_heading_section "for ES:"
-  echo ""
   color_command_section "@Towelie, jenkins build Migrate ElasticSearch, env=staging&action=restore"
+  tee <<EOF
+EOF
 }
 
 function helpWeedmapsMoonshotRelease() {
