@@ -3,6 +3,12 @@
 
 # Update window size.
 shopt -s checkwinsize
+shopt -s histappend 
+
+# https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
+# History Sizes
+HISTSIZE=5000
+HISTFILESIZE=10000
 
 # Bash specific functions 
 [ -f "$HOME/.bash_functions_colors" ] && . "$HOME/.bash_functions_colors"
@@ -28,6 +34,11 @@ fi
 
 PROMPT_COMMAND='set_prompt'
 
+# https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
+
+# Adding shared history support -- multiple terminals (useful for tmux/screen)
+export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+
 #
 # ALIASES
 #
@@ -36,18 +47,15 @@ PS1=""
 
 # Linux specific setup.
 if [ $(uname) == 'Linux' ]; then
-    eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+  [ -f "$HOME/.bash_functions_linux" ] && . "$HOME/.bash_functions_linux"
 fi
 if [ $(uname) == 'CYGWIN_NT-10.0' ]; then
-    eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
+  [ -f "$HOME/.bash_functions_cygwin" ] && . "$HOME/.bash_functions_cygwin"
 fi
 
 # Mac OS X specific setup.
 if [ $(uname) == 'Darwin' ]; then
-    alias ls='ls -G'
-    #alias vim='mvim -v'
+  [ -f "$HOME/.bash_functions_darwin" ] && . "$HOME/.bash_functions_darwin"
 fi
 
 #

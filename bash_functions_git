@@ -1,0 +1,27 @@
+# vim: ft=sh
+
+
+function helpGitCommands() {
+  color_heading_section "Common git commands"
+  color_command_section 'git checkout (staging|develop|acceptance); git fetch; git pull;'
+  #echo "git checkout \(staging|develop|acceptance\); git fetch; git pull"
+  #color_command_section "git cherry-pick -m 1 -e [SHA-to-merge-in]"
+  color_command_section "gitCherryPickSingleItem [SHA-to-merge-in]"
+  #echo "git cherry-pick -m 1 -e ${1}"
+  color_command_section "git log --graph --all --decorate --oneline"
+  color_note_section "sometimes it's helpful to use tools to view differances in the builds"
+  color_command_section "gitk"
+  color_command_section "sourcetree"
+}
+
+function gitCherryPickSingleItem () {
+  if [ -z "$1" ]
+  then
+    echo "nothing was passed in"
+    color_command_section "gitCherryPickSingleItem [SHA-to-merge-in]"
+  else
+    color_command_section "git cherry-pick -m 1 -e ${1}"
+    git cherry-pick -m 1 -e ${1}
+  fi
+
+}

@@ -9,6 +9,7 @@ function helpWeedmaps() {
   color_command_section "helpWeedmapsIonicRelease"
   color_command_section "helpWeedmapsRinseAndRepeat"
   color_command_section "helpUpdateWeedmapsVersions"
+  color_command_section "helpWeedmapsCreateOpsTicket"
   color_dividing_section 
   color_note_section "Daily things to do"
   color_dividing_section 
@@ -22,6 +23,28 @@ function helpWeedmaps() {
   color_command_section "helpWeedmapsRinseAndRepeat"
   color_dividing_section 
   color_note_section "If shit blows up ... Call/Text Jared - 7207256801"
+}
+
+function helpWeedmapsCreateOpsTicket() {
+  color_heading_section "Creating tickets for Ops"
+
+
+  color_dividing_section
+  color_note_section "In Slack (#bot) channel"
+  color_command_section "@towelie create OPS issue test, test, Configuration, kkacsh"
+  color_command_section "@towelie create OPS issue Off Board user, Off board Bryan Clark BryanEdC, Provisioning,  vchaplytska"
+
+  #color_note_section < 
+  tee <<EOF
+this is a test of what I can do with this.
+boop $(printf "${COLOR_RED}boop${COLOR_NC}")
+$(printf "${COLOR_GREEN}beep ${COLOR_PURPLE}boop${COLOR_NC}")
+beep boop
+in case I wanted to go into more
+detail and have more spacing just how I want it
+this text can go on and on
+EOF
+  
 }
 
 function helpWeedmapsDatabaseRestore() {

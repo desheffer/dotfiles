@@ -217,25 +217,25 @@ nnoremap <Leader>c :set cursorline! cursorcolumn!<CR>
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " Let Vundle Manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'powerline/powerline'
-"Plugin 'majutsushi/tagbar'
-Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'git://git@github.com:VundleVim/Vundle.vim'
+Plugin 'git://git@github.com:powerline/powerline'
+"Plugin 'git@github.com:majutsushi/tagbar'
+Plugin 'git://git@github.com:scrooloose/nerdtree'
+Plugin 'git://git@github.com:scrooloose/nerdcommenter'
+Plugin 'git://git@github.com:jistr/vim-nerdtree-tabs'
 "Plugin 'csapprox' " -- already handled by submodule
-"Plugin 'vim-scripts/ChocolateLiquor'
-Plugin 'tpope/vim-fugitive'
-Plugin 'majutsushi/tagbar'
-Plugin 'tpope/gem-ctags'
-Plugin 'kien/ctrlp.vim'
-Plugin 'fatih/vim-go'
-Plugin 'saltstack/salt-vim'
+"Plugin 'git://git@github.com:vim-scripts/ChocolateLiquor'
+Plugin 'git://git@github.com:tpope/vim-fugitive'
+Plugin 'git://git@github.com:majutsushi/tagbar'
+Plugin 'git://git@github.com:tpope/gem-ctags'
+Plugin 'git://git@github.com:kien/ctrlp.vim'
+Plugin 'git://git@github.com:fatih/vim-go'
+Plugin 'git://git@github.com:saltstack/salt-vim'
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 "Plugin 'chase/vim-ansible-yaml'
 "Plugin 'avakhov/vim-yaml'
 "Plugin 'desert-warm-256'
-Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'git://git@github.com:stephpy/vim-php-cs-fixer'
 
 call vundle#end() " required
 
