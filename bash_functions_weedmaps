@@ -54,6 +54,30 @@ function helpWeedmapsDatabaseRestore() {
   color_command_section "@Towelie, jenkins build Migrate ElasticSearch, env=staging&action=restore"
 }
 
+function helpWeedmapsMoonshotRelease() {
+  color_note_section "we have just taken over these duties, more notes to come"
+}
+
+function helpWeedmapsMmjmenuRelease() {
+  color_heading_section "MMJMenu"
+  color_dividing_section
+  color_note_section "MMJMenu follows the standard ref:spec git flow"
+  color_command_section "git push origin develop:acceptance"
+  color_dividing_section
+  color_note_section "When pushing things to environments, you will need to log into Engine yard"
+  color_note_section "Engine yard"
+  color_hyperlink_section "https://cloud.engineyard.com"
+  color_note_section "There are deploy"
+  color_dividing_section
+  color_heading_section "Failures"
+  color_dividing_section
+  color_heading_section "RuntimeError: Resque Workers Working!!"
+  color_note_section "It means that things are still working, give it 5 more minutes and try again."
+  color_note_section "If it fails again, you have to SSH into the box"
+  color_note_section "Look for resque 'ps aux | grep 'resque'"
+  color_note_section "Grab, type of job, pid - pass to Brad"
+}
+
 function helpWeedmapsIonicRelease() {
   color_command_section "git branch -r"
   if [ "acceptance" = "$1" ]; then 
