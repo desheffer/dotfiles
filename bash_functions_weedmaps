@@ -36,17 +36,13 @@ function helpWeedmapsCreateOpsTicket() {
   color_dividing_section
   color_note_section "In Slack (#bot) channel"
   color_command_section "@towelie create OPS issue test, test, Configuration, kkacsh"
-  color_command_section "@towelie create OPS issue Off Board user, Off board Bryan Clark BryanEdC, Provisioning,  vchaplytska"
+  color_command_section "@towelie create OPS issue Off Board user,Off board Bryan Clark BryanEdC,Provisioning,vchaplytska"
 
   #color_note_section < 
   tee <<EOF
-this is a test of what I can do with this.
-boop $(printf "${COLOR_RED}boop${COLOR_NC}")
-$(printf "${COLOR_GREEN}beep ${COLOR_PURPLE}boop${COLOR_NC}")
-beep boop
-in case I wanted to go into more
-detail and have more spacing just how I want it
-this text can go on and on
+@towelie create OPS issue SUBJECT,DESCRIPTION,TYPE,USER
+no spaces
+sometimes if that doesn't work, assign the ticket to yourself, and reassign within jira
 EOF
   
 }
