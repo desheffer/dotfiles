@@ -12,6 +12,11 @@ function helpGitCommands() {
   color_note_section "sometimes it's helpful to use tools to view differances in the builds"
   color_command_section "gitk"
   color_command_section "sourcetree"
+  tee << EOF
+git checkout HASH-CODE
+git reset --hard HASH-CODE
+git pull --rebase
+EOF
 }
 
 function gitCherryPickSingleItem () {

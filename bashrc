@@ -47,15 +47,15 @@ PS1=""
 
 # Linux specific setup.
 if [ $(uname) == 'Linux' ]; then
-  [ -f "$HOME/.bash_functions_linux" ] && . "$HOME/.bash_functions_linux"
+  [ -f "$HOME/.bash_aliases_linux" ] && . "$HOME/.bash_aliases_linux"
 fi
 if [ $(uname) == 'CYGWIN_NT-10.0' ]; then
-  [ -f "$HOME/.bash_functions_cygwin" ] && . "$HOME/.bash_functions_cygwin"
+  [ -f "$HOME/.bash_aliases_cygwin" ] && . "$HOME/.bash_aliases_cygwin"
 fi
 
 # Mac OS X specific setup.
 if [ $(uname) == 'Darwin' ]; then
-  [ -f "$HOME/.bash_functions_darwin" ] && . "$HOME/.bash_functions_darwin"
+  [ -f "$HOME/.bash_aliases_darwin" ] && . "$HOME/.bash_aliases_darwin"
 fi
 
 #

@@ -27,8 +27,13 @@ export COLOR_GRAY='\e[0;30m'
 export COLOR_LIGHT_GRAY='\e[0;37m'
 
 export FORMATTING_SMALL_DIVIDER='------------------------------------------------------------------------'
-#export FORMATTING_BIG_DIVIDER  ='========================================================================'
-#export FORMATTING_HEADER_1     ="${FORMATTING_BOLD}${COLOR_PURPLE}"
+export FORMATTING_BIG_DIVIDER='========================================================================'
+export FORMATTING_HEADER_1="${COLOR_LIGHT_RED}"
+export FORMATTING_HEADER_2="${COLOR_CYAN}"
+export FORMATTING_LINK="${FORMATTING_UNDERLINE}"
+export FORMATTING_COMMAND="${COLOR_YELLOW}"
+export FORMATTING_PHONE="${FORMATTING_LINK}"
+export FORMATTING_RESET="${COLOR_NC}"
 
 function color_set_fg {
   code=16

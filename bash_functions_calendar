@@ -1,6 +1,8 @@
 # vim: ft=sh
 
 function calendarHelp() {
+  tee <<EOF
+EOF
   color_command_section "calendarWeedmapsQuickAddReminder MIN TITLE_TEXT"
   color_command_section "calendarGtdQuickAddReminder MIN TITLE_TEXT"
   color_command_section "calendarPersonalQuickAddReminder MIN TITLE_TEXT"
@@ -11,6 +13,8 @@ function calendarHelp() {
 }
 
 function calendarWeedmapsQuickAddReminder() {
+  tee <<EOF
+EOF
   color_note_section "Not quick way ..."
   color_command_section " gcalcli \\ " 
   color_command_section " --title '$2' \\ " 
@@ -35,6 +39,8 @@ function calendarWeedmapsQuickAddReminder() {
 }
 
 function calendarGtdQuickAddReminder() {
+  tee <<EOF
+EOF
   color_note_section "Not quick way ..."
   color_command_section " gcalcli \\ " 
   color_command_section " --title '$2' \\ " 
@@ -59,6 +65,8 @@ function calendarGtdQuickAddReminder() {
 }
 
 function calendarPersonalQuickAddReminder() {
+  tee <<EOF
+EOF
   color_note_section "Not quick way ..."
   color_command_section " gcalcli \\ " 
   color_command_section " --title '$2' \\ " 
@@ -83,6 +91,8 @@ function calendarPersonalQuickAddReminder() {
 }
 
 function calendarAgendaForToday() {
+  tee <<EOF
+EOF
   #printf "gcalcli agenda 12am %s" $(date --date="tomorrow" +"%m/%d/%y")
   printf "gcalcli agenda 12am %s" $(date --date="tomorrow" +"%m/%d/%y")
   #gcalcli agenda 12am $(date --date="tomorrow" +"%m/%d/%y")
