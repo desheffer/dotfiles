@@ -31,8 +31,6 @@ $(printf "${FORMATTING_HEADER_1}Weedmaps Help${COLOR_NC}")
 $(printf "%s" ${FORMATTING_BIG_DIVIDER})
 EOF
   color_heading_section "Creating tickets for Ops"
-
-
   color_dividing_section
   color_note_section "In Slack (#bot) channel"
   color_command_section "@towelie create OPS issue test, test, Configuration, kkacsh"
@@ -220,11 +218,11 @@ EOF
     if [ "ionic" = "$1" ]; then 
     tee <<EOF
 EOF
-    color_note_section "@team Ionic ${Ionic_CurrentProductionReleaseNumber} is going to production shortly."
+    color_note_section "@channel Ionic ${Ionic_CurrentProductionReleaseNumber} is going to production shortly."
       color_dividing_section
       color_note_section "in Release Chat Room Flow:"
       color_dividing_section 
-      color_note_section "@Team for Ionic ${Ionic_CurrentProductionReleaseNumber} release to Prod."
+      color_note_section "@channel for Ionic ${Ionic_CurrentProductionReleaseNumber} release to Prod."
       color_note_section "We have:"
       color_note_section "OPS Notified"
       color_note_section "We need:"
@@ -234,7 +232,7 @@ EOF
     elif [ "core" = "$1" ]; then
     tee <<EOF
 EOF
-    color_note_section "@Team Core ${Core_CurrentProductionReleaseNumber} going to Production soon"
+    color_note_section "@channel Core ${Core_CurrentProductionReleaseNumber} going to Production soon"
       color_dividing_section 
       color_note_section "in Release Chat Room Flow:"
       color_dividing_section 
@@ -250,6 +248,10 @@ EOF
 EOF
     color_note_section "You were supposed to do something"
   fi
+    tee <<EOF
+If you have issues getting sign offs during hotfix releases, reach out to Clayton Dubin 
+EOF
+  
 }
 
 function gitReleaseNotesStatus() {
@@ -304,44 +306,29 @@ function helpWeedmapsReleaseNotesGenProcess() {
   [ -f "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh" ] && . "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh"
     tee <<EOF
 EOF
-    color_heading_section "Lengend"
-        color_dividing_section 
-      color_heading_section "Release Notes File # RNF"
-      color_heading_section "Color Release Notes # CRN"
-        color_dividing_section 
       if [ "ionic" = "$1" ]; then 
     tee <<EOF
+gitReleaseNotesStatus ${Ionic_PreviousProductionReleaseNumber}${COLOR_NC} # Color Release Notes
+        Generate Release Notes File
+releasenotes ${Ionic_PreviousProductionReleaseNumber}.. -a  > ~/Documents/releases/ionic/ionic-${Ionic_CurrentProductionReleaseNumber}.txt${COLOR_NC} # Release Notes File
+        Type output
+releasenotes ${Ionic_PreviousProductionReleaseNumber}..  ${COLOR_NC} # Not Color / Type Output - Used for generating notes for Victoria
+        Release notes should be generated
 EOF
-      color_command_section "gitReleaseNotesStatus ${Ionic_PreviousProductionReleaseNumber} # CRN"
-        color_dividing_section 
-        color_heading_section "Generate Release Notes File"
-        color_dividing_section 
-        color_command_section "releasenotes ${Ionic_PreviousProductionReleaseNumber}.. -a  > ~/Documents/releases/ionic/ionic-${Ionic_CurrentProductionReleaseNumber}.txt"
-        color_dividing_section 
-        color_heading_section "Type output"
-        color_dividing_section 
-        color_command_section "releasenotes ${Ionic_PreviousProductionReleaseNumber}..  "
-        color_dividing_section 
-        color_note_section "Release notes should be generated "
       elif [ "core" = "$1" ]; then
     tee <<EOF
+gitReleaseNotesStatus origin/release/${Core_PreviousProductionReleaseNumber} GhostGroup/weedmaps${COLOR_NC} # Color Release Notes
+  Generate Release Notes File
+releasenotes origin/release/${Core_PreviousProductionReleaseNumber}.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-${Core_CurrentProductionReleaseNumber}.txt${COLOR_NC} # Release Notes File
+  Type output
+releasenotes origin/release/${Core_PreviousProductionReleaseNumber}.. -p GhostGroup/weedmaps ${COLOR_NC} # Not Color / Type Output - Used for generating notes for Victoria
+  Release notes should be generated 
 EOF
-      color_command_section "gitReleaseNotesStatus origin/release/${Core_PreviousProductionReleaseNumber} GhostGroup/weedmaps"
-        color_dividing_section 
-        color_heading_section "Generate Release Notes File"
-        color_dividing_section 
-        color_command_section "releasenotes origin/release/${Core_PreviousProductionReleaseNumber}.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-${Core_CurrentProductionReleaseNumber}.txt"
-        color_dividing_section 
-        color_heading_section "Type output"
-        color_dividing_section 
-        color_command_section "releasenotes origin/release/${Core_PreviousProductionReleaseNumber}.. -p GhostGroup/weedmaps "
-        color_dividing_section 
-        color_note_section "Release notes should be generated "
       else
     tee <<EOF
+  You were supposed to do something
+helpWeedmapsReleaseNotesGenProcess (ionic|core)
 EOF
-      color_heading_section "You were supposed to do something"
-        color_command_section "helpWeedmapsReleaseNotesGenProcess (ionic|core)"
       fi
 }
 

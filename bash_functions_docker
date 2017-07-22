@@ -1,0 +1,115 @@
+# vim: ft=sh
+
+function helpDocker() {
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Docker Help${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+I have a feeling I'm going to get lost along this setup, so these 
+instructions should help remind me where I'm getting lost along the way.
+
+$(printf "${FORMATTING_HEADER_2}Functions${COLOR_NC}")
+$(printf "%s" ${FORMATTING_SMALL_DIVIDER})
+$(printf "${FORMATTING_COMMAND}helpDockerSetup${COLOR_NC}")
+$(printf "${FORMATTING_COMMAND}helpDockerRunning${COLOR_NC}")
+
+EOF
+}
+
+function helpDockerSetup() {
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Docker Setup Help${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+EOF
+
+  docker_type=""
+Ionic_PreviousProductionReleaseNumber="3.2.2"
+
+  if [ "GamingComputer" = $(hostname) ]; then 
+  docker_type="DockerToolbox"
+  tee <<EOF
+GamingComputer: Running Docker Toolbox
+EOF
+  elif [ "Elitebook" = $(hostname) ]; then 
+  tee <<EOF
+Elitebook: Running Docker Community Edition
+EOF
+  elif [ "AbbyBook" = $(hostname) ]; then 
+  tee <<EOF
+MacBook: Running Docker for Mac
+EOF
+  else
+  tee <<EOF
+I don't know what computer this is ... (Update ~/code/bash_functions_docker for more specialized instructions)
+EOF
+  fi
+  tee <<EOF
+mkdir ~/code/docker/
+EOF
+
+  if [ $docker_type = "DockerMac" ]; then
+    echo $docker_type
+  #fi
+  elif [ $docker_type = "DockerToolbox" ]; then
+    echo $docker_type
+  tee <<EOF
+These are the instructions for Docker Toolbox 
+relying on Virtualbox
+
+https://docs.docker.com/get-started/#setup
+Completed:
+docker run hello-world
+Enabled VT-X/AMD-v in BIOS
+Got an error about elevated environment - launch Docker Quickstart terminal, works there!
+Try something more ambitious, `docker run -it ubuntu bash`
+docker run -it debian:jessie
+EOF
+  fi
+
+}
+
+function helpDockerRunning() {
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Docker Running Help${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+EOF
+
+}
+
+function helpDockerPlan() {
+
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Personal Docker Plan${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+~/Documents/docker-tests-Dockerfile-test1/Dockerfile
+docker build -t caesargus/debian .
+docker build -t REPOSITORYPATH LOCATION_OF_Dockerfile
+https://www.udemy.com/docker-tutorial-for-devops-run-docker-containers/
+Docker Layers ... everyone shares the same underlying image
+ways to commit the docker container
+1) spin up a container from a base image
+install git package in the container
+commit changes
+
+Dockerfile and instructions
+
+Dockerfile
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+FROM debian:jessie
+RUN apt-get update && \
+  apt-get install -y \
+    git \
+    vim
+CMD ["echo", "hello world"]
+
+Best practices
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+Reduce the number of RUN commands (combining items)
+Sort multi-line arguments alphanumerically
+A docker file is a text document that contains all the instructions users provide to assemble the image
+
+Docker 
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+
+docker run -it debian:jessie
+EOF
+}
