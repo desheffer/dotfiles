@@ -75,7 +75,7 @@ function deploy_api() {
   echo "Starting task"
   echo "Params:
   env:${DEPLOY_ENVIRONMENT}
-  api_version:${sha}"
+  api_version:${SHA}"
 
   QUEUE_URL=$(curl -s -I -XPOST "${JENKINS_URL}/buildWithParameters?api_version=${SHA}&env=${DEPLOY_ENVIRONMENT}" |grep Location |cut -d " " -f2 |cut -d \/ -f3-6)
   # shellcheck disable=1001
