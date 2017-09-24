@@ -77,7 +77,7 @@ function deploy_api() {
   env:${DEPLOY_ENVIRONMENT}
   api_version:${SHA}"
 
-  QUEUE_URL=$(curl -s -I -XPOST "${JENKINS_URL}/buildWithParameters?api_version=${SHA}&env=${DEPLOY_ENVIRONMENT}" |grep Location |cut -d " " -f2 |cut -d \/ -f3-6)
+  QUEUE_URL=$(curl -s -I -XPOST "${JENKINS_URL}/buildWithParameters?token=${JENKINS_TOKEN}&api_version=${SHA}&env=${DEPLOY_ENVIRONMENT}" |grep Location |cut -d " " -f2 |cut -d \/ -f3-6)
   # shellcheck disable=1001
   if [ -z "$QUEUE_URL" ]; then
     echo "Unable to start job"
