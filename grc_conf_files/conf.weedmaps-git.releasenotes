@@ -10,12 +10,12 @@ colours=green
 count=once
 ======
 # this is a Out of Dev Queue state
-regexp=Ready For Acceptance|Ready For QA|QA
+regexp=Ready For Acceptance|Ready for QA|QA|PO Signoff
 colours=yellow
 count=once
 ======
 # this is a In the Dev Queue state
-regexp=In Dev|Peer Review|In Progress|Failed
+regexp=In Dev|Peer Review|In Progress|Failed|Blocked
 colours=red
 count=once
 ======

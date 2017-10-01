@@ -2,3 +2,4 @@
 # vim: ft=sh
     alias ls='ls -G'
     #alias vim='mvim -v'
+export GIT_EXEC_PATH="/usr/local/Cellar/git/2.13.1/libexec/git-core"

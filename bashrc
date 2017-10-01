@@ -103,7 +103,6 @@ fi
 #
 
 export PATH="~/code/weedmaps_code/weedmaps-tools/git:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export GIT_EXEC_PATH="~/code/weedmaps_code/weedmaps-tools/git"
 # Add user binary path.
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 # Add RVM to path.
