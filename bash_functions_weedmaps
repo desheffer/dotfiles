@@ -1,4 +1,4 @@
-# vim: ft=sh
+#` vim: ft=sh
 
 
 function helpWeedmaps() {
@@ -6,163 +6,176 @@ function helpWeedmaps() {
 $(printf "${FORMATTING_HEADER_1}Weedmaps Help${COLOR_NC}")
 $(printf "%s" ${FORMATTING_BIG_DIVIDER})
 $(printf "${FORMATTING_HEADER_2}Commands${COLOR_NC}")
-$(printf "${FORMATTING_COMMAND}helpWeedmapsGenerateReportCards ionic|core${COLOR_NC}")
+$(printf "${FORMATTING_COMMAND}helpWeedmapsProgressReports ionic|core${COLOR_NC}")
 $(printf "${FORMATTING_COMMAND}helpWeedmapsReleaseNotesGenProcess ionic|core${COLOR_NC}")
 $(printf "${FORMATTING_COMMAND}helpWeedmapsCoreReleaseProcess${COLOR_NC}")
 $(printf "${FORMATTING_COMMAND}helpWeedmapsIonicReleaseProcess${COLOR_NC}")
 $(printf "${FORMATTING_COMMAND}helpWeedmapsRinseAndRepeat${COLOR_NC}")
 $(printf "${FORMATTING_COMMAND}helpWeedmapsUpdateVersions${COLOR_NC}")
 $(printf "${FORMATTING_COMMAND}helpWeedmapsCreateOpsTicket${COLOR_NC}")
+$(printf "${FORMATTING_COMMAND}generateWeedmapsReleaseNotesStatus${COLOR_NC}")
 $(printf "%s" ${FORMATTING_SMALL_DIVIDER})
 $(printf "${FORMATTING_HEADER_2}Daily Things to do${COLOR_NC}")
 0800: $(printf "${FORMATTING_COMMAND}helpWeedmapsRinseAndRepeat${COLOR_NC}")
+1000: $(printf "${FORMATTING_COMMAND}helpWeedmapsRinseAndRepeat${COLOR_NC}")
 1200: $(printf "${FORMATTING_COMMAND}helpWeedmapsRinseAndRepeat${COLOR_NC}")
+1400: $(printf "${FORMATTING_COMMAND}helpWeedmapsRinseAndRepeat${COLOR_NC}")
 1600: $(printf "${FORMATTING_COMMAND}helpWeedmapsRinseAndRepeat${COLOR_NC}")
+1800: $(printf "${FORMATTING_COMMAND}helpWeedmapsRinseAndRepeat${COLOR_NC}")
 $(printf "%s" ${FORMATTING_SMALL_DIVIDER})
 $(printf "${FORMATTING_HEADER_2}Websites${COLOR_NC}")
 $(printf "${FORMATTING_LINK}https://circleci.com/gh/GhostGroup${COLOR_NC}")
+$(printf "${FORMATTING_LINK}https://circle.weedmaps.com/gh/GhostGroup${COLOR_NC}")
 If shit blows up ... Call/Text Jared - $(printf "${FORMATTING_PHONE}720.725.6801${COLOR_NC}")
 EOF
 }
 
 function helpWeedmapsCreateOpsTicket() {
   tee <<EOF
-$(printf "${FORMATTING_HEADER_1}Weedmaps Help${COLOR_NC}")
+$(printf "${FORMATTING_HEADER_1}Weedmaps Ops Tickets Help${COLOR_NC}")
 $(printf "%s" ${FORMATTING_BIG_DIVIDER})
-EOF
-  color_heading_section "Creating tickets for Ops"
-  color_dividing_section
-  color_note_section "In Slack (#bot) channel"
-  color_command_section "@towelie create OPS issue test, test, Configuration, kkacsh"
-  color_command_section "@towelie create OPS issue Off Board user,Off board Bryan Clark BryanEdC,Provisioning,vchaplytska"
-
-  #color_note_section < 
-  tee <<EOF
-@towelie create OPS issue SUBJECT,DESCRIPTION,TYPE,USER
+$(printf "
+Creating tickets for Ops
+In Slack (#bot) channel
+${FORMATTING_COMMAND}@towelie create OPS issue test,test,Configuration,kkacsh${COLOR_NC}
+${FORMATTING_COMMAND}@towelie create OPS issue Off Board user,Off board Bryan Clark BryanEdC,Provisioning,vchaplytska${COLOR_NC}
+${FORMATTING_COMMAND}@towelie create OPS issue SUBJECT,DESCRIPTION,TYPE,USER${COLOR_NC}
 no spaces
 sometimes if that doesn't work, assign the ticket to yourself, and reassign within jira
+")
 EOF
   
 }
 
 function helpWeedmapsDatabaseRestore() {
-  color_heading_section "-- Restore breaks the environment!!! --"
-  color_heading_section "-- Type this into the bot flow --"
-  color_command_section "@towelie database restore env=acceptance"
-  color_heading_section "-- You should see something along the lines of: --"
-  color_note_section "Towelie--"
-  color_note_section "@Jared: Database restore requested for 'acceptance' \(21985\). Log output can be viewed at https://ansible.weedmaps.com/api/log/wofDGgMpai2ooGCpeogNio1EZfrAmHIv"
-  color_heading_section "-- Then type this into the bot flow --"
-  color_command_section "@Towelie, jenkins build Migrate ElasticSearch, env=acceptance&action=restore"
-  color_heading_section "-- You should see something like the things below: --"
-  color_note_section "Towelie--"
-  color_note_section "@Jared: \(201\) Build started for Migrate%20ElasticSearch http://jenkins.weedmaps.com/job/Migrate ElasticSearch"
-  color_note_section "Towelie:--"
-  color_note_section "@Jared Restoration of the latest sanitized production database to 'acceptance' was successful. Log output from the job is available at https://ansible.weedmaps.com/api/log/wofDGgMpai2ooGCpeogNio1EZfrAmHIv"
-  color_heading_section "-- then rebuild core weedmaps --"
-  color_command_section "git checkout acceptance; git fetch; git pull; git push origin acceptance:acceptance;"
-  color_heading_section "-- Go to CircleCI and Bot Flow to watch the process to make sure the environment is up --"
-  color_divding_section 
-  color_heading_section "== Data base refreshing =="
-  color_note_section "these can be run at same time"
-  color_heading_section "for Core:"
-  color_command_section "@towelie database restore env=staging"
-  color_heading_section "for ES:"
-  color_command_section "@Towelie, jenkins build Migrate ElasticSearch, env=staging&action=restore"
   tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Weedmaps Database Restore Help${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+$(printf "
+${FORMATTING_HEADING_2}Restore breaks the environment!!${COLOR_NC}
+You will have to rebuild the environment after you perform the Database restore
+Sanatized Data
+Passwords are reset to WM41Discovery
+Non-Sanatized Data
+Should only be used when troubleshooting an issue that cannot be duplicated 
+with sanatized data
+${FORMATTING_LINK}https://jenkins.weedmaps.com/job/RDS-ES%20Multi%20Restore/${COLOR_NC}
+
+${FORMATTING_HEADING_2}Rebuild Core Weedmaps${COLOR_NC}
+${FORMATTING_COMMAND}git checkout acceptance; git fetch; git pull; git push origin acceptance:acceptance;${COLOR_NC}
+")
 EOF
 }
 
 function helpWeedmapsMoonshotRelease() {
-    tee <<EOF
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Weedmaps Moonshot Release${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+$(printf "
+Moonshot follows the standard ref:spec git flow
+${FORMATTING_COMMAND}git push origin develop:acceptance${COLOR_NC}
+they are in production
+--more notes to come--
+")
 EOF
-  color_heading_section "Moonshot"
-  color_dividing_section
-  color_note_section "Moonshot follows the standard ref:spec git flow"
-  color_command_section "git push origin develop:acceptance"
-  color_note_section "there are no other environments currently"
-  color_note_section "we have just taken over these duties, more notes to come"
 }
 
 function helpWeedmapsMmjmenuRelease() {
-    tee <<EOF
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Weedmaps MMJMenu Release${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+$(printf "
+MMJMenu
+MMJMenu follows the standard ref:spec git flow
+${FORMATTING_COMMAND}git push origin develop:acceptance${COLOR_NC}
+When pushing things to environments, you will need to log into Engine yard
+
+${FORMATTING_HEADER_2}Engine yard${COLOR_NC}
+${FORMATTING_LINK}https://cloud.engineyard.com${COLOR_NC}
+
+${FORMATTING_HEADER_2}Failures${COLOR_NC}
+RuntimeError: Resque Workers Working!!
+It means that things are still working, give it 5 more minutes and try again
+If it fails again, you have to SSH into the box, look for resque
+${FORMATTING_COMMAND}ps aux | grep 'resque'${COLOR_NC}
+Grab the type of job and the pid and pass it to Brad
+")
 EOF
-  color_heading_section "MMJMenu"
-  color_dividing_section
-  color_note_section "MMJMenu follows the standard ref:spec git flow"
-  color_command_section "git push origin develop:acceptance"
-  color_dividing_section
-  color_note_section "When pushing things to environments, you will need to log into Engine yard"
-  color_note_section "Engine yard"
-  color_hyperlink_section "https://cloud.engineyard.com"
-  color_note_section "There are deploy"
-  color_dividing_section
-  color_heading_section "Failures"
-  color_dividing_section
-  color_heading_section "RuntimeError: Resque Workers Working!!"
-  color_note_section "It means that things are still working, give it 5 more minutes and try again."
-  color_note_section "If it fails again, you have to SSH into the box"
-  color_note_section "Look for resque 'ps aux | grep 'resque'"
-  color_note_section "Grab, type of job, pid - pass to Brad"
 }
 
 function helpWeedmapsIonicReleaseProcess() {
-    tee <<EOF
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Weedmaps Ionic Release${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
 EOF
   color_command_section "git branch -r"
   if [ "acceptance" = "$1" ]; then 
     tee <<EOF
+$(printf "
+${FORMATTING_HEADER_2}Updating the Acceptance Environment${COLOR_NC}
+Don't forget to update performance environment when you update acceptance
+${FORMATTING_COMMAND}git checkout develop; git fetch; git pull;
+git reset [SHA of commit for acceptance]
+git push origin develop:acceptance
+${COLOR_NC}
+")
 EOF
-    color_heading_section "-- Updating the Acceptance Environment --"
-    color_note_section "-- don't forget to update performance environment when you update acceptance --"
-    color_command_section "git checkout develop; git fetch; git pull;"
-    color_command_section "git reset [SHA of commit for acceptance]"
-    color_command_section "git push origin develop:accceptance"
-    color_heading_section "-- Updating the Performance Environment --"
-    color_note_section "Whenever we update the acceptance environment, we also update the performance environment"
+  elif [ "performance" = "$1" ]; then
+    tee <<EOF
+$(printf "
+${FORMATTING_HEADER_2}Updating the Performance Environment${COLOR_NC}
+Whenever we update the acceptance environment, we also update the performance environment
+${FORMATTING_COMMAND}git checkout acceptance; git fetch; git pull;
+git push origin acceptance:performance
+${COLOR_NC}
+")
+EOF
   elif [ "staging" = "$1" ]; then
     tee <<EOF
+$(printf "
+${FORMATTING_HEADER_2}Staging Release${COLOR_NC}
+${FORMATTING_COMMAND}git checkout acceptance; git fetch; git pull;
+git push origin develop:release/${Ionic_CurrentProductionReleaseNumber}
+${FORMATTING_HEADER_3}Go to circle and check on your build ${COLOR_NC}
+${FORMATTING_LINK}https://circle.weedmaps.com/gh/GhostGroup/weedmaps_ionic/tree/release%2F${Ionic_CurrentProductionReleaseNumber} ${COLOR_NC}
+${FORMATTING_COMMAND}
+git show-ref develop
+git show-ref release/${Ionic_CurrentProductionReleaseNumber}${COLOR_NC}
+
+${FORMATTING_HEADER_3}Pushing things to staging${COLOR_NC}
+Now that the build is green in circle (check the above link), 
+now we can do the deploy to staging
+${FORMATTING_COMMAND}
+git checkout  release/${Ionic_CurrentProductionReleaseNumber}
+git push origin release/${Ionic_CurrentProductionReleaseNumber}:staging
+${COLOR_NC}
+
+${FORMATTING_LINK}https://circle.weedmaps.com/gh/GhostGroup/weedmaps_ionic/tree/staging ${COLOR_NC}
+
+Generate the Release notes
+-- Clean it up --
+Track down any unknown items
+Post a draft of a tag on github, paste that info in
+Notify Victoria - send her the type output in slac k- not github link - text
+Notify Front End Flow
+Notify Release Chat Room flow
+${COLOR_NC}")
 EOF
-    color_heading_section "-- Staging Release --"
-        color_command_section "git push origin develop:release/${Ionic_CurrentProductionReleaseNumber}"
-        color_heading_section "-- Go to Circle and look for your build's progress --"
-    
-    color_hyperlink_section "https://circleci.com/gh/GhostGroup/weedmaps_ionic/tree/release%2F${Ionic_CurrentProductionReleaseNumber}"
-    color_note_section "-- In the meantime research! --"
-    color_note_section "because we're paranoid, we want to verify a few things"
-    color_command_section "git show-ref develop"
-    color_command_section "git show-ref release/${Ionic_CurrentProductionReleaseNumber}"
-    color_heading_section "-- Once your build successfully completes in Circle --"
-    color_note_section "-- Push things to staging --"
-    color_command_section "git checkout release/${Ionic_CurrentProductionReleaseNumber}"
-    color_command_section "git push origin release/${Ionic_CurrentProductionReleaseNumber}:staging"
-    color_heading_section  "-- Go to circle, check progress --"
-    color_hyperlink_section "https://circleci.com/gh/GhostGroup/weedmaps_ionic/tree/staging"
-    color_heading_section "-- Generate the release notes (Type Output) --"
-    helpWeedmapsReleaseNotesGenProcess ionic
-    color_note_section "helpWeedmapsReleaseNotesGenProcess ionic"
-    color_heading_section "-- Clean it up --"
-    color_note_section "Track down any unknown items"
-    color_note_section "Post a draft of a tag on github, paste that info in"
-    color_note_section "Notify Victoria - send her the type output in slac k- not github link - text"
-    color_note_section "Notify Front End Flow"
-    color_note_section "Notify Release Chat Room flow"
   elif [ "production" = "$1" ]; then
     tee <<EOF
+$(printf "
+-- Production Release --
+git checkout release/${Ionic_CurrentProductionReleaseNumber}
+git pull; git fetch;
+git push origin release/${Ionic_CurrentProductionReleaseNumber}:staging
+-- If the above does not work --
+git push origin release/${Ionic_CurrentProductionReleaseNumber}:staging -f
+Post the draft of the tag ${Ionic_CurrentProductionReleaseNumber} on github 
+and update it to point to the intranet's release notes link the tag info in
+Notify Release Chat Room flow
+")
 EOF
-    color_heading_section "-- Production Release --"
-    # echo "Notify Ops Flow of an outgoing release"
-    color_command_section "git checkout release/${Ionic_CurrentProductionReleaseNumber}"
-    color_command_section "git pull; git fetch;"
-    color_command_section "git push origin release/${Ionic_CurrentProductionReleaseNumber}:staging"
-    color_heading_section "-- If the above does not work --"
-    color_command_section "git push origin release/${Ionic_CurrentProductionReleaseNumber}:staging -f"
-    color_note_section "Post the draft of the tag ${Ionic_CurrentProductionReleaseNumber} on github "
-    color_note_section " and update it to point to the intranet's release notes link the tag info in"
-    color_note_section "Notify Release Chat Room flow"
   else
-    tee <<EOF
-EOF
     color_heading_section "You were supposed to do something"
     color_command_section "helpWeedmapsRelease acceptance"
     color_command_section "performance"
@@ -172,15 +185,21 @@ EOF
 }
 
 function helpWeedmapsUpdateVersions() {
-    tee <<EOF
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Updating Weedmaps Versions${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
 EOF
   color_note_section "this is something that should be build out ..."
   color_note_section "for now, update this file"
-  color_command_section "vim ~/code/weedmaps_code/weedmaps-tools/versions.sh"
+  color_command_section "vim ~/code/weedmaps/build-release/release-versions"
 }
 
-function helpWeedmapsGenerateReportCards() {
-  [ -f "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh" ] && . "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh"
+function helpWeedmapsProgressReports() {
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Weedmaps: Generating Progress Reports${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+EOF
+  [ -f "$HOME/code/weedmaps/build-release/release-versions" ] && . "$HOME/code/weedmaps/build-release/release-versions"
   if [ "ionic" = "$1" ]; then 
     tee <<EOF
 $(printf "${FORMATTING_COMMAND}helpWeedmapsReleaseNotesGenProcess ionic${COLOR_NC}")
@@ -204,66 +223,111 @@ EOF
     else
     color_note_section "You were supposed to do something"
     tee <<EOF
-helpWeedmapsGenerateReportCards ionic|core
+helpWeedmapsProgressReports ionic|core
 EOF
   fi
 }
 
-function helpWeedmapsReleaseNotifications() {
-  [ -f "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh" ] && . "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh"
-    tee <<EOF
-EOF
-  color_heading_section "In ops flow:"
-    color_dividing_section 
-    if [ "ionic" = "$1" ]; then 
-    tee <<EOF
-EOF
-    color_note_section "@channel Ionic ${Ionic_CurrentProductionReleaseNumber} is going to production shortly."
-      color_dividing_section
-      color_note_section "in Release Chat Room Flow:"
-      color_dividing_section 
-      color_note_section "@channel for Ionic ${Ionic_CurrentProductionReleaseNumber} release to Prod."
-      color_note_section "We have:"
-      color_note_section "OPS Notified"
-      color_note_section "We need:"
-      color_note_section "QA sign off"
-      color_note_section "Dev sign off @Thomas, @CharlieK"
-      color_note_section "Product sign off @Thomas, @CharlieK"
-    elif [ "core" = "$1" ]; then
-    tee <<EOF
-EOF
-    color_note_section "@channel Core ${Core_CurrentProductionReleaseNumber} going to Production soon"
-      color_dividing_section 
-      color_note_section "in Release Chat Room Flow:"
-      color_dividing_section 
-      color_note_section "@Team for Core ${Core_CurrentProductionReleaseNumber} to production."
-      color_note_section "We have:"
-      color_note_section "OPS notified"
-      color_note_section "We need:"
-      color_note_section "QA sign off"
-      color_note_section "Dev sign off"
-      color_note_section "Product sign off"
-    else
-    tee <<EOF
-EOF
-    color_note_section "You were supposed to do something"
-  fi
-    tee <<EOF
-If you have issues getting sign offs during hotfix releases, reach out to Clayton Dubin 
-EOF
-  
-}
+#function helpWeedmapsReleaseNotifications() {
+#  [ -f "$HOME/code/weedmaps/build-release/release-versions" ] && . "$HOME/code/weedmaps/build-release/release-versions"
+#    tee <<EOF
+#EOF
+#  color_heading_section "In ops flow:"
+#    color_dividing_section 
+#    if [ "ionic" = "$1" ]; then 
+#    tee <<EOF
+#EOF
+#    color_note_section "@here Ionic ${Ionic_CurrentProductionReleaseNumber} is going to production shortly."
+#      color_dividing_section
+#      color_note_section "in Release Chat Room Flow:"
+#      color_dividing_section 
+#      color_note_section "@here for Ionic ${Ionic_CurrentProductionReleaseNumber} release to Prod."
+#      color_note_section "We have:"
+#      color_note_section "OPS Notified"
+#      color_note_section "We need:"
+#      color_note_section "QA sign off"
+#      color_note_section "Dev sign off @Thomas, @CharlieK"
+#      color_note_section "Product sign off @Thomas, @CharlieK"
+#    elif [ "core" = "$1" ]; then
+#    tee <<EOF
+#EOF
+#    color_note_section "@here Core ${Core_CurrentProductionReleaseNumber} going to Production soon"
+#      color_dividing_section 
+#      color_note_section "in Release Chat Room Flow:"
+#      color_dividing_section 
+#      color_note_section "@Team for Core ${Core_CurrentProductionReleaseNumber} to production."
+#      color_note_section "We have:"
+#      color_note_section "OPS notified"
+#      color_note_section "We need:"
+#      color_note_section "QA sign off"
+#      color_note_section "Dev sign off"
+#      color_note_section "Product sign off"
+#    else
+#    tee <<EOF
+#jEOF
+#    color_note_section "You were supposed to do something"
+#  fi
+#    tee <<EOF
+#If you have issues getting sign offs during hotfix releases, reach out to Clayton Dubin 
+#EOF
+#  
+#}
 
-function gitReleaseNotesStatus() {
+function generateWeedmapsReleaseNotesStatus() {
   #path='GhostGroup/weedmaps_ionic' 
   # $2 == github path
-  if [ "$2" != "" ]
-  then
-    color_command_section "git releasenotes $1.. -a -p $2"
-    releasenotes $1.. -a -p $2 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.weedmaps-git.releasenotes
+  if [ "$1" == "" ]; then
+    echo "Please provide a version or branch"
+    read version_or_branch
   else
-    color_command_section "git releasenotes $1.. -a"
-    releasenotes $1.. -a | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.weedmaps-git.releasenotes
+    version_or_branch=$1
+  fi
+
+  printf "Version: $version_or_branch \n"
+
+  github_path=""
+  if [ "$2" == "" ]; then
+    echo "Which Repo? (moonshot ionic core api platform delivery)"
+    read repo 
+  case $repo in
+    moonshot)
+      github_path="GhostGroup/moonshot"
+      ;;
+    ionic)
+      github_path="GhostGroup/weedmaps_ionic"
+      ;;
+    core)
+      github_path="GhostGroup/weedmaps"
+      ;;
+    api)
+      github_path="GhostGroup/weedmaps_api"
+      ;;
+    platform)
+      github_path="GhostGroup/platform"
+      ;;
+    delivery)
+      github_path="GhostGroup/delivery"
+      ;;
+    *)
+      echo "that was the wrong choice "
+      github_path="GhostGroup/weedmaps_ionic"
+      exit 0
+  esac
+
+  printf "Repo: $repo\n"
+  printf "Path: $github_path\n"
+  else
+    repo = $2
+  fi
+
+
+  if [ "$github_path" != "" ]
+  then
+    color_command_section "git releasenotes $version_or_branch.. -a -p $github_path"
+    releasenotes $version_or_branch.. -a -p $github_path | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.weedmaps-git.releasenotes
+  else
+    color_command_section "git releasenotes $version_or_branch.. -a"
+    releasenotes $version_or_branch.. -a | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.weedmaps-git.releasenotes
   fi
 }
 
@@ -272,57 +336,67 @@ function gitReleaseNotesStatus() {
 #}
 
 function helpWeedmapsRinseAndRepeat() {
-    tee <<EOF
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Weedmaps Rinse and Repeat${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
 EOF
-  color_note_section "Check boards \(Shatter, Flower Rangers, Tokemon, MMJMenu\)"
+  color_note_section "Check Jira status for 'Ready for QA'"
     color_command_section "git checkout \(staging|develop|acceptance\); git fetch; git pull"
-    color_command_section "circle token 2afc0f73c64d2b6a57d5436bbecbff8e74d88f15"
-    color_command_section "circle --watch"
-    color_command_section "helpWeedmapsReleaseNotesGenProcess"
+    #color_command_section "circle token 2afc0f73c64d2b6a57d5436bbecbff8e74d88f15"
+    #color_command_section "circle --watch"
+    #color_command_section "helpWeedmapsReleaseNotesGenProcess"
     color_note_section "Move things to Acceptance"
-    color_note_section "Generate Report Cards"
+    color_note_section "Generate Progress Reports"
   }
 
-function helpCircleCliHelp() {
-    tee <<EOF
-EOF
-  color_note_section "https://github.com/circle-cli/circle-cli"
-        color_dividing_section 
-    color_note_section "circle ci token"
-        color_dividing_section 
-    color_note_section "circle token 2afc0f73c64d2b6a57d5436bbecbff8e74d88f15"
-        color_dividing_section 
-    color_note_section "watch current branch"
-        color_dividing_section 
-    color_note_section "circle --watch "
-        color_dividing_section 
-    color_note_section "open current branch - current circle ci build"
-        color_dividing_section 
-    color_note_section "circle open"
-  }
+#function helpCircleCliHelp() { # DEPRECATED
+#    tee <<EOF
+#EOF
+#echo "This did not appear to work - #BOOOOOOOOOO"
+#  color_note_section "https://github.com/circle-cli/circle-cli"
+#        color_dividing_section 
+#    color_note_section "circle ci token"
+#        color_dividing_section 
+#    color_note_section "circle token 2afc0f73c64d2b6a57d5436bbecbff8e74d88f15"
+#        color_dividing_section 
+#    color_note_section "watch current branch"
+#        color_dividing_section 
+#    color_note_section "circle --watch "
+#        color_dividing_section 
+#    color_note_section "open current branch - current circle ci build"
+#        color_dividing_section 
+#    color_note_section "circle open"
+#  }
 
 function helpWeedmapsReleaseNotesGenProcess() {
 
-  [ -f "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh" ] && . "$HOME/code/weedmaps_code/weedmaps-tools/versions.sh"
+  tee <<EOF
+$(printf "${FORMATTING_HEADER_1}Weedmaps Release Notes Process${COLOR_NC}")
+$(printf "%s" ${FORMATTING_BIG_DIVIDER})
+EOF
+  [ -f "$HOME/code/weedmaps/build-release/release-versions" ] && . "$HOME/code/weedmaps/build-release/release-versions"
     tee <<EOF
 EOF
       if [ "ionic" = "$1" ]; then 
     tee <<EOF
-gitReleaseNotesStatus ${Ionic_PreviousProductionReleaseNumber}${COLOR_NC} # Color Release Notes
+$(printf "generateReleaseNotesStatus ${Ionic_PreviousProductionReleaseNumber}${COLOR_NC} # Color Release Notes
         Generate Release Notes File
 releasenotes ${Ionic_PreviousProductionReleaseNumber}.. -a  > ~/Documents/releases/ionic/ionic-${Ionic_CurrentProductionReleaseNumber}.txt${COLOR_NC} # Release Notes File
         Type output
 releasenotes ${Ionic_PreviousProductionReleaseNumber}..  ${COLOR_NC} # Not Color / Type Output - Used for generating notes for Victoria
         Release notes should be generated
+")
 EOF
       elif [ "core" = "$1" ]; then
     tee <<EOF
-gitReleaseNotesStatus origin/release/${Core_PreviousProductionReleaseNumber} GhostGroup/weedmaps${COLOR_NC} # Color Release Notes
+$(printf "
+generateReleaseNotesStatus origin/release/${Core_PreviousProductionReleaseNumber} GhostGroup/weedmaps${COLOR_NC} # Color Release Notes
   Generate Release Notes File
 releasenotes origin/release/${Core_PreviousProductionReleaseNumber}.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-${Core_CurrentProductionReleaseNumber}.txt${COLOR_NC} # Release Notes File
   Type output
 releasenotes origin/release/${Core_PreviousProductionReleaseNumber}.. -p GhostGroup/weedmaps ${COLOR_NC} # Not Color / Type Output - Used for generating notes for Victoria
   Release notes should be generated 
+")
 EOF
       else
     tee <<EOF
@@ -336,12 +410,22 @@ function helpWeedmapsCoreReleaseProcess() {
     tee <<EOF
 $(printf "${FORMATTING_LINK}https://github.com/GhostGroup/weedmaps/wiki/release-process${COLOR_NC}")
 EOF
+  echo "If it is a merge commit you're cherry picking"
   color_command_section "git cherry-pick -m 1 -e [SHA-to-merge-in]"
   color_command_section "git cherry-pick -m 1 -e ${1}"
+  echo "If it is not a merge commit you're cherry picking"
+  color_command_section "git cherry-pick -e [SHA-to-merge-in]"
+  color_command_section "git cherry-pick -e ${1}"
 }
 
 function helpWeedmapsCreatingHotfixes() {
     tee <<EOF
-$(printf "${FORMATTING_COMMAND}git checkout
+$(printf "${FORMATTING_LINK}https://github.com/GhostGroup/weedmaps/wiki/release-process${COLOR_NC}")
 EOF
+  echo "If it is a merge commit you're cherry picking"
+  color_command_section "git cherry-pick -m 1 -e [SHA-to-merge-in]"
+  color_command_section "git cherry-pick -m 1 -e ${1}"
+  echo "If it is not a merge commit you're cherry picking"
+  color_command_section "git cherry-pick -e [SHA-to-merge-in]"
+  color_command_section "git cherry-pick -e ${1}"
 }
