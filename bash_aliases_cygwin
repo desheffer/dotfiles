@@ -2,5 +2,5 @@
 # vim: ft=sh
 eval "$(dircolors -b)"
 alias ls='ls --color=auto'
-export GIT_EXEC_PATH="/usr/local/src/git/"
 export EDITOR='vim'
+export GIT_EXEC_PATH="/usr/libexec/git-core/"

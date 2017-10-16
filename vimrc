@@ -219,29 +219,28 @@ call vundle#begin()
 " Let Vundle Manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'powerline/powerline'
-"Plugin :majutsushi/tagbar'
+Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'csapprox' " -- already handled by submodule
-"Plugin 'vim-scripts/ChocolateLiquor'
+Plugin 'csapprox' " -- already handled by submodule
+Plugin 'vim-scripts/ChocolateLiquor'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'saltstack/salt-vim'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"Plugin 'chase/vim-ansible-yaml'
-"Plugin 'avakhov/vim-yaml'
-"Plugin 'desert-warm-256'
 Plugin 'stephpy/vim-php-cs-fixer'
+Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'chase/vim-ansible-yaml'
+Plugin 'avakhov/vim-yaml'
 
 call vundle#end() " required
 
 if &t_Co >= 256
-    colorscheme vividchalk
-    "colorscheme ChocolateLiquor
+    "colorscheme vividchalk
+    colorscheme ChocolateLiquor
     "colorscheme desert-warm-256
 endif
 
