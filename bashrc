@@ -90,6 +90,30 @@ function phptags {
     find . -type f -iname "*.php" -not -path "/vendor" | xargs ctags -a
 }
 
+function gitreset {
+    git rev-parse 2>/dev/null || return
+
+    TIMESTAMP=$(date '+%Y%m%d%H%M%S')
+    OLD_BRANCH="$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)"
+    NEW_BRANCH="$1"
+
+    if [ -z "$NEW_BRANCH" ]; then
+        NEW_BRANCH="$OLD_BRANCH"
+    fi
+
+    cd "$(git rev-parse --show-cdup)"
+    git add .
+    git commit -m "auto commit at $TIMESTAMP" >/dev/null
+    if [ $? -eq 0 ]; then
+        echo "Creating backup: $OLD_BRANCH-$TIMESTAMP"
+        git branch "$OLD_BRANCH-$TIMESTAMP"
+    fi
+
+    git checkout "$NEW_BRANCH" >/dev/null 2>/dev/null
+    git fetch origin >/dev/null
+    git reset --hard "origin/$NEW_BRANCH"
+}
+
 #==============================================================================
 # Prompt
 #==============================================================================
