@@ -51,19 +51,11 @@ fi
 
 # Quick grep command.
 function g {
-    SEARCH="$@"
-
-    [ -z "$SEARCH" ] && return
-
-    TARGET=$(ag "$SEARCH" | fzf)
-
-    if [ ! -z "$TARGET" ]; then
-        FILE=$(echo "$TARGET" | cut -d ':' -f 1)
-        LINE=$(echo "$TARGET" | cut -d ':' -f 2)
-
-        echo "$FILE:$LINE"
-        vi "+$LINE" "$FILE"
-    fi
+    [ -z "$@" ] && return
+    TMP=$(mktemp)
+    ag "$@" | fzf -m > $TMP
+    vim -q $TMP +copen
+    rm $TMP
 }
 
 # Quick find command.
