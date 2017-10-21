@@ -43,6 +43,10 @@ if [ ! -e ~/.git-prompt.sh ]; then
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 fi
 
+if [ ! -e ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
+
 mkdir -p ~/.vim/swap
 mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/undo

@@ -1,0 +1,17 @@
+# Pane border colors
+set-option -g pane-border-fg "colour0"
+set-option -g pane-active-border-fg "colour3"
+
+# Status bar colors and formats
+set -g status-bg "colour235"
+set -g status-fg "colour7"
+set -g status-left "#{?client_prefix,\
+#[fg=colour0]#[bg=colour3]#[bold] #S #[fg=colour3]#[bg=colour235]#[nobold],\
+#[fg=colour250]#[bg=colour237]#[bold] #S #[fg=colour237]#[bg=colour235]#[nobold]}"
+set -g status-right "#[fg=colour237]#[bg=colour235]#[fg=colour249]#[bg=colour237] #( uptime | sed 's/.* load .*: //' ) #[fg=colour3]#[bg=colour237]#[fg=colour0]#[bg=colour3] #h "
+setw -g window-status-format "#{?client_prefix,\
+#[fg=colour7]  #I #[fg=colour249]#W  ,\
+#[fg=colour249]  #I #[fg=colour7]#W  }"
+setw -g window-status-current-format "#{?client_prefix,\
+#[fg=colour235]#[bg=colour0]#[fg=colour3] #I #W #[fg=colour0]#[bg=colour235],\
+#[fg=colour235]#[bg=colour237]#[fg=colour249] #I #[fg=colour7]#W #[fg=colour237]#[bg=colour235]}"
