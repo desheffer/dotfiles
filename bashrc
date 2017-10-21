@@ -54,7 +54,7 @@ function g {
     [ -z "$@" ] && return
     TMP=$(mktemp)
     ag "$@" | fzf -m > $TMP
-    vim -q $TMP +copen
+    [ -s $TMP ] && vim -q $TMP +copen
     rm $TMP
 }
 
