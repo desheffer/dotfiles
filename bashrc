@@ -51,9 +51,9 @@ fi
 
 # Quick grep command.
 function g {
-    [ -z "$@" ] && return
+    [ -z "$*" ] && return
     TMP=$(mktemp)
-    ag "$@" | fzf -m > $TMP
+    ag "$*" | fzf -m > $TMP
     [ -s $TMP ] && vim -q $TMP +copen
     rm $TMP
 }
