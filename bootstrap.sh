@@ -3,13 +3,12 @@
 cd "$(dirname $0)"
 HERE="$(pwd)"
 
-# Remove old files.
-for FILE in $(file ~/.* | grep broken | cut -d : -f 1); do
-    echo "Cleaning up $FILE..."
-    rm "$FILE"
+# Remove broken links.
+for FILE in ~/.*; do
+    [ -L "$FILE" ] && [ ! -e "$FILE" ] && rm "$FILE"
 done
 
-# Install new files.
+# Install new links.
 for FILE in *; do
     # Skip excluded files.
     [ "$FILE" == "$(basename $0)" ] && continue
@@ -35,6 +34,7 @@ for FILE in *; do
     ln -s "$SRC" "$DEST"
 done
 
+# Set up Git.
 if [ ! -e ~/.git-completion.bash ]; then
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
 fi
@@ -43,6 +43,7 @@ if [ ! -e ~/.git-prompt.sh ]; then
     curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
 fi
 
+# Set up tmux.
 if [ ! -e ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
@@ -51,9 +52,10 @@ mkdir -p ~/.vim/swap
 mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/undo
 
-# Install Vim plugins.
+# Set up Vim.
 if [ ! -f ~/.vim/autoload/plug.vim ]; then
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+
 vim +PlugUpdate +qall

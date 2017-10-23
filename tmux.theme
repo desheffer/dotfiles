@@ -1,3 +1,5 @@
+TMUX_PROMPT_COLOR=colour11
+
 # Status update interval
 set -g status-interval 1
 
@@ -9,17 +11,17 @@ set -g status-bg colour237
 set -g status-left-fg colour246
 set -g status-left-bg colour237
 set -g status-left-length 40
-set -g status-left "#{?client_prefix,#[fg=colour232]#[bg=colour3]#[bold]  #S  #[nobold]#[fg=colour3]#[bg=colour239],#[fg=colour232]#[bg=colour246]#[bold]  #S  #[nobold]#[fg=colour246]#[bg=colour239]}#[fg=colour246]#[bg=colour239]  #(whoami)  #[fg=colour239]#[bg=colour237]"
+set -g status-left "#{?client_prefix,#[fg=colour232]#[bg=$TMUX_PROMPT_COLOR]#[bold]  #S  #[nobold]#[fg=$TMUX_PROMPT_COLOR]#[bg=colour239],#[fg=colour232]#[bg=colour246]#[bold]  #S  #[nobold]#[fg=colour246]#[bg=colour239]}#[fg=colour246]#[bg=colour239]  #(whoami)  #[fg=colour239]#[bg=colour237]"
 
 # Right side of status bar
 set -g status-right-fg colour246
 set -g status-right-bg colour237
 set -g status-right-length 150
-set -g status-right "#[fg=colour239]#[bg=colour237]#[fg=colour246]#[bg=colour239]  Load: #(uptime | grep -ohe 'load.*:.*' | awk '{ printf \"%%4.2f, %%4.2f, %%4.2f\", $3, $4, $5 }')  #[fg=colour3]#[bg=colour239]#[fg=colour232]#[bg=colour3]  #h  "
+set -g status-right "#[fg=colour239]#[bg=colour237]#[fg=colour246]#[bg=colour239]  Load: #(uptime | grep -ohe 'load.*:.*' | awk '{ printf \"%%4.2f, %%4.2f, %%4.2f\", $3, $4, $5 }')  #[fg=$TMUX_PROMPT_COLOR]#[bg=colour239]#[fg=colour232]#[bg=$TMUX_PROMPT_COLOR]  #h  "
 
 # Window status
-set -g window-status-format "  #{?client_prefix,#[fg=colour11],}#I#[fg=default]:#W#F  "
-set -g window-status-current-format "#[fg=colour237]#[bg=black]#[fg=colour250] #[fg=colour11]#I#[fg=colour250]:#W#F #[fg=colour237]#[bg=black]"
+set -g window-status-format "  #{?client_prefix,#[fg=$TMUX_PROMPT_COLOR],}#I#[fg=default]:#W#F  "
+set -g window-status-current-format "#[fg=colour237]#[bg=black]#[fg=colour250] #[fg=$TMUX_PROMPT_COLOR]#I#[fg=colour250]:#W#F #[fg=colour237]#[bg=black]"
 
 # Current window status
 set -g window-status-current-fg colour250
@@ -27,7 +29,7 @@ set -g window-status-current-bg black
 
 # Window with activity status
 set -g window-status-activity-fg colour237 # fg and bg are flipped here due to
-set -g window-status-activity-bg colour11  # a bug in tmux
+set -g window-status-activity-bg $TMUX_PROMPT_COLOR  # a bug in tmux
 
 # Window separator
 set -g window-status-separator ""
@@ -40,7 +42,7 @@ set -g pane-border-fg colour8
 set -g pane-border-bg default
 
 # Active pane border
-set -g pane-active-border-fg colour11
+set -g pane-active-border-fg $TMUX_PROMPT_COLOR
 set -g pane-active-border-bg default
 
 # Pane number indicator

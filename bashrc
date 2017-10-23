@@ -24,8 +24,9 @@ shopt -s autocd 2>/dev/null
 # Set text editor.
 export EDITOR='vim'
 
-# Custom aliases.
-alias less='less -FXR'
+export LESS="-FXR $LESS"
+
+# Set up custom aliases.
 alias la='ls -A'
 alias ll='ls -Al'
 alias tmux='tmux -2'
@@ -33,13 +34,13 @@ alias vi='vim'
 alias vim='vim -p'
 alias serve='python -m SimpleHTTPServer 8000'
 
-# Linux specific setup.
+# Run specific commands for Linux.
 if [ "$(uname -s)" == 'Linux' ]; then
     eval "$(dircolors -b)"
     alias ls='ls --color=auto'
 fi
 
-# Mac OS X specific setup.
+# Run specific commands for OS X.
 if [ "$(uname -s)" == 'Darwin' ]; then
     alias ls='ls -G'
     alias vim='mvim -v -p'
@@ -49,7 +50,7 @@ fi
 # Functions
 #==============================================================================
 
-# Quick grep command.
+# Quickly search for and open a file.
 function g {
     [ -z "$*" ] && return
     TMP=$(mktemp)
@@ -58,16 +59,12 @@ function g {
     rm $TMP
 }
 
-# Quick find command.
-function f {
-    echo 'Use `vi` with <C-t> instead!'
-}
-
-# Quick development directory change command.
+# Quickly change to the root directory of a repository.
 function d {
     git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"
 }
 
+# Generate a secure password.
 function passwordgen {
     if [ $# -lt 1 ]; then
         LENGTH=32
@@ -77,11 +74,6 @@ function passwordgen {
 
     LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c $LENGTH
     echo
-}
-
-# Remote copy.
-function copyfrom {
-    ssh $1 "bash -c netpaste" | tee /dev/stderr | pbcopy
 }
 
 # Generate ctags for a PHP project.
@@ -183,7 +175,7 @@ function __set_prompt {
     PROMPT_COMMAND=
 }
 
-# Provide fallback prompt.
+# Provide a fallback prompt.
 PS1="\n\u@\h:\w\n\$ "
 
 # Upgrade to a color prompt.
@@ -220,10 +212,7 @@ fi
 # Git
 #==============================================================================
 
-# Git paging.
-export GIT_PAGER='less -+$LESS -FXR'
-
-# Git scripts.
+# Source Git helper scripts.
 [ -f ~/.git-completion.bash ] && . ~/.git-completion.bash
 [ -f ~/.git-prompt.sh ] && . ~/.git-prompt.sh
 
