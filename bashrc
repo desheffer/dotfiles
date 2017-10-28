@@ -57,6 +57,7 @@ function g {
     TMP=$(mktemp)
     ag "$*" | fzf -m > $TMP
     [ -s $TMP ] && vim -q $TMP +copen
+    cat $TMP | sed 's/:[0-9]*:.*$//'
     rm $TMP
 }
 
