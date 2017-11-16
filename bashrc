@@ -110,6 +110,11 @@ function git-reset {
     git reset --hard "origin/$NEW_BRANCH"
 }
 
+# Open an SSH connection with tmux.
+function ssh-tmux {
+    ssh "$1" -t "tmux -2u attach 2>/dev/null || tmux -2u new-session"
+}
+
 #==============================================================================
 # Prompt
 #==============================================================================
