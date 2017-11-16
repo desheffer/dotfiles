@@ -219,6 +219,14 @@ fi
 [ -f ~/.git-prompt.sh ] && . ~/.git-prompt.sh
 
 #==============================================================================
+# Docker
+#==============================================================================
+
+alias dkr-nginx-proxy='docker stop proxy && docker rm proxy; docker pull jwilder/nginx-proxy && docker run --name proxy -d -p 80:80 -p 443:443 -v /var/run/docker.sock:/tmp/docker.sock:ro -v ~/.rs/.nginx-html:/usr/share/nginx/html:rw -v ~/.rs/.nginx-proxy.conf:/etc/nginx/conf.d/proxy.conf:ro -v ~/.rs/.nginx-certs:/etc/nginx/certs:ro -v ~/.rs/.nginx-vhost.d/:/etc/nginx/vhost.d:rw --log-opt max-size=1M --net bridge --label com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true jwilder/nginx-proxy'
+alias dkr-ssl='docker stop ssl && docker rm ssl; docker pull jrcs/letsencrypt-nginx-proxy-companion && docker run --name ssl -d -v /var/run/docker.sock:/var/run/docker.sock:ro -v ~/.rs/.nginx-certs:/etc/nginx/certs:rw --volumes-from proxy jrcs/letsencrypt-nginx-proxy-companion'
+alias dkr-proxy='dkr-nginx-proxy && dkr-ssl'
+
+#==============================================================================
 # Miscellaneous
 #==============================================================================
 
