@@ -2,7 +2,7 @@
 # Basics
 #==============================================================================
 
-# Add user binary path.
+# Add ~/bin path.
 [ -d ~/bin ] && export PATH="$HOME/bin:$PATH"
 
 # If not running interactively, don't do anything else.
@@ -17,14 +17,15 @@ shopt -s globstar 2>/dev/null
 # Enable auto cd.
 shopt -s autocd 2>/dev/null
 
+# Use Vim.
+export EDITOR='vim'
+
+# Use sane defaults for less.
+export LESS="-FXR $LESS"
+
 #==============================================================================
 # Aliases
 #==============================================================================
-
-# Set text editor.
-export EDITOR='vim'
-
-export LESS="-FXR $LESS"
 
 # Set up custom aliases.
 alias la='ls -A'
@@ -84,7 +85,8 @@ function phptags {
     find . -type f -iname "*.php" -not -path "/vendor" | xargs ctags -a
 }
 
-function gitreset {
+# Safely reset a Git repository to match a remote branch.
+function git-reset {
     git rev-parse 2>/dev/null || return
 
     TIMESTAMP=$(date '+%Y%m%d%H%M%S')
