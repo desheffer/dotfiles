@@ -185,6 +185,7 @@ nnoremap <silent> <Leader>js :%!python -m json.tool<CR>
 " Functions
 "==============================================================================
 
+" Close the current tab
 function! TabClose()
     if tabpagenr('$') == 1
         qall

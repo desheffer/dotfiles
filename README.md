@@ -1,39 +1,25 @@
 # dotfiles
 
-                            |
-                        \       /
-                          .-"-.
-                     --  /     \  --
-    `~~^~^~^~^~^~^~^~^~^-=======-~^~^~^~~^~^~^~^~^~^~^~`
-    `~^_~^~^~-~^_~^~^_~-=========- -~^~^~^-~^~^_~^~^~^~`
-    `~^~-~~^~^~-^~^_~^~~ -=====- ~^~^~-~^~_~^~^~~^~-~^~`
-    `~^~^~-~^~~^~-~^~~-~^~^~-~^~~^-~^~^~^-~^~^~^~^~~^~-`
-
-That's a sunset, and these are my personal dotfiles for various Unix utilities.
-On the off chance you find any of these files useful, you are free to use them
-however you see fit.
+These are my personal dotfiles for various Unix utilities.  If you find these
+files useful, then you are free to use them however you see fit.
 
 ## Installation
 
-1. Run `bootstrap.sh` to link the files into your home directory.
+Run `bootstrap.sh` to link the files into your home directory.
 
-2. https://www.youtube.com/watch?v=QX5XKFn7Ngo
+To install tmux plugins, run tmux and press <kbd>Ctrl</kbd>-<kbd>a</kbd> +
+<kbd>I</kbd>.
 
-3. ???
-
-4. Et voilà!
-
-## Fonts
-
-Download and install one of the patched [Nerd
-Fonts](https://github.com/ryanoasis/nerd-fonts).
+To use special symbols, download and install one of the patched [Nerd
+Fonts](https://github.com/ryanoasis/nerd-fonts) for your terminal.
 
 ## Sharing a clipboard over SSH
 
 The following steps allow you to create a remote version of the `pbcopy`
-utility.  Please note this assumes that your local machine is a Mac.
+utility.  These instructions assume that your local machine is a Mac.  Replace
+`1234` with a port of your choice.
 
-First, on your local machine:
+### On your local machine
 
 Create `~/Library/LaunchAgents/pbcopy.plist` with the following content:
 
@@ -58,7 +44,7 @@ Create `~/Library/LaunchAgents/pbcopy.plist` with the following content:
           <key>Listeners</key>
           <dict>
               <key>SockServiceName</key>
-              <string>2224</string>
+              <string>1234</string>
               <key>SockNodeName</key>
               <string>127.0.0.1</string>
           </dict>
@@ -69,16 +55,19 @@ Create `~/Library/LaunchAgents/pbcopy.plist` with the following content:
 
 Run `launchctl load ~/Library/LaunchAgents/pbcopy.plist` to start the listener.
 
-Add `RemoteForward 2224 127.0.0.1:2224` to your `~/.ssh/config`.
+Add `RemoteForward 1234 127.0.0.1:1234` to your `~/.ssh/config`.
 
-Next, on the remote machine:
+### On the remote machine
 
-Now you can pipe text into `nc localhost 2224` and it will be copied to the
-clipboard on your local machine.  To make this easier, you can use the
-following script:
+Create `~/bin/pbcopy` with the following content:
 
 ```
 #!/bin/bash
 
-cat | nc localhost 2224
+cat | nc localhost 1234
 ```
+
+You can now copy text using the `pbcopy` command on the remote machine.  For
+example, you can copy a file (`cat myfile | pbcopy`) or part of a file (using
+<kbd>g</kbd><kbd>y</kbd> on a block of text in Vim).  In either case, the text
+will be copied to the clipboard on your local machine.
