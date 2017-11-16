@@ -33,7 +33,5 @@
     compactionHeuristic = 1
 [push]
     default = simple
-[github]
-    user = desheffer
 [include]
     path = ~/.gitconfig.local
