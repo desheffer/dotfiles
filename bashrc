@@ -191,33 +191,6 @@ PS1="\n\u@\h:\w\n\$ "
 [[ "$TERM" =~ .*-256color ]] && PROMPT_COMMAND='__set_prompt'
 
 #==============================================================================
-# SSH
-#==============================================================================
-
-# Setup SSH agent.
-if [ -n "$SSH_TTY" ]; then
-    SSH_ENV=~/.ssh/environment
-
-    function start_agent {
-        echo "Initializing new SSH agent..."
-        /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
-        chmod 600 "${SSH_ENV}"
-        . "${SSH_ENV}" > /dev/null
-        ssh-add
-    }
-
-    # Source SSH settings, if applicable.
-    if [ -f "${SSH_ENV}" ]; then
-        . "${SSH_ENV}" > /dev/null
-        ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
-            start_agent
-        }
-    else
-        start_agent
-    fi
-fi
-
-#==============================================================================
 # Miscellaneous
 #==============================================================================
 
