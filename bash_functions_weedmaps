@@ -1,7 +1,7 @@
 #` vim: ft=sh
 
 
-function helpWeedmaps() {
+function helpWeedmaps_old() {
   tee <<EOF
 $(printf "${FORMATTING_HEADER_1}Weedmaps Help${COLOR_NC}")
 $(printf "%s" ${FORMATTING_BIG_DIVIDER})
@@ -30,7 +30,7 @@ If shit blows up ... Call/Text Jared - $(printf "${FORMATTING_PHONE}720.725.6801
 EOF
 }
 
-function helpWeedmapsCreateOpsTicket() {
+function helpWeedmapsCreateOpsTicket_old() {
   tee <<EOF
 $(printf "${FORMATTING_HEADER_1}Weedmaps Ops Tickets Help${COLOR_NC}")
 $(printf "%s" ${FORMATTING_BIG_DIVIDER})
@@ -47,7 +47,7 @@ EOF
   
 }
 
-function helpWeedmapsDatabaseRestore() {
+function helpWeedmapsDatabaseRestore_old() {
   tee <<EOF
 $(printf "${FORMATTING_HEADER_1}Weedmaps Database Restore Help${COLOR_NC}")
 $(printf "%s" ${FORMATTING_BIG_DIVIDER})
@@ -67,7 +67,7 @@ ${FORMATTING_COMMAND}git checkout acceptance; git fetch; git pull; git push orig
 EOF
 }
 
-function helpWeedmapsMoonshotRelease() {
+function helpWeedmapsMoonshotRelease_old() {
   tee <<EOF
 $(printf "${FORMATTING_HEADER_1}Weedmaps Moonshot Release${COLOR_NC}")
 $(printf "%s" ${FORMATTING_BIG_DIVIDER})
@@ -379,7 +379,7 @@ EOF
 EOF
       if [ "ionic" = "$1" ]; then 
     tee <<EOF
-$(printf "generateReleaseNotesStatus ${Ionic_PreviousProductionReleaseNumber}${COLOR_NC} # Color Release Notes
+$(printf "generateWeedmapsReleaseNotesStatus ${Ionic_PreviousProductionReleaseNumber}${COLOR_NC} # Color Release Notes
         Generate Release Notes File
 releasenotes ${Ionic_PreviousProductionReleaseNumber}.. -a  > ~/Documents/releases/ionic/ionic-${Ionic_CurrentProductionReleaseNumber}.txt${COLOR_NC} # Release Notes File
         Type output
@@ -390,7 +390,7 @@ EOF
       elif [ "core" = "$1" ]; then
     tee <<EOF
 $(printf "
-generateReleaseNotesStatus origin/release/${Core_PreviousProductionReleaseNumber} GhostGroup/weedmaps${COLOR_NC} # Color Release Notes
+generateWeedmapsReleaseNotesStatus origin/release/${Core_PreviousProductionReleaseNumber} GhostGroup/weedmaps${COLOR_NC} # Color Release Notes
   Generate Release Notes File
 releasenotes origin/release/${Core_PreviousProductionReleaseNumber}.. -a -p GhostGroup/weedmaps > ~/Documents/releases/core/core-${Core_CurrentProductionReleaseNumber}.txt${COLOR_NC} # Release Notes File
   Type output
@@ -406,7 +406,7 @@ EOF
       fi
 }
 
-function helpWeedmapsCoreReleaseProcess() {
+function helpWeedmapsCoreReleaseProcess_old() {
     tee <<EOF
 $(printf "${FORMATTING_LINK}https://github.com/GhostGroup/weedmaps/wiki/release-process${COLOR_NC}")
 EOF
@@ -418,7 +418,7 @@ EOF
   color_command_section "git cherry-pick -e ${1}"
 }
 
-function helpWeedmapsCreatingHotfixes() {
+function helpWeedmapsCreatingHotfixes_old() {
     tee <<EOF
 $(printf "${FORMATTING_LINK}https://github.com/GhostGroup/weedmaps/wiki/release-process${COLOR_NC}")
 EOF

@@ -226,13 +226,12 @@ Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'csapprox' " -- already handled by submodule
 Plugin 'vim-scripts/ChocolateLiquor'
 Plugin 'tpope/vim-fugitive'
-Plugin 'majutsushi/tagbar'
 Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
 Plugin 'saltstack/salt-vim'
 Plugin 'stephpy/vim-php-cs-fixer'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'avakhov/vim-yaml'
 

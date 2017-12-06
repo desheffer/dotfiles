@@ -18,6 +18,25 @@ HISTFILESIZE=10000
 [ -f "$HOME/.bash_functions_docker" ] && . "$HOME/.bash_functions_docker"
 [ -f "$HOME/.bash_functions_tail" ] && . "$HOME/.bash_functions_tail"
 [ -f "$HOME/.bash_functions" ] && . "$HOME/.bash_functions"
+[ -f "$HOME/bash_functions" ] && . "$HOME/.bash_functions"
+
+export BUILD_RELEASE_LOCAL_DIR='code/weedmaps/build-release/'
+export BUILD_RELEASE_LOCAL_HELP_DIR="${HOME}/${BUILD_RELEASE_LOCAL_DIR}/command-line-help"
+[ -f "${BUILD_RELEASE_LOCAL_HELP_DIR}/bash_functions_weedmaps" ] && . "${BUILD_RELEASE_LOCAL_HELP_DIR}/bash_functions_weedmaps"
+export CLAPTT_GENERALTEMPLATE='code/wm/claptt_general_template/' # change this to point to your local claptt_general_template repo
+export CLAPTT_GENERALTEMPLATE_HELP_DIR="${HOME}/${CLAPTT_GENERALTEMPLATE}/" # You should not have to modify this
+# Uncomment the below line in .bashrc to include this file
+[ -f "${CLAPTT_GENERALTEMPLATE_HELP_DIR}/bash_functions_help" ] && . "${CLAPTT_GENERALTEMPLATE_HELP_DIR}/bash_functions_help"
+# Let's add in the additional files/structures (Copy this into your ~/.bashrc file)
+export CLAPTT_ABBY='code/personal_kb/' # change this to point to your local claptt_abby repo
+export CLAPTT_ABBY_HELP_DIR="${HOME}/${CLAPTT_ABBY}/" # You should not have to modify this
+# Uncomment the below line in .bashrc to include this file
+[ -f "${CLAPTT_ABBY_HELP_DIR}/bash_functions_help" ] && . "${CLAPTT_ABBY_HELP_DIR}/bash_functions_help"
+# Let's add in the additional files/structures (Copy this into your ~/.bashrc file)
+export CLAPTT_BNR='code/wm/claptt_build_and_release/' # change this to point to your local claptt_build_and_release repo
+export CLAPTT_BNR_HELP_DIR="${HOME}/${CLAPTT_BNR}/" # You should not have to modify this
+# Uncomment the below line in .bashrc to include this file
+[ -f "${CLAPTT_BNR_HELP_DIR}/bash_functions_help" ] && . "${CLAPTT_BNR_HELP_DIR}/bash_functions_help"
 
 #
 # PROMPT
