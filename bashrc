@@ -11,6 +11,7 @@ HISTSIZE=5000
 HISTFILESIZE=10000
 
 # Bash specific functions 
+export DOTFILES_PATH="${HOME}/code/dotfiles/"
 [ -f "$HOME/.bash_functions_colors" ] && . "$HOME/.bash_functions_colors"
 [ -f "$HOME/.bash_functions_git" ] && . "$HOME/.bash_functions_git"
 [ -f "$HOME/.bash_functions_calendar" ] && . "$HOME/.bash_functions_calendar"

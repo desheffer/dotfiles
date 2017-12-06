@@ -16,7 +16,7 @@ alias vi='vim -p'
 alias ultragrep='grep -rnHi --color=always --exclude="*.swp" --exclude="*.orig" --exclude="*.svn*" --exclude="*.diff"'
 alias quickFileGrep='g'
 alias getlast='fc -nl $((HISTCMD - 1))'
-
+alias t='${DOTFILES_PATH}/extras/todo.txt-cli/todo.sh'
 
 #export GIT_EXEC_PATH="/usr/local/Cellar/git/2.13.1/libexec/git-core"
 #export GIT_EXEC_PATH="/usr/local/src/git/"
