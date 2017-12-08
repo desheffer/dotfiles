@@ -4,9 +4,6 @@
 [submodule "grc"]
 	path = extras/grc
 	url = git@github.com:garabik/grc.git
-#[submodule "extras/code-maat"]
-#	path = extras/code-maat
-#	url = git@github.com:peternorrhall/code-maat.git
 [submodule "extras/oh-my-zsh"]
 	path = extras/oh-my-zsh
 	url = git@github.com:robbyrussell/oh-my-zsh.git
