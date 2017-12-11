@@ -1,7 +1,8 @@
 
 # vim: ft=sh
-export GIT_EXEC_PATH="/usr/lib/git-core/"
+export GIT_EXEC_PATH="/usr/local/src/git/"
 eval "$(dircolors -b)"
 alias ls='ls --color=auto'
 export PATH="/usr/local/docker:$PATH"
 export EDITOR='vim'
+

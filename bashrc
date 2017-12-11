@@ -67,6 +67,9 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 PS1=""
 
 # Linux specific setup.
+#if [ $(uname) == 'Linux' && 'custom']; then
+#  [ -f "$HOME/.bash_aliases_linux_custom" ] && . "$HOME/.bash_aliases_linux_custom"
+#fi
 if [ $(uname) == 'Linux' ]; then
   [ -f "$HOME/.bash_aliases_linux" ] && . "$HOME/.bash_aliases_linux"
 fi
@@ -123,7 +126,7 @@ fi
 #
 
 export PATH="~/code/weedmaps_code/weedmaps-tools/git:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-export GIT_EXEC_PATH="/usr/libexec/git-core/"
+# export GIT_EXEC_PATH="/usr/libexec/git-core/"
 # Add user binary path.
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 # Add RVM to path.
