@@ -35,6 +35,7 @@ alias vi='vim'
 alias vim='vim -p'
 alias serve='python -m SimpleHTTPServer 8000'
 alias unquarantine='sudo xattr -r -d com.apple.quarantine'
+alias :qa='exit'
 
 # Run specific commands for Linux.
 if [ "$(uname -s)" == 'Linux' ]; then
