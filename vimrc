@@ -201,6 +201,7 @@ endfunction
 " File system helpers
 command Mkdir !mkdir -p '%:h' > /dev/null
 command SudoWrite write !sudo tee % > /dev/null
+command Rm !rm '%'
 
 " Show preview for Ag command
 command! -bang -nargs=* Ag
