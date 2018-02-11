@@ -28,14 +28,16 @@ export LESS="-FXR $LESS"
 #==============================================================================
 
 # Set up custom aliases.
+alias :qa='exit'
+alias gca='git commit --amend'
+alias gcm='git commit -m'
 alias la='ls -A'
 alias ll='ls -Al'
+alias serve='python -m SimpleHTTPServer 8000'
 alias tmux='tmux -2'
+alias unquarantine='sudo xattr -r -d com.apple.quarantine'
 alias vi='vim'
 alias vim='vim -p'
-alias serve='python -m SimpleHTTPServer 8000'
-alias unquarantine='sudo xattr -r -d com.apple.quarantine'
-alias :qa='exit'
 
 # Run specific commands for Linux.
 if [ "$(uname -s)" == 'Linux' ]; then
