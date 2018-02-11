@@ -84,6 +84,8 @@ set list                        " Enable hidden characters
 set listchars=tab:▷·            " Show tab characters
 set listchars+=trail:·          " Show trailing spaces
 
+set foldmethod=syntax           " Fold based on syntax highlighting items.
+
 set wildmode=longest,list       " Make completion mode acts like Bash
 
 set splitbelow                  " New windows open below
