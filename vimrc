@@ -235,6 +235,9 @@ let g:syntastic_error_symbol='✗'
 let g:syntastic_warning_symbol='!'
 let g:syntastic_html_tidy_exec = 'tidy5'
 
+let g:syntastic_cpp_compiler='clang++'
+let g:syntastic_cpp_compiler_options='-std=c++11 -stdlib=libc++'
+
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
 
