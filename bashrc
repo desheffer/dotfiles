@@ -38,6 +38,7 @@ alias tmux='tmux -2'
 alias unquarantine='sudo xattr -r -d com.apple.quarantine'
 alias vi='vim'
 alias vim='vim -p'
+alias bob='while [ true ]; do clear; make; sleep 1; done'
 
 # Run specific commands for Linux.
 if [ "$(uname -s)" == 'Linux' ]; then
