@@ -31,6 +31,7 @@ export LESS="-FXR $LESS"
 alias :qa='exit'
 alias gca='git commit --amend'
 alias gcm='git commit -m'
+alias gs='git status'
 alias la='ls -A'
 alias ll='ls -Al'
 alias serve='python -m SimpleHTTPServer 8000'
