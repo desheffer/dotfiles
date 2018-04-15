@@ -53,7 +53,6 @@ fi
 # Run specific commands for OS X.
 if [ "$(uname -s)" == 'Darwin' ]; then
     alias ls='ls -G'
-    alias vim='mvim -v -p'
 fi
 
 #==============================================================================
