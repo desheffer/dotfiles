@@ -29,18 +29,20 @@ export LESS="-FXR $LESS"
 
 # Set up custom aliases.
 alias :qa='exit'
+alias bob='while [ true ]; do clear; make; sleep 1; done'
+alias dkr-sh='docker run -it --entrypoint sh'
 alias gca='git commit --amend'
 alias gcm='git commit -m'
 alias gs='git status'
 alias la='ls -A'
 alias ll='ls -Al'
 alias serve='python -m SimpleHTTPServer 8000'
+alias ta='tmux -2u attach 2>/dev/null || tmux -2u new-session'
 alias tmux='tmux -2'
 alias traefik="docker stop traefik && docker rm traefik; docker pull traefik && docker run --name traefik -d -p 8080:8080 -p 80:80 -v ~/.rs/traefik.toml:/etc/traefik/traefik.toml -v /var/run/docker.sock:/var/run/docker.sock traefik"
 alias unquarantine='sudo xattr -r -d com.apple.quarantine'
 alias vi='vim'
 alias vim='vim -p'
-alias bob='while [ true ]; do clear; make; sleep 1; done'
 
 # Run specific commands for Linux.
 if [ "$(uname -s)" == 'Linux' ]; then
