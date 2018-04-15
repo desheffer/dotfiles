@@ -36,6 +36,7 @@ alias la='ls -A'
 alias ll='ls -Al'
 alias serve='python -m SimpleHTTPServer 8000'
 alias tmux='tmux -2'
+alias traefik="docker stop traefik && docker rm traefik; docker pull traefik && docker run --name traefik -d -p 8080:8080 -p 80:80 -v ~/.rs/traefik.toml:/etc/traefik/traefik.toml -v /var/run/docker.sock:/var/run/docker.sock traefik"
 alias unquarantine='sudo xattr -r -d com.apple.quarantine'
 alias vi='vim'
 alias vim='vim -p'
@@ -202,11 +203,6 @@ PS1="\n\u@\h:\w\n\$ "
 # Source Git helper scripts.
 [ -f ~/.git-completion.bash ] && . ~/.git-completion.bash
 [ -f ~/.git-prompt.sh ] && . ~/.git-prompt.sh
-
-# Add Docker aliases.
-alias dkr-nginx-proxy='docker stop proxy && docker rm proxy; docker pull jwilder/nginx-proxy && docker run --name proxy -d -p 80:80 -p 443:443 -v /var/run/docker.sock:/tmp/docker.sock:ro -v ~/.rs/.nginx-html:/usr/share/nginx/html:rw -v ~/.rs/.nginx-proxy.conf:/etc/nginx/conf.d/proxy.conf:ro -v ~/.rs/.nginx-certs:/etc/nginx/certs:ro -v ~/.rs/.nginx-vhost.d/:/etc/nginx/vhost.d:rw --log-opt max-size=1M --net bridge --label com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy=true jwilder/nginx-proxy'
-alias dkr-ssl='docker stop ssl && docker rm ssl; docker pull jrcs/letsencrypt-nginx-proxy-companion && docker run --name ssl -d -v /var/run/docker.sock:/var/run/docker.sock:ro -v ~/.rs/.nginx-certs:/etc/nginx/certs:rw --volumes-from proxy jrcs/letsencrypt-nginx-proxy-companion'
-alias dkr-proxy='dkr-nginx-proxy && dkr-ssl'
 
 # Add various paths.
 [ -f ~/.cargo/env ] && . ~/.cargo/env
