@@ -57,9 +57,9 @@ call plug#end()
 "==============================================================================
 
 set t_Co=256
-silent! set termguicolors
-silent! let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
-silent! let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
 set background=dark
 silent! colorscheme gruvbox
@@ -78,7 +78,7 @@ set scrolloff=3                 " Pad the cursor with 3 lines
 set scrolljump=5                " Scroll by 5 lines
 set number                      " Show line numbers
 set relativenumber              " Relative to the current line
-silent! set colorcolumn=80      " Draw right margin at 80 characters
+set colorcolumn=80              " Draw right margin at 80 characters
 
 set list                        " Enable hidden characters
 set listchars=tab:▷·            " Show tab characters
@@ -101,8 +101,6 @@ set undofile                    " Save undo history
 set undodir=~/.vim/undo         " Where to write undo history
 
 set visualbell t_vb=            " Be quiet
-
-set guifont=MesloLGS_Nerd_Font:h12
 
 "==============================================================================
 " Mappings
