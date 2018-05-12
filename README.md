@@ -7,9 +7,6 @@ files useful, then you are free to use them however you see fit.
 
 Run `bootstrap.sh` to link the files into your home directory.
 
-To install tmux plugins, run tmux and press <kbd>Ctrl</kbd>-<kbd>a</kbd> +
-<kbd>I</kbd>.
-
 To use special symbols, download and install one of the patched [Nerd
 Fonts](https://github.com/ryanoasis/nerd-fonts) for your terminal.
 
