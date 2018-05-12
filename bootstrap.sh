@@ -2,36 +2,37 @@
 
 cd "$(dirname $0)"
 HERE="$(pwd)"
+FORCE="$(test "$1" == "-f" && echo true)"
 
 # Remove broken links.
 for FILE in ~/.*; do
-    [ -L "$FILE" ] && [ ! -e "$FILE" ] && rm "$FILE"
+    [ -L "${FILE}" ] && [ ! -e "${FILE}" ] && rm "${FILE}"
 done
 
 # Install new links.
 for FILE in *; do
     # Skip excluded files.
-    [ "$FILE" == "$(basename $0)" ] && continue
-    [[ "$FILE" == README* ]] && continue
+    [ "${FILE}" == "$(basename $0)" ] && continue
+    [[ "${FILE}" == README* ]] && continue
 
-    SRC="$HERE/$FILE"
-    DEST="$HOME/.$FILE"
+    SRC="${HERE}/${FILE}"
+    DEST="${HOME}/.${FILE}"
 
     # Skip if no change is needed.
-    if [ "$(readlink "$DEST")" == "$SRC" ]; then
+    if [ "$(readlink "${DEST}")" == "${SRC}" ]; then
         continue
     fi
 
-    echo "Installing $DEST..."
+    echo "Installing ${DEST}..."
 
     # Abort if the file already exists.
-    if [ -e "$DEST" ]; then
-        echo "Error: $DEST already exists!"
-        exit 0
+    if [ -e ${DEST} ] && [ ! ${FORCE} ]; then
+        echo "Error: ${DEST} already exists!"
+        exit 1
     fi
 
     # Link the new file into place.
-    ln -s "$SRC" "$DEST"
+    ln -snf "${SRC}" "${DEST}"
 done
 
 # Set up Git.
