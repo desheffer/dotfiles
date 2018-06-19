@@ -36,7 +36,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'Lokaltog/vim-easymotion'
 
 " Programming
-Plug 'scrooloose/syntastic'
+Plug 'w0rp/ale'
 Plug 'rayburgemeestre/phpfolding.vim'
 " Plug 'joonty/vdebug'
 Plug 'tpope/vim-dispatch'
@@ -216,32 +216,17 @@ command! -bang -nargs=* Ag
 
 let g:airline_powerline_fonts=1
 
-let g:tmux_navigator_no_mappings=1
+let b:ale_fixers=['trim_whitespace']
+let g:ale_fix_on_save=1
 
-let g:nerdtree_tabs_open_on_gui_startup=0
-
-let g:syntastic_mode_map={
-\     'mode': 'active',
-\     'active_filetypes': [],
-\     'passive_filetypes': [],
-\ }
-let g:syntastic_always_populate_loc_list=1
-let g:syntastic_auto_loc_list=1
-let g:syntastic_quiet_messages={ 'type': 'style' }
-let g:syntastic_enable_signs=1
-let g:syntastic_error_symbol='✗'
-let g:syntastic_warning_symbol='!'
-let g:syntastic_html_tidy_exec = 'tidy5'
-
-let g:syntastic_cpp_compiler='clang++'
-let g:syntastic_cpp_compiler_options='-std=c++11 -stdlib=libc++'
+let g:gist_post_private=1
 
 let g:multi_cursor_exit_from_visual_mode=0
 let g:multi_cursor_exit_from_insert_mode=0
 
-let g:gist_post_private=1
+let g:nerdtree_tabs_open_on_gui_startup=0
 
-let g:jsx_ext_required=0
+let g:tmux_navigator_no_mappings=1
 
 "==============================================================================
 " Auto Commands
@@ -258,9 +243,6 @@ autocmd InsertLeave * set number relativenumber
 
 " Disable whitespace at the end of comments
 autocmd FileType * setlocal formatoptions-=w
-
-" Strip whitespace when saving certain types of files
-autocmd FileType php autocmd BufWritePre <buffer> :%s/\s\+$//e
 
 " Jump to the last cursor position when opening a file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line('$') | exe "normal! g'\"" | endif
