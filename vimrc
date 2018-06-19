@@ -38,11 +38,7 @@ Plug 'Lokaltog/vim-easymotion'
 " Programming
 Plug 'w0rp/ale'
 Plug 'rayburgemeestre/phpfolding.vim'
-" Plug 'joonty/vdebug'
 Plug 'tpope/vim-dispatch'
-
-" Syntax
-Plug 'mxw/vim-jsx'
 
 " Git
 Plug 'tpope/vim-fugitive'
