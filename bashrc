@@ -3,7 +3,7 @@
 
 # Update window size.
 shopt -s checkwinsize
-shopt -s histappend 
+shopt -s histappend
 
 # https://www.digitalocean.com/community/tutorials/how-to-use-bash-history-commands-and-expansions-on-a-linux-vps
 # History Sizes
@@ -12,6 +12,7 @@ HISTFILESIZE=10000
 
 # Bash specific functions 
 export DOTFILES_PATH="${HOME}/code/dotfiles/"
+# Bash specific functions
 [ -f "$HOME/.bash_functions_colors" ] && . "$HOME/.bash_functions_colors"
 [ -f "$HOME/.bash_functions_git" ] && . "$HOME/.bash_functions_git"
 [ -f "$HOME/.bash_functions_calendar" ] && . "$HOME/.bash_functions_calendar"
@@ -19,7 +20,6 @@ export DOTFILES_PATH="${HOME}/code/dotfiles/"
 [ -f "$HOME/.bash_functions_docker" ] && . "$HOME/.bash_functions_docker"
 [ -f "$HOME/.bash_functions_tail" ] && . "$HOME/.bash_functions_tail"
 [ -f "$HOME/.bash_functions" ] && . "$HOME/.bash_functions"
-[ -f "$HOME/bash_functions" ] && . "$HOME/.bash_functions"
 
 export BUILD_RELEASE_LOCAL_DIR='code/weedmaps/build-release/'
 export BUILD_RELEASE_LOCAL_HELP_DIR="${HOME}/${BUILD_RELEASE_LOCAL_DIR}/command-line-help"
@@ -38,6 +38,19 @@ export CLAPTT_BNR='code/wm/claptt_build_and_release/' # change this to point to 
 export CLAPTT_BNR_HELP_DIR="${HOME}/${CLAPTT_BNR}/" # You should not have to modify this
 # Uncomment the below line in .bashrc to include this file
 [ -f "${CLAPTT_BNR_HELP_DIR}/bash_functions_help" ] && . "${CLAPTT_BNR_HELP_DIR}/bash_functions_help"
+
+export BUILD_RELEASE_LOCAL_DIR='code/weedmaps_code/build-release/' # change this to point to your local build-release repo
+export BUILD_RELEASE_LOCAL_HELP_DIR="${HOME}/${BUILD_RELEASE_LOCAL_DIR}/command-line-help" # You should not have to modify this
+[ -f "${BUILD_RELEASE_LOCAL_HELP_DIR}/bash_functions_weedmaps" ] && . "${BUILD_RELEASE_LOCAL_HELP_DIR}/bash_functions_weedmaps"
+export CLAPTT_BNR='code/weedmaps_code/claptt_build_and_release/' # change this to point to your local claptt_build_and_release repo
+export CLAPTT_BNR_HELP_DIR="${HOME}/${CLAPTT_BNR}/" # You should not have to modify this
+# Uncomment the below line in .bashrc to include this file
+[ -f "${CLAPTT_BNR_HELP_DIR}/bash_functions_help" ] && . "${CLAPTT_BNR_HELP_DIR}/bash_functions_help"
+# Let's add in the additional files/structures (Copy this into your ~/.bashrc file)
+export CLAPTT_ABBY='code/claptt_abby/' # change this to point to your local claptt_abby repo
+export CLAPTT_ABBY_HELP_DIR="${HOME}/${CLAPTT_ABBY}/" # You should not have to modify this
+# Uncomment the below line in .bashrc to include this file
+[ -f "${CLAPTT_ABBY_HELP_DIR}/bash_functions_help" ] && . "${CLAPTT_ABBY_HELP_DIR}/bash_functions_help"
 
 #
 # PROMPT

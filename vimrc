@@ -234,6 +234,9 @@ Plugin 'stephpy/vim-php-cs-fixer'
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'chase/vim-ansible-yaml'
 Plugin 'avakhov/vim-yaml'
+" Adding Support for Elixir
+Plugin 'elixir-editors/vim-elixir'
+"Plugin 'desert-warm-256'
 
 call vundle#end() " required
 

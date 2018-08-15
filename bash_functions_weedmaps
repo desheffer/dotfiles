@@ -1,5 +1,9 @@
 #` vim: ft=sh
 
+# Moonshot configuration
+export NPM_TOKEN='//registry.npmjs.org/:_authToken=8e4b7a43-a3ee-4332-ab94-b7fc6dda707b'
+
+# Shell Documentation
 
 function helpWeedmaps_old() {
   tee <<EOF
@@ -323,8 +327,14 @@ function generateWeedmapsReleaseNotesStatus() {
 
   if [ "$github_path" != "" ]
   then
-    color_command_section "git releasenotes $version_or_branch.. -a -p $github_path"
-    releasenotes $version_or_branch.. -a -p $github_path | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.weedmaps-git.releasenotes
+    if  [ "$1" == "NOTHING" ]
+    then
+      color_command_section "git releasenotes -a -p $2"
+      releasenotes -a -p $2 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.weedmaps-git.releasenotes
+    else
+      color_command_section "git releasenotes $1.. -a -p $2"
+      releasenotes $1.. -a -p $2 | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.weedmaps-git.releasenotes
+    fi
   else
     color_command_section "git releasenotes $version_or_branch.. -a"
     releasenotes $version_or_branch.. -a | ~/code/dotfiles/bin/grcat ~/code/dotfiles/grc_conf_files/conf.weedmaps-git.releasenotes
