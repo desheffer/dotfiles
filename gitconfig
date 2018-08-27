@@ -24,7 +24,7 @@
 [color "diff"]
     whitespace = red reverse
 [alias]
-    changes = log --name-status
+    changes = log --stat
     graph = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     lines = diff --shortstat 4b825dc642cb6eb9a060e54bf8d69288fbee4904
     listlog = log --no-merges --pretty=format:%s
