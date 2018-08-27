@@ -69,6 +69,16 @@ function g {
     rm $TMP
 }
 
+# Quickly search for and open all matches.
+function ga {
+    [ -z "$*" ] && return
+    TMP=$(mktemp)
+    ag "$*" > $TMP
+    [ -s $TMP ] && vim -q $TMP +copen
+    cat $TMP | sed 's/:[0-9]*:.*$//'
+    rm $TMP
+}
+
 # Quickly change to the root directory of a repository.
 function d {
     git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"
