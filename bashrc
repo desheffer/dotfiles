@@ -29,7 +29,7 @@ export LESS="-FXR $LESS"
 
 # Set up custom aliases.
 alias :qa='exit'
-alias bob='while [ true ]; do clear; make; sleep 1; done'
+alias bob='ag -l | entr make'
 alias dkr-sh='docker run -it --rm --entrypoint sh'
 alias gca='git commit --amend'
 alias gcm='git commit -m'
