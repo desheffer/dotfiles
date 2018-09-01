@@ -61,6 +61,8 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 set background=dark
 silent! colorscheme gruvbox
 
+set clipboard=unnamed           " Use system clipboard
+
 set expandtab                   " Tab key inserts spaces
 set softtabstop=4               " Use 4 spaces for indentation
 set shiftwidth=4                " Use 4 spaces for indentation
