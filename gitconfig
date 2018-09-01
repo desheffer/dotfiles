@@ -20,8 +20,8 @@
     new = green bold
     whitespace = red reverse
 [color "status"]
-    added = green bold
-    changed = yellow bold
+    added = yellow bold
+    changed = green bold
     untracked = cyan bold
 [alias]
     changes = log --stat
