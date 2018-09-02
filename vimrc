@@ -105,7 +105,7 @@ set visualbell t_vb=            " Be quiet
 " Mappings
 "==============================================================================
 
-let mapleader='\'
+let mapleader = '\'
 
 " Disable ex mode
 nnoremap Q <Nop>
@@ -210,19 +210,19 @@ command! -bang -nargs=* Ag
 " Plugin Settings
 "==============================================================================
 
-let g:airline_powerline_fonts=1
+let g:airline_powerline_fonts = 1
 
-let b:ale_fixers=['trim_whitespace']
-let g:ale_fix_on_save=1
+let b:ale_fixers = ['trim_whitespace']
+let g:ale_fix_on_save = 1
 
-let g:gist_post_private=1
+let g:gist_post_private = 1
 
-let g:multi_cursor_exit_from_visual_mode=0
-let g:multi_cursor_exit_from_insert_mode=0
+let g:multi_cursor_exit_from_visual_mode = 0
+let g:multi_cursor_exit_from_insert_mode = 0
 
-let g:nerdtree_tabs_open_on_gui_startup=0
+let g:nerdtree_tabs_open_on_gui_startup = 0
 
-let g:tmux_navigator_no_mappings=1
+let g:tmux_navigator_no_mappings = 1
 
 "==============================================================================
 " Auto Commands
