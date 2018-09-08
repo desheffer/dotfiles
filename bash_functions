@@ -61,7 +61,8 @@ function generate_prompt {
 }
 
 function set_prompt {
-  PS1="$(generate_prompt)"
+  # PS1="$(generate_prompt)"
+  echo ''
 }
 
 # I don't like one letter functions that I should be using ...

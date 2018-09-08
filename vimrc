@@ -209,6 +209,15 @@ set statusline+=%8*%-14.(%l,%c%V%)\ %<%P%* " offset
 "autocmd BufNewFile,BufRead ~/code/ossus*.{php} set expandtab tabstop=4 shiftwidth=4
 "autocmd BufNewFile,BufRead ~/code/falcon*.{php} set tabstop=4 shiftwidth=4
 
+" TMUX cursor
+if exists('$TMUX')
+    let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+    let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
+else
+    let &t_SI = "\<Esc>]50;CursorShape=0\x7"
+    let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+endif
+
 " Highlight current line
 hi CursorLine   cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
 hi CursorColumn cterm=NONE ctermbg=darkred ctermfg=white guibg=darkred guifg=white
@@ -224,7 +233,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'csapprox' " -- already handled by submodule
-Plugin 'vim-scripts/ChocolateLiquor'
+"Plugin 'vim-scripts/ChocolateLiquor'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
@@ -236,14 +245,15 @@ Plugin 'chase/vim-ansible-yaml'
 Plugin 'avakhov/vim-yaml'
 " Adding Support for Elixir
 Plugin 'elixir-editors/vim-elixir'
-"Plugin 'desert-warm-256'
+Plugin 'sjl/vitality.vim'
+Plugin 'desert-warm-256'
 
 call vundle#end() " required
 
 if &t_Co >= 256
     "colorscheme vividchalk
-    colorscheme ChocolateLiquor
-    "colorscheme desert-warm-256
+    "colorscheme ChocolateLiquor
+    colorscheme desert-warm-256
 endif
 
 let g:Powerline_symbols = 'fancy'

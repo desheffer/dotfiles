@@ -77,7 +77,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # ALIASES
 #
 
-PS1=""
+#PS1=""
 
 # Linux specific setup.
 #if [ $(uname) == 'Linux' && 'custom']; then
