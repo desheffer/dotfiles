@@ -11,17 +11,17 @@ set -g status-bg colour237
 set -g status-left-fg colour246
 set -g status-left-bg colour237
 set -g status-left-length 40
-set -g status-left "#{?client_prefix,#[fg=colour232]#[bg=$TMUX_PROMPT_COLOR]#[bold]  #S  #[nobold]#[fg=$TMUX_PROMPT_COLOR]#[bg=colour239],#[fg=colour232]#[bg=colour246]#[bold]  #S  #[nobold]#[fg=colour246]#[bg=colour239]}#[fg=colour246]#[bg=colour239]  #(whoami)  #[fg=colour239]#[bg=colour237]"
+set -g status-left "#{?client_prefix,#[fg=colour232]#[bg=$TMUX_PROMPT_COLOR]#[bold] #S #[nobold]#[fg=$TMUX_PROMPT_COLOR]#[bg=colour239],#[fg=colour232]#[bg=colour246]#[bold] #S #[nobold]#[fg=colour246]#[bg=colour239]}#[fg=colour246]#[bg=colour239] #(whoami) #[fg=colour239]#[bg=colour237]"
 
 # Right side of status bar
 set -g status-right-fg colour246
 set -g status-right-bg colour237
 set -g status-right-length 150
-set -g status-right "#[fg=colour239]#[bg=colour237]#[fg=colour246]#[bg=colour239]  Load: #(uptime | grep -ohe 'load.*:.*' | awk '{ printf \"%%4.2f, %%4.2f, %%4.2f\", $3, $4, $5 }')  #[fg=$TMUX_PROMPT_COLOR]#[bg=colour239]#[fg=colour232]#[bg=$TMUX_PROMPT_COLOR]  #h  "
+set -g status-right "#[fg=colour239]#[bg=colour237]#[fg=colour246]#[bg=colour239] Load: #(uptime | grep -ohe 'load.*:.*' | awk '{ printf \"%%4.2f, %%4.2f, %%4.2f\", $3, $4, $5 }') #[fg=$TMUX_PROMPT_COLOR]#[bg=colour239]#[fg=colour232]#[bg=$TMUX_PROMPT_COLOR] #h "
 
 # Window status
-set -g window-status-format "  #{?client_prefix,#[fg=$TMUX_PROMPT_COLOR],}#I#[fg=default]:#W#F  "
-set -g window-status-current-format "#[fg=colour237]#[bg=black]#[fg=colour250] #[fg=$TMUX_PROMPT_COLOR]#I#[fg=colour250]:#W#F #[fg=colour237]#[bg=black]"
+set -g window-status-format " #{?client_prefix,#[fg=$TMUX_PROMPT_COLOR],}#I#[fg=default]:#W#F "
+set -g window-status-current-format "#[fg=colour237]#[bg=black]#[fg=colour250] #[fg=$TMUX_PROMPT_COLOR]#I#[fg=colour250]:#W#F #[fg=colour237]#[bg=black]"
 
 # Current window status
 set -g window-status-current-fg colour250
