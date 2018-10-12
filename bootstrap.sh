@@ -35,15 +35,6 @@ for FILE in *; do
     ln -snf "${SRC}" "${DEST}"
 done
 
-# Set up Git.
-if [ ! -e ~/.git-completion.bash ]; then
-    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
-fi
-
-if [ ! -e ~/.git-prompt.sh ]; then
-    curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh -o ~/.git-prompt.sh
-fi
-
 # Set up tmux.
 if [ ! -e ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm

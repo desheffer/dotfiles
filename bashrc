@@ -211,9 +211,12 @@ PS1="\n\u@\h:\w\n\$ "
 # Miscellaneous
 #==============================================================================
 
-# Source Git helper scripts.
-[ -f ~/.git-completion.bash ] && . ~/.git-completion.bash
-[ -f ~/.git-prompt.sh ] && . ~/.git-prompt.sh
+# Add bash completion.
+[ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+
+# Source Git helper script.
+[ -f /usr/share/git/git-prompt.sh ] && . /usr/share/git/git-prompt.sh
+[ -f /usr/share/git-core/contrib/completion/git-prompt.sh ] && . /usr/share/git-core/contrib/completion/git-prompt.sh
 
 # Add various paths.
 [ -f ~/.cargo/env ] && . ~/.cargo/env
