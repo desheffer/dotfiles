@@ -17,9 +17,6 @@ Plug 'morhetz/gruvbox'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 
-" Tmux
-Plug 'christoomey/vim-tmux-navigator'
-
 " Files and directories
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc' }
 Plug 'junegunn/fzf.vim'
@@ -126,13 +123,6 @@ nnoremap <silent> ]<Tab> :tabnext<CR>
 nnoremap <C-a>- :split<CR>
 nnoremap <C-a>\| :vsplit<CR>
 
-" Navigate window splits
-nnoremap <silent> <C-a><Left>  :TmuxNavigateLeft<CR>
-nnoremap <silent> <C-a><Down>  :TmuxNavigateDown<CR>
-nnoremap <silent> <C-a><Up>    :TmuxNavigateUp<CR>
-nnoremap <silent> <C-a><Right> :TmuxNavigateRight<CR>
-nnoremap <silent> <C-a>\\      :TmuxNavigatePrevious<CR>
-
 " Prevent p from replacing the buffer (copy what was originally selected)
 vnoremap p pgvy
 
@@ -221,8 +211,6 @@ let g:multi_cursor_exit_from_visual_mode = 0
 let g:multi_cursor_exit_from_insert_mode = 0
 
 let g:nerdtree_tabs_open_on_gui_startup = 0
-
-let g:tmux_navigator_no_mappings = 1
 
 "==============================================================================
 " Auto Commands
