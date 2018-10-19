@@ -33,5 +33,7 @@
 	compactionHeuristic = 1
 [push]
 	default = simple
+[credential]
+	helper = store
 [include]
 	path = ~/.gitconfig.local
