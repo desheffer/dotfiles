@@ -20,6 +20,7 @@ Plug 'ryanoasis/vim-devicons'
 " Files and directories
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc' }
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 
@@ -181,11 +182,6 @@ endfunction
 "==============================================================================
 " Commands
 "==============================================================================
-
-" File system helpers
-command Mkdir !mkdir -p '%:h' > /dev/null
-command SudoWrite write !sudo tee % > /dev/null
-command Rm !rm '%'
 
 " Show preview for Ag command
 command! -bang -nargs=* Ag
