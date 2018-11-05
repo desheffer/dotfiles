@@ -2,6 +2,9 @@
 # Environment Settings
 #==============================================================================
 
+# Add ~/bin path.
+[ -d ~/bin ] && export PATH="$HOME/bin:$PATH"
+
 # If not running interactively, don't do anything else.
 [ -z "$PS1" ] && return
 
@@ -134,9 +137,6 @@ function ssh-tmux {
 # Source Git helper script.
 [ -f /usr/share/git/git-prompt.sh ] && . /usr/share/git/git-prompt.sh
 [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ] && . /usr/share/git-core/contrib/completion/git-prompt.sh
-
-# Add ~/bin path.
-[ -d ~/bin ] && export PATH="$HOME/bin:$PATH"
 
 # Add various paths.
 [ -f ~/.cargo/env ] && . ~/.cargo/env
