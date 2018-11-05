@@ -1,9 +1,6 @@
 #==============================================================================
-# Basics
+# Environment Settings
 #==============================================================================
-
-# Add ~/bin path.
-[ -d ~/bin ] && export PATH="$HOME/bin:$PATH"
 
 # If not running interactively, don't do anything else.
 [ -z "$PS1" ] && return
@@ -23,6 +20,9 @@ export EDITOR='vim'
 # Use sane defaults for less.
 export LESS="-FXR $LESS"
 
+# Enable directory colors.
+eval "$(dircolors -b)"
+
 #==============================================================================
 # Aliases
 #==============================================================================
@@ -36,23 +36,13 @@ alias gcm='git commit -m'
 alias gs='git status'
 alias la='ls -A'
 alias ll='ls -Al'
+alias ls='ls --color=auto'
 alias serve='python3 -m http.server 8000'
 alias ta='tmux -2u attach 2>/dev/null || tmux -2u new-session'
 alias tmux='tmux -2'
 alias traefik='docker stop traefik && docker rm traefik; docker pull traefik && docker run --name traefik -d -p 8080:8080 -p 80:80 -v /var/run/docker.sock:/var/run/docker.sock traefik --api --docker'
 alias vi='vim'
 alias vim='vim -p'
-
-# Run specific commands for Linux.
-if [ "$(uname -s)" == 'Linux' ]; then
-    eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-fi
-
-# Run specific commands for OS X.
-if [ "$(uname -s)" == 'Darwin' ]; then
-    alias ls='ls -G'
-fi
 
 #==============================================================================
 # Functions
@@ -132,14 +122,11 @@ function ssh-tmux {
 }
 
 #==============================================================================
-# Prompt
+# External Scripts
 #==============================================================================
 
+# Set prompt.
 [ -f ~/.bashrc.theme ] && . ~/.bashrc.theme
-
-#==============================================================================
-# Miscellaneous
-#==============================================================================
 
 # Add bash completion.
 [ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
@@ -147,6 +134,9 @@ function ssh-tmux {
 # Source Git helper script.
 [ -f /usr/share/git/git-prompt.sh ] && . /usr/share/git/git-prompt.sh
 [ -f /usr/share/git-core/contrib/completion/git-prompt.sh ] && . /usr/share/git-core/contrib/completion/git-prompt.sh
+
+# Add ~/bin path.
+[ -d ~/bin ] && export PATH="$HOME/bin:$PATH"
 
 # Add various paths.
 [ -f ~/.cargo/env ] && . ~/.cargo/env
