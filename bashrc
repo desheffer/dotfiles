@@ -43,7 +43,7 @@ alias ls='ls --color=auto'
 alias serve='python3 -m http.server 8000'
 alias ta='tmux -2u attach 2>/dev/null || tmux -2u new-session'
 alias tmux='tmux -2'
-alias traefik='docker stop traefik && docker rm traefik; docker pull traefik && docker run --name traefik -d -p 8080:8080 -p 80:80 -v /var/run/docker.sock:/var/run/docker.sock traefik --api --docker --docker.domain=localhost'
+alias traefik="docker stop traefik && docker rm traefik; docker pull traefik && docker run --name traefik -d -p 8080:8080 -p 80:80 -p 443:443 -v /var/run/docker.sock:/var/run/docker.sock traefik --api --defaultentrypoints=https --docker --docker.domain=local.sqr.io --entrypoints='Name:https Address::443 TLS'"
 alias vi='vim'
 alias vim='vim -p'
 
