@@ -124,6 +124,12 @@ function ssh-tmux {
     ssh "$1" -t "tmux -2u attach 2>/dev/null || tmux -2u new-session"
 }
 
+# Convert GitHub HTTPS URL to SSH.
+function github-https-to-ssh {
+    SSH="$(git remote get-url origin | sed 's|https://github.com/\(.*\)|git@github.com:\1|')"
+    git remote set-url origin "${SSH}"
+}
+
 #==============================================================================
 # External Scripts
 #==============================================================================
