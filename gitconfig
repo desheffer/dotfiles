@@ -37,6 +37,6 @@
 [push]
 	default = simple
 [credential]
-	helper = store
+	helper = libsecret
 [include]
 	path = ~/.gitconfig.local
