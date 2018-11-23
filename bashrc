@@ -3,10 +3,10 @@
 #==============================================================================
 
 # Add ~/bin path.
-[ -d ~/bin ] && export PATH="$HOME/bin:$PATH"
+[ -d ~/bin ] && export PATH="${HOME}/bin:${PATH}"
 
 # If not running interactively, don't do anything else.
-[ -z "$PS1" ] && return
+[ -z "${PS1}" ] && return
 
 # Update window size.
 shopt -s checkwinsize 2>/dev/null
@@ -21,7 +21,7 @@ shopt -s autocd 2>/dev/null
 export EDITOR='vim'
 
 # Use sane defaults for less.
-export LESS="-FXR $LESS"
+export LESS="-FXR ${LESS}"
 
 # Enable directory colors.
 eval "$(dircolors -b)"
@@ -54,21 +54,21 @@ alias vim='vim -p'
 # Quickly search for and open a file.
 function g {
     [ -z "$*" ] && return
-    TMP=$(mktemp)
-    ag "$*" | fzf -m > $TMP
-    [ -s $TMP ] && vim -q $TMP +copen
-    cat $TMP | sed 's/:[0-9]*:.*$//'
-    rm $TMP
+    tmp=$(mktemp)
+    ag "$*" | fzf -m > ${tmp}
+    [ -s ${tmp} ] && vim -q ${tmp} +copen
+    cat ${tmp} | sed 's/:[0-9]*:.*$//'
+    rm ${tmp}
 }
 
 # Quickly search for and open all matches.
 function ga {
     [ -z "$*" ] && return
-    TMP=$(mktemp)
-    ag "$*" > $TMP
-    [ -s $TMP ] && vim -q $TMP +copen
-    cat $TMP | sed 's/:[0-9]*:.*$//'
-    rm $TMP
+    tmp=$(mktemp)
+    ag "$*" > ${tmp}
+    [ -s ${tmp} ] && vim -q ${tmp} +copen
+    cat ${tmp} | sed 's/:[0-9]*:.*$//'
+    rm ${tmp}
 }
 
 # Quickly change to the root directory of a repository.
@@ -79,12 +79,12 @@ function d {
 # Generate a secure password.
 function passwordgen {
     if [ $# -lt 1 ]; then
-        LENGTH=32
+        length=32
     else
-        LENGTH=$1
+        length="${1}"
     fi
 
-    LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c $LENGTH
+    LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c "${length}"
     echo
 }
 
@@ -98,36 +98,36 @@ function phptags {
 function git-reset {
     git rev-parse 2>/dev/null || return
 
-    TIMESTAMP=$(date '+%Y%m%d%H%M%S')
-    OLD_BRANCH="$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)"
-    NEW_BRANCH="$1"
+    timestamp="$(date '+%Y%m%d%H%M%S')"
+    oldBranch="$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)"
+    newBranch="$1"
 
-    if [ -z "$NEW_BRANCH" ]; then
-        NEW_BRANCH="$OLD_BRANCH"
+    if [ -z "${newBranch}" ]; then
+        newBranch="${oldBranch}"
     fi
 
     cd "$(git rev-parse --show-cdup)"
     git add .
-    git commit -m "auto commit at $TIMESTAMP" >/dev/null
+    git commit -m "auto commit at ${timestamp}" >/dev/null
     if [ $? -eq 0 ]; then
-        echo "Creating backup: $OLD_BRANCH-$TIMESTAMP"
-        git branch "$OLD_BRANCH-$TIMESTAMP"
+        echo "Creating backup: ${oldBranch}-${timestamp}"
+        git branch "${oldBranch}-${timestamp}"
     fi
 
-    git checkout "$NEW_BRANCH" >/dev/null 2>/dev/null
+    git checkout "${newBranch}" >/dev/null 2>/dev/null
     git fetch origin >/dev/null
-    git reset --hard "origin/$NEW_BRANCH"
+    git reset --hard "origin/${newBranch}"
 }
 
 # Open an SSH connection with tmux.
 function ssh-tmux {
-    ssh "$1" -t "tmux -2u attach 2>/dev/null || tmux -2u new-session"
+    ssh "${1}" -t "tmux -2u attach 2>/dev/null || tmux -2u new-session"
 }
 
 # Convert GitHub HTTPS URL to SSH.
 function github-https-to-ssh {
-    SSH="$(git remote get-url origin | sed 's|https://github.com/\(.*\)|git@github.com:\1|')"
-    git remote set-url origin "${SSH}"
+    sshUrl="$(git remote get-url origin | sed 's|https://github.com/\(.*\)|git@github.com:\1|')"
+    git remote set-url origin "${sshUrl}"
 }
 
 #==============================================================================
