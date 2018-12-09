@@ -29,6 +29,7 @@ function link_file {
 link_file "$(pwd)/home/.bash_logout" "${HOME}/.bash_logout"
 link_file "$(pwd)/home/.bash_profile" "${HOME}/.bash_profile"
 link_file "$(pwd)/home/.bashrc" "${HOME}/.bashrc"
+link_file "$(pwd)/home/.bashrc.functions" "${HOME}/.bashrc.functions"
 link_file "$(pwd)/home/.bashrc.theme" "${HOME}/.bashrc.theme"
 link_file "$(pwd)/home/.gitconfig" "${HOME}/.gitconfig"
 link_file "$(pwd)/home/.profile" "${HOME}/.profile"
