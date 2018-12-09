@@ -13,7 +13,7 @@ function link_file {
     echo "Linking $2..."
 
     # Abort if the file already exists.
-    if [ -e "$2" ]; then
+    if [ ! "${FORCE}" ] && [ -e "$2" ]; then
         echo "Error: $2 already exists!"
         return 1
     fi
@@ -22,6 +22,8 @@ function link_file {
     mkdir -p "$(dirname "$2")"
     ln -snf "$1" "$2"
 }
+
+[ "$1" == "-f" ] && FORCE="1"
 
 # Link files into place.
 link_file "$(pwd)/home/.bash_logout" "${HOME}/.bash_logout"
