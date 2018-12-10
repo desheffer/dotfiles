@@ -32,6 +32,7 @@ function show_help {
     echo "Usage: ${0} ls"
     echo "  or:  ${0} get"
     echo "  or:  ${0} put FILE..."
+    echo "  or:  ${0} rm KEY..."
     echo "Manage secrets using LastPass."
     exit 0
 }
@@ -41,33 +42,36 @@ function do_list {
 }
 
 function do_get {
-    list=$(do_list)
+    key="${1}"
+    path=$(key_to_path "${key}")
 
-    IFS=$'\n'
-    for key in $list; do
-        path=$(key_to_path "${key}")
+    if [ -e "${path}" ]; then
+        echo "${0}: skipped '${key}'" >/dev/stderr
+        return
+    fi
 
-        if [ -e "${path}" ]; then
-            echo "Skipped '${key}'" >/dev/stderr
-            continue
-        fi
+    mkdir -p "$(dirname "${path}")"
+    lpass show --notes "${prefix}${key}" >"${path}"
+    chmod 0600 "${path}"
 
-        mkdir -p "$(dirname "${path}")"
-        lpass show --notes "${prefix}${key}" >"${path}"
-        chmod 0600 "${path}"
-
-        echo "Downloaded '${key}' -> '${path}'" >/dev/stderr
-    done
+    echo "${0}: downloaded '${key}' -> '${path}'" >/dev/stderr
 }
 
 function do_put {
-    for path in "$@"; do
-        key=$(path_to_key "${path}")
+    path="${1}"
+    key=$(path_to_key "${path}")
 
-        lpass edit --non-interactive --notes "${prefix}${key}" <"${path}"
+    lpass edit --non-interactive --notes "${prefix}${key}" <"${path}"
 
-        echo "Uploaded '${path}' -> '${key}'" >/dev/stderr
-    done
+    echo "${0}: uploaded '${path}' -> '${key}'" >/dev/stderr
+}
+
+function do_rm {
+    key="${1}"
+
+    lpass rm "${prefix}${key}"
+
+    echo "${0}: removed '${key}'" >/dev/stderr
 }
 
 case "${1:-}" in
@@ -86,7 +90,10 @@ case "${1:-}" in
             exit 1
         fi
 
-        do_get
+        IFS=$'\n'
+        for key in $(do_list); do
+            do_get "${key}"
+        done
         ;;
 
     put)
@@ -95,12 +102,34 @@ case "${1:-}" in
             exit 1
         fi
 
-        if [ ! -f "${2}" ]; then
-            echo "${0}: cannot upload '${2}': Not a file" >/dev/stderr
+        for path in "${@:2}"; do
+            if [ ! -f "${path}" ]; then
+                echo "${0}: cannot upload '${path}': Not a file" >/dev/stderr
+                exit 1
+            fi
+        done
+
+        for path in "${@:2}"; do
+            do_put "${path}"
+        done
+        ;;
+
+    rm)
+        if [[ $# -lt 2 ]]; then
+            echo "${0}: missing file operand" >/dev/stderr
             exit 1
         fi
 
-        do_put "${@:2}"
+        for key in "${@:2}"; do
+            if [ -z "$(do_list | grep -Fx "${key}")" ]; then
+                echo "${0}: cannot remove '${key}': Key does not exist" >/dev/stderr
+                exit 1
+            fi
+        done
+
+        for key in "${@:2}"; do
+            do_rm "${key}"
+        done
         ;;
 
     *)
