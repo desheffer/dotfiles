@@ -31,7 +31,7 @@ function key_to_path {
 function show_help {
     echo "Usage: ${0} ls"
     echo "  or:  ${0} get"
-    echo "  or:  ${0} put FILE"
+    echo "  or:  ${0} put FILE..."
     echo "Manage secrets using LastPass."
     exit 0
 }
@@ -61,20 +61,31 @@ function do_get {
 }
 
 function do_put {
-    path="${1}"
-    key=$(path_to_key "${path}")
+    for path in "$@"; do
+        key=$(path_to_key "${path}")
 
-    lpass edit --non-interactive --notes "${prefix}${key}" <"${path}"
+        lpass edit --non-interactive --notes "${prefix}${key}" <"${path}"
 
-    echo "Uploaded '${path}' -> '${key}'" >/dev/stderr
+        echo "Uploaded '${path}' -> '${key}'" >/dev/stderr
+    done
 }
 
 case "${1:-}" in
     ls)
+        if [[ $# -ne 1 ]]; then
+            echo "${0}: invalid operand" >/dev/stderr
+            exit 1
+        fi
+
         do_list
         ;;
 
     get)
+        if [[ $# -ne 1 ]]; then
+            echo "${0}: invalid operand" >/dev/stderr
+            exit 1
+        fi
+
         do_get
         ;;
 
@@ -89,7 +100,7 @@ case "${1:-}" in
             exit 1
         fi
 
-        do_put "$2"
+        do_put "${@:2}"
         ;;
 
     *)
