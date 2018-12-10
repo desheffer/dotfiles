@@ -4,6 +4,16 @@ set -euo pipefail
 
 readonly prefix="Dotfiles/"
 
+if [ -t 1 ]; then
+    readonly success=$(tput setaf 2)$(tput bold)
+    readonly info=$(tput setaf 4)
+    readonly reset=$(tput sgr0)
+else
+    readonly success=
+    readonly info=
+    readonly reset=
+fi
+
 function path_to_key {
     path="${1}"
 
@@ -28,6 +38,10 @@ function key_to_path {
     fi
 }
 
+function get_keys {
+    lpass ls "${prefix}" | sed -n "s|^${prefix}\(.\+\) \[.*\]|\1|p"
+}
+
 function show_help {
     echo "Usage: ${0} ls"
     echo "  or:  ${0} get"
@@ -38,7 +52,9 @@ function show_help {
 }
 
 function do_list {
-    lpass ls "${prefix}" | sed -n "s|^${prefix}\(.\+\) \[.*\]|\1|p"
+    get_keys | while read line; do
+        echo "${success}${line}${reset}"
+    done
 }
 
 function do_get {
@@ -46,7 +62,7 @@ function do_get {
     path=$(key_to_path "${key}")
 
     if [ -e "${path}" ]; then
-        echo "${0}: skipped '${key}'" >/dev/stderr
+        echo "${info}Skipped '${path}' <- '${key}'${reset}"
         return
     fi
 
@@ -54,7 +70,7 @@ function do_get {
     lpass show --notes "${prefix}${key}" >"${path}"
     chmod 0600 "${path}"
 
-    echo "${0}: downloaded '${key}' -> '${path}'" >/dev/stderr
+    echo "${success}Downloaded '${path}' <- '${key}'${reset}"
 }
 
 function do_put {
@@ -63,7 +79,7 @@ function do_put {
 
     lpass edit --non-interactive --notes "${prefix}${key}" <"${path}"
 
-    echo "${0}: uploaded '${path}' -> '${key}'" >/dev/stderr
+    echo "${success}Uploaded '${path}' -> '${key}'${reset}"
 }
 
 function do_rm {
@@ -71,7 +87,7 @@ function do_rm {
 
     lpass rm "${prefix}${key}"
 
-    echo "${0}: removed '${key}'" >/dev/stderr
+    echo "${success}Removed '${key}'${reset}"
 }
 
 case "${1:-}" in
@@ -91,7 +107,7 @@ case "${1:-}" in
         fi
 
         IFS=$'\n'
-        for key in $(do_list); do
+        for key in $(get_keys); do
             do_get "${key}"
         done
         ;;
@@ -121,7 +137,7 @@ case "${1:-}" in
         fi
 
         for key in "${@:2}"; do
-            if [ -z "$(do_list | grep -Fx "${key}")" ]; then
+            if [ -z "$(get_keys | grep -Fx "${key}")" ]; then
                 echo "${0}: cannot remove '${key}': Key does not exist" >/dev/stderr
                 exit 1
             fi
