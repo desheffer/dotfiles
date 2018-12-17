@@ -1,13 +1,8 @@
-readonly SEP=''
-readonly RSEP=''
-
-readonly BRANCH=''
-readonly COMMIT=''
-readonly TAG=''
-
-readonly RESET=$(tput sgr0)
-
 function __git_status {
+    local BRANCH=''
+    local COMMIT=''
+    local TAG=''
+
     STATUS=$(__git_ps1 '%s')
 
     [ -z "$STATUS" ] && return
@@ -27,6 +22,8 @@ function __git_status {
 }
 
 function __generate_prompt {
+    local SEP=''
+
     if [ -z "$PROMPT_COLOR" ]; then
         PROMPT_COLOR=10
     fi
@@ -35,6 +32,7 @@ function __generate_prompt {
         PROMPT_USER='\u@\h'
     fi
 
+    local RESET=$(tput sgr0)
     local A_FG=$(tput setaf 0)
     local A_BG=$(tput setab $PROMPT_COLOR)
     local A_SEP_FG=$(tput setaf $PROMPT_COLOR)
