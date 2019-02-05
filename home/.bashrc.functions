@@ -1,5 +1,6 @@
 alias :qa='exit'
 alias bob='ag -l | entr make'
+alias chown.='sudo chown -R "${USER}:" .'
 alias dkr-sh='docker run -it --rm --entrypoint sh'
 alias gca='git commit --amend'
 alias gcm='git commit -m'
