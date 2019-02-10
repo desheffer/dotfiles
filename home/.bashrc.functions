@@ -19,7 +19,7 @@ alias vim='vim -p'
 function g {
     [ -z "$*" ] && return
     tmp=$(mktemp)
-    ag "$*" | fzf -m > ${tmp}
+    ag --hidden --ignore ".git" "$*" | fzf -m > ${tmp}
     [ -s ${tmp} ] && vim -q ${tmp} +copen
     cat ${tmp} | sed 's/:[0-9]*:.*$//'
     rm ${tmp}
@@ -29,7 +29,7 @@ function g {
 function ga {
     [ -z "$*" ] && return
     tmp=$(mktemp)
-    ag "$*" > ${tmp}
+    ag --hidden --ignore ".git" "$*" > ${tmp}
     [ -s ${tmp} ] && vim -q ${tmp} +copen
     cat ${tmp} | sed 's/:[0-9]*:.*$//'
     rm ${tmp}
