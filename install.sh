@@ -37,6 +37,9 @@ link_file "$(pwd)/home/.tmux.conf" "${HOME}/.tmux.conf"
 link_file "$(pwd)/home/.tmux.theme" "${HOME}/.tmux.theme"
 link_file "$(pwd)/home/.vimrc" "${HOME}/.vimrc"
 
+mkdir -p "${HOME}/.gnupg"
+link_file "$(pwd)/home/.gnupg/gpg.conf" "${HOME}/.gnupg/gpg.conf"
+
 # Set up tmux.
 if [ ! -e ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
