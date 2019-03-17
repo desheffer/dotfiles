@@ -1,14 +1,14 @@
 function __git_status {
-    local BRANCH=''
-    local COMMIT=''
-    local TAG=''
+    local BRANCH=""
+    local COMMIT=""
+    local TAG=""
 
-    STATUS=$(__git_ps1 '%s')
+    STATUS=$(__git_ps1 "%s")
 
     [ -z "$STATUS" ] && return
 
-    HEAD=$(echo "$STATUS" | cut -d'|' -f1 | cut -d' ' -f1)
-    REBASE=$(echo "$STATUS" | cut -d '|' -s -f 2)
+    HEAD=$(echo "$STATUS" | cut -d"|" -f1 | cut -d" " -f1)
+    REBASE=$(echo "$STATUS" | cut -d "|" -s -f 2)
 
     if [[ "$HEAD" =~ ^\(.*\.\.\.\)$ ]]; then
         echo -en "${COMMIT} ${HEAD}"
@@ -22,14 +22,14 @@ function __git_status {
 }
 
 function __generate_prompt {
-    local SEP=''
+    local SEP=""
 
     if [ -z "$PROMPT_COLOR" ]; then
         PROMPT_COLOR=11
     fi
 
     if [ -z "$PROMPT_USER" ]; then
-        PROMPT_USER='\u@\h'
+        PROMPT_USER="\u@\h"
     fi
 
     local RESET=$(tput sgr0)
@@ -65,4 +65,4 @@ function __set_prompt {
 PS1="\n\u@\h:\w\n\$ "
 
 # Upgrade to a color prompt.
-[[ "$TERM" =~ .*-256color ]] && PROMPT_COMMAND='__set_prompt'
+[ "${COLORTERM}" == "truecolor" ] && PROMPT_COMMAND="__set_prompt"

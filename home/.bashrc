@@ -14,7 +14,7 @@ shopt -s globstar 2>/dev/null
 shopt -s autocd 2>/dev/null
 
 # Use Vim.
-export EDITOR='vim'
+export EDITOR="vim"
 
 # Use sane defaults for less.
 export LESS="-FXR ${LESS}"
