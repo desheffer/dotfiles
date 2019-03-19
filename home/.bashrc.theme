@@ -65,4 +65,4 @@ function __set_prompt {
 PS1="\n\u@\h:\w\n\$ "
 
 # Upgrade to a color prompt.
-[ "${COLORTERM}" == "truecolor" ] && PROMPT_COMMAND="__set_prompt"
+[[ "${COLORTERM}" =~ color || "${TERM}" =~ 256color ]] && PROMPT_COMMAND="__set_prompt"
