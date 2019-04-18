@@ -138,12 +138,12 @@ fi
 # PATHS
 #
 
-export PATH="~/code/weedmaps_code/weedmaps-tools/git:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
+export PATH="~/code/weedmaps_code/weedmaps-tools/git:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:~/go/bin:~/code/dotfiles/bin:$PATH"
 # export GIT_EXEC_PATH="/usr/libexec/git-core/"
 # Add user binary path.
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 # Add RVM to path.
-[ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
+# [ -f "$HOME/.rvm/scripts/rvm" ] && . "$HOME/.rvm/scripts/rvm"
 
 #
 # OTHER
@@ -156,15 +156,16 @@ export PATH="~/code/weedmaps_code/weedmaps-tools/git:/usr/local/bin:/usr/bin:/bi
 # Bash specific aliases
 [ -f "$HOME/.bash_aliases" ] && . "$HOME/.bash_aliases"
 
-# Node Virtual Machine
-#if hash brew 2>/dev/null; then
-#  export NVM_DIR="$HOME/.nvm"
-#  source $(brew --prefix nvm)/nvm.sh
-#  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
-#fi
+# Install asdf - https://asdf-vm.com/#/core-manage-asdf-vm
+# This will help you manage versions for ruby, nodejs, elixir, golang
+# Don't forget to set global versions
+# Usage: 
+# asdf plugin-add <plugin> # Example: asdf plugin-add nodejs
+# asdf list-all <plugin> # Example: asdf list-all nodejs
+# asdf install nodejs 11.14.0
+# asdf global nodejs 11.14.0
+# 
+# Plugins: https://asdf-vm.com/#/plugins-all
+# More info: https://blog.patricio.me/installing-and-start-using-asdf-on-macos-high-sierra/
 
-#source ~/liquidprompt/liquidprompt
 # vim:: set ft=sh
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-#export PATH="$PATH:$HOME/.rvm/bin"

@@ -1,0 +1,10 @@
+# this configuration file is suitable for displaying kernel log files
+# example of text substitution
+#regexp=FAIL
+#replace=\1
+#colours=red
+#======
+# example of text substitution
+#regexp=PASS
+#replace=\1
+#colours=green

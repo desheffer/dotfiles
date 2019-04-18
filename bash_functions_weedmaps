@@ -1,7 +1,8 @@
 #` vim: ft=sh
 
 # Moonshot configuration
-export NPM_TOKEN='//registry.npmjs.org/:_authToken=8e4b7a43-a3ee-4332-ab94-b7fc6dda707b'
+export NPM_TOKEN='8d2bde2d-3886-41b5-9d5d-c43995f8c421'
+export HOMEBREW_GITHUB_API_TOKEN='8eb09f74a6ddad356c51ec442ee0ade2a1cad24d'
 
 # Shell Documentation
 

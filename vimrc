@@ -71,7 +71,7 @@ set wildmode=longest,list
 "Custom key mappings
 "
 
-"Tab usage
+" Tab usage
 nnoremap <silent> <Leader>t :tabnew<CR>
 nnoremap <silent> g{ :execute 'silent! tabmove ' . (tabpagenr()-2)<CR>
 nnoremap <silent> g} :execute 'silent! tabmove ' . tabpagenr()<CR>
@@ -95,23 +95,23 @@ function! HomeKey()
 endfunction
 map <silent> <Home> :call HomeKey()<CR>
 
-"Open blank line beneath
-nnoremap ,o o<Esc>S
+" Open blank line beneath
+" nnoremap ,o o<Esc>S
 
-"Enable spell check
+" Enable spell check
 nnoremap ,s :setlocal spell spelllang=en_us<CR>
 
-"Set paste mode (no reformatting)
+" Set paste mode (no reformatting)
 nnoremap ,v :set paste!<CR>
 
 "Clear current search highlighting
-"nnoremap <silent> ,/ :let @/=""<CR>
+" nnoremap <silent> ,/ :let @/=""<CR>
 
-"Build script
-map ,, :w<CR>:!date<CR>:!./build<CR>:!./build/buildapp<CR><CR>
+" Build script
+" map ,, :w<CR>:!date<CR>:!./build<CR>:!./build/buildapp<CR><CR>
 
-"Remove trailing spaces
-nnoremap ,<Space> :%s/[ \t]+$//g<CR>
+" Remove trailing spaces
+" nnoremap ,<Space> :%s/[ \t]+$//g<CR>
 
 "Open file under cursor in new tab
 nnoremap gf <c-w>gf
@@ -134,36 +134,6 @@ map <C-H> <C-W>h
 vnoremap < <gv
 vnoremap > >gv
 
-""
-"" PHP CS Fixer
-""
-"" Default command is
-"" <leader>pcd
-""
-
-"nnoremap <silent><leader>pcd :call PhpCsFixerFixDirectory()<CR>
-"nnoremap <silent><leader>pcf :call PhpCsFixerFixFile()<CR>
-"" If php-cs-fixer is in $PATH, you don't need to define line below
-"" let g:php_cs_fixer_path = "~/php-cs-fixer.phar" " define the path to the php-cs-fixer.phar
-
-"" If you use php-cs-fixer version 1.x
-"let g:php_cs_fixer_level = "symfony"                   " options: --level (default:symfony)
-"let g:php_cs_fixer_config = "default"                  " options: --config
-"" If you want to define specific fixers:
-""let g:php_cs_fixer_fixers_list = "linefeed,short_tag" " options: --fixers
-""let g:php_cs_fixer_config_file = '.php_cs'            " options: --config-file
-"" End of php-cs-fixer version 1 config params
-
-"" If you use php-cs-fixer version 2.x
-"let g:php_cs_fixer_rules = "@PSR2"          " options: --rules (default:@PSR2)
-""let g:php_cs_fixer_cache = ".php_cs.cache" " options: --cache-file
-""let g:php_cs_fixer_config_file = '.php_cs' " options: --config
-"" End of php-cs-fixer version 2 config params
-
-"let g:php_cs_fixer_php_path = "php"               " Path to PHP
-"let g:php_cs_fixer_enable_default_mapping = 1     " Enable the mapping by default (<leader>pcd)
-"let g:php_cs_fixer_dry_run = 0                    " Call command with dry-run option
-"let g:php_cs_fixer_verbose = 0                    " Return the output of command if 1, else an inline information
 
 "
 " NERDTree configuration
@@ -232,21 +202,23 @@ Plugin 'majutsushi/tagbar'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'csapprox' " -- already handled by submodule
+"Plugin 'csapprox' " -- already handled by submodule
 "Plugin 'vim-scripts/ChocolateLiquor'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
-Plugin 'saltstack/salt-vim'
-Plugin 'stephpy/vim-php-cs-fixer'
+"Plugin 'saltstack/salt-vim'
+"Plugin 'stephpy/vim-php-cs-fixer'
 "Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'chase/vim-ansible-yaml'
+"Plugin 'chase/vim-ansible-yaml'
 Plugin 'avakhov/vim-yaml'
 " Adding Support for Elixir
 Plugin 'elixir-editors/vim-elixir'
 Plugin 'sjl/vitality.vim'
 Plugin 'desert-warm-256'
+" Add Support for Ruby
+" Add Support for Node
 
 call vundle#end() " required
 
