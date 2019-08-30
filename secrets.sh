@@ -6,10 +6,12 @@ readonly prefix="Dotfiles/"
 
 if [ -t 1 ]; then
     readonly success=$(tput setaf 2)$(tput bold)
+    readonly warning=$(tput setaf 3)$(tput bold)
     readonly info=$(tput setaf 4)
     readonly reset=$(tput sgr0)
 else
     readonly success=
+    readonly warning=
     readonly info=
     readonly reset=
 fi
@@ -42,6 +44,17 @@ function get_keys {
     lpass ls "${prefix}" | sed -n "s|^${prefix}\(.\+\) \[.*\]|\1|p"
 }
 
+function diff_key {
+    key="${1}"
+    path=$(key_to_path "${key}")
+    tmp=$(mktemp)
+
+    chmod 0600 "${tmp}"
+    lpass show --notes "${prefix}${key}" >"${tmp}"
+    diff "${tmp}" "${path}" || true
+    rm -f "${tmp}"
+}
+
 function show_help {
     echo "Usage: ${0} ls"
     echo "  or:  ${0} get"
@@ -62,7 +75,12 @@ function do_get {
     path=$(key_to_path "${key}")
 
     if [ -e "${path}" ]; then
-        echo "${info}Skipped '${path}' <- '${key}'${reset}"
+        if [ -z "$(diff_key "${key}")" ]; then
+            echo "${info}Skipped '${path}' <- '${key}'${reset}"
+        else
+            echo "${warning}Skipped '${path}' <- '${key}' (local file differs)${reset}"
+        fi
+
         return
     fi
 
