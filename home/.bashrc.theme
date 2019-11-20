@@ -1,28 +1,28 @@
 function __git_status {
-    local BRANCH=""
-    local COMMIT=""
-    local TAG=""
+    local branch=""
+    local commit=""
+    local tag=""
 
-    STATUS=$(__git_ps1 "%s")
+    status=$(__git_ps1 "%s")
 
-    [ -z "$STATUS" ] && return
+    [ -z "${status}" ] && return
 
-    HEAD=$(echo "$STATUS" | cut -d"|" -f1 | cut -d" " -f1)
-    REBASE=$(echo "$STATUS" | cut -d "|" -s -f 2)
+    HEAD=$(echo "${status}" | cut -d"|" -f1 | cut -d" " -f1)
+    REBASE=$(echo "${status}" | cut -d "|" -s -f 2)
 
     if [[ "$HEAD" =~ ^\(.*\.\.\.\)$ ]]; then
-        echo -en "${COMMIT} ${HEAD}"
+        echo -en "${commit} ${HEAD}"
     elif [[ "$HEAD" =~ ^\(.*\)$ ]]; then
-        echo -en "${TAG} ${HEAD:1:-1}"
+        echo -en "${tag} ${HEAD:1:-1}"
     else
-        echo -en "${BRANCH} ${HEAD}"
+        echo -en "${branch} ${HEAD}"
     fi
 
     [ ! -z "$REBASE" ] && echo -en "  (${REBASE})"
 }
 
 function __generate_prompt {
-    local SEP=""
+    local sep=""
 
     if [ -z "$PROMPT_COLOR" ]; then
         PROMPT_COLOR=11
@@ -32,37 +32,43 @@ function __generate_prompt {
         PROMPT_USER="\u@\h"
     fi
 
-    local RESET=$(tput sgr0)
-    local A_FG=$(tput setaf 0)
-    local A_BG=$(tput setab $PROMPT_COLOR)
-    local A_SEP_FG=$(tput setaf $PROMPT_COLOR)
-    local B_FG=$(tput setaf 15)
-    local B_BG=$(tput setab 237)
-    local B_SEP_FG=$(tput setaf 237)
-    local C_FG=$(tput setaf $PROMPT_COLOR)
+    local reset=$(tput sgr0)
+    local a_fg=$(tput setaf 0)
+    local a_bg=$(tput setab $PROMPT_COLOR)
+    local a_sep_fg=$(tput setaf $PROMPT_COLOR)
+    local b_fg=$(tput setaf 15)
+    local b_bg=$(tput setab 237)
+    local b_sep_fg=$(tput setaf 237)
+    local c_fg=$(tput setaf $PROMPT_COLOR)
 
     # Set window title.
     echo -en "\033]0;\u@\h:\w\a"
 
     # Generate powerline prompt.
     echo -en "\n"
-    echo -en "${RESET}${A_BG}${A_FG}"
+    echo -en "${reset}${a_bg}${a_fg}"
     echo -en "  ${PROMPT_USER}  "
-    echo -en "${RESET}${B_BG}${A_SEP_FG}${SEP}${B_FG}"
+    echo -en "${reset}${b_bg}${a_sep_fg}${sep}${b_fg}"
     echo -en "  \w  "
-    echo -en "${RESET}${B_SEP_FG}${SEP}${C_FG}"
+    echo -en "${reset}${b_sep_fg}${sep}${c_fg}"
     echo -en "  \$(__git_status)  "
-    echo -en "${RESET}"
+    echo -en "${reset}"
     echo -en "\n\$ "
 }
 
+function __queue_set_prompt {
+    __old_prompt_command="${PROMPT_COMMAND}"
+    PROMPT_COMMAND="__set_prompt"
+}
+
 function __set_prompt {
+    PROMPT_COMMAND="${__old_prompt_command}"
+    unset __old_prompt_command
     PS1="$(__generate_prompt)"
-    PROMPT_COMMAND=
 }
 
 # Provide a fallback prompt.
 PS1="\n\u@\h:\w\n\$ "
 
 # Upgrade to a color prompt.
-[[ "${COLORTERM}" =~ color || "${TERM}" =~ 256color ]] && PROMPT_COMMAND="__set_prompt"
+[[ "${COLORTERM}" =~ color || "${TERM}" =~ 256color ]] && __queue_set_prompt

@@ -13,6 +13,9 @@ shopt -s globstar 2>/dev/null
 # Enable auto cd.
 shopt -s autocd 2>/dev/null
 
+# Auto save history.
+PROMPT_COMMAND="history -a"
+
 # Use Vim.
 export EDITOR="vim"
 
