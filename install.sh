@@ -1,60 +1,45 @@
-#!/bin/bash
+#!/bin/env bash
 
 set -e
 
-cd "$(dirname "$0")"
+cd "$(dirname "${0}")"
 
 function link_file {
     # Skip if no change is needed.
-    if [ "$(readlink "$2")" == "$1" ]; then
+    if [ "$(readlink "${2}")" == "${1}" ]; then
         return 0
     fi
 
-    echo "Linking $2..."
+    echo "Linking ${2}..."
 
     # Abort if the file already exists.
-    if [ ! "${FORCE}" ] && [ -e "$2" ]; then
-        echo "Error: $2 already exists!"
+    if [ ! "${FORCE}" ] && [ -e "${2}" ]; then
+        echo "Error: ${2} already exists!"
         return 1
     fi
 
     # Link the new file into place.
-    mkdir -p "$(dirname "$2")"
-    ln -snf "$1" "$2"
+    mkdir -p "$(dirname "${2}")"
+    ln -snf "${1}" "${2}"
 }
 
-[ "$1" == "-f" ] && FORCE="1"
+function link_root_dir {
+    echo "Linking ${1} to ${2}..."
 
-# Link files into place.
-link_file "$(pwd)/home/.bash_logout" "${HOME}/.bash_logout"
-link_file "$(pwd)/home/.bash_profile" "${HOME}/.bash_profile"
-link_file "$(pwd)/home/.bashrc" "${HOME}/.bashrc"
-link_file "$(pwd)/home/.bashrc.functions" "${HOME}/.bashrc.functions"
-link_file "$(pwd)/home/.bashrc.theme" "${HOME}/.bashrc.theme"
-link_file "$(pwd)/home/.gitconfig" "${HOME}/.gitconfig"
-link_file "$(pwd)/home/.profile" "${HOME}/.profile"
-link_file "$(pwd)/home/.tmux.conf" "${HOME}/.tmux.conf"
-link_file "$(pwd)/home/.tmux.theme" "${HOME}/.tmux.theme"
-link_file "$(pwd)/home/.vimrc" "${HOME}/.vimrc"
+    find "${1}" -type f -printf '%P\n' | while read file; do
+        link_file "$(pwd)/${1}/${file}" "${2}/${file}"
+    done
+}
 
-mkdir -p "${HOME}/.gnupg"
-link_file "$(pwd)/home/.gnupg/gpg.conf" "${HOME}/.gnupg/gpg.conf"
+function exec_init {
+    echo "Running init scripts..."
 
-# Set up tmux.
-if [ ! -e ~/.tmux/plugins/tpm ]; then
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-fi
+    find init.d -iname '*.sh' | sort | while read script; do
+        . "${script}"
+    done
+}
 
-~/.tmux/plugins/tpm/bin/install_plugins
+[ "${1}" == "-f" ] && FORCE="1"
 
-# Set up Vim.
-mkdir -p ~/.vim/swap
-mkdir -p ~/.vim/backup
-mkdir -p ~/.vim/undo
-
-if [ ! -f ~/.vim/autoload/plug.vim ]; then
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
-vim +PlugUpdate +qall
+link_root_dir home "${HOME}"
+exec_init
