@@ -13,6 +13,10 @@ shopt -s globstar 2>/dev/null
 # Enable auto cd.
 shopt -s autocd 2>/dev/null
 
+# Unlimited history.
+HISTSIZE=-1
+HISTFILESIZE=-1
+
 # Auto save history.
 PROMPT_COMMAND="history -a"
 
