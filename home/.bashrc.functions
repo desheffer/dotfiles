@@ -13,8 +13,7 @@ alias ls='ls --color=auto'
 alias serve='python3 -m http.server 8000'
 alias ta='tmux -2u attach 2>/dev/null || tmux -2u new-session'
 alias tmux='tmux -2'
-alias traefik1="docker stop traefik && docker rm traefik; docker pull traefik:v1.7 && docker run --name traefik -d -p 8080:8080 -p 80:80 -p 443:443 -v /var/run/docker.sock:/var/run/docker.sock traefik:v1.7 --api --defaultentrypoints=http,https --docker --docker.domain=local.sqr.io --entrypoints='Name:http Address::80' --entrypoints='Name:https Address::443 TLS'"
-alias traefik2='docker stop traefik && docker rm traefik; docker pull traefik:v2.0 && docker run --name traefik -d -p 8080:8080 -p 80:80 -p 443:443 -v /var/run/docker.sock:/var/run/docker.sock traefik:v2.0 --api.insecure=true --entrypoints.web.address=:80 --entrypoints.web-secure.address=:443 --providers.docker --providers.docker.defaultRule="Host(\`{{ normalize .Name }}.local.sqr.io\`)"'
+alias traefik='docker stop traefik && docker rm traefik; docker pull traefik:v2.0 && docker run --name traefik -d -p 8080:8080 -p 80:80 -p 443:443 -v /var/run/docker.sock:/var/run/docker.sock traefik:v2.0 --api.insecure=true --entrypoints.web.address=:80 --entrypoints.web-secure.address=:443 --providers.docker --providers.docker.defaultRule="Host(\`{{ normalize .Name }}.local.sqr.io\`)"'
 alias vi='vim'
 alias vim='vim -p'
 
