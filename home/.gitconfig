@@ -30,6 +30,7 @@
 	listlog = log --no-merges --pretty=format:%s
 	mergedown2 = !bash -ic 'git fetch && git checkout master && git reset --hard origin/master && git merge origin/production && git push origin master' -
 	mergedown3 = !bash -ic 'git fetch && git checkout release && git reset --hard origin/release && git merge origin/production && git push origin release && git checkout master && git reset --hard origin/master && git merge origin/release && git push origin master' -
+	reset-main = !bash -ic 'git-reset main' -
 	reset-master = !bash -ic 'git-reset master' -
 	reset-production = !bash -ic 'git-reset production' -
 	reset-release = !bash -ic 'git-reset release' -
