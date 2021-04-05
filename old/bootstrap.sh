@@ -17,6 +17,8 @@ for FILE in *; do
     [[ "$FILE" == extras ]] && continue
     [[ "$FILE" == fonts ]] && continue
     [[ "$FILE" == grc_conf_files ]] && continue
+    [[ "$FILE" == powershell ]] && continue
+    [[ "$FILE" == .devcontainer ]] && continue
 
     SRC="$HERE/$FILE"
     DEST="$HOME/.$FILE"

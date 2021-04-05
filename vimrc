@@ -203,20 +203,22 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'jistr/vim-nerdtree-tabs'
 "Plugin 'csapprox' " -- already handled by submodule
-"Plugin 'vim-scripts/ChocolateLiquor'
+Plugin 'vim-scripts/ChocolateLiquor'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/gem-ctags'
 Plugin 'kien/ctrlp.vim'
 Plugin 'fatih/vim-go'
-"Plugin 'saltstack/salt-vim'
-"Plugin 'stephpy/vim-php-cs-fixer'
-"Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
-"Plugin 'chase/vim-ansible-yaml'
+Plugin 'saltstack/salt-vim'
+" Plugin 'stephpy/vim-php-cs-fixer'
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'chase/vim-ansible-yaml'
 Plugin 'avakhov/vim-yaml'
 " Adding Support for Elixir
-Plugin 'elixir-editors/vim-elixir'
+" Plugin 'elixir-editors/vim-elixir'
+" Adding Support for python
+
 Plugin 'sjl/vitality.vim'
-Plugin 'desert-warm-256'
+"Plugin 'desert-warm-256'
 " Add Support for Ruby
 " Add Support for Node
 
@@ -224,8 +226,8 @@ call vundle#end() " required
 
 if &t_Co >= 256
     "colorscheme vividchalk
-    "colorscheme ChocolateLiquor
-    colorscheme desert-warm-256
+    colorscheme ChocolateLiquor
+    "colorscheme desert-warm-256
 endif
 
 let g:Powerline_symbols = 'fancy'
@@ -237,3 +239,14 @@ set t_Co=256
 set fillchars+=stl:\ ,stlnc:\
 set term=xterm-256color
 set termencoding=utf-8
+
+
+
+" # backup file
+set backup
+
+" tell vim where to put its backup files
+set backupdir=/tmp
+"
+" tell vim where to put swap files
+set dir=/tmp

@@ -1,6 +1,7 @@
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
 fi
+export PATH="$PATH:$HOME/.local/bin"
 # vim:: set ft=sh
 #export CLICOLOR=1
 #export LSCOLORS=GxFxCxDxBxegedabagaced
@@ -57,8 +58,12 @@ export SCM_CHECK=true
 # export BASH_IT_RELOAD_LEGACY=1
 
 # Load Bash It
-source "$BASH_IT"/bash_it.sh
+if [ -f ~/.bash_it.sh ]; then
+  source "$BASH_IT"/bash_it.sh
+fi
 
-. $(brew --prefix asdf)/asdf.sh
+#. $(brew --prefix asdf)/asdf.sh
 
-. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+#. $(brew --prefix asdf)/etc/bash_completion.d/asdf.bash
+# eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval $(/bin/brew shellenv)

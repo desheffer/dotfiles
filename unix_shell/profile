@@ -1,0 +1,11 @@
+
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+[ -f "$HOME/.rvm/bin" ] && export PATH="$PATH:$HOME/.rvm/bin"
+
+# vim:: set ft=sh
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+
+export PATH="$PATH:$HOME/.local/bin"
+eval $(/bin/brew shellenv)

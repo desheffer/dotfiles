@@ -2,7 +2,7 @@
 
 alias git_reset_files_to_develop="git fetch; git reset --mixed origin/develop; "
 alias git_reset_files_to_master="git fetch; git reset --mixed origin/master; "
-
+alias git_last_commits="git log --oneline -n 5 "
 
 function helpGitCommands() {
   color_heading_section "Common git commands"

@@ -9,6 +9,13 @@ function helpGeneralInfo() {
   echo "helpGitCommands"
 }
 
+function _gcw() {
+  cd ~/code/filevine
+}
+
+function _gcp() {
+  cd ~/code/personal
+}
 
 function helpPowerline() {
   echo "iTerm2 for Mac"
