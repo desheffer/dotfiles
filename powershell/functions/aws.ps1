@@ -11,6 +11,10 @@ $Env:aws_cli_auto_prompt = "on"
 $addAwsPath = "C:\Program Files\Amazon\AWSCLIV2"
 $env:Path = $env:Path + ';' + $addAwsPath
 # $Env:Path = Join-Path $env:Path $addAwsPath
+function reload_functions_aws {
+  . ${HOME}/code/dotfiles/powershell/functions/aws.ps1
+}
+
 
 function aws_configservice_describe_compliance_by_config_rule () {
   param

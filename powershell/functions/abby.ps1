@@ -3,8 +3,11 @@ Write-Output "
 Abby PS1 Functions Loaded
 ============================
 "
-function GoGitPersonal { Set-Location -Path ~/code/personal }
+function GoGitPersonal {
+  Set-Location -Path ~/code/personal
+}
 set-alias _gcp -value GoGitPersonal
+
 function helpAbby {
   Write-Output "Things you were working on last ..."
   # get-content "~/code/personal/abby-todo-list.md" | bat
@@ -22,3 +25,23 @@ function set-sshkeys-abby {
 }
 
 
+function todo_local_items {
+  Invoke-Build todo
+}
+
+function reload_functions_abby {
+  . ${HOME}/code/dotfiles/powershell/functions/abby.ps1
+}
+
+function help_abby_tasks_dotFiles {
+  Set-Location -Path ~/code/dotfiles/
+}
+function help_abby_tasks_dotFilesPowershell {
+  Set-Location -Path ~/code/dotfiles/powershell
+}
+
+function help_abby_tasks_loadTesting {
+  Set-Location -Path ~/code/personal/load_testing
+}
+
+set-alias _gcp_tasks_loadTesting -value help_abby_GoLoadTesting10

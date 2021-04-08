@@ -3,20 +3,23 @@ Write-Output "
 Docker PS1 Functions Loaded
 ============================
 "
+function reload_functions_docker {
+  . ${HOME}/code/dotfiles/powershell/functions/docker.ps1
+}
 
-function docker_list {
+function help_docker_list {
   docker ps
 }
 
-function docker_logs ($container) {
+function help_docker_logs ($container) {
   docker logs $container
 }
 
-function docker_start {
+function help_docker_start {
   docker up -d
 }
 
-function docker_stop {
+function help_docker_stop {
   docker down
 }
 

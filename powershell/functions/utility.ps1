@@ -3,6 +3,16 @@ Write-Output "
 Utility PS1 Functions Loaded
 ============================
 "
+function set_title_windows_terminal {
+  param
+  (
+      [Parameter(Mandatory=$true)] $_title
+  )
+  $Host.UI.RawUI.WindowTitle = "${_title}"
+}
+function reload_functions_utility {
+  . ${HOME}/code/dotfiles/powershell/functions/utility.ps1
+}
 function new_directory ($directory) {
   New-Item -Path $PWD -Name $directory -ItemType "Directory"
 }
@@ -414,3 +424,73 @@ function helpFunctions {
     . `$PROFILE
   "
 }
+
+function help_install_js_jsonlint () {
+  npm install jsonlint -g
+}
+
+function lint_yaml ($_filename) {
+  yamllint $_filename
+}
+
+function help_install_tflint () {
+  # choco install tflint
+  scoop install tflint
+}
+
+#function lint_terraform_docker_command () {
+#  docker run --rm -v $(pwd):/data -t wata727/tflint
+#}
+
+function lint_terraform () {
+  tflint
+}
+
+function lint_json ($_filename) {
+  jsonlint $_filename
+}
+
+function help_install_ntop () {
+  # https://github.com/gsass1/NTop
+  scoop install ntop
+}
+
+function diff_compare_files () {
+  param
+  (
+      [Parameter(Mandatory=$true)] $_file1,
+      [Parameter(Mandatory=$true)] $_file2
+  )
+  diff (get-content ${_file1}) (get-content ${_file2})
+  diff ${_file1} ${_file2}
+}
+function mv_to_not_ready () {
+  param
+  (
+      [Parameter(Mandatory=$true)] $_file1
+  )
+  mv ${_file1} "${_file1}.not_ready" -Force
+}
+function mv_to_ready () {
+  param
+  (
+      [Parameter(Mandatory=$true)] $_file1
+  )
+  mv ${_file1} ${_file1}.substring(0, ${_file1}.IndexOf("not_ready")) -Force
+}
+
+function helper_tools_to_install {
+    Write-Output "
+* https://github.com/ManrajGrover/organize-cli
+* https://github.com/ddopson/underscore-cli
+* https://github.com/nvbn/thefuck (linux)
+* https://github.com/dthree/wat
+* https://awesomeopensource.com/project/agarrharr/awesome-cli-apps
+# * https://github.com/klaussinani/taskbook
+"
+}
+function helper_name_of_task  {
+  # param($file1, $file2)
+    write-output "hello-world"
+}
+
