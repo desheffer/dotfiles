@@ -37,6 +37,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'w0rp/ale'
 Plug 'rayburgemeestre/phpfolding.vim'
 Plug 'tpope/vim-dispatch'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -149,6 +150,9 @@ nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 nnoremap <Leader>g :Ag!<Space>
 nnoremap <silent> <Leader>a :Ag! <C-r><C-w><CR>
 xnoremap <silent> <Leader>a y:Ag! <C-R>"<CR>
+
+" Jump to definition
+nnoremap <Leader>d :call CocAction('jumpDefinition', 'tab drop')<CR>
 
 " Search for visually selected text
 vnoremap // y/<C-R>"<CR>
