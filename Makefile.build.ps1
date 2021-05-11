@@ -3,10 +3,20 @@ task hello_world {
   Write-Output "Hello World"
 }
 
+task make_link_vimrc {
+
+  # New-Item -Path $_link -ItemType SymbolicLink -Target $_source
+  $link = "${env:USERPROFILE}\_vimrc"
+  $source = "${PWD}\windows_shell\vimrc"
+  New-Item -Path $link -ItemType SymbolicLink -Target $source
+}
+
 task replace_powershell_profile_with_symlink {
   Write-Output "Replace Powershell with Symlink"
-  # move-item ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1 ~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1.old
-  New-Item -Path ~/Documents/WindowsPowerShell/Microsoft.PowerShell_Profile.ps1 -ItemType SymbolicLink -Target ${PWD}/powershell/Microsoft.PowerShell_profile.ps1
+  # New-Item -Path $_link -ItemType SymbolicLink -Target $_source
+  $link = "${env:USERPROFILE}\Documents\WindowsPowerShell\Microsoft.PowerShell_Profile.ps1"
+  $source = "${PWD}\powershell\Microsoft.PowerShell_profile.ps1"
+  New-Item -Path $link -ItemType SymbolicLink -Target $source
 }
 
 #task link_windows_zshrc {
