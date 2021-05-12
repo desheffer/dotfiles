@@ -38,6 +38,8 @@
 	renamelimit = 4000
 [include]
 	path = ~/.gitconfig.local
+[init]
+	defaultBranch = main
 [merge]
 	summary = true
 	tool = vimdiff
