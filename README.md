@@ -14,8 +14,8 @@ To enable symbols, you will need to download and install one of the patched
 ## Secrets
 
 Secrets are files that you don't want exposed to the world.  These can be
-managed using the `secrets-put.sh` and `secrets-get.sh` scripts.  These scripts
-act as wrappers around `lpass`, the LastPass CLI utility.
+managed using the `secrets.sh` script.  This script acts as wrappers around
+`lpass` and is capable of moving files into and out of your LastPass vault.
 
 To get started:
 
