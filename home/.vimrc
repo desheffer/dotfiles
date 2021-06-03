@@ -37,7 +37,7 @@ Plug 'Lokaltog/vim-easymotion'
 Plug 'w0rp/ale'
 Plug 'rayburgemeestre/phpfolding.vim'
 Plug 'tpope/vim-dispatch'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Git
 Plug 'tpope/vim-fugitive'
