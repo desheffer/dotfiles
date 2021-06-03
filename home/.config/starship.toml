@@ -1,0 +1,8 @@
+[aws]
+disabled = true
+
+[directory]
+truncate_to_repo = false
+
+[git_branch]
+symbol = " "
