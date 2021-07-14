@@ -4,8 +4,10 @@ alias chown.='sudo chown -R "${USER}:" .'
 alias dkr-sh='docker run -it --rm --entrypoint sh'
 alias dkr-sh-v='docker run -it --rm --entrypoint sh -v "$(pwd)":/pwd'
 alias dkr-stop='docker stop $(docker ps -q)'
+alias gap='git add -p'
 alias gca='git commit --amend'
 alias gcm='git commit -m'
+alias gcp='git checkout -p'
 alias gs='git status'
 alias la='ls -A'
 alias ll='ls -Al'
@@ -41,24 +43,6 @@ function d {
     git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"
 }
 
-# Generate a secure password.
-function passwordgen {
-    if [ $# -lt 1 ]; then
-        length=32
-    else
-        length="${1}"
-    fi
-
-    LC_CTYPE=C tr -dc 'a-zA-Z0-9' < /dev/urandom | head -c "${length}"
-    echo
-}
-
-# Generate ctags for a PHP project.
-function phptags {
-    rm -f tags
-    find . -type f -iname "*.php" -not -path "/vendor" | xargs ctags -a
-}
-
 # Safely reset a Git repository to match a remote branch.
 function git-reset {
     git rev-parse 2>/dev/null || return
@@ -82,15 +66,4 @@ function git-reset {
     git checkout "${newBranch}" >/dev/null 2>/dev/null
     git fetch origin >/dev/null
     git reset --hard "origin/${newBranch}"
-}
-
-# Open an SSH connection with tmux.
-function ssh-tmux {
-    ssh "${1}" -t "tmux -2u attach 2>/dev/null || tmux -2u new-session"
-}
-
-# Convert GitHub HTTPS URL to SSH.
-function github-https-to-ssh {
-    sshUrl="$(git remote get-url origin | sed 's|https://github.com/\(.*\)|git@github.com:\1|')"
-    git remote set-url origin "${sshUrl}"
 }
