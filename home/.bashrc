@@ -1,6 +1,3 @@
-# Add ~/bin path.
-[ -d ~/bin ] && export PATH="${HOME}/bin:${PATH}"
-
 # Stop if not running interactively.
 [ -z "${PS1}" ] && return
 
@@ -10,15 +7,12 @@ shopt -s checkwinsize 2>/dev/null
 # Enable glob star.
 shopt -s globstar 2>/dev/null
 
-# Enable auto cd.
+# Enable auto change directory.
 shopt -s autocd 2>/dev/null
 
-# Unlimited history.
+# Configure history.
 HISTSIZE=-1
 HISTFILESIZE=-1
-
-# Auto save history.
-PROMPT_COMMAND="history -a"
 
 # Use Vim.
 export EDITOR="vim"
@@ -29,16 +23,15 @@ export LESS="-FXR ${LESS}"
 # Enable directory colors.
 eval "$(dircolors -b)"
 
-# Add bash completion.
+# Enable completion.
 [ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
+
+# Enable fzf.
+[ -f ~/.fzf.bash ] && . ~/.fzf.bash
+
+# Add various paths.
+[ -f ~/.bashrc.functions ] && . ~/.bashrc.functions
+[ -f ~/.bashrc.local ] && . ~/.bashrc.local
 
 # Initialize Starship.
 eval "$(starship init bash)"
-
-# Add various paths.
-[ -f ~/.cargo/env ] && . ~/.cargo/env
-[ -f ~/.fzf.bash ] && . ~/.fzf.bash
-[ -f ~/.rvm/scripts/rvm ] && . ~/.rvm/scripts/rvm
-
-[ -f ~/.bashrc.functions ] && . ~/.bashrc.functions
-[ -f ~/.bashrc.local ] && . ~/.bashrc.local
