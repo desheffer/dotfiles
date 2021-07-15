@@ -1,14 +1,20 @@
 # Enable auto change directory.
-setopt AUTOCD
+setopt AUTO_CD
+
+# Allow tab completion in the middle of a word.
+setopt COMPLETE_IN_WORD
+
+# Never beep.
+setopt NO_BEEP
 
 # Autocomplete like Bash.
-setopt NOAUTOMENU
+setopt NO_AUTO_MENU
 
 # Don't save duplicate history entries.
-setopt HISTIGNOREALLDUPS
+setopt HIST_IGNORE_ALL_DUPS
 
 # Share history across sessions.
-setopt SHAREHISTORY
+setopt SHARE_HISTORY
 
 # Configure history.
 HISTSIZE=10000
