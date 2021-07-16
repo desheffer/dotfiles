@@ -1,29 +1,46 @@
-# Enable auto change directory.
-setopt AUTO_CD
+setopt AUTO_CD                  # If command is a directory, cd to it.
+setopt AUTO_PUSHD               # Make cd push to the directory stack.
+setopt PUSHD_SILENT             # Do not print the directory stack.
 
-# Allow tab completion in the middle of a word.
-setopt COMPLETE_IN_WORD
+setopt ALWAYS_TO_END            # If completing in a word, move to end of word.
+setopt COMPLETE_IN_WORD         # Allow tab completion in the middle of a word.
 
-# Never beep.
-setopt NO_BEEP
+setopt APPEND_HISTORY           # Append history, do not replace it.
+setopt EXTENDED_HISTORY         # Save timestamps in the history file.
+setopt HIST_EXPIRE_DUPS_FIRST   # Expire duplicate history entries first.
+setopt HIST_IGNORE_ALL_DUPS     # Remove duplicate history entries.
+setopt HIST_IGNORE_SPACE        # Do not save commands that begin with a space.
+setopt HIST_VERIFY              # Allow editing for history expansion.
+unsetopt INC_APPEND_HISTORY     # Do not save history until the shell exits.
+setopt SHARE_HISTORY            # Import new commands from the history file.
 
-# Autocomplete like Bash.
-setopt NO_AUTO_MENU
+setopt INTERACTIVE_COMMENTS     # Allow comments in interactive shells.
 
-# Don't save duplicate history entries.
-setopt HIST_IGNORE_ALL_DUPS
+setopt PROMPT_SUBST             # Perform substitutions in prompts.
 
-# Share history across sessions.
-setopt SHARE_HISTORY
+unsetopt BEEP                   # Do not beep.
 
 # Configure history.
 HISTSIZE=10000
 SAVEHIST=10000
 HISTFILE=~/.zsh_history
 
+# Enable directory colors.
+eval "$(dircolors)"
+
 # Enable completion.
 autoload -Uz compinit
 compinit
+
+# Enable completion menu.
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
+zstyle ":completion:*:commands" rehash 1
+zstyle ':completion:*:*:*:*:*' menu select
+
+# Enable vi mode.
+bindkey -v
+export KEYTIMEOUT=1
 
 # Bind home, end, and del keys.
 bindkey "^[[H" beginning-of-line

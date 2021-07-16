@@ -1,5 +1,4 @@
 alias :qa='exit'
-alias bob='ag -l | entr make'
 alias chown.='sudo chown -R "${USER}:" .'
 alias dkr-sh='docker run -it --rm --entrypoint sh'
 alias dkr-sh-v='docker run -it --rm --entrypoint sh -v "$(pwd)":/pwd'
