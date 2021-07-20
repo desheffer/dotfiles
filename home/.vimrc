@@ -130,6 +130,7 @@ nnoremap Y y$
 " Toggle fzf.
 nnoremap <C-p> :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
+nnoremap <Leader>l :BLines<CR>
 
 " Toggle NERD Tree.
 nnoremap <silent> <Leader>nt :NERDTreeTabsToggle<CR>
@@ -174,22 +175,15 @@ function! TabClose()
 endfunction
 
 " }}}
-" Commands {{{
-
-" Show preview for Ag command.
-command! -bang -nargs=* Ag
-\ call fzf#vim#ag(<q-args>,
-\                 <bang>0 ? fzf#vim#with_preview('up:60%')
-\                         : fzf#vim#with_preview('right:50%:hidden', '?'),
-\                 <bang>0)
-
-" }}}
 " Plugin Settings {{{
 
 let g:airline_powerline_fonts = 1
 
 let b:ale_fixers = ['trim_whitespace']
 let g:ale_fix_on_save = 1
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let g:fzf_preview_window = ['up:60%', 'ctrl-o']
 
 let g:gist_post_private = 1
 
