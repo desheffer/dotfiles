@@ -11,21 +11,6 @@
 	reset-release = !bash -ic 'git-reset release' -
 [color]
 	ui = auto
-[color "branch"]
-	current = yellow bold reverse
-	local = yellow bold
-	remote = green bold
-[color "diff"]
-	commit = yellow bold
-	frag = cyan bold
-	meta = white bold
-	new = green bold
-	old = red bold
-	whitespace = red reverse
-[color "status"]
-	added = yellow bold
-	changed = green bold
-	untracked = cyan bold
 [core]
 	autocrlf = input
 	editor = vim
