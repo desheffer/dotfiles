@@ -1,5 +1,6 @@
 alias :qa='exit'
 alias chown.='sudo chown -R "${USER}:" .'
+alias df='df -h'
 alias dkr-sh='docker run -it --rm --entrypoint sh'
 alias dkr-sh-v='docker run -it --rm --entrypoint sh -v "$(pwd)":/pwd'
 alias dkr-stop='docker stop $(docker ps -q)'
