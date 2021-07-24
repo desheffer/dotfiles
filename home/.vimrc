@@ -129,6 +129,7 @@ nnoremap Y y$
 
 " Toggle fzf.
 nnoremap <C-p> :Files<CR>
+nnoremap g<C-p> :GFiles<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>l :BLines<CR>
 
