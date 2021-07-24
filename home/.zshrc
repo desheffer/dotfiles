@@ -12,7 +12,6 @@ setopt HIST_IGNORE_ALL_DUPS     # Remove duplicate history entries.
 setopt HIST_IGNORE_SPACE        # Do not save commands that begin with a space.
 setopt HIST_VERIFY              # Allow editing for history expansion.
 unsetopt INC_APPEND_HISTORY     # Do not save history until the shell exits.
-setopt SHARE_HISTORY            # Import new commands from the history file.
 
 setopt INTERACTIVE_COMMENTS     # Allow comments in interactive shells.
 
