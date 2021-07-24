@@ -8,12 +8,12 @@ alias gca='git commit --amend'
 alias gcm='git commit -m'
 alias gcp='git checkout -p'
 alias gs='git status'
-alias la='ls -A'
-alias ll='ls -Al'
-alias ls='ls --color=auto'
+alias ls="ls -N --color=auto"
+alias l="ls -lhF"
+alias ll="ls -alhF"
 alias serve='python3 -m http.server 8000'
-alias ta='tmux -2u attach 2>/dev/null || tmux -2u new-session'
-alias tmux='tmux -2'
+alias ta='tmux attach 2>/dev/null || tmux new-session'
+alias tmux='tmux -2u'
 alias vi='vim'
 alias vim='vim -p'
 
