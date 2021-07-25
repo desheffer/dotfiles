@@ -37,16 +37,19 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 zstyle ":completion:*:commands" rehash 1
 zstyle ':completion:*:*:*:*:*' menu select
 
-# Enable vi mode.
-bindkey -v
+# Enable emacs mode.
+bindkey -e
+
+# But allow escape to vi mode.
+bindkey '^[' vi-cmd-mode
 export KEYTIMEOUT=1
 
 # Bind home, end, and del keys.
-bindkey "^[[H" beginning-of-line
-bindkey "^[[1~" beginning-of-line
-bindkey "^[[F" end-of-line
-bindkey "^[[4~" end-of-line
-bindkey "^[[3~" delete-char
+bindkey '^[[H' beginning-of-line
+bindkey '^[[1~' beginning-of-line
+bindkey '^[[F' end-of-line
+bindkey '^[[4~' end-of-line
+bindkey '^[[3~' delete-char
 
 # Enable fzf.
 [ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
