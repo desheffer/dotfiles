@@ -137,8 +137,8 @@ vnoremap > >gv
 vnoremap p pgvy
 
 " Toggle fzf.
-nnoremap <C-p> :Files<CR>
-nnoremap g<C-p> :GFiles<CR>
+nnoremap <C-p> :call SmartFzfSearching()<CR>
+nnoremap g<C-p> :Files<CR>
 nnoremap <Leader>b :Buffers<CR>
 nnoremap <Leader>l :BLines<CR>
 
@@ -188,6 +188,27 @@ let g:multi_cursor_exit_from_insert_mode = 0
 
 let g:nerdtree_tabs_open_on_gui_startup = 0
 
+" }}}
+" Functions {{{
+function! s:get_git_root()
+    if exists('*fugitive#repo')
+        try
+            return fugitive#repo().tree()
+        catch
+        endtry
+    endif
+    let root = split(system('git rev-parse --show-toplevel'), '\n')[0]
+    return v:shell_error ? '' : root
+endfunction
+
+function! SmartFzfSearching()
+    let root = s:get_git_root()
+    if empty(root)
+        Files
+    else
+        GFiles
+    endif
+endfunction
 " }}}
 " Auto Commands {{{
 
