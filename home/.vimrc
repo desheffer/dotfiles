@@ -36,6 +36,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-eunuch'
 
 " Programming
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'w0rp/ale'
 Plug 'tomtom/tcomment_vim'
 Plug 'mattn/webapi-vim'
@@ -46,7 +47,6 @@ Plug 'PeterRincker/vim-argumentative'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
@@ -154,10 +154,6 @@ xnoremap <silent> <Leader>a y:Ag! <C-R>"<CR>
 " Search for visually selected text.
 vnoremap // y/<C-R>"<CR>
 
-" Jump back and forth between Git hunks.
-nnoremap [g :GitGutterPrevHunk<CR>
-nnoremap ]g :GitGutterNextHunk<CR>
-
 " Align delimiting characters.
 vnoremap <silent> <Leader>a= :Tabularize /=<CR>
 vnoremap <silent> <Leader>a> :Tabularize /=><CR>
@@ -169,6 +165,9 @@ nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
 " Format JSON.
 nnoremap <silent> <Leader>js :%!python -m json.tool<CR>
 
+" Jump to definition.
+nnoremap <Leader>d :call CocAction('jumpDefinition', 'tab drop')<CR>
+
 " }}}
 " Plugin Settings {{{
 
@@ -176,6 +175,8 @@ let g:airline_powerline_fonts = 1
 
 let b:ale_fixers = ['trim_whitespace']
 let g:ale_fix_on_save = 1
+
+let g:coc_global_extensions = ["coc-git", "coc-go", "coc-html", "coc-java", "coc-json", "coc-omnisharp", "coc-phpls", "coc-pyright", "coc-rust-analyzer", "coc-sh", "coc-yaml"]
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let g:fzf_preview_window = ['up:60%', 'ctrl-o']
