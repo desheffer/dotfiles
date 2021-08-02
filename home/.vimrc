@@ -55,6 +55,7 @@ set clipboard=                  " Never use system clipboard.
 set expandtab                   " Tab key inserts spaces.
 set softtabstop=4               " Use 4 spaces for indentation.
 set shiftwidth=4                " Use 4 spaces for indentation.
+set nojoinspaces                " When joining lines, don't use double spaces.
 
 set ignorecase                  " Default to case insensitive searches.
 set smartcase                   " Unless uppercase letters are present.
