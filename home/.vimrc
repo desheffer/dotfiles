@@ -172,6 +172,8 @@ nnoremap <Leader>d :call CocAction('jumpDefinition', 'tab drop')<CR>
 " Plugin Settings {{{
 
 let g:airline_powerline_fonts = 1
+let g:airline_skip_empty_sections = 1
+let g:airline_theme = 'tomorrow'
 
 let b:ale_fixers = ['trim_whitespace']
 let g:ale_fix_on_save = 1
