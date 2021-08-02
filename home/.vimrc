@@ -114,18 +114,22 @@ nnoremap <silent> ]<Tab> :tabnext<CR>
 nnoremap <C-a>- :split<CR>
 nnoremap <C-a>\| :vsplit<CR>
 
-" Prevent p from replacing the buffer (copy what was originally selected).
-vnoremap p pgvy
+" Allow j and k to navigate wrapped lines.
+nnoremap j gj
+nnoremap k gk
+
+" Make Y yank to end of line.
+nnoremap Y y$
 
 " Preserve selection on indent.
 vnoremap < <gv
 vnoremap > >gv
 
+" Prevent p from replacing the buffer (copy what was originally selected).
+vnoremap p pgvy
+
 " Highlight last inserted text.
 nnoremap gV `[v`]
-
-" Make Y yank to end of line.
-nnoremap Y y$
 
 " Toggle fzf.
 nnoremap <C-p> :Files<CR>
