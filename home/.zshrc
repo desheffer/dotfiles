@@ -51,6 +51,9 @@ bindkey '^[[F' end-of-line
 bindkey '^[[4~' end-of-line
 bindkey '^[[3~' delete-char
 
+# Use Neovim.
+export EDITOR="nvim"
+
 # Enable fzf.
 [ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
 

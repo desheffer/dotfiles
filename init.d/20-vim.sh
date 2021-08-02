@@ -10,4 +10,4 @@ if [ ! -f ~/.vim/autoload/plug.vim ]; then
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
-vim +PlugUpdate +qall -
+nvim +PlugUpdate +qall -
