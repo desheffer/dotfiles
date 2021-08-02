@@ -5,37 +5,48 @@ filetype off
 
 call plug#begin()
 
-Plug 'bling/vim-airline'
+Plug 'junegunn/vim-plug'
+
+" General
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'enricobacis/paste.vim'
+Plug 'junegunn/indentLine'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'Lokaltog/vim-easymotion'
+Plug 'bogado/file-line'
+Plug 'tpope/vim-abolish'
+Plug 'vim-scripts/ZoomWin'
 
+" Appearance
 Plug 'morhetz/gruvbox'
+Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 
+" Searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all --no-update-rc' }
 Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-eunuch'
+
+" Files
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'tpope/vim-eunuch'
 
-Plug 'tomtom/tcomment_vim'
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-surround'
-
-Plug 'terryma/vim-multiple-cursors'
-Plug 'Lokaltog/vim-easymotion'
-
+" Programming
 Plug 'w0rp/ale'
-Plug 'rayburgemeestre/phpfolding.vim'
-Plug 'tpope/vim-dispatch'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'tomtom/tcomment_vim'
+Plug 'mattn/webapi-vim'
+Plug 'mattn/gist-vim'
+Plug 'godlygeek/tabular'
+Plug 'PeterRincker/vim-argumentative'
 
+" Git
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'airblade/vim-gitgutter'
-Plug 'mattn/webapi-vim'
-Plug 'mattn/gist-vim'
 
 call plug#end()
 
@@ -101,19 +112,15 @@ nnoremap Q <Nop>
 
 " Open and close tabs.
 nnoremap <Tab><Enter> :tabedit<Space>
-nnoremap <silent> <Tab>q :call TabClose()<CR>
-
-" Fast saving and quiting.
-nnoremap <silent> <Leader>w :w!<CR>
-nnoremap <silent> <Leader>q :q<CR>
+nnoremap <silent> <Tab>q ZQ<CR>
 
 " Move to previous and next tabs.
 nnoremap <silent> [<Tab> :tabprev<CR>
 nnoremap <silent> ]<Tab> :tabnext<CR>
 
-" Create a window split.
-nnoremap <C-a>- :split<CR>
-nnoremap <C-a>\| :vsplit<CR>
+" Create window splits.
+nnoremap <C-w>- :split<CR>
+nnoremap <C-w>\| :vsplit<CR>
 
 " Allow j and k to navigate wrapped lines.
 nnoremap j gj
@@ -129,9 +136,6 @@ vnoremap > >gv
 " Prevent p from replacing the buffer (copy what was originally selected).
 vnoremap p pgvy
 
-" Highlight last inserted text.
-nnoremap gV `[v`]
-
 " Toggle fzf.
 nnoremap <C-p> :Files<CR>
 nnoremap g<C-p> :GFiles<CR>
@@ -146,9 +150,6 @@ nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
 nnoremap <Leader>g :Ag!<Space>
 nnoremap <silent> <Leader>a :Ag! <C-r><C-w><CR>
 xnoremap <silent> <Leader>a y:Ag! <C-R>"<CR>
-
-" Jump to definition.
-nnoremap <Leader>d :call CocAction('jumpDefinition', 'tab drop')<CR>
 
 " Search for visually selected text.
 vnoremap // y/<C-R>"<CR>
@@ -167,18 +168,6 @@ nnoremap <silent> <Leader>mc /^(<<<<<<<\\|=======\\|>>>>>>>)<CR>
 
 " Format JSON.
 nnoremap <silent> <Leader>js :%!python -m json.tool<CR>
-
-" }}}
-" Functions {{{
-
-" Close the current tab.
-function! TabClose()
-    if tabpagenr('$') == 1
-        qall
-    else
-        tabclose
-    endif
-endfunction
 
 " }}}
 " Plugin Settings {{{
