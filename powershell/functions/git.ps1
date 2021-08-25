@@ -5,6 +5,9 @@ gIT ps1 functions Loaded
 "
 function reload_functions_git {
   . ${HOME}/code/dotfiles/powershell/functions/git.ps1
+  Write-Output "
+  . `${HOME}/code/dotfiles/powershell/functions/git.ps1
+  "
 }
 
 function git_log_one_line {

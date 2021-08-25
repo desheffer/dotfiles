@@ -13,6 +13,9 @@ $env:Path = $env:Path + ';' + $addAwsPath
 # $Env:Path = Join-Path $env:Path $addAwsPath
 function reload_functions_aws {
   . ${HOME}/code/dotfiles/powershell/functions/aws.ps1
+  Write-Output "
+  . `${HOME}/code/dotfiles/powershell/functions/aws.ps1
+  "
 }
 
 

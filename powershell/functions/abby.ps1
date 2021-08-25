@@ -6,12 +6,19 @@ Abby PS1 Functions Loaded
 function GoGitPersonal {
   Set-Location -Path ~/code/personal
 }
+function GoGitPersonalDotfiles {
+  Set-Location -Path ~/code/dotfiles
+}
 set-alias _gcp -value GoGitPersonal
 
 function helpAbby {
   Write-Output "Things you were working on last ..."
   # get-content "~/code/personal/abby-todo-list.md" | bat
   bat "${HOME}/code/personal/abby-todo-list.md"
+}
+
+function helpAbbyTodo {
+  Set-Location -Path ~/code/personal/general_todo
 }
 
 function addTodoAbby ($todo) {
@@ -31,6 +38,9 @@ function todo_local_items {
 
 function reload_functions_abby {
   . ${HOME}/code/dotfiles/powershell/functions/abby.ps1
+  Write-Output "
+  . `${HOME}/code/dotfiles/powershell/functions/abby.ps1
+  "
 }
 
 function help_abby_tasks_dotFiles {
