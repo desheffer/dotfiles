@@ -34,7 +34,7 @@ compinit
 # Enable completion menu.
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
-zstyle ":completion:*:commands" rehash 1
+zstyle ':completion:*:commands' rehash 1
 zstyle ':completion:*:*:*:*:*' menu select
 
 # Enable emacs mode.
@@ -52,10 +52,10 @@ bindkey '^[[4~' end-of-line
 bindkey '^[[3~' delete-char
 
 # Use Neovim.
-export EDITOR="nvim"
+export EDITOR='nvim'
 
 # Enable fzf.
-[ -f ~/.fzf.zsh ] && . ~/.fzf.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && . /usr/share/fzf/key-bindings.zsh
 
 # Add various paths.
 [ -f ~/.zshrc.functions ] && . ~/.zshrc.functions

@@ -1,0 +1,49 @@
+-- Enable dark color themes.
+vim.opt.termguicolors = true
+vim.opt.background = "dark"
+
+-- Enable persistent undo.
+vim.opt.undofile = true
+
+-- Allow editing with multiple buffers.
+vim.opt.hidden = true
+
+-- Use 4 spaces for indentation.
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+
+-- Ignore case unless searching with uppercase letters.
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
+-- Use a single space when joining lines.
+vim.opt.joinspaces = false
+
+-- Show relative line numbers.
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- Draw right margin at 80 characters.
+vim.opt.colorcolumn = "80"
+
+-- Pad the cursor with 5 lines.
+vim.opt.scrolloff = 5
+
+-- Display hidden characters.
+vim.opt.list = true
+vim.opt.listchars:append("tab:——▷")
+vim.opt.listchars:append("trail:·")
+
+-- Make completion mode acts like Bash.
+vim.opt.wildmode = "longest,list"
+
+-- Always show sign column.
+vim.opt.signcolumn = "yes"
+
+-- Hide redundant notification of current mode.
+vim.opt.showmode = false
+
+-- Split windows below and to the right.
+vim.opt.splitbelow = true
+vim.opt.splitright = true

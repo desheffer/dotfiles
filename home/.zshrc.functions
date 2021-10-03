@@ -32,28 +32,6 @@ alias ls='ls -N --color=auto'
 alias serve='python3 -m http.server 8000'
 alias ta='tmux attach 2>/dev/null || tmux new-session'
 alias tmux='tmux -2u'
-alias vi='nvim -p'
-alias vim='nvim -p'
-
-# Quickly search for and open a file.
-function g {
-    [ -z "$*" ] && return
-    tmp=$(mktemp)
-    ag --hidden --ignore ".git" "$*" | fzf -m > ${tmp}
-    [ -s ${tmp} ] && vim -q ${tmp} +copen
-    cat ${tmp} | sed 's/:[0-9]*:.*$//'
-    rm ${tmp}
-}
-
-# Quickly search for and open all matches.
-function ga {
-    [ -z "$*" ] && return
-    tmp=$(mktemp)
-    ag --hidden --ignore ".git" "$*" > ${tmp}
-    [ -s ${tmp} ] && vim -q ${tmp} +copen
-    cat ${tmp} | sed 's/:[0-9]*:.*$//'
-    rm ${tmp}
-}
 
 # Quickly change to the root directory of a repository.
 function d {
