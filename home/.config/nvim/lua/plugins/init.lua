@@ -52,7 +52,7 @@ require("packer").startup({
 
         use {
             "kyazdani42/nvim-tree.lua",
-            requires = "kyazdani42/nvim-web-devicons",
+            requires = {"kyazdani42/nvim-web-devicons"},
             config = "pcall(require, 'plugins.nvim-tree')",
         }
 
@@ -90,10 +90,27 @@ require("packer").startup({
             "junegunn/vim-easy-align",
             config = "pcall(require, 'plugins.vim-easy-align')",
         }
+
+        use {
+            "neovim/nvim-lspconfig",
+            config = "pcall(require, 'plugins.lspconfig')",
+        }
+
+        use {
+            "kabouzeid/nvim-lspinstall",
+            config = "pcall(require, 'plugins.lspinstall')",
+        }
+
+        use {
+            "hrsh7th/nvim-cmp",
+            config = "pcall(require, 'plugins.cmp')",
+        }
+
+        use {"hrsh7th/cmp-nvim-lsp"}
     end,
     config = {
         display = {
-            open_fn = require('packer.util').float,
+            open_fn = require("packer.util").float,
         },
-    }
+    },
 })
