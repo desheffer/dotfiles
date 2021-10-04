@@ -4,6 +4,8 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.cmd "packadd packer.nvim"
 end
 
+require("plugins.gruvbox")
+
 require("packer").startup({
     function(use)
         use {"wbthomason/packer.nvim"}
@@ -13,68 +15,67 @@ require("packer").startup({
         use {
             "ellisonleao/gruvbox.nvim",
             requires = {"rktjmp/lush.nvim"},
-            config = function() require("plugins.gruvbox") end,
         }
 
         use {
             "akinsho/bufferline.nvim",
             requires = {"kyazdani42/nvim-web-devicons"},
-            config = function() require("plugins.bufferline") end,
+            config = "pcall(require, 'plugins.bufferline')",
         }
 
         use {
             "ojroques/nvim-bufdel",
-            config = function() require("plugins.bufdel") end,
+            config = "pcall(require, 'plugins.bufdel')",
         }
 
         use {
             "hoob3rt/lualine.nvim",
             requires = {"kyazdani42/nvim-web-devicons"},
-            config = function() require("plugins.lualine") end,
+            config = "pcall(require, 'plugins.lualine')",
         }
 
         use {
             "nvim-telescope/telescope.nvim",
             requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"},
-            config = function() require("plugins.telescope") end,
+            config = "pcall(require, 'plugins.telescope')",
         }
 
         use {
             "kyazdani42/nvim-tree.lua",
             requires = "kyazdani42/nvim-web-devicons",
-            config = function() require("plugins.nvim-tree") end,
+            config = "pcall(require, 'plugins.nvim-tree')",
         }
 
         use {
             "numtostr/FTerm.nvim",
-            config = function() require("plugins.fterm") end,
+            config = "pcall(require, 'plugins.fterm')",
         }
 
         use {
             "lewis6991/gitsigns.nvim",
             requires = {"nvim-lua/plenary.nvim"},
-            config = function() require("plugins.gitsigns") end,
+            config = "pcall(require, 'plugins.gitsigns')",
         }
 
         use {"lukas-reineke/indent-blankline.nvim"}
 
         use {
             "terrortylor/nvim-comment",
-            config = function() require("plugins.nvim_comment") end,
+            config = "pcall(require, 'plugins.nvim_comment')",
         }
 
         use {"easymotion/vim-easymotion"}
 
         use {
             "karb94/neoscroll.nvim",
-            config = function() require("plugins.neoscroll") end,
+            config = "pcall(require, 'plugins.neoscroll')",
         }
 
         use {"enricobacis/paste.vim"}
 
         use {
             "junegunn/vim-easy-align",
-            config = function() require("plugins.vim-easy-align") end,
+            config = "pcall(require, 'plugins.vim-easy-align')",
         }
     end,
     config = {
