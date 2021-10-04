@@ -4,6 +4,9 @@ if not present then
 end
 
 nvim_tree.setup({
+    update_focused_file = {
+        enable = true,
+    },
     view = {
         mappings = {
             list = {
@@ -15,4 +18,3 @@ nvim_tree.setup({
 
 vim.api.nvim_set_keymap("n", "<C-n>", "<Cmd>NvimTreeToggle<CR>", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>e", "<Cmd>NvimTreeFocus<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<Leader>E", "<Cmd>NvimTreeFindFile<CR>", {noremap = true, silent = true})
