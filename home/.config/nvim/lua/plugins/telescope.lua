@@ -1,9 +1,4 @@
-local present, telescope = pcall(require, "telescope")
-if not present then
-    return
-end
-
-telescope.setup({
+require("telescope").setup({
     defaults = {
         sorting_strategy = "ascending",
         layout_config = {

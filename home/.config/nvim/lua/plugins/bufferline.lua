@@ -1,9 +1,4 @@
-local present, bufferline = pcall(require, "bufferline")
-if not present then
-    return
-end
-
-bufferline.setup({
+require("bufferline").setup({
     options = {
         buffer_close_icon = " ",
         close_icon = "",

@@ -1,9 +1,4 @@
-local present, bufdel = pcall(require, "bufdel")
-if not present then
-    return
-end
-
-bufdel.setup({
+require("bufdel").setup({
     quit = false,
 })
 
