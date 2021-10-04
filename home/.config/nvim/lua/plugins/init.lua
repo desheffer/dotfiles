@@ -65,6 +65,11 @@ require("packer").startup({function()
     }
 
     use {"enricobacis/paste.vim"}
+
+    use {
+        "junegunn/vim-easy-align",
+        config = function() require("plugins.vim-easy-align") end,
+    }
 end,
 config = {
     display = {
