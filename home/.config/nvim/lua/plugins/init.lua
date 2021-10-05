@@ -18,6 +18,11 @@ require("packer").startup({
         }
 
         use {
+            "christoomey/vim-tmux-navigator",
+            config = "pcall(require, 'plugins.vim-tmux-navigator')",
+        }
+
+        use {
             "akinsho/bufferline.nvim",
             requires = {"kyazdani42/nvim-web-devicons"},
             config = "pcall(require, 'plugins.bufferline')",
