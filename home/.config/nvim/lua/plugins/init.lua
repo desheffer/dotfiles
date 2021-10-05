@@ -41,6 +41,11 @@ require("packer").startup({
         }
 
         use {
+            "nvim-telescope/telescope-project.nvim",
+            config = "pcall(require, 'plugins.telescope-project')",
+        }
+
+        use {
             "kyazdani42/nvim-tree.lua",
             requires = "kyazdani42/nvim-web-devicons",
             config = "pcall(require, 'plugins.nvim-tree')",
