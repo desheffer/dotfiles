@@ -17,6 +17,9 @@ vim.api.nvim_set_keymap("n", "gk", "k", {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Tab><Enter>", ":enew<CR>", {silent = true})
 vim.api.nvim_set_keymap("n", "<C-s>", ":w<CR>", {silent = true})
 
+-- Add mappings to exit,
+vim.api.nvim_set_keymap("n", "<C-c>", "<Cmd>:qa<CR>", {noremap = true, silent = true})
+
 -- Add mappings to turn off search highlighting.
 vim.api.nvim_set_keymap("n", "<C-l>", ":nohlsearch<CR>", {silent = true})
 
@@ -35,8 +38,7 @@ vim.api.nvim_set_keymap("v", ">", ">gv", {silent = true})
 vim.api.nvim_set_keymap("v", "*", "y/<C-R>\"<CR>", {silent = true})
 
 -- Add mappings to easily close windows.
-vim.cmd("autocmd FileType qf :nnoremap <buffer> <silent> <C-c> :cclose<CR>")
-vim.cmd("autocmd FileType help :nnoremap <buffer> <silent> <C-c> :helpclose<CR>")
+vim.cmd("autocmd FileType help,qf :nnoremap <buffer> <silent> <Tab>q :close<CR>")
 
 -- Strip trailing whitespace on save.
 vim.cmd("autocmd BufWritePre * %s/\\s\\+$//e")
