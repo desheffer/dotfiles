@@ -74,7 +74,10 @@ require("packer").startup({
             config = "pcall(require, 'plugins.nvim_comment')",
         }
 
-        use {"easymotion/vim-easymotion"}
+        use {
+            "ggandor/lightspeed.nvim",
+            config = "pcall(require, 'plugins.lightspeed')",
+        }
 
         use {
             "karb94/neoscroll.nvim",
