@@ -94,6 +94,8 @@ require("packer").startup({
 
         use {"enricobacis/paste.vim"}
 
+        use {"tversteeg/registers.nvim"}
+
         use {
             "junegunn/vim-easy-align",
             config = "pcall(require, 'plugins.vim-easy-align')",
