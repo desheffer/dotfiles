@@ -67,7 +67,10 @@ require("packer").startup({
             config = "pcall(require, 'plugins.gitsigns')",
         }
 
-        use {"lukas-reineke/indent-blankline.nvim"}
+        use {
+            "lukas-reineke/indent-blankline.nvim",
+            config = "pcall(require, 'plugins.indent_blankline')",
+        }
 
         use {
             "terrortylor/nvim-comment",
