@@ -75,6 +75,11 @@ require("packer").startup({
         }
 
         use {
+            "kevinhwang91/nvim-hlslens",
+            config = "pcall(require, 'plugins.hlslens')",
+        }
+
+        use {
             "ggandor/lightspeed.nvim",
             config = "pcall(require, 'plugins.lightspeed')",
         }
