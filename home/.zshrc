@@ -7,11 +7,10 @@ setopt COMPLETE_IN_WORD         # Allow tab completion in the middle of a word.
 
 setopt APPEND_HISTORY           # Append history, do not replace it.
 setopt EXTENDED_HISTORY         # Save timestamps in the history file.
-setopt HIST_EXPIRE_DUPS_FIRST   # Expire duplicate history entries first.
-setopt HIST_IGNORE_ALL_DUPS     # Remove duplicate history entries.
-setopt HIST_IGNORE_SPACE        # Do not save commands that begin with a space.
+setopt HIST_FIND_NO_DUPS        # Ignore duplicates when searching.
+setopt HIST_IGNORE_DUPS         # Ignore duplicates of the previous command.
 setopt HIST_VERIFY              # Allow editing for history expansion.
-unsetopt INC_APPEND_HISTORY     # Do not save history until the shell exits.
+setopt INC_APPEND_HISTORY       # Append history immediately.
 
 setopt INTERACTIVE_COMMENTS     # Allow comments in interactive shells.
 
