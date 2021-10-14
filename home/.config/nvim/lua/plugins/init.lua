@@ -96,6 +96,8 @@ require("packer").startup({
 
         use {"tversteeg/registers.nvim"}
 
+        use {"kshenoy/vim-signature"}
+
         use {"axelf4/vim-strip-trailing-whitespace"}
 
         use {
