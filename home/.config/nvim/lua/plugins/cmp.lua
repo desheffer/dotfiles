@@ -1,8 +1,20 @@
 vim.opt.completeopt = "menu,menuone,noselect"
 
-require("cmp").setup({
+local cmp = require("cmp")
+cmp.setup({
+    mapping = {
+        ["<CR>"] = cmp.mapping.confirm({select = true}),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+    },
+    snippet = {
+        expand = function(args)
+            vim.fn["vsnip#anonymous"](args.body)
+        end,
+    },
     sources = {
         {name = "nvim_lsp"},
+        {name = "vsnip"},
     },
 })
 

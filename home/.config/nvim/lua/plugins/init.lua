@@ -121,6 +121,8 @@ require("packer").startup({
         }
 
         use {"hrsh7th/cmp-nvim-lsp"}
+
+        use {"hrsh7th/vim-vsnip"}
     end,
     config = {
         display = {
