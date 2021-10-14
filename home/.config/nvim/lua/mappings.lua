@@ -39,6 +39,3 @@ vim.api.nvim_set_keymap("v", "*", "y/<C-R>\"<CR>", {silent = true})
 
 -- Add mappings to easily close windows.
 vim.cmd("autocmd FileType help,qf :nnoremap <buffer> <silent> <Tab>q :close<CR>")
-
--- Strip trailing whitespace on save.
-vim.cmd("autocmd BufWritePre * %s/\\s\\+$//e")

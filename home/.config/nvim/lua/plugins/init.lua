@@ -96,6 +96,8 @@ require("packer").startup({
 
         use {"tversteeg/registers.nvim"}
 
+        use {"axelf4/vim-strip-trailing-whitespace"}
+
         use {
             "junegunn/vim-easy-align",
             config = "pcall(require, 'plugins.vim-easy-align')",
