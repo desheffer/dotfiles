@@ -111,8 +111,8 @@ require("packer").startup({
         }
 
         use {
-            "kabouzeid/nvim-lspinstall",
-            config = [[pcall(require, "plugins.lspinstall")]],
+            "williamboman/nvim-lsp-installer",
+            config = [[pcall(require, "plugins.nvim-lsp-installer")]],
         }
 
         use {
