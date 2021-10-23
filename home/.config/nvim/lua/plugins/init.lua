@@ -1,7 +1,7 @@
 local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.fn.system({"git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path})
-    vim.cmd "packadd packer.nvim"
+    vim.cmd([[packadd packer.nvim]])
 end
 
 require("plugins.gruvbox")
@@ -19,77 +19,77 @@ require("packer").startup({
 
         use {
             "christoomey/vim-tmux-navigator",
-            config = "pcall(require, 'plugins.vim-tmux-navigator')",
+            config = [[pcall(require, "plugins.vim-tmux-navigator")]],
         }
 
         use {
             "akinsho/bufferline.nvim",
             requires = {"kyazdani42/nvim-web-devicons"},
-            config = "pcall(require, 'plugins.bufferline')",
+            config = [[pcall(require, "plugins.bufferline")]],
         }
 
         use {
             "ojroques/nvim-bufdel",
-            config = "pcall(require, 'plugins.bufdel')",
+            config = [[pcall(require, "plugins.bufdel")]],
         }
 
         use {
             "hoob3rt/lualine.nvim",
             requires = {"kyazdani42/nvim-web-devicons"},
-            config = "pcall(require, 'plugins.lualine')",
+            config = [[pcall(require, "plugins.lualine")]],
         }
 
         use {
             "nvim-telescope/telescope.nvim",
             requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"},
-            config = "pcall(require, 'plugins.telescope')",
+            config = [[pcall(require, "plugins.telescope")]],
         }
 
         use {
             "nvim-telescope/telescope-project.nvim",
-            config = "pcall(require, 'plugins.telescope-project')",
+            config = [[pcall(require, "plugins.telescope-project")]],
         }
 
         use {
             "kyazdani42/nvim-tree.lua",
             requires = {"kyazdani42/nvim-web-devicons"},
-            config = "pcall(require, 'plugins.nvim-tree')",
+            config = [[pcall(require, "plugins.nvim-tree")]],
         }
 
         use {
             "numtostr/FTerm.nvim",
-            config = "pcall(require, 'plugins.fterm')",
+            config = [[pcall(require, "plugins.fterm")]],
         }
 
         use {
             "lewis6991/gitsigns.nvim",
             requires = {"nvim-lua/plenary.nvim"},
-            config = "pcall(require, 'plugins.gitsigns')",
+            config = [[pcall(require, "plugins.gitsigns")]],
         }
 
         use {
             "lukas-reineke/indent-blankline.nvim",
-            config = "pcall(require, 'plugins.indent_blankline')",
+            config = [[pcall(require, "plugins.indent_blankline")]],
         }
 
         use {
             "terrortylor/nvim-comment",
-            config = "pcall(require, 'plugins.nvim_comment')",
+            config = [[pcall(require, "plugins.nvim_comment")]],
         }
 
         use {
             "kevinhwang91/nvim-hlslens",
-            config = "pcall(require, 'plugins.hlslens')",
+            config = [[pcall(require, "plugins.hlslens")]],
         }
 
         use {
             "ggandor/lightspeed.nvim",
-            config = "pcall(require, 'plugins.lightspeed')",
+            config = [[pcall(require, "plugins.lightspeed")]],
         }
 
         use {
             "karb94/neoscroll.nvim",
-            config = "pcall(require, 'plugins.neoscroll')",
+            config = [[pcall(require, "plugins.neoscroll")]],
         }
 
         use {"enricobacis/paste.vim"}
@@ -102,22 +102,22 @@ require("packer").startup({
 
         use {
             "junegunn/vim-easy-align",
-            config = "pcall(require, 'plugins.vim-easy-align')",
+            config = [[pcall(require, "plugins.vim-easy-align")]],
         }
 
         use {
             "neovim/nvim-lspconfig",
-            config = "pcall(require, 'plugins.lspconfig')",
+            config = [[pcall(require, "plugins.lspconfig")]],
         }
 
         use {
             "kabouzeid/nvim-lspinstall",
-            config = "pcall(require, 'plugins.lspinstall')",
+            config = [[pcall(require, "plugins.lspinstall")]],
         }
 
         use {
             "hrsh7th/nvim-cmp",
-            config = "pcall(require, 'plugins.cmp')",
+            config = [[pcall(require, "plugins.cmp")]],
         }
 
         use {"hrsh7th/cmp-nvim-lsp"}

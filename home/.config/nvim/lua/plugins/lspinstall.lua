@@ -25,5 +25,5 @@ setup_servers()
 
 require("lspinstall").post_install_hook = function()
     setup_servers()
-    vim.cmd("bufdo e")
+    vim.cmd([[bufdo e]])
 end

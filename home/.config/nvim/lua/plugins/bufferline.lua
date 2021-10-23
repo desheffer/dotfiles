@@ -11,11 +11,10 @@ require("bufferline").setup({
     },
 })
 
-vim.api.nvim_set_keymap("n", "]<Tab>", "<Cmd>BufferLineCycleNext<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "[<Tab>", "<Cmd>BufferLineCyclePrev<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "]<Tab>", [[<Cmd>BufferLineCycleNext<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "[<Tab>", [[<Cmd>BufferLineCyclePrev<CR>]], {noremap = true, silent = true})
 
-vim.api.nvim_set_keymap("n", "><Tab>", "<Cmd>BufferLineMoveNext<CR>", {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<<Tab>", "<Cmd>BufferLineMovePrev<CR>", {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "><Tab>", [[<Cmd>BufferLineMoveNext<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<<Tab>", [[<Cmd>BufferLineMovePrev<CR>]], {noremap = true, silent = true})
 
-vim.cmd("autocmd FileType neoterm set nobuflisted")
-vim.cmd("autocmd FileType qf set nobuflisted")
+vim.cmd([[autocmd FileType neoterm,qf set nobuflisted]])
