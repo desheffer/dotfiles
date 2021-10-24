@@ -83,8 +83,8 @@ require("packer").startup({
         }
 
         use {
-            "ggandor/lightspeed.nvim",
-            config = [[pcall(require, "plugins.lightspeed")]],
+            "phaazon/hop.nvim",
+            config = [[pcall(require, "plugins.hop")]],
         }
 
         use {
