@@ -17,6 +17,9 @@ vim.opt.tabstop = 4
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
+-- Show the effects of a command as it is typed.
+vim.opt.inccommand = "nosplit"
+
 -- Use a single space when joining lines.
 vim.opt.joinspaces = false
 
