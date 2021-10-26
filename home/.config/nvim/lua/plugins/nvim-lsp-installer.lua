@@ -13,6 +13,7 @@ local server_names = {
     "html",
     "jdtls",
     "jsonls",
+    "omnisharp",
     "pyright",
     "sumneko_lua",
 }
