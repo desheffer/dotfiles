@@ -78,6 +78,11 @@ require("packer").startup({
         }
 
         use {
+            "haya14busa/vim-asterisk",
+            config = function() pcall(require, "plugins.asterisk") end,
+        }
+
+        use {
             "kevinhwang91/nvim-hlslens",
             config = function() pcall(require, "plugins.hlslens") end,
         }
