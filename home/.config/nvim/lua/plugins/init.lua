@@ -78,6 +78,11 @@ require("packer").startup({
         use {"rafamadriz/friendly-snippets"}
 
         use {
+            "nvim-treesitter/nvim-treesitter",
+            config = function() pcall(require, "plugins.nvim-treesitter") end,
+        }
+
+        use {
             "christoomey/vim-tmux-navigator",
             config = function() pcall(require, "plugins.vim-tmux-navigator") end,
         }
