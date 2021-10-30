@@ -16,6 +16,7 @@ local server_names = {
     "omnisharp",
     "pyright",
     "sumneko_lua",
+    "yamlls",
 }
 
 local lsp_installer_servers = require("nvim-lsp-installer.servers")
