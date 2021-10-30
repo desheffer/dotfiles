@@ -9,7 +9,15 @@ require("telescope").setup({
     },
 })
 
-vim.api.nvim_set_keymap("n", "<C-p>", [[<Cmd>lua if not pcall(require("telescope.builtin").git_files) then require("telescope.builtin").find_files() end<CR>]], {noremap = true, silent = true})
+function _G.smart_find_files()
+    if pcall(require("telescope.builtin").git_files) then
+        return
+    end
+
+    require("telescope.builtin").find_files()
+end
+
+vim.api.nvim_set_keymap("n", "<C-p>", [[<Cmd>lua smart_find_files()<CR>]], {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap("n", "<Leader>fa", [[<Cmd>lua require("telescope.builtin").find_files({hidden = true})<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>fb", [[<Cmd>lua require("telescope.builtin").buffers()<CR>]], {noremap = true, silent = true})
