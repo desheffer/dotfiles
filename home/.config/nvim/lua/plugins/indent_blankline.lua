@@ -1,2 +1,2 @@
 vim.g.indent_blankline_char = "▏"
-vim.g.indent_blankline_filetype_exclude = {"help", "NvimTree"}
+vim.g.indent_blankline_filetype_exclude = {"help", "lsp-installer", "NvimTree"}
