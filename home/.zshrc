@@ -54,6 +54,7 @@ bindkey '^[[3~' delete-char
 export EDITOR='nvim'
 
 # Enable fzf.
+FZF_CTRL_T_COMMAND='git ls-tree -r --name-only HEAD 2>/dev/null || rg --files 2>/dev/null'
 [ -f /usr/share/fzf/key-bindings.zsh ] && . /usr/share/fzf/key-bindings.zsh
 
 # Add various paths.
