@@ -4,15 +4,13 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
     vim.cmd([[packadd packer.nvim]])
 end
 
-require("plugins.gruvbox")
-
 require("packer").startup({
     function(use)
         use {"wbthomason/packer.nvim"}
 
         use {
-            "ellisonleao/gruvbox.nvim",
-            requires = {"rktjmp/lush.nvim"},
+            "sainnhe/gruvbox-material",
+            config = function() pcall(require, "plugins.gruvbox-material") end,
         }
 
         use {

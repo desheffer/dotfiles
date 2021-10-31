@@ -1,7 +1,3 @@
--- Enable dark color themes.
-vim.opt.termguicolors = true
-vim.opt.background = "dark"
-
 -- Enable persistent undo.
 vim.opt.undofile = true
 
