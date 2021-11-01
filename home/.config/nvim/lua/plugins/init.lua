@@ -10,16 +10,9 @@ require("packer").startup({
     function(use)
         use {"wbthomason/packer.nvim"}
 
-        use {"tpope/vim-unimpaired"}
-
         use {
             "ellisonleao/gruvbox.nvim",
             requires = {"rktjmp/lush.nvim"},
-        }
-
-        use {
-            "christoomey/vim-tmux-navigator",
-            config = function() pcall(require, "plugins.vim-tmux-navigator") end,
         }
 
         use {
@@ -57,6 +50,30 @@ require("packer").startup({
         }
 
         use {
+            "neovim/nvim-lspconfig",
+            config = function() pcall(require, "plugins.lspconfig") end,
+        }
+
+        use {
+            "williamboman/nvim-lsp-installer",
+            config = function() pcall(require, "plugins.nvim-lsp-installer") end,
+        }
+
+        use {
+            "hrsh7th/nvim-cmp",
+            config = function() pcall(require, "plugins.cmp") end,
+        }
+
+        use {"hrsh7th/cmp-nvim-lsp"}
+
+        use {"hrsh7th/vim-vsnip"}
+
+        use {
+            "christoomey/vim-tmux-navigator",
+            config = function() pcall(require, "plugins.vim-tmux-navigator") end,
+        }
+
+        use {
             "numtostr/FTerm.nvim",
             config = function() pcall(require, "plugins.fterm") end,
         }
@@ -71,6 +88,8 @@ require("packer").startup({
             "lukas-reineke/indent-blankline.nvim",
             config = function() pcall(require, "plugins.indent_blankline") end,
         }
+
+        use {"tpope/vim-unimpaired"}
 
         use {
             "terrortylor/nvim-comment",
@@ -109,25 +128,6 @@ require("packer").startup({
             "junegunn/vim-easy-align",
             config = function() pcall(require, "plugins.vim-easy-align") end,
         }
-
-        use {
-            "neovim/nvim-lspconfig",
-            config = function() pcall(require, "plugins.lspconfig") end,
-        }
-
-        use {
-            "williamboman/nvim-lsp-installer",
-            config = function() pcall(require, "plugins.nvim-lsp-installer") end,
-        }
-
-        use {
-            "hrsh7th/nvim-cmp",
-            config = function() pcall(require, "plugins.cmp") end,
-        }
-
-        use {"hrsh7th/cmp-nvim-lsp"}
-
-        use {"hrsh7th/vim-vsnip"}
     end,
     config = {
         display = {
