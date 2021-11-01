@@ -66,7 +66,11 @@ require("packer").startup({
 
         use {"hrsh7th/cmp-nvim-lsp"}
 
+        use {"hrsh7th/cmp-vsnip"}
+
         use {"hrsh7th/vim-vsnip"}
+
+        use {"rafamadriz/friendly-snippets"}
 
         use {
             "christoomey/vim-tmux-navigator",
