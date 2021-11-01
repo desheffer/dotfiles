@@ -2,6 +2,9 @@ vim.opt.completeopt = "menu,menuone,noselect"
 
 local cmp = require("cmp")
 cmp.setup({
+    documentation = {
+        border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+    },
     mapping = {
         ["<CR>"] = cmp.mapping.confirm(),
         ["<C-d>"] = cmp.mapping.scroll_docs(4),
