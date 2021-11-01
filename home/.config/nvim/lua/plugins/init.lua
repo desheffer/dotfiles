@@ -60,6 +60,11 @@ require("packer").startup({
         }
 
         use {
+            "ray-x/lsp_signature.nvim",
+            config = function() pcall(require, "plugins.lsp_signature") end,
+        }
+
+        use {
             "hrsh7th/nvim-cmp",
             config = function() pcall(require, "plugins.cmp") end,
         }
