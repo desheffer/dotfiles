@@ -44,4 +44,4 @@ vim.api.nvim_set_keymap("i", "<C-k>", [[<Cmd>lua smart_hover()<CR>]], {noremap =
 vim.api.nvim_set_keymap("n", "[d", [[<Cmd>lua vim.lsp.diagnostic.goto_prev({popup_opts = {focusable = false}})<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "]d", [[<Cmd>lua vim.lsp.diagnostic.goto_next({popup_opts = {focusable = false}})<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>ca", [[<Cmd>lua require("telescope.builtin").lsp_code_actions()<CR>]], {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<Leader>rn", [[<Cmd>lua vim.lsp.buf.rename()<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>cr", [[<Cmd>lua vim.lsp.buf.rename()<CR>]], {noremap = true, silent = true})
