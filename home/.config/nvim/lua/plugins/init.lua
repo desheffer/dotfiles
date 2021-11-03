@@ -100,10 +100,7 @@ require("packer").startup({
 
         use {"tpope/vim-unimpaired"}
 
-        use {
-            "terrortylor/nvim-comment",
-            config = function() pcall(require, "plugins.nvim_comment") end,
-        }
+        use {"tpope/vim-commentary"}
 
         use {
             "haya14busa/vim-asterisk",
