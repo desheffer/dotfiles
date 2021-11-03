@@ -33,6 +33,3 @@ vim.api.nvim_set_keymap("v", "p", [[pgvy]], {noremap = true, silent = true})
 -- Preserve selection on indent.
 vim.api.nvim_set_keymap("v", "<", [[<gv]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("v", ">", [[>gv]], {noremap = true, silent = true})
-
--- Add mappings to easily close windows.
-vim.cmd([[autocmd FileType help,qf :nnoremap <buffer> <silent> <Tab>q :close<CR>]])

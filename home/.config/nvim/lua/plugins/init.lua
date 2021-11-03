@@ -83,6 +83,11 @@ require("packer").startup({
         }
 
         use {
+            "lewis6991/spellsitter.nvim",
+            config = function() pcall(require, "plugins.spellsitter") end,
+        }
+
+        use {
             "christoomey/vim-tmux-navigator",
             config = function() pcall(require, "plugins.vim-tmux-navigator") end,
         }

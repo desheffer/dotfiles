@@ -18,5 +18,3 @@ vim.api.nvim_set_keymap("n", "[<Tab>", [[<Cmd>BufferLineCyclePrev<CR>]], {norema
 
 vim.api.nvim_set_keymap("n", "><Tab>", [[<Cmd>BufferLineMoveNext<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<<Tab>", [[<Cmd>BufferLineMovePrev<CR>]], {noremap = true, silent = true})
-
-vim.cmd([[autocmd FileType neoterm,qf set nobuflisted]])
