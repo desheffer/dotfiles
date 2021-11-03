@@ -1,3 +1,8 @@
+vim.fn.sign_define("LspDiagnosticsSignError", {text = ""})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = ""})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {text = ""})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = ""})
+
 vim.api.nvim_set_keymap("n", "gd", [[<Cmd>lua require("telescope.builtin").lsp_definitions()<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "gD", [[<Cmd>lua require("telescope.builtin").lsp_declarations()<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "gi", [[<Cmd>lua require("telescope.builtin").lsp_implementations()<CR>]], {noremap = true, silent = true})
