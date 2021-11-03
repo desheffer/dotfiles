@@ -14,6 +14,11 @@ require("packer").startup({
         }
 
         use {
+            "glepnir/dashboard-nvim",
+            config = function() pcall(require, "plugins.dashboard-nvim") end,
+        }
+
+        use {
             "akinsho/bufferline.nvim",
             requires = {"kyazdani42/nvim-web-devicons"},
             config = function() pcall(require, "plugins.bufferline") end,
