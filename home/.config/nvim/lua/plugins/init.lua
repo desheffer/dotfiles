@@ -115,6 +115,8 @@ require("packer").startup({
 
         use {"tpope/vim-commentary"}
 
+        use {"PeterRincker/vim-argumentative"}
+
         use {
             "haya14busa/vim-asterisk",
             config = function() pcall(require, "plugins.asterisk") end,
