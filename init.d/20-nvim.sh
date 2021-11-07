@@ -1,6 +1,7 @@
 #!/bin/env bash
 
-# Set up NeoVim.
+# Set up Neovim.
+rm -f ~/.config/nvim/plugin/packer_compiled.lua
 nvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync"
 
 # Add dotfiles project.
