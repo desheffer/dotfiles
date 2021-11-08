@@ -29,6 +29,9 @@ vim.opt.colorcolumn = "80"
 -- Pad the cursor with 5 lines.
 vim.opt.scrolloff = 5
 
+-- Do not display end-of-buffer tildes.
+vim.opt.fillchars:append("eob: ")
+
 -- Display hidden characters.
 vim.opt.list = true
 vim.opt.listchars:append("tab:——▷")

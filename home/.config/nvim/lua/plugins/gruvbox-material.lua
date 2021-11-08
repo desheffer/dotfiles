@@ -6,13 +6,13 @@ vim.g.gruvbox_material_palette = "original"
 
 function _G.gruvbox_material_custom()
     -- Tone down the search highlighting.
-    vim.cmd([[highlight! IncSearch cterm=reverse gui=reverse guifg=#FE811B guibg=#29292]])
-    vim.cmd([[highlight! Search ctermfg=0 ctermbg=11 gui=reverse guifg=#FABD2E guibg=#29292]])
+    vim.cmd([[highlight! IncSearch cterm=reverse gui=reverse guifg=#fe811b guibg=#29292]])
+    vim.cmd([[highlight! Search ctermfg=0 ctermbg=11 gui=reverse guifg=#fabd2e guibg=#29292]])
 
     -- Darken the NvimTree window.
-    vim.cmd([[highlight! NvimTreeNormal ctermfg=223 ctermbg=235 guifg=#EBDBB2 guibg=#1E1E1E]])
-    vim.cmd([[highlight! NvimTreeEndOfBuffer ctermfg=239 ctermbg=235 guifg=#1E1E1E guibg=#1E1E1E]])
-    vim.cmd([[highlight! NvimTreeVertSplit ctermfg=239 guifg=#1E1E1E guibg=#1E1E1E]])
+    vim.cmd([[highlight! NvimTreeNormal ctermfg=223 ctermbg=235 guifg=#ebdbb2 guibg=#1e1e1e]])
+    vim.cmd([[highlight! NvimTreeEndOfBuffer ctermfg=239 ctermbg=235 guifg=#1e1e1e guibg=#1e1e1e]])
+    vim.cmd([[highlight! NvimTreeVertSplit ctermfg=239 guifg=#1e1e1e guibg=#1e1e1e]])
 end
 
 vim.cmd([[autocmd ColorScheme gruvbox-material lua gruvbox_material_custom()]])
