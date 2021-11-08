@@ -6,7 +6,21 @@ local servers = {
     dockerls = {},
     gopls = {},
     html = {},
-    jdtls = {},
+    jdtls = {
+        settings = {
+            java = {
+                configuration = {
+                    runtimes = {
+                        {
+                            -- aur/jdk15-adoptopenjdk
+                            name = "JavaSE-15",
+                            path = "/usr/lib/jvm/java-15-adoptopenjdk",
+                        },
+                    },
+                },
+            },
+        },
+    },
     jsonls = {},
     omnisharp = {},
     pyright = {},
