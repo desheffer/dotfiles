@@ -91,6 +91,11 @@ require("packer").startup({
         }
 
         use {
+            "romgrk/nvim-treesitter-context",
+            config = function() pcall(require, "plugins.treesitter-context") end,
+        }
+
+        use {
             "christoomey/vim-tmux-navigator",
             config = function() pcall(require, "plugins.vim-tmux-navigator") end,
         }
