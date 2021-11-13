@@ -15,7 +15,7 @@ require("packer").startup({
 
         use {
             "glepnir/dashboard-nvim",
-            config = function() pcall(require, "plugins.dashboard-nvim") end,
+            config = function() pcall(require, "plugins.dashboard") end,
         }
 
         use {
@@ -49,7 +49,7 @@ require("packer").startup({
         use {
             "kyazdani42/nvim-tree.lua",
             requires = {"kyazdani42/nvim-web-devicons"},
-            config = function() pcall(require, "plugins.nvim-tree") end,
+            config = function() pcall(require, "plugins.tree") end,
         }
 
         use {
@@ -59,7 +59,7 @@ require("packer").startup({
 
         use {
             "williamboman/nvim-lsp-installer",
-            config = function() pcall(require, "plugins.nvim-lsp-installer") end,
+            config = function() pcall(require, "plugins.lsp-installer") end,
         }
 
         use {
@@ -82,7 +82,7 @@ require("packer").startup({
 
         use {
             "nvim-treesitter/nvim-treesitter",
-            config = function() pcall(require, "plugins.nvim-treesitter") end,
+            config = function() pcall(require, "plugins.treesitter") end,
         }
 
         use {
@@ -97,7 +97,7 @@ require("packer").startup({
 
         use {
             "christoomey/vim-tmux-navigator",
-            config = function() pcall(require, "plugins.vim-tmux-navigator") end,
+            config = function() pcall(require, "plugins.tmux-navigator") end,
         }
 
         use {
@@ -154,7 +154,7 @@ require("packer").startup({
 
         use {
             "junegunn/vim-easy-align",
-            config = function() pcall(require, "plugins.vim-easy-align") end,
+            config = function() pcall(require, "plugins.easy-align") end,
         }
     end,
     config = {
