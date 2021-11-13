@@ -6,9 +6,14 @@ cmp.setup({
         border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
     },
     mapping = {
+        ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
         ["<CR>"] = cmp.mapping.confirm(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(4),
-        ["<C-u>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-e>"] = cmp.mapping({
+            i = cmp.mapping.abort(),
+            c = cmp.mapping.close(),
+        }),
+        ["<C-d>"] = cmp.mapping.scroll_docs(4, {"i", "c"}),
+        ["<C-u>"] = cmp.mapping.scroll_docs(-4, {"i", "c"}),
     },
     snippet = {
         expand = function(args)
