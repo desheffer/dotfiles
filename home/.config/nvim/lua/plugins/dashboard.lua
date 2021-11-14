@@ -12,11 +12,11 @@ vim.g.dashboard_custom_header = {
 vim.g.dashboard_custom_section = {
     a = {
         description = {"  Find File                       <C-p>"},
-        command = smart_find_files,
+        command = function() smart_find_files() end,
     },
     b = {
         description = {"  Live Grep                   <Space>fg"},
-        command = require("telescope.builtin").live_grep,
+        command = function() require("telescope.builtin").live_grep() end,
     },
     c = {
         description = {"  Project                     <Space>fp"},
@@ -24,11 +24,11 @@ vim.g.dashboard_custom_section = {
     },
     d = {
         description = {"ﮦ  Recent File                 <Space>fo"},
-        command = require("telescope.builtin").oldfiles,
+        command = function() require("telescope.builtin").oldfiles() end,
     },
     e = {
         description = {"ﱐ  New File                 <Tab><Enter>"},
-        command = [[enew]],
+        command = function() vim.cmd([[enew]]) end,
     },
 }
 
