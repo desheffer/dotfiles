@@ -21,6 +21,7 @@ vim.api.nvim_set_keymap("n", "gd", [[<Cmd>lua require("telescope.builtin").lsp_d
 vim.api.nvim_set_keymap("n", "gD", [[<Cmd>lua require("telescope.builtin").lsp_declarations({jump_type = "never"})<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "gi", [[<Cmd>lua require("telescope.builtin").lsp_implementations({jump_type = "never"})<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "gr", [[<Cmd>lua require("telescope.builtin").lsp_references({jump_type = "never"})<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "gt", [[<Cmd>lua require("telescope.builtin").lsp_type_definitions({jump_type = "never"})<CR>]], {noremap = true, silent = true})
 
 vim.api.nvim_set_keymap("n", "K", [[<Cmd>lua vim.lsp.buf.hover({focusable = false})<CR>]], {noremap = true, silent = true})
 
