@@ -1,11 +1,14 @@
 require("telescope").setup({
     defaults = {
-        sorting_strategy = "ascending",
         layout_config = {
             horizontal = {
                 prompt_position = "top",
             },
         },
+        path_display = {
+            shorten = 1,
+        },
+        sorting_strategy = "ascending",
     },
 })
 
