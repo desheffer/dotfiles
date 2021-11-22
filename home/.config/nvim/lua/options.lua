@@ -23,8 +23,9 @@ vim.opt.joinspaces = false
 vim.opt.number = true
 vim.opt.relativenumber = true
 
--- Draw right margin at 80 characters.
-vim.opt.colorcolumn = "80"
+-- Draw right margin with a default of 80 characters.
+vim.opt.textwidth = 80
+vim.opt.colorcolumn = "+1"
 
 -- Pad the cursor with 5 lines.
 vim.opt.scrolloff = 5
