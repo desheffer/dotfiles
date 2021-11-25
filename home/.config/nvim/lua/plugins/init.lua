@@ -118,11 +118,14 @@ require("packer").startup({
 
         use {"tpope/vim-unimpaired"}
 
-        use {"tpope/vim-commentary"}
-
         use {"tpope/vim-surround"}
 
         use {"PeterRincker/vim-argumentative"}
+
+        use {
+            "numToStr/Comment.nvim",
+            config = function() pcall(require, "plugins.Comment") end,
+        }
 
         use {
             "haya14busa/vim-asterisk",
