@@ -8,6 +8,7 @@ vim.opt.hidden = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+vim.opt.shiftround = true
 
 -- Ignore case unless searching with uppercase letters.
 vim.opt.ignorecase = true
