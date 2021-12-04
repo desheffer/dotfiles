@@ -62,3 +62,8 @@ function git-reset {
     git fetch origin >/dev/null
     git reset --hard "origin/${newBranch}"
 }
+
+function github-https-to-ssh {
+    sshUrl="$(git remote get-url origin | sed 's|https://github.com/\(.*\)|git@github.com:\1|')"
+    git remote set-url origin "${sshUrl}"
+}
