@@ -14,11 +14,12 @@ vim.api.nvim_set_keymap("n", "gj", [[j]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "gk", [[k]], {noremap = true, silent = true})
 
 -- Add mappings to create and save buffers.
-vim.api.nvim_set_keymap("n", "<Tab><Enter>", [[<Cmd>enew<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader><Tab>", [[<Cmd>enew<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<C-s>", [[<Cmd>w<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("i", "<C-s>", [[<Cmd>w<CR>]], {noremap = true, silent = true})
 
 -- Add mappings to exit,
-vim.api.nvim_set_keymap("n", "<C-c>", [[<Cmd>qa<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-q>", [[<Cmd>qa<CR>]], {noremap = true, silent = true})
 
 -- Add mappings to turn off search highlighting.
 vim.api.nvim_set_keymap("n", "<C-l>", [[:nohlsearch<CR>]], {noremap = true, silent = true})
