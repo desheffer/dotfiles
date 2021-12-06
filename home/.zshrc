@@ -39,10 +39,6 @@ zstyle ':completion:*:*:*:*:*' menu select
 # Enable emacs mode.
 bindkey -e
 
-# But allow escape to vi mode.
-bindkey '^[' vi-cmd-mode
-export KEYTIMEOUT=1
-
 # Bind home, end, and del keys.
 bindkey '^[[H' beginning-of-line
 bindkey '^[[1~' beginning-of-line
