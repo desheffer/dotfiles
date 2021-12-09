@@ -12,6 +12,10 @@ vim.api.nvim_set_keymap("n", "j", [[gj]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "k", [[gk]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "gj", [[j]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "gk", [[k]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Down>", [[gj]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Up>", [[gk]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "g<Down>", [[j]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "g<Up>", [[k]], {noremap = true, silent = true})
 
 -- Add mappings to create and save buffers.
 vim.api.nvim_set_keymap("n", "<Leader><Tab>", [[<Cmd>enew<CR>]], {noremap = true, silent = true})
