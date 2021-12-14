@@ -57,5 +57,7 @@ function _G.lsp_install_sync()
         end
     end
 
-    lsp_installer.install_sync(requested)
+    if #requested > 0 then
+        lsp_installer.install_sync(requested)
+    end
 end
