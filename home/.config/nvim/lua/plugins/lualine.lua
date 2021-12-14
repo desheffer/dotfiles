@@ -10,7 +10,7 @@ require("lualine").setup({
             "diff",
             {
                 "diagnostics",
-                sources = {"nvim_lsp"},
+                sources = {"nvim_diagnostic"},
                 sections = {"error", "warn", "info", "hint"},
                 diagnostics_color = {
                     error = {fg = "#fb4934"},
