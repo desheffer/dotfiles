@@ -49,6 +49,9 @@ bindkey '^[[3~' delete-char
 # Use Neovim.
 export EDITOR='nvim'
 
+# Set theme for bat and delta.
+export BAT_THEME='gruvbox-dark'
+
 # Enable fzf.
 FZF_CTRL_T_COMMAND='git ls-tree -r --name-only HEAD 2>/dev/null || rg --files 2>/dev/null'
 [ -f /usr/share/fzf/key-bindings.zsh ] && . /usr/share/fzf/key-bindings.zsh
