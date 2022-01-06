@@ -12,5 +12,11 @@ require("bufferline").setup({
     },
 })
 
+vim.api.nvim_set_keymap("n", "<M-Pageup>",   [[<Cmd>BufferLineCycleNext<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<M-Pagedown>", [[<Cmd>BufferLineCyclePrev<CR>]], {noremap = true, silent = true})
+
 vim.api.nvim_set_keymap("n", "<Tab>",   [[<Cmd>BufferLineCycleNext<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<S-Tab>", [[<Cmd>BufferLineCyclePrev<CR>]], {noremap = true, silent = true})
+
+vim.api.nvim_set_keymap("n", "gt", [[<Cmd>BufferLineCycleNext<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "gT", [[<Cmd>BufferLineCyclePrev<CR>]], {noremap = true, silent = true})
