@@ -38,6 +38,9 @@ vim.opt.list = true
 vim.opt.listchars:append("tab:——▷")
 vim.opt.listchars:append("trail:·")
 
+-- Enable spell checking.
+vim.opt.spell = true
+
 -- Make completion mode acts like Bash.
 vim.opt.wildmode = "longest,list"
 
