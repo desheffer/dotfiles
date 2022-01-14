@@ -13,6 +13,9 @@ function _G.gruvbox_material_custom()
     vim.cmd([[highlight! NvimTreeNormal ctermfg=223 ctermbg=235 guifg=#ebdbb2 guibg=#1e1e1e]])
     vim.cmd([[highlight! NvimTreeEndOfBuffer ctermfg=239 ctermbg=235 guifg=#1e1e1e guibg=#1e1e1e]])
     vim.cmd([[highlight! NvimTreeVertSplit ctermfg=239 guifg=#1e1e1e guibg=#1e1e1e]])
+
+    -- Make matching braces a little more obvious.
+    vim.cmd([[highlight! MatchParen cterm=bold gui=bold]])
 end
 
 vim.cmd([[autocmd ColorScheme gruvbox-material lua gruvbox_material_custom()]])
