@@ -128,6 +128,11 @@ require("packer").startup({
         }
 
         use {
+            "windwp/nvim-autopairs",
+            config = function() pcall(require, "plugins.autopairs") end,
+        }
+
+        use {
             "haya14busa/vim-asterisk",
             config = function() pcall(require, "plugins.asterisk") end,
         }
