@@ -5,165 +5,80 @@ if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
 end
 
 require("packer").startup({
-    function(use)
+    function (use)
+        local function load_config(name)
+            for _, re in ipairs({"^n?vim[-.]", "[-.]n?vim$", "[-.]lua$"}) do
+                name = name:gsub(re, "")
+            end
+            require("plugins." .. name)
+        end
+
         use {"wbthomason/packer.nvim"}
 
-        use {
-            "sainnhe/gruvbox-material",
-            config = function() pcall(require, "plugins.gruvbox-material") end,
-        }
+        -- Colorscheme:
+        use {"sainnhe/gruvbox-material", config = load_config}
 
-        use {
-            "glepnir/dashboard-nvim",
-            config = function() pcall(require, "plugins.dashboard") end,
-        }
+        -- Interface:
+        use {"glepnir/dashboard-nvim", config = load_config}
+        use {"akinsho/bufferline.nvim", requires = {"kyazdani42/nvim-web-devicons"}, config = load_config}
+        use {"ojroques/nvim-bufdel", config = load_config}
+        use {"hoob3rt/lualine.nvim", requires = {"kyazdani42/nvim-web-devicons"}, config = load_config}
 
-        use {
-            "akinsho/bufferline.nvim",
-            requires = {"kyazdani42/nvim-web-devicons"},
-            config = function() pcall(require, "plugins.bufferline") end,
-        }
+        -- Telescope:
+        use {"nvim-telescope/telescope.nvim", requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"}, config = load_config}
+        use {"nvim-telescope/telescope-project.nvim", config = load_config}
 
-        use {
-            "ojroques/nvim-bufdel",
-            config = function() pcall(require, "plugins.bufdel") end,
-        }
+        -- Explorer:
+        use {"kyazdani42/nvim-tree.lua", requires = {"kyazdani42/nvim-web-devicons"}, config = load_config}
 
-        use {
-            "hoob3rt/lualine.nvim",
-            requires = {"kyazdani42/nvim-web-devicons"},
-            config = function() pcall(require, "plugins.lualine") end,
-        }
+        -- Treesitter:
+        use {"nvim-treesitter/nvim-treesitter", config = load_config}
+        use {"lewis6991/spellsitter.nvim", config = load_config}
+        use {"romgrk/nvim-treesitter-context", config = load_config}
 
-        use {
-            "nvim-telescope/telescope.nvim",
-            requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"},
-            config = function() pcall(require, "plugins.telescope") end,
-        }
+        -- Language server:
+        use {"neovim/nvim-lspconfig", config = load_config}
+        use {"williamboman/nvim-lsp-installer", config = load_config}
+        use {"ray-x/lsp_signature.nvim", config = load_config}
 
-        use {
-            "nvim-telescope/telescope-project.nvim",
-            config = function() pcall(require, "plugins.telescope-project") end,
-        }
-
-        use {
-            "kyazdani42/nvim-tree.lua",
-            requires = {"kyazdani42/nvim-web-devicons"},
-            config = function() pcall(require, "plugins.tree") end,
-        }
-
-        use {
-            "neovim/nvim-lspconfig",
-            config = function() pcall(require, "plugins.lspconfig") end,
-        }
-
-        use {
-            "williamboman/nvim-lsp-installer",
-            config = function() pcall(require, "plugins.lsp-installer") end,
-        }
-
-        use {
-            "ray-x/lsp_signature.nvim",
-            config = function() pcall(require, "plugins.lsp_signature") end,
-        }
-
-        use {
-            "hrsh7th/nvim-cmp",
-            config = function() pcall(require, "plugins.cmp") end,
-        }
-
+        -- Completion:
+        use {"hrsh7th/nvim-cmp", config = load_config}
         use {"hrsh7th/cmp-nvim-lsp"}
-
         use {"hrsh7th/cmp-vsnip"}
-
         use {"hrsh7th/vim-vsnip"}
-
         use {"rafamadriz/friendly-snippets"}
+        use {"windwp/nvim-autopairs", config = load_config}
 
-        use {
-            "nvim-treesitter/nvim-treesitter",
-            config = function() pcall(require, "plugins.treesitter") end,
-        }
-
-        use {
-            "lewis6991/spellsitter.nvim",
-            config = function() pcall(require, "plugins.spellsitter") end,
-        }
-
-        use {
-            "romgrk/nvim-treesitter-context",
-            config = function() pcall(require, "plugins.treesitter-context") end,
-        }
-
-        use {
-            "christoomey/vim-tmux-navigator",
-            config = function() pcall(require, "plugins.tmux-navigator") end,
-        }
-
-        use {
-            "numtostr/FTerm.nvim",
-            config = function() pcall(require, "plugins.fterm") end,
-        }
-
-        use {
-            "lewis6991/gitsigns.nvim",
-            requires = {"nvim-lua/plenary.nvim"},
-            config = function() pcall(require, "plugins.gitsigns") end,
-        }
-
-        use {
-            "lukas-reineke/indent-blankline.nvim",
-            config = function() pcall(require, "plugins.indent_blankline") end,
-        }
-
-        use {"tpope/vim-unimpaired"}
-
-        use {"tpope/vim-surround"}
-
-        use {"PeterRincker/vim-argumentative"}
-
-        use {
-            "numToStr/Comment.nvim",
-            config = function() pcall(require, "plugins.Comment") end,
-        }
-
-        use {
-            "windwp/nvim-autopairs",
-            config = function() pcall(require, "plugins.autopairs") end,
-        }
-
-        use {
-            "haya14busa/vim-asterisk",
-            config = function() pcall(require, "plugins.asterisk") end,
-        }
-
-        use {
-            "kevinhwang91/nvim-hlslens",
-            config = function() pcall(require, "plugins.hlslens") end,
-        }
-
-        use {
-            "phaazon/hop.nvim",
-            config = function() pcall(require, "plugins.hop") end,
-        }
-
-        use {
-            "karb94/neoscroll.nvim",
-            config = function() pcall(require, "plugins.neoscroll") end,
-        }
-
-        use {"enricobacis/paste.vim"}
-
-        use {"tversteeg/registers.nvim"}
-
+        -- Navigation:
+        use {"phaazon/hop.nvim", config = load_config}
+        use {"karb94/neoscroll.nvim", config = load_config}
         use {"kshenoy/vim-signature"}
 
-        use {"axelf4/vim-strip-trailing-whitespace"}
+        -- Search:
+        use {"haya14busa/vim-asterisk", config = load_config}
+        use {"kevinhwang91/nvim-hlslens"}
 
-        use {
-            "junegunn/vim-easy-align",
-            config = function() pcall(require, "plugins.easy-align") end,
-        }
+        -- Clipboard:
+        use {"enricobacis/paste.vim"}
+        use {"tversteeg/registers.nvim"}
+
+        -- Editing:
+        use {"numToStr/Comment.nvim", config = load_config}
+        use {"tpope/vim-unimpaired"}
+        use {"tpope/vim-surround"}
+        use {"junegunn/vim-easy-align"}
+        use {"PeterRincker/vim-argumentative"}
+
+        -- Git:
+        use {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}, config = load_config}
+
+        -- Whitespace:
+        use {"axelf4/vim-strip-trailing-whitespace"}
+        use {"lukas-reineke/indent-blankline.nvim", config = load_config}
+
+        -- Terminal:
+        use {"christoomey/vim-tmux-navigator", config = load_config}
+        use {"numtostr/FTerm.nvim"}
     end,
     config = {
         display = {

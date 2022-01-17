@@ -10,6 +10,3 @@ require("nvim-tree").setup({
         },
     },
 })
-
-vim.api.nvim_set_keymap("n", "<C-n>", [[<Cmd>NvimTreeToggle<CR>]], {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<Leader>n", [[<Cmd>NvimTreeFocus<CR>]], {noremap = true, silent = true})
