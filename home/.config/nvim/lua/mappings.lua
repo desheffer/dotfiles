@@ -21,7 +21,7 @@ vim.api.nvim_set_keymap("n", "<C-s>", [[<Cmd>w<CR>]], {noremap = true, silent = 
 vim.api.nvim_set_keymap("i", "<C-s>", [[<Cmd>w<CR>]], {noremap = true, silent = true})
 
 -- Close a buffer with <C-c>.
-vim.api.nvim_set_keymap("n", "<C-c>", [[<Cmd>BufDel<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-c>", [[<Cmd>Sayonara<CR>]], {noremap = true, silent = true})
 
 -- Exit Neovim with <C-q>.
 vim.api.nvim_set_keymap("n", "<C-q>", [[<Cmd>qa<CR>]], {noremap = true, silent = true})
