@@ -12,7 +12,7 @@ vim.g.dashboard_custom_header = {
 vim.g.dashboard_custom_section = {
     a = {
         description = {"  Find File                       <C-p>"},
-        command = function() smart_find_files() end,
+        command = function() require("utilities.finder").find_files() end,
     },
     b = {
         description = {"  Live Grep                   <Space>fg"},

@@ -11,7 +11,3 @@ require("nvim-treesitter.configs").setup({
         },
     },
 })
-
-function _G.ts_install_sync()
-    vim.cmd([[TSInstallSync maintained]])
-end

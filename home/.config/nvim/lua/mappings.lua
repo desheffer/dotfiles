@@ -49,7 +49,7 @@ vim.api.nvim_set_keymap("n", "g<Down>", [[j]],  {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "g<Up>",   [[k]],  {noremap = true, silent = true})
 
 -- Bind a smart fuzzy finder to <C-p>.
-vim.api.nvim_set_keymap("n", "<C-p>", [[<Cmd>lua smart_find_files()<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-p>", [[<Cmd>lua require("utilities.finder").find_files()<CR>]], {noremap = true, silent = true})
 
 -- Bind various Telescope file commands.
 vim.api.nvim_set_keymap("n", "<Leader>fa", [[<Cmd>lua require("telescope.builtin").find_files({hidden = true})<CR>]], {noremap = true, silent = true})

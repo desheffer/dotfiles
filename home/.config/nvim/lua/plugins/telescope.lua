@@ -11,11 +11,3 @@ require("telescope").setup({
         sorting_strategy = "ascending",
     },
 })
-
-function _G.smart_find_files()
-    if pcall(require("telescope.builtin").git_files) then
-        return
-    end
-
-    require("telescope.builtin").find_files()
-end
