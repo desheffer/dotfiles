@@ -4,6 +4,7 @@ local cmp = require("cmp")
 cmp.setup({
     documentation = {
         border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+        winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
     },
     mapping = {
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
