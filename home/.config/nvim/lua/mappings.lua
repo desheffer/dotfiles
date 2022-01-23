@@ -1,8 +1,8 @@
 -- Set <Leader> to space.
 vim.g.mapleader = " "
 
--- Create a new buffer with <Leader><Tab>.
-vim.api.nvim_set_keymap("n", "<Leader><Tab>", [[<Cmd>enew<CR>]], {noremap = true, silent = true})
+-- Create a new buffer with <C-n>.
+vim.api.nvim_set_keymap("n", "<C-n>", [[<Cmd>enew<CR>]], {noremap = true, silent = true})
 
 -- Cycle buffers with <Tab> and <S-Tab>.
 vim.api.nvim_set_keymap("n", "<Tab>",   [[<Cmd>BufferLineCycleNext<CR>]], {noremap = true, silent = true})

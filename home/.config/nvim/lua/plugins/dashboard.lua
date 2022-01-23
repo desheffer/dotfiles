@@ -27,7 +27,7 @@ vim.g.dashboard_custom_section = {
         command = function() require("telescope.builtin").oldfiles() end,
     },
     e = {
-        description = {"ﱐ  New File                 <Tab><Enter>"},
+        description = {"ﱐ  New Buffer                      <C-n>"},
         command = function() vim.cmd([[enew]]) end,
     },
 }
