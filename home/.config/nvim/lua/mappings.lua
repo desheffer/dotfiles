@@ -68,6 +68,9 @@ vim.api.nvim_set_keymap("n", "<Leader>gc", [[<Cmd>lua require("telescope.builtin
 vim.api.nvim_set_keymap("n", "<Leader>gf", [[<Cmd>lua require("telescope.builtin").git_files()<CR>]],    {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>gs", [[<Cmd>lua require("telescope.builtin").git_status()<CR>]],   {noremap = true, silent = true})
 
+-- Find spelling suggestions with z=.
+vim.api.nvim_set_keymap("n", "z=", [[<Cmd>lua require("telescope.builtin").spell_suggest()<CR>]], {noremap = true, silent = true})
+
 -- Focus the file tree with <Leader>n.
 vim.api.nvim_set_keymap("n", "<Leader>n", [[<Cmd>NvimTreeFocus<CR>]],  {noremap = true, silent = true})
 
