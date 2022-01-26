@@ -1,5 +1,5 @@
 require("nvim-lsp-installer").on_server_ready(function(server)
-    local servers = require("utilities.lsp")
+    local servers = require("utilities.lsp").servers
 
     local opts = {}
     if servers[server.name] then
