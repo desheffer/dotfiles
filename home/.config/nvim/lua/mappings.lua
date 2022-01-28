@@ -84,6 +84,7 @@ vim.api.nvim_set_keymap("n", "gi", [[<Cmd>lua require("telescope.builtin").lsp_i
 vim.api.nvim_set_keymap("n", "gr", [[<Cmd>lua require("telescope.builtin").lsp_references({jump_type = "never"})<CR>]],      {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "[d", [[<Cmd>lua vim.diagnostic.goto_prev({popup_opts = {focusable = false}})<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "]d", [[<Cmd>lua vim.diagnostic.goto_next({popup_opts = {focusable = false}})<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "K",  [[<Cmd>lua vim.lsp.buf.hover()<CR>]], {noremap = true, silent = true})
 
 -- Bind various code actions under <Leader>c.
 vim.api.nvim_set_keymap("n", "<Leader>ca", [[<Cmd>lua require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor())<CR>]], {noremap = true, silent = true})

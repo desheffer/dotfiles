@@ -14,8 +14,8 @@ function _M.gruvbox_material_custom()
     vim.cmd([[highlight! MatchParen cterm=bold gui=bold]])
 
     -- Improve the appearance of floating window borders.
-    vim.cmd([[highlight! clear FloatBorder]])
-    vim.cmd([[highlight! link FloatBorder NormalFloat]])
+    vim.cmd([[highlight! clear NormalFloat]])
+    vim.cmd([[highlight! link NormalFloat Normal]])
 end
 
 return _M
