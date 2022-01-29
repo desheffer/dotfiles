@@ -4,27 +4,23 @@ vim.g.mapleader = " "
 -- Create a new buffer with <C-n>.
 vim.api.nvim_set_keymap("n", "<C-n>", [[<Cmd>enew<CR>]], {noremap = true, silent = true})
 
--- Cycle buffers with <Tab> and <S-Tab>.
-vim.api.nvim_set_keymap("n", "<Tab>",   [[<Cmd>BufferLineCycleNext<CR>]], {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<S-Tab>", [[<Cmd>BufferLineCyclePrev<CR>]], {noremap = true, silent = true})
-
 -- Cycle buffers with <M-Pageup> and <M-Pagedown> (for consistency with Tmux).
-vim.api.nvim_set_keymap("n", "<M-Pageup>",   [[<Cmd>BufferLineCycleNext<CR>]], {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<M-Pagedown>", [[<Cmd>BufferLineCyclePrev<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<M-Pageup>",   [[<Cmd>lua require("utilities.buffer").next()<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<M-Pagedown>", [[<Cmd>lua require("utilities.buffer").prev()<CR>]], {noremap = true, silent = true})
 
 -- Cycle buffers with gt and gT (for consistency with vanilla Vim tabs).
-vim.api.nvim_set_keymap("n", "gt", [[<Cmd>BufferLineCycleNext<CR>]], {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "gT", [[<Cmd>BufferLineCyclePrev<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "gt", [[<Cmd>lua require("utilities.buffer").next()<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "gT", [[<Cmd>lua require("utilities.buffer").prev()<CR>]], {noremap = true, silent = true})
 
 -- Save a buffer with <C-s>.
-vim.api.nvim_set_keymap("n", "<C-s>", [[<Cmd>w<CR>]], {noremap = true, silent = true})
-vim.api.nvim_set_keymap("i", "<C-s>", [[<Cmd>w<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-s>", [[<Cmd>write<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("i", "<C-s>", [[<Cmd>write<CR>]], {noremap = true, silent = true})
 
 -- Close a buffer with <C-c>.
-vim.api.nvim_set_keymap("n", "<C-c>", [[<Cmd>Sayonara<CR>]], {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<C-c>", [[<Cmd>lua require("utilities.buffer").delete()<CR>]], {noremap = true, silent = true})
 
--- Exit Neovim with <C-q>.
-vim.api.nvim_set_keymap("n", "<C-q>", [[<Cmd>qa<CR>]], {noremap = true, silent = true})
+-- Quit Neovim with <C-q>.
+vim.api.nvim_set_keymap("n", "<C-q>", [[<Cmd>qall<CR>]], {noremap = true, silent = true})
 
 -- Integrate navigation between Neovim and Tmux.
 for _, mode in ipairs({"", "c", "i"}) do
@@ -72,10 +68,10 @@ vim.api.nvim_set_keymap("n", "<Leader>gs", [[<Cmd>lua require("telescope.builtin
 vim.api.nvim_set_keymap("n", "z=", [[<Cmd>lua require("telescope.builtin").spell_suggest()<CR>]], {noremap = true, silent = true})
 
 -- Focus the file tree with <Leader>n.
-vim.api.nvim_set_keymap("n", "<Leader>n", [[<Cmd>NvimTreeFocus<CR>]],  {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", "<Leader>n", [[<Cmd>lua require("nvim-tree").find_file(true) require("nvim-tree").focus()<CR>]], {noremap = true, silent = true})
 
 -- Hop to a character with <Leader><Leader>{char}.
-vim.api.nvim_set_keymap("", "<Leader><Leader>", [[<Cmd>HopChar1<CR>]], {noremap = true})
+vim.api.nvim_set_keymap("", "<Leader><Leader>", [[<Cmd>lua require("hop").hint_char1()<CR>]], {noremap = true})
 
 -- Bind various LSP navigation commands.
 vim.api.nvim_set_keymap("n", "gd", [[<Cmd>lua require("telescope.builtin").lsp_definitions({jump_type = "never"})<CR>]],     {noremap = true, silent = true})

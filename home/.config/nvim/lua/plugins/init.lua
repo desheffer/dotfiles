@@ -21,7 +21,6 @@ require("packer").startup({
         -- Interface:
         use {"glepnir/dashboard-nvim", config = load_config}
         use {"akinsho/bufferline.nvim", requires = {"kyazdani42/nvim-web-devicons"}, config = load_config}
-        use {"mhinz/vim-sayonara"}
         use {"hoob3rt/lualine.nvim", requires = {"kyazdani42/nvim-web-devicons"}, config = load_config}
 
         -- Telescope:
