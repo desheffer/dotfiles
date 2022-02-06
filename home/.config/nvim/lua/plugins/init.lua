@@ -25,7 +25,10 @@ require("packer").startup({
 
         -- Telescope:
         use {"nvim-telescope/telescope.nvim", requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"}, config = load_config}
-        use {"nvim-telescope/telescope-project.nvim", config = load_config}
+        use {"rmagatti/session-lens", config = load_config}
+
+        -- Sessions:
+        use {"rmagatti/auto-session", config = load_config}
 
         -- Explorer:
         use {"kyazdani42/nvim-tree.lua", requires = {"kyazdani42/nvim-web-devicons"}, config = load_config}

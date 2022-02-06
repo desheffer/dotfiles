@@ -11,24 +11,24 @@ vim.g.dashboard_custom_header = {
 
 vim.g.dashboard_custom_section = {
     a = {
-        description = {"  Find File                       <C-p>"},
-        command = function() require("utilities.finder").find_files() end,
+        description = {"ﱐ  New                             <C-n>"},
+        command = function() vim.cmd([[enew]]) end,
     },
     b = {
-        description = {"  Live Grep                   <Space>fg"},
-        command = function() require("telescope.builtin").live_grep() end,
+        description = {"  Files                           <C-p>"},
+        command = function() require("utilities.finder").find_files() end,
     },
     c = {
-        description = {"  Project                     <Space>fp"},
-        command = function() require("telescope").extensions.project.project({}) end,
+        description = {"﬿  Sessions                    <Space>fs"},
+        command = function() require("session-lens").search_session() end,
     },
     d = {
-        description = {"ﮦ  Recent File                 <Space>fo"},
+        description = {"ﮦ  Recent Files                <Space>fo"},
         command = function() require("telescope.builtin").oldfiles() end,
     },
     e = {
-        description = {"ﱐ  New Buffer                      <C-n>"},
-        command = function() vim.cmd([[enew]]) end,
+        description = {"  Grep                        <Space>fg"},
+        command = function() require("telescope.builtin").live_grep() end,
     },
 }
 

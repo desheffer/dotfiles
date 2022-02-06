@@ -1,14 +1,11 @@
 #!/bin/env bash
 
+function _nvim {
+    nvim --headless '+let g:auto_session_enabled = v:false' "$@"
+}
+
 # Set up Neovim.
 rm -f ~/.config/nvim/plugin/packer_compiled.lua
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-nvim --headless -c 'lua require("utilities.lsp").install_sync()' -c 'quitall'
-nvim --headless -c 'lua require("utilities.treesitter").install_sync()' -c 'quitall'
-
-# Add dotfiles project.
-PROJECTS="${HOME}/.local/share/nvim/telescope-projects.txt"
-touch "${PROJECTS}"
-if ! grep -q "^dotfiles=" "${PROJECTS}"; then
-    echo "dotfiles=$(pwd)=1" >> "${PROJECTS}"
-fi
+_nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+_nvim -c 'lua require("utilities.lsp").install_sync()' -c 'quitall'
+_nvim -c 'lua require("utilities.treesitter").install_sync()' -c 'quitall'

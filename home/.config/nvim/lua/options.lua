@@ -1,3 +1,6 @@
+-- Disable swap files.
+vim.opt.swapfile = false
+
 -- Enable persistent undo.
 vim.opt.undofile = true
 
@@ -41,7 +44,7 @@ vim.opt.listchars:append("trail:·")
 -- Enable spell checking.
 vim.opt.spell = true
 
--- Make completion mode acts like Bash.
+-- Make completion mode act like Bash.
 vim.opt.wildmode = "longest,list"
 
 -- Always show sign column.
@@ -53,3 +56,6 @@ vim.opt.showmode = false
 -- Split windows below and to the right.
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+-- Save most things in the session.
+vim.opt.sessionoptions = "buffers,curdir,folds,tabpages,terminal,winpos,winsize"

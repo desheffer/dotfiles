@@ -47,19 +47,21 @@ vim.api.nvim_set_keymap("n", "g<Up>",   [[k]],  {noremap = true, silent = true})
 -- Bind a smart fuzzy finder to <C-p>.
 vim.api.nvim_set_keymap("n", "<C-p>", [[<Cmd>lua require("utilities.finder").find_files()<CR>]], {noremap = true, silent = true})
 
--- Bind various Telescope file commands.
+-- Bind Telescope file commands.
 vim.api.nvim_set_keymap("n", "<Leader>fa", [[<Cmd>lua require("telescope.builtin").find_files({hidden = true})<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>fb", [[<Cmd>lua require("telescope.builtin").buffers()<CR>]],                   {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>ff", [[<Cmd>lua require("telescope.builtin").find_files()<CR>]],                {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>fg", [[<Cmd>lua require("telescope.builtin").live_grep()<CR>]],                 {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>fh", [[<Cmd>lua require("telescope.builtin").help_tags()<CR>]],                 {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>fo", [[<Cmd>lua require("telescope.builtin").oldfiles()<CR>]],                  {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", "<Leader>fp", [[<Cmd>lua require("telescope").extensions.project.project({})<CR>]],      {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>fr", [[<Cmd>lua require("telescope.builtin").resume()<CR>]],                    {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>fw", [[<Cmd>lua require("telescope.builtin").grep_string()<CR>]],               {noremap = true, silent = true})
 vim.api.nvim_set_keymap("v", "<Leader>fw", [[<Cmd>lua require("telescope.builtin").grep_string()<CR>]],               {noremap = true, silent = true})
 
--- Bind various Telescope Git commands.
+-- Bind Telescope session commands.
+vim.api.nvim_set_keymap("n", "<Leader>fs", [[<Cmd>lua require("session-lens").search_session()<CR>]], {noremap = true, silent = true})
+
+-- Bind Telescope Git commands.
 vim.api.nvim_set_keymap("n", "<Leader>gc", [[<Cmd>lua require("telescope.builtin").git_bcommits()<CR>]], {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>gf", [[<Cmd>lua require("telescope.builtin").git_files()<CR>]],    {noremap = true, silent = true})
 vim.api.nvim_set_keymap("n", "<Leader>gs", [[<Cmd>lua require("telescope.builtin").git_status()<CR>]],   {noremap = true, silent = true})
