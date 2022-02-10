@@ -1,6 +1,8 @@
 vim.opt.completeopt = "menu,menuone,noselect"
 
 local cmp = require("cmp")
+local luasnip = require("luasnip")
+
 cmp.setup({
     documentation = {
         border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
@@ -15,15 +17,35 @@ cmp.setup({
         }),
         ["<C-d>"] = cmp.mapping.scroll_docs(4, {"i", "c"}),
         ["<C-u>"] = cmp.mapping.scroll_docs(-4, {"i", "c"}),
+        ["<Tab>"] = cmp.mapping(function (fallback)
+            if luasnip.jumpable(1) then
+                luasnip.jump(1)
+            elseif cmp.visible() then
+                cmp.select_next_item()
+            else
+                fallback()
+            end
+        end, {"i", "s"}),
+        ["<S-Tab>"] = cmp.mapping(function (fallback)
+            if luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            elseif cmp.visible() then
+                cmp.select_prev_item()
+            else
+                fallback()
+            end
+        end, {"i", "s"}),
     },
     snippet = {
         expand = function(args)
-            vim.fn["vsnip#anonymous"](args.body)
+            require("luasnip").lsp_expand(args.body)
         end,
     },
     sources = {
         {name = "nvim_lsp"},
-        {name = "vsnip"},
+        {name = "luasnip"},
+        {name = "path"},
+        {name = "buffer"},
     },
 })
 

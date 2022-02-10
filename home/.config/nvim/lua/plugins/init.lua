@@ -43,9 +43,11 @@ require("packer").startup({
 
         -- Completion:
         use {"hrsh7th/nvim-cmp", config = load_config}
+        use {"hrsh7th/cmp-buffer"}
         use {"hrsh7th/cmp-nvim-lsp"}
-        use {"hrsh7th/cmp-vsnip"}
-        use {"hrsh7th/vim-vsnip"}
+        use {"hrsh7th/cmp-path"}
+        use {"L3MON4D3/LuaSnip", config = load_config}
+        use {"saadparwaiz1/cmp_luasnip"}
         use {"rafamadriz/friendly-snippets"}
         use {"windwp/nvim-autopairs", config = load_config}
 
