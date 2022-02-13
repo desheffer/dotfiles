@@ -66,8 +66,8 @@ require("packer").startup({
 
         -- Editing:
         use {"numToStr/Comment.nvim", config = load_config}
-        use {"tpope/vim-unimpaired"}
-        use {"tpope/vim-surround"}
+        use {"tpope/vim-unimpaired", requires = {"tpope/vim-repeat"}}
+        use {"tpope/vim-surround", requires = {"tpope/vim-repeat"}}
         use {"junegunn/vim-easy-align"}
         use {"PeterRincker/vim-argumentative"}
 
