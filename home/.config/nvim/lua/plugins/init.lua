@@ -62,7 +62,7 @@ require("packer").startup({
 
         -- Clipboard:
         use {"enricobacis/paste.vim"}
-        use {"tversteeg/registers.nvim"}
+        use {"tversteeg/registers.nvim", config = load_config}
 
         -- Editing:
         use {"numToStr/Comment.nvim", config = load_config}
