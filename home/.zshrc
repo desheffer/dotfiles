@@ -41,9 +41,7 @@ bindkey -e
 
 # Bind home, end, and del keys.
 bindkey '^[[H'  beginning-of-line
-bindkey '^[[1~' beginning-of-line
 bindkey '^[[F'  end-of-line
-bindkey '^[[4~' end-of-line
 bindkey '^[[3~' delete-char
 
 # Bind ctrl + arrow keys to move between words.
@@ -51,7 +49,7 @@ bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
 # Bind ctrl + backspace and delete to delete words.
-bindkey '^H' backward-kill-word
+bindkey '^H'      backward-kill-word
 bindkey '^[[3;5~' kill-word
 
 # Use Neovim.
