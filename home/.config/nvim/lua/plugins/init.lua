@@ -83,6 +83,11 @@ require("packer").startup({
         -- Terminal:
         use {"christoomey/vim-tmux-navigator", config = load_config}
         use {"numtostr/FTerm.nvim"}
+
+        -- Firenvim:
+        use {"glacambre/firenvim", config = load_config, run = function ()
+            vim.fn["firenvim#install"](0)
+        end}
     end,
     config = {
         display = {

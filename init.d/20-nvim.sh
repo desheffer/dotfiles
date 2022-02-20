@@ -1,7 +1,7 @@
 #!/bin/env bash
 
 function _nvim {
-    nvim --headless '+let g:auto_session_enabled = v:false' "$@"
+    nvim --headless '+lua vim.g.auto_session_enabled = false' "$@"
 }
 
 # Set up Neovim.
