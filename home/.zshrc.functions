@@ -1,5 +1,4 @@
 alias :qa='exit'
-alias cat='bat --style=plain'
 alias chown.='sudo chown -R "${USER}:" .'
 alias df='df -h'
 alias dkr-sh='docker run -it --rm --entrypoint sh'
@@ -32,12 +31,23 @@ alias grs='git restore --staged'
 alias gR='git-reset'
 alias gs='git status'
 alias gsp='git show -p'
-alias l='exa -hlF'
-alias ll='exa -ahlF'
-alias ls='exa --color=auto'
 alias serve='python3 -m http.server 8000'
 alias ta='tmux attach 2>/dev/null || tmux new-session'
 alias tmux='tmux -2u'
+
+if (( $+commands[bat] )); then
+    alias cat='bat --style=plain'
+fi
+
+if (( $+commands[exa] )); then
+    alias l='exa -hlF'
+    alias ll='exa -ahlF'
+    alias ls='exa --color=auto'
+else
+    alias l='ls -hlF'
+    alias ll='ls -ahlF'
+    alias ls='ls --color=auto'
+fi
 
 # Quickly change to the root directory of a repository.
 function d {
