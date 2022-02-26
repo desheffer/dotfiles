@@ -12,10 +12,6 @@ function _M.gruvbox_material_custom()
 
     -- Make matching braces a little more obvious.
     vim.cmd([[highlight! MatchParen cterm=bold gui=bold]])
-
-    -- Improve the appearance of floating window borders.
-    vim.cmd([[highlight! clear NormalFloat]])
-    vim.cmd([[highlight! link NormalFloat Normal]])
 end
 
 return _M
