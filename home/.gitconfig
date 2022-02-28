@@ -8,7 +8,7 @@
 [core]
     autocrlf = input
     eol = lf
-    pager = delta --color-only
+    pager = ~/.config/git/delta-with-fallback.sh --color-only
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [credential]
     helper = libsecret
@@ -23,7 +23,7 @@
 [init]
     defaultBranch = main
 [interactive]
-    diffFilter = delta --color-only
+    diffFilter = ~/.config/git/delta-with-fallback.sh --color-only
 [merge]
     conflictstyle = diff3
     summary = true
