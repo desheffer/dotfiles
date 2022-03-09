@@ -60,7 +60,6 @@ require("packer").startup({
         use_lock {"hrsh7th/nvim-cmp", config = load_config}
         use_lock {"hrsh7th/cmp-buffer"}
         use_lock {"hrsh7th/cmp-nvim-lsp"}
-        use_lock {"hrsh7th/cmp-path"}
         use_lock {"L3MON4D3/LuaSnip", config = load_config}
         use_lock {"saadparwaiz1/cmp_luasnip"}
         use_lock {"rafamadriz/friendly-snippets"}
