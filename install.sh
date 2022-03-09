@@ -14,7 +14,7 @@ function link_file {
 
     # Abort if the file already exists.
     if [ ! "${FORCE}" ] && [ -e "${2}" ]; then
-        echo "Error: ${2} already exists!"
+        echo "Error: ${2} already exists! (use -f to force)"
         return 1
     fi
 
