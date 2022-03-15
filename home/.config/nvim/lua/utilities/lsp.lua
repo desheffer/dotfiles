@@ -12,9 +12,8 @@ _M.servers = {
                 configuration = {
                     runtimes = {
                         {
-                            -- aur/jdk15-adoptopenjdk
-                            name = "JavaSE-15",
-                            path = "/usr/lib/jvm/java-15-adoptopenjdk",
+                            name = "JavaSE-17",
+                            path = "/usr/lib/jvm/java-17-openjdk",
                         },
                     },
                 },
