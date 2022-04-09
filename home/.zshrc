@@ -39,18 +39,26 @@ zstyle ':completion:*:*:*:*:*' menu select
 # Enable emacs mode.
 bindkey -e
 
-# Bind home, end, and del keys.
+# Bind Home, End, and Del keys.
 bindkey '^[[H'  beginning-of-line
 bindkey '^[[F'  end-of-line
 bindkey '^[[3~' delete-char
 
-# Bind ctrl + arrow keys to move between words.
+# Bind Ctrl + arrow keys to move between words.
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
-# Bind ctrl + backspace and delete to delete words.
+# Bind Ctrl + Backspace and Delete to delete words.
 bindkey '^H'      backward-kill-word
 bindkey '^[[3;5~' kill-word
+
+# Bind PageDown and PageUp as no-op.
+bindkey '^[[5~' beep
+bindkey '^[[6~' beep
+
+# Bind Alt + PageDown and Alt + PageUp as no-op.
+bindkey '^[[5;3~' beep
+bindkey '^[[6;3~' beep
 
 # Use Neovim.
 export EDITOR='nvim'
