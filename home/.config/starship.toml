@@ -1,11 +1,23 @@
-[aws]
-disabled = true
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$cmd_duration\
+$line_break\
+$jobs\
+$character\
+"""
 
 [directory]
+read_only = " "
 truncate_to_repo = false
 
-[gcloud]
-disabled = true
+[hostname]
+disabled = false
 
 [git_branch]
 symbol = " "
