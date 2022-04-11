@@ -40,13 +40,15 @@ if (( $+commands[bat] )); then
 fi
 
 if (( $+commands[exa] )); then
-    alias l='exa -hlF'
-    alias ll='exa -ahlF'
-    alias ls='exa --color=auto'
+    alias la='exa -ahlF --git --group-directories-first'
+    alias ll='exa -hlF --git --group-directories-first'
+    alias ls='exa -F --group-directories-first'
+    alias tree='exa -T --group-directories-first'
 else
-    alias l='ls -hlF'
-    alias ll='ls -ahlF'
-    alias ls='ls --color=auto'
+    alias la='ls -ahlF --group-directories-first'
+    alias ll='ls -hlF --group-directories-first'
+    alias ls='ls -F --color=auto --group-directories-first'
+    alias tree='tree --dirsfirst'
 fi
 
 # Quickly change to the root directory of a repository.
