@@ -8,16 +8,8 @@ _M.servers = {
     html = {},
     jdtls = {
         settings = {
-            java = {
-                configuration = {
-                    runtimes = {
-                        {
-                            name = "JavaSE-17",
-                            path = "/usr/lib/jvm/java-17-openjdk",
-                        },
-                    },
-                },
-            },
+            -- Some features will silently fail if this table is missing.
+            java = {},
         },
     },
     jsonls = {},
