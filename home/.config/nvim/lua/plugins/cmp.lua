@@ -4,11 +4,7 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 
 cmp.setup({
-    documentation = {
-        border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
-        winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
-    },
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
         ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), {"i", "c"}),
         ["<CR>"] = cmp.mapping.confirm(),
         ["<C-e>"] = cmp.mapping({
@@ -35,7 +31,7 @@ cmp.setup({
                 fallback()
             end
         end, {"i", "s"}),
-    },
+    }),
     snippet = {
         expand = function(args)
             require("luasnip").lsp_expand(args.body)
@@ -45,6 +41,12 @@ cmp.setup({
         {name = "nvim_lsp"},
         {name = "luasnip"},
         {name = "buffer"},
+    },
+    window = {
+        documentation = {
+            border = {"╭", "─", "╮", "│", "╯", "─", "╰", "│"},
+            winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+        },
     },
 })
 
