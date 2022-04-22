@@ -32,7 +32,7 @@ require("packer").startup({
         use_lock {"sainnhe/gruvbox-material", config = load_config}
 
         -- Interface:
-        use_lock {"glepnir/dashboard-nvim", config = load_config}
+        use_lock {"goolord/alpha-nvim", config = load_config}
         use_lock {"akinsho/bufferline.nvim", requires = {"kyazdani42/nvim-web-devicons"}, config = load_config}
         use_lock {"hoob3rt/lualine.nvim", requires = {"kyazdani42/nvim-web-devicons"}, config = load_config}
 
