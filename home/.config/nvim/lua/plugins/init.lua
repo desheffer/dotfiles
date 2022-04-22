@@ -89,7 +89,6 @@ require("packer").startup({
         use_lock {"lewis6991/gitsigns.nvim", requires = {"nvim-lua/plenary.nvim"}, config = load_config}
 
         -- Whitespace:
-        use_lock {"axelf4/vim-strip-trailing-whitespace"}
         use_lock {"lukas-reineke/indent-blankline.nvim", config = load_config}
 
         -- Terminal:
