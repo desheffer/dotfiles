@@ -3,9 +3,11 @@ require("lualine").setup({
         disabled_filetypes = {"NvimTree"},
         section_separators = {left = "", right = ""},
         component_separators = {left = "", right = ""},
+        globalstatus = true,
     },
     sections = {
         lualine_b = {
+            require("auto-session-library").current_session_name,
             "branch",
             "diff",
             {
@@ -20,9 +22,6 @@ require("lualine").setup({
                 },
                 symbols = {error = " ", warn = " ", info = " ", hint = " "},
             },
-        },
-        lualine_c = {
-            require("auto-session-library").current_session_name,
         },
     },
 })
