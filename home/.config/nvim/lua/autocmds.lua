@@ -13,7 +13,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     pattern = "*",
     callback = function ()
         if vim.bo.textwidth > 0 then
-            vim.wo.colorcolumn = "+0"
+            vim.wo.colorcolumn = "+1"
         end
     end,
 })
