@@ -72,21 +72,22 @@ vim.keymap.set("n", "<Leader>n", function () require("nvim-tree").find_file(true
 -- Hop to a character with <Leader><Leader>{char}.
 vim.keymap.set("", "<Leader><Leader>", require("hop").hint_char1)
 
--- Bind various LSP navigation commands.
+-- Bind various LSP commands.
 vim.keymap.set("n", "gd", function () require("telescope.builtin").lsp_definitions({jump_type = "never"}) end)
-vim.keymap.set("n", "gD", function () require("telescope.builtin").lsp_declarations({jump_type = "never"}) end)
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration)
 vim.keymap.set("n", "gi", function () require("telescope.builtin").lsp_implementations({jump_type = "never"}) end)
 vim.keymap.set("n", "gr", function () require("telescope.builtin").lsp_references({jump_type = "never"}) end)
+vim.keymap.set("n", "K",  vim.lsp.buf.hover)
+vim.keymap.set("n", "<Leader>ca", vim.lsp.buf.code_action)
+vim.keymap.set("v", "<Leader>ca", vim.lsp.buf.range_code_action)
+vim.keymap.set("n", "<Leader>cf", vim.lsp.buf.formatting)
+vim.keymap.set("v", "<Leader>cf", vim.lsp.buf.range_formatting)
+vim.keymap.set("n", "<Leader>cr", vim.lsp.buf.rename)
+
+-- Bind various diagnostic commands.
 vim.keymap.set("n", "[d", function () vim.diagnostic.goto_prev({popup_opts = {focusable = false}}) end)
 vim.keymap.set("n", "]d", function () vim.diagnostic.goto_next({popup_opts = {focusable = false}}) end)
-vim.keymap.set("n", "K",  vim.lsp.buf.hover)
-
--- Bind various code actions under <Leader>c.
-vim.keymap.set("n", "<Leader>ca", function () require("telescope.builtin").lsp_code_actions(require("telescope.themes").get_cursor()) end)
-vim.keymap.set("n", "<Leader>cd", function () require("telescope.builtin").lsp_document_diagnostics() end)
-vim.keymap.set("n", "<Leader>cf", vim.lsp.buf.formatting)
-vim.keymap.set("n", "<Leader>cr", vim.lsp.buf.rename)
-vim.keymap.set("v", "<Leader>cf", vim.lsp.buf.range_formatting)
+vim.keymap.set("n", "<Leader>cd", function () require("telescope.builtin").diagnostics() end)
 
 -- Add more details when highlighting search matches.
 vim.keymap.set("",  "*",  [[<Plug>(asterisk-z*)<Cmd>lua require("hlslens").start()<CR>]])

@@ -38,6 +38,7 @@ require("packer").startup({
 
         -- Telescope:
         use_lock {"nvim-telescope/telescope.nvim", requires = {"nvim-lua/popup.nvim", "nvim-lua/plenary.nvim"}, config = load_config}
+        use_lock {"nvim-telescope/telescope-ui-select.nvim"}
         use_lock {"rmagatti/session-lens", config = load_config}
 
         -- Sessions:
