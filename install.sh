@@ -4,42 +4,30 @@ set -e
 
 cd "$(dirname "${0}")"
 
-function link_file {
-    # Skip if no change is needed.
-    if [ "$(readlink "${2}")" == "${1}" ]; then
-        return 0
-    fi
+########################################
+# Unstow dotfiles
+########################################
 
-    echo "Linking ${2}..."
+stow -R home
 
-    # Abort if the file already exists.
-    if [ ! "${FORCE}" ] && [ -e "${2}" ]; then
-        echo "Error: ${2} already exists! (use -f to force)"
-        return 1
-    fi
+########################################
+# NeoVim config
+########################################
 
-    # Link the new file into place.
-    mkdir -p "$(dirname "${2}")"
-    ln -snf "${1}" "${2}"
+function _nvim {
+    nvim --headless '+lua vim.g.auto_session_enabled = false' "$@"
 }
 
-function link_root_dir {
-    echo "Linking ${1} to ${2}..."
+rm -f ~/.config/nvim/plugin/packer_compiled.lua
 
-    find "${1}" -type f -printf '%P\n' | while read file; do
-        link_file "$(pwd)/${1}/${file}" "${2}/${file}"
-    done
-}
+echo "Running Packer sync..."
+_nvim -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
-function exec_init {
-    echo "Running init scripts..."
+echo "Writing lock file..."
+_nvim ~/.config/nvim/lua/plugins/lock.lua -c 'lua require("utilities.packer").generate_lock_file()' -c 'silent! write' -c 'quitall'
 
-    find init.d -iname '*.sh' | sort | while read script; do
-        . "${script}"
-    done
-}
+echo "Running LSP sync..."
+_nvim -c 'lua require("utilities.lsp").install_sync()' -c 'quitall'
 
-[ "${1}" == "-f" ] && FORCE="1"
-
-link_root_dir home "${HOME}"
-exec_init
+echo "Running Treesitter sync..."
+_nvim -c 'lua require("utilities.treesitter").install_sync()' -c 'quitall'
