@@ -75,4 +75,8 @@ FZF_CTRL_T_COMMAND='git ls-tree -r --name-only HEAD 2>/dev/null || rg --files 2>
 [ -f ~/.zshrc.local ] && . ~/.zshrc.local
 
 # Initialize Starship.
-eval "$(starship init zsh)"
+if (( $+commands[starship] )); then
+    eval "$(starship init zsh)"
+else
+    echo "Starship is missing!"
+fi
