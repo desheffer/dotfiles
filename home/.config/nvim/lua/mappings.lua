@@ -46,31 +46,31 @@ vim.keymap.set("n", "<C-p>", require("utilities.finder").find_files)
 
 -- Bind Telescope file commands.
 vim.keymap.set("n", "<Leader>fa", function () require("telescope.builtin").find_files({hidden = true}) end)
-vim.keymap.set("n", "<Leader>fb", require("telescope.builtin").buffers)
-vim.keymap.set("n", "<Leader>ff", require("telescope.builtin").find_files)
-vim.keymap.set("n", "<Leader>fg", require("telescope.builtin").live_grep)
-vim.keymap.set("n", "<Leader>fh", require("telescope.builtin").help_tags)
-vim.keymap.set("n", "<Leader>fo", require("telescope.builtin").oldfiles)
-vim.keymap.set("n", "<Leader>fr", require("telescope.builtin").resume)
-vim.keymap.set("n", "<Leader>fw", require("telescope.builtin").grep_string)
-vim.keymap.set("v", "<Leader>fw", require("telescope.builtin").grep_string)
+vim.keymap.set("n", "<Leader>fb", function () require("telescope.builtin").buffers() end)
+vim.keymap.set("n", "<Leader>ff", function () require("telescope.builtin").find_files() end)
+vim.keymap.set("n", "<Leader>fg", function () require("telescope.builtin").live_grep() end)
+vim.keymap.set("n", "<Leader>fh", function () require("telescope.builtin").help_tags() end)
+vim.keymap.set("n", "<Leader>fo", function () require("telescope.builtin").oldfiles() end)
+vim.keymap.set("n", "<Leader>fr", function () require("telescope.builtin").resume() end)
+vim.keymap.set("n", "<Leader>fw", function () require("telescope.builtin").grep_string() end)
+vim.keymap.set("v", "<Leader>fw", function () require("telescope.builtin").grep_string() end)
 
 -- Bind Telescope session commands.
-vim.keymap.set("n", "<Leader>fs", require("session-lens").search_session)
+vim.keymap.set("n", "<Leader>fs", function () require("session-lens").search_session() end)
 
 -- Bind Telescope Git commands.
-vim.keymap.set("n", "<Leader>gc", require("telescope.builtin").git_bcommits)
-vim.keymap.set("n", "<Leader>gf", require("telescope.builtin").git_files)
-vim.keymap.set("n", "<Leader>gs", require("telescope.builtin").git_status)
+vim.keymap.set("n", "<Leader>gc", function () require("telescope.builtin").git_bcommits() end)
+vim.keymap.set("n", "<Leader>gf", function () require("telescope.builtin").git_files() end)
+vim.keymap.set("n", "<Leader>gs", function () require("telescope.builtin").git_status() end)
 
 -- Find spelling suggestions with z=.
-vim.keymap.set("n", "z=", require("telescope.builtin").spell_suggest)
+vim.keymap.set("n", "z=", function () require("telescope.builtin").spell_suggest() end)
 
 -- Focus the file tree with <Leader>n.
 vim.keymap.set("n", "<Leader>n", function () require("nvim-tree").find_file(true) require("nvim-tree").focus() end)
 
 -- Hop to a character with <Leader><Leader>{char}.
-vim.keymap.set("", "<Leader><Leader>", require("hop").hint_char1)
+vim.keymap.set("", "<Leader><Leader>", function () require("hop").hint_char1() end)
 
 -- Bind various LSP commands.
 vim.keymap.set("n", "gd", function () require("telescope.builtin").lsp_definitions({jump_type = "never"}) end)
@@ -118,4 +118,4 @@ vim.keymap.set("v", ">", [[>gv]])
 vim.keymap.set({"n", "x"}, "ga", [[<Plug>(EasyAlign)]])
 
 -- Toggle a floating terminal with <F5>.
-vim.keymap.set({"n", "t"}, "<F5>", require("FTerm").toggle)
+vim.keymap.set({"n", "t"}, "<F5>", function () require("FTerm").toggle() end)
