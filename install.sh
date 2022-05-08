@@ -27,7 +27,7 @@ echo "Writing lock file..."
 _nvim ~/.config/nvim/lua/plugins/lock.lua -c 'lua require("utilities.packer").generate_lock_file()' -c 'silent! write' -c 'quitall'
 
 echo "Running LSP sync..."
-_nvim -c 'lua require("utilities.lsp").install_sync()' -c 'quitall'
+_nvim -c 'lua require("utilities.lsp").install_sync()' -c 'quitall' || true
 
 echo "Running Treesitter sync..."
 _nvim -c 'lua require("utilities.treesitter").install_sync()' -c 'quitall'
