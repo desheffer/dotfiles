@@ -34,6 +34,8 @@ alias gsp='git show -p'
 alias serve='python3 -m http.server 8000'
 alias ta='tmux attach 2>/dev/null || tmux new-session'
 alias tmux='tmux -2u'
+alias vi='nvim'
+alias vim='nvim'
 
 if (( $+commands[bat] )); then
     alias cat='bat --style=plain'
