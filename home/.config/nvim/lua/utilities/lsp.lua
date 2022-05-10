@@ -14,6 +14,7 @@ _M.servers = {
     },
     jsonls = {},
     omnisharp = {},
+    phpactor = {},
     pyright = {},
     sumneko_lua = {
         settings = {

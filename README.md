@@ -20,6 +20,7 @@ The following are required for Neovim LSP support:
 * `go`
 * `jdk-openjdk`
 * `npm`
+* `php` and `composer`
 
 ## Testing
 
