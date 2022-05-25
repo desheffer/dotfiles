@@ -18,11 +18,19 @@ vim.api.nvim_create_autocmd("BufEnter", {
     end,
 })
 
+-- Use 2 spaces for indentation for certain file types.
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = {"nix"},
+    callback = function ()
+        vim.bo.shiftwidth = 2
+    end,
+})
+
 -- Hide certain buffers in the buffer list.
 vim.api.nvim_create_autocmd("FileType", {
     pattern = {"qf", "vim"},
     callback = function ()
-        vim.opt.buflisted = false
+        vim.bo.buflisted = false
     end,
 })
 
