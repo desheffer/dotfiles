@@ -28,9 +28,10 @@ alias gPof='git push origin HEAD --force-with-lease'
 alias gr='git rebase'
 alias gri='git rebase -i'
 alias grs='git restore --staged'
-alias gR='git-reset'
+alias gR='git fetch origin && git reset --hard origin/HEAD'
 alias gs='git status'
 alias gsp='git show -p'
+alias gS='git add -A && git commit -m SAVE'
 alias serve='python3 -m http.server 8000'
 alias ta='tmux attach 2>/dev/null || tmux new-session'
 alias tmux='tmux -2u'
@@ -56,31 +57,6 @@ fi
 # Quickly change to the root directory of a repository.
 function d {
     git rev-parse 2>/dev/null && cd "$(git rev-parse --show-cdup)"
-}
-
-# Safely reset a Git repository to match a remote branch.
-function git-reset {
-    git rev-parse 2>/dev/null || return
-
-    timestamp="$(date '+%Y%m%d%H%M%S')"
-    oldBranch="$(git rev-parse --symbolic-full-name --abbrev-ref HEAD)"
-    newBranch="$1"
-
-    if [ -z "${newBranch}" ]; then
-        newBranch="${oldBranch}"
-    fi
-
-    cd "$(git rev-parse --show-cdup)"
-    git add .
-    git commit -m "auto commit at ${timestamp}" >/dev/null
-    if [ $? -eq 0 ]; then
-        echo "Creating backup: ${oldBranch}-${timestamp}"
-        git branch "${oldBranch}-${timestamp}"
-    fi
-
-    git checkout "${newBranch}" >/dev/null 2>/dev/null
-    git fetch origin >/dev/null
-    git reset --hard "origin/${newBranch}"
 }
 
 function github-https-to-ssh {
