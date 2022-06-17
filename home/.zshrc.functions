@@ -2,7 +2,7 @@ alias :qa='exit'
 
 alias dkr-sh='docker run -it --rm --entrypoint sh'
 alias dkr-sh-v='docker run -it --rm --entrypoint sh -v "${PWD}":/pwd'
-alias dkr-stop='[ ! -z "$(docker ps -q)" ] && docker stop $(docker ps -q)'
+alias dkr-stop='[ -z "$(docker ps -q)" ] || docker stop $(docker ps -q)'
 
 alias d='cd "$(git rev-parse --show-cdup)"'
 alias ga='git add'
